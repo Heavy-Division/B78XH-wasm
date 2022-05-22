@@ -31,8 +31,6 @@ extern "C" {
 		case PANEL_SERVICE_PRE_INSTALL:
 		{
 			sGaugeInstallData* p_install_data = (sGaugeInstallData*)pData;
-			// Width given in p_install_data->iSizeX
-			// Height given in p_install_data->iSizeY
 			g_MCPAltitudeVars.m_eFeet = get_units_enum("FEET");
 			g_MCPAltitudeVars.m_eDisplayedAltitudeLockValue = get_aircraft_var_enum("AUTOPILOT ALTITUDE LOCK VAR");
 			return true;
@@ -46,8 +44,6 @@ extern "C" {
 			NVGcontext* nvgctx = nvgCreateInternal(&params);
 			g_MCPAltitudeVars.m_nvgctx = nvgctx;
 			g_MCPAltitudeVars.m_iFont = nvgCreateFont(nvgctx, "sans", "./data/DSEG7ClassicMini-Italic.ttf");
-			//g_MCPAltitudeVars.m_iFont = nvgCreateFont(nvgctx, "sans", "./html_ui/Pages/VCockpit/Instruments/Shared/Fonts/Quartz.ttf");
-			//g_MCPAltitudeVars.m_iFont = nvgCreateFont(nvgctx, "sans", "./data/Roboto-Regular.ttf");
 			return true;
 		}
 		break;
@@ -66,12 +62,12 @@ extern "C" {
 				nvgRect(nvgctx, 0, 0, p_draw_data->winWidth, p_draw_data->winHeight);
 				nvgFill(nvgctx);
 
-				nvgFontSize(nvgctx, 20.0f);
+				nvgFontSize(nvgctx, 90.0f);
 				nvgFontFace(nvgctx, "sans");
-				nvgFillColor(nvgctx, nvgRGBA(255, 0, 255, 100));
+				nvgFillColor(nvgctx, nvgRGBA(255, 255, 255, 255));
 
-				nvgTextAlign(nvgctx, NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
-				nvgText(nvgctx, 20 * 1.05f, 20 * 0.5f, sAltitude, nullptr);
+				nvgTextAlign(nvgctx, NVG_ALIGN_RIGHT | NVG_ALIGN_TOP);
+				nvgText(nvgctx, 500, 12, sAltitude, nullptr);
 			}
 			nvgEndFrame(nvgctx);
 			return true;
