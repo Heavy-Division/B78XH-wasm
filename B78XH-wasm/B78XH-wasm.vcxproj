@@ -39,9 +39,11 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\..\MSFS SDK\SimConnect SDK\VS\SimConnectClient.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\..\MSFS SDK\SimConnect SDK\VS\SimConnectClient.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'">
@@ -104,6 +106,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
     <ClCompile Include="MCPAltitude.cpp" />
+    <ClCompile Include="MCPVSpeed.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\fontstash.h" />
