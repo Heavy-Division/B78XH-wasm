@@ -24,7 +24,7 @@ sMCPAltitudeVars g_MCPAltitudeVars;
 // ------------------------
 // Callbacks
 extern "C" {
-	MSFS_CALLBACK bool MCPAltitude_gauge_callback(FsContext ctx, int service_id, void* pData)
+	MSFS_CALLBACK bool mcp_altitude_gauge_callback(FsContext ctx, int service_id, void* pData)
 	{
 		switch (service_id)
 		{
