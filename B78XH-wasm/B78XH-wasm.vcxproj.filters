@@ -5,7 +5,7 @@
     <ClCompile Include="MCPAltitudeGauge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MCPVSpeed.cpp">
+    <ClCompile Include="MCPVSpeedGauge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

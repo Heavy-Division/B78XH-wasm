@@ -106,7 +106,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
     <ClCompile Include="MCPAltitudeGauge.cpp" />
-    <ClCompile Include="MCPVSpeed.cpp" />
+    <ClCompile Include="MCPVSpeedGauge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\fontstash.h" />
