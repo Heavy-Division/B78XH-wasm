@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
+    <ClCompile Include="MCPAltitudeGauge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MCPVSpeed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\fontstash.h" />
+    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
+    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
+    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{30d008fa-1c08-4ee6-b847-711f5c27fad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{c2386513-4dc2-4a12-a556-2f07000f05ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
