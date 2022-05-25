@@ -2,11 +2,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
-    <ClCompile Include="MCPAltitudeGauge.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MCPAltitudeGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
     </ClCompile>
-    <ClCompile Include="MCPVSpeedGauge.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MCPVSpeedGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="MCPAltitudeGauge.cpp">
+      <Filter>Source Files\Gauges</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -14,6 +17,9 @@
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
+    <ClInclude Include="MCPAltitudeGauge.h">
+      <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -21,6 +27,12 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{c2386513-4dc2-4a12-a556-2f07000f05ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MSFS Callbacks">
+      <UniqueIdentifier>{44fb3c18-4712-45c7-98da-075ca948e2ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges">
+      <UniqueIdentifier>{86cc17e6-0bfc-434b-a205-5689d85dd471}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

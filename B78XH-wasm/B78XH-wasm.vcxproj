@@ -106,13 +106,15 @@
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
     <ClCompile Include="MCPAltitudeGauge.cpp" />
-    <ClCompile Include="MCPVSpeedGauge.cpp" />
+    <ClCompile Include="MCPAltitudeGaugeCallback.cpp" />
+    <ClCompile Include="MCPVSpeedGaugeCallback.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\fontstash.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
+    <ClInclude Include="MCPAltitudeGauge.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
