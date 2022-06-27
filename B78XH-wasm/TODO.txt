@@ -1,0 +1,25 @@
+TODO:
+	- Fragments of displays should not use windowWidth and windowHeight. The fragments should be standalone. Rendering should start at 0x0 pixel and position of the fragment should be controlled by main gauge/diplay
+	  Example: AirspeedIndicator should not care about position on PFD screen. The indicator should be drawn as is and PFD display should translate the indicator to correct position on the display
+	  Desc: This should allow transforming of the fragments to hi-res by nvgScale() without changing offsets and dimension of the fragment
+	- make MCP DSEG Font
+
+BUGs:
+	Fix 0 character in FMCFont (0 character should be more rounded)
+
+SCALABLE REFACTORING:
+	- [DONE] Airspeed indicator
+	- [DONE] Altitude indicator
+	- [DONE] FMA
+	- [DONE] Target Airspeed
+	- [DONE] Target Altitude
+	- [DONE] VerticalSpeed indicator
+NOTES:
+	- nvgResetTransform resets all transforms of current context. nvgSave/nvgRestore has to be called when you need to resetTransform inside another nvgTransform
+
+IDEAS:
+	use TOOLSimConnectHanglingGaugeCallback for connecting and disconecting global SimConnect instead of module_init / module_deinit
+
+FIXED BUGs:
+	[FIXED] TCPs invalidate flag has to be set to true when VHF frequencies are recieved
+	[FIXED] IDs for CONTROL LVARs have to be 1,2,3 because of locked XML files
