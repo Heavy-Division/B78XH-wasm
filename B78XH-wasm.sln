@@ -1,20 +1,38 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32413.511
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B78XH-wasm", "B78XH-wasm\B78XH-wasm.vcxproj", "{D736E6DA-19FB-431F-8F48-0A9E43490063}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|MSFS = Debug|MSFS
+		Debug|x64 = Debug|x64
+		MinSizeRel|MSFS = MinSizeRel|MSFS
+		MinSizeRel|x64 = MinSizeRel|x64
 		Release|MSFS = Release|MSFS
+		Release|x64 = Release|x64
+		RelWithDebInfo|MSFS = RelWithDebInfo|MSFS
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Debug|MSFS.ActiveCfg = Debug|MSFS
 		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Debug|MSFS.Build.0 = Debug|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Debug|x64.ActiveCfg = Debug|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Debug|x64.Build.0 = Debug|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.MinSizeRel|MSFS.ActiveCfg = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.MinSizeRel|MSFS.Build.0 = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.MinSizeRel|x64.ActiveCfg = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.MinSizeRel|x64.Build.0 = Release|MSFS
 		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Release|MSFS.ActiveCfg = Release|MSFS
 		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Release|MSFS.Build.0 = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Release|x64.ActiveCfg = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.Release|x64.Build.0 = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.RelWithDebInfo|MSFS.ActiveCfg = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.RelWithDebInfo|MSFS.Build.0 = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.RelWithDebInfo|x64.ActiveCfg = Release|MSFS
+		{D736E6DA-19FB-431F-8F48-0A9E43490063}.RelWithDebInfo|x64.Build.0 = Release|MSFS
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

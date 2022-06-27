@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|MSFS">
@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-su9-stable\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>..\..\..\..\WebstormProjects\B78XH-su9-stable\SimObjects\Airplanes\Asobo_B787_10\panel\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -60,22 +60,29 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_MSFS_WASM;_STRING_H_CPLUSPLUS_98_CONFORMANCE_;_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_;_LIBCPP_NO_EXCEPTIONS;_LIBCPP_HAS_NO_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode />
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <ExternalWarningLevel>Level1</ExternalWarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>-Winline %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <NoEntryPoint>true</NoEntryPoint>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -88,11 +95,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_MSFS_WASM;_STRING_H_CPLUSPLUS_98_CONFORMANCE_;_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_;_LIBCPP_NO_EXCEPTIONS;_LIBCPP_HAS_NO_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat />
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -100,21 +110,94 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <NoEntryPoint>true</NoEntryPoint>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
+    <ClCompile Include="MCPVSpeedGauge.cpp" />
+    <ClCompile Include="PFDAirspeedIndicator.cpp" />
+    <ClCompile Include="PFDAltitudeIndicator.cpp" />
+    <ClCompile Include="PFDAuxGauge.cpp" />
+    <ClCompile Include="PFDAuxGaugeCallback.cpp" />
+    <ClCompile Include="format.cc" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="MCPAltitudeGauge.cpp" />
     <ClCompile Include="MCPAltitudeGaugeCallback.cpp" />
     <ClCompile Include="MCPVSpeedGaugeCallback.cpp" />
+    <ClCompile Include="PEDESTALTuningControlPanelGaugeCallback.cpp" />
+    <ClCompile Include="PFDFMA.cpp" />
+    <ClCompile Include="PFDPfdGauge.cpp" />
+    <ClCompile Include="PFDPfdGaugeCallback.cpp" />
+    <ClCompile Include="PFDTargetAirspeed.cpp" />
+    <ClCompile Include="PFDTargetAltitude.cpp" />
+    <ClCompile Include="PFDVerticalSpeedIndicator.cpp" />
+    <ClCompile Include="SimulationVariableUnits.cpp" />
+    <ClCompile Include="SimulationVariables.cpp" />
+    <ClCompile Include="SimConnectConnector.cpp" />
+    <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
+    <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
+    <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
+    <ClCompile Include="TuningControlPanelSATCOMPage.cpp" />
+    <ClCompile Include="TuningControlPanelVHFStorage.cpp" />
+    <ClCompile Include="Tools.cpp" />
+    <ClCompile Include="TOOLSimConnectHandlingGaugeCallback.cpp" />
+    <ClCompile Include="TuningControlPanelINOPPage.cpp" />
+    <ClCompile Include="TuningControlPanelMENUPage.cpp" />
+    <ClCompile Include="TuningControlPanelScratchpad.cpp" />
+    <ClCompile Include="TuningControlPanelVHFPage.cpp" />
+    <ClCompile Include="TuningControlPanelRenderer.cpp" />
+    <ClCompile Include="TuningControlPanelCABPage.cpp" />
+    <ClCompile Include="TuningControlPanelXPDRPage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\fontstash.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
+    <ClInclude Include="BaseGauge.h" />
+    <ClInclude Include="BaseScratchpad.h" />
+    <ClInclude Include="fmt\core.h" />
+    <ClInclude Include="fmt\format-inl.h" />
+    <ClInclude Include="fmt\format.h" />
+    <ClInclude Include="GaugesInvalidateFlags.h" />
+    <ClInclude Include="LVars.h" />
+    <ClInclude Include="PFDAirspeedIndicator.h" />
+    <ClInclude Include="PFDAltitudeIndicator.h" />
+    <ClInclude Include="PFDFMA.h" />
+    <ClInclude Include="PFDTargetAirspeed.h" />
+    <ClInclude Include="PFDTargetAltitude.h" />
+    <ClInclude Include="PFDVerticalSpeedIndicator.h" />
+    <ClInclude Include="SimEnums.h" />
+    <ClInclude Include="Simplane.h" />
+    <ClInclude Include="MCPVSpeedGauge.h" />
+    <ClInclude Include="PFDPfdGauge.h" />
+    <ClInclude Include="SimConnectData.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="PFDAuxGauge.h" />
+    <ClInclude Include="ScratchpadEvents.h" />
+    <ClInclude Include="Tools.h" />
+    <ClInclude Include="TuningControlPanelALTNNAVPage.h" />
+    <ClInclude Include="TuningControlPanelGPWSPage.h" />
+    <ClInclude Include="TuningControlPanelINOPPage.h" />
+    <ClInclude Include="TuningControlPanelMENUPage.h" />
+    <ClInclude Include="TuningControlPanelSATCOMPage.h" />
+    <ClInclude Include="TuningControlPanelScratpad.h" />
+    <ClInclude Include="TuningControlPanelVHFPage.h" />
+    <ClInclude Include="PEDESTALTuningControlPanelGauge.h" />
+    <ClInclude Include="SimConnectConnector.h" />
+    <ClInclude Include="SimulationVariables.h" />
+    <ClInclude Include="SimulationVariableUnits.h" />
     <ClInclude Include="MCPAltitudeGauge.h" />
+    <ClInclude Include="TuningControlPanelBasePage.h" />
+    <ClInclude Include="TuningControlPanelRenderer.h" />
+    <ClInclude Include="TuningControlPanelVHFStorage.h" />
+    <ClInclude Include="TuningControlPanelCABPage.h" />
+    <ClInclude Include="TuningControlPanelXPDRPage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

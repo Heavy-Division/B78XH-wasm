@@ -11,14 +11,220 @@
     <ClCompile Include="MCPAltitudeGauge.cpp">
       <Filter>Source Files\Gauges</Filter>
     </ClCompile>
+    <ClCompile Include="SimulationVariableUnits.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="SimulationVariables.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="SimConnectConnector.cpp">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClCompile>
+    <ClCompile Include="PEDESTALTuningControlPanelGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp">
+      <Filter>Source Files\Gauges</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelRenderer.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelVHFPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelMENUPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelINOPPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TOOLSimConnectHandlingGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelScratchpad.cpp">
+      <Filter>Source Files\Renderers\Scratchpad</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelVHFStorage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Storages</Filter>
+    </ClCompile>
+    <ClCompile Include="format.cc">
+      <Filter>fmt</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelSATCOMPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelALTNNAVPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelGPWSPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelCABPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="TuningControlPanelXPDRPage.cpp">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAuxGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAuxGauge.cpp">
+      <Filter>Source Files\Gauges</Filter>
+    </ClCompile>
+    <ClCompile Include="MCPVSpeedGauge.cpp">
+      <Filter>Source Files\Gauges</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDPfdGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDPfdGauge.cpp">
+      <Filter>Source Files\Gauges</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDFMA.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAirspeedIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAltitudeIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDTargetAirspeed.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDTargetAltitude.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDVerticalSpeedIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\fontstash.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
     <ClInclude Include="MCPAltitudeGauge.h">
       <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGauge.h">
+      <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationVariableUnits.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationVariables.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectConnector.h">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClInclude>
+    <ClInclude Include="PEDESTALTuningControlPanelGauge.h">
+      <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelRenderer.h">
+      <Filter>Source Files\Renderers\TuningControlPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelBasePage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelVHFPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelMENUPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelINOPPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugesInvalidateFlags.h">
+      <Filter>Source Files\model\flags</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseScratchpad.h">
+      <Filter>Source Files\Renderers\Scratchpad</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelScratpad.h">
+      <Filter>Source Files\Renderers\Scratchpad</Filter>
+    </ClInclude>
+    <ClInclude Include="ScratchpadEvents.h">
+      <Filter>Source Files\Renderers\Scratchpad</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelVHFStorage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Storages</Filter>
+    </ClInclude>
+    <ClInclude Include="fmt\core.h">
+      <Filter>fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="fmt\format.h">
+      <Filter>fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="fmt\format-inl.h">
+      <Filter>fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelSATCOMPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelALTNNAVPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelGPWSPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelCABPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="TuningControlPanelXPDRPage.h">
+      <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAuxGauge.h">
+      <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectData.h">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClInclude>
+    <ClInclude Include="MCPVSpeedGauge.h">
+      <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDPfdGauge.h">
+      <Filter>Source Files\Gauges</Filter>
+    </ClInclude>
+    <ClInclude Include="Simplane.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDFMA.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="LVars.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SimEnums.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAirspeedIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAltitudeIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDTargetAirspeed.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDTargetAltitude.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDVerticalSpeedIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -34,5 +240,43 @@
     <Filter Include="Source Files\Gauges">
       <UniqueIdentifier>{86cc17e6-0bfc-434b-a205-5689d85dd471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Tools">
+      <UniqueIdentifier>{feaa0ab5-40f2-4a18-a9df-e54b6da107f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\SimConnect">
+      <UniqueIdentifier>{2b7665f3-b85c-4ece-a754-6132a1e3c68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers">
+      <UniqueIdentifier>{a2829061-d458-46e8-9104-f70390950812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers\TuningControlPanel">
+      <UniqueIdentifier>{f090a8f8-58ec-4bb3-8b4a-3dd0157f6137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers\TuningControlPanel\Pages">
+      <UniqueIdentifier>{8b951889-60d1-41d4-8c57-d1aaeb1fb094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{4122939c-8e44-414f-a902-8426b5798602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model\flags">
+      <UniqueIdentifier>{9991960b-9d8b-49a4-8d0e-09885830d0de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers\Scratchpad">
+      <UniqueIdentifier>{5d1dc1d2-587b-4cac-a314-ee3b5f7033f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderers\TuningControlPanel\Storages">
+      <UniqueIdentifier>{df3e32ef-2aeb-4d11-90f4-bdc0388075ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fmt">
+      <UniqueIdentifier>{a91b68ff-4936-4781-90f3-dcdb9c32318b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\PFD">
+      <UniqueIdentifier>{c8514c8c-1a29-439f-9270-f0d4e444a462}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
