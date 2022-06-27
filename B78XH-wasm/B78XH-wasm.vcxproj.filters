@@ -278,5 +278,6 @@
     <Text Include="TODO.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="..\thirdparty_licenses.md" />
   </ItemGroup>
 </Project>

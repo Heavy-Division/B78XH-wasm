@@ -197,6 +197,7 @@
     <ClInclude Include="TuningControlPanelXPDRPage.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\thirdparty_licenses.md" />
     <Text Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
