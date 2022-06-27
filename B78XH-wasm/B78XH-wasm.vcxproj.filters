@@ -280,4 +280,7 @@
     </Text>
     <Text Include="..\thirdparty_licenses.md" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="B78XH-wasm.licenseheader" />
+  </ItemGroup>
 </Project>
