@@ -56,9 +56,6 @@ namespace Simplane {
 			double verticalSpeed();
 			double altitudeAboveGround();
 			double flapsHandleIndex();
-			double stallSpeed();
-			double crossSpeed();
-			double crossSpeedFactor();
 		}
 	}
 
@@ -248,18 +245,6 @@ inline double Simplane::aircraft::state::altitudeAboveGround() {
 
 inline double Simplane::aircraft::state::flapsHandleIndex() {
 	return Aircraft::state.flapsHandleIndex;
-}
-
-inline double Simplane::aircraft::state::stallSpeed() {
-	return Aircraft::state.stallSpeed;
-}
-
-inline double Simplane::aircraft::state::crossSpeed() {
-	return Aircraft::state.crossSpeed;
-}
-
-inline double Simplane::aircraft::state::crossSpeedFactor() {
-	return Aircraft::state.crossSpeedFactor;
 }
 
 inline bool Simplane::autopilot::state::isMasterActive() {
