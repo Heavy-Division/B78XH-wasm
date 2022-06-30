@@ -98,9 +98,6 @@ namespace SimConnectData {
 			double verticalSpeed;
 			double altitudeAboveGround;
 			double flapsHandleIndex;
-			double stallSpeed;
-			double crossSpeed;
-			double crossSpeedFactor;
 
 			/*
 			 * Calculated

@@ -34,7 +34,6 @@ bool SimConnectConnector::connect(const char* name) {
 }
 
 void SimConnectConnector::prepareDataDefinitions() {
-	fmt::print(stderr, "DEBUG PREPARE DEFINITIONS");
 	/**
 	 * VHF
 	 */
@@ -73,7 +72,7 @@ void SimConnectConnector::prepareDataDefinitions() {
 	/**
 	 * Aircraft -> State
 	 */
-
+	
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "GEAR IS ON GROUND", "Boolean");
 
@@ -97,26 +96,17 @@ void SimConnectConnector::prepareDataDefinitions() {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "FLAPS HANDLE INDEX", "Number");
-
-	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "AIRCRAFT STALL SPEED", "Knots");
-
-	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "AIRCRAFT CROSSOVER SPEED", "Knots");
-
-	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "AIRCRAFT CROSSOVER SPEED FACTOR", "Number");
-
+	
 	/*
 	 * Autopilot - State
 	 */
-
+	
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
 	                                                        "AUTOPILOT MASTER", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
 	                                                        "AUTOPILOT FLIGHT LEVEL CHANGE", "bool");
-
+															
 
 	/*
 	 * Autopilot - Flight Director
@@ -162,6 +152,7 @@ void SimConnectConnector::prepareDataDefinitions() {
 	/*
 	 * Autopilot - GlideSlope
 	 */
+	
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
 	                                                        "AUTOPILOT GLIDESLOPE HOLD", "Bool");
 
@@ -170,10 +161,11 @@ void SimConnectConnector::prepareDataDefinitions() {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
 	                                                        "AUTOPILOT GLIDESLOPE ARM", "Bool");
+	                                                        
 	/*
 	 * Autopilot - Throttle
 	 */
-
+	
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
 	                                                        "AUTOPILOT THROTTLE ARM", "Bool");
 
@@ -318,7 +310,6 @@ void SimConnectConnector::prepareDataDefinitions() {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME, "LOCAL YEAR",
 	                                                        "Number");
-	fmt::print(stderr, "DEBUG PREPARE DEFINITIONS END");
 }
 
 void SimConnectConnector::prepareClientDataDefinitions() {
@@ -326,7 +317,6 @@ void SimConnectConnector::prepareClientDataDefinitions() {
 }
 
 void SimConnectConnector::prepareRequests() {
-	fmt::print(stderr, "DEBUG PREPARE REQUESTS");
 	//connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "DROPPABLE OBJECTS TYPE:1", "", SIMCONNECT_DATATYPE_STRING256);
 
 
@@ -399,7 +389,6 @@ void SimConnectConnector::prepareRequests() {
 	                                                           DEFINITION_AUTOPILOT_THROTTLE, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
-	fmt::print(stderr, "DEBUG PREPARE REQUESTS END");
 }
 
 
@@ -412,7 +401,6 @@ void SimConnectConnector::requestDispatchMessages() {
 }
 
 void SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cbData) {
-	fmt::print(stderr, "SIMCONNECT MESSAGE");
 	switch(pData->dwID) {
 		case SIMCONNECT_RECV_ID_OPEN:
 			fmt::print("B78XH WASM: SimConnect connection established");
@@ -515,12 +503,13 @@ void SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 			}
 		}
 		break;
-		case SIMCONNECT_RECV_ID_EXCEPTION:
-			fmt::print(stderr, "EXCEPTION SIMCONNECT");
+		case SIMCONNECT_RECV_ID_EXCEPTION: {
+			SIMCONNECT_RECV_EXCEPTION* except = (SIMCONNECT_RECV_EXCEPTION*)pData;
+			fmt::print(stderr, "EXCEPTION SIMCONNECT ID {}", except->dwException);
+		}
 			break;
 		case SIMCONNECT_RECV_ID_EVENT:
 		case SIMCONNECT_RECV_ID_CLIENT_DATA: default:
-			fmt::print(stderr, "SIMCONNECT SOMETHING ELSE");
 			break;
 	}
 }
