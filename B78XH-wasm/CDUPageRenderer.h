@@ -25,9 +25,12 @@
 class CDUPageRenderer {
 	public:
 		CDUPageRenderer(NVGcontext*& context) : context(context) {
+			
 		}
 
 		void render();
+
+	protected:
 		void drawBackground();
 		void drawLine(CDULine line);
 		void drawLine(CDURightLine line);
@@ -40,6 +43,7 @@ class CDUPageRenderer {
 		void drawComplexLine(CDUCenterLine line);
 		void drawComplexLine(CDURightLine line);
 		void drawLines();
+
 	private:
 		NVGcontext*& context;
 };

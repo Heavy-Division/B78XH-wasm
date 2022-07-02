@@ -25,7 +25,6 @@ class CDULeftLine: public CDULine {
 		): CDULine(lineNumber, content) {
 		}
 
-		CDULeftLine(CDULineNumber lineNumber = CDULineNumber::ONE, std::string content = "") : CDULine(
-			lineNumber, content) {
-		};
+		CDULeftLine(const CDULineNumber lineNumber, std::string content) : CDULine(lineNumber, content) {
+		}
 };

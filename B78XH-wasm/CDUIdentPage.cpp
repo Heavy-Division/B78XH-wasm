@@ -34,8 +34,8 @@ std::vector<CDUCenterLine> CDUIdentPage::getCenterLines() {
 
 std::vector<CDURightLine> CDUIdentPage::getRightLines() {
 	std::vector<CDURightLine> lines;
-	lines.push_back(CDURightLine(CDULineNumber::ONE, "GENX-1B76"));
-	lines.push_back(CDURightLine(CDULineNumber::TWO, "APR21MAY18/22"));
-	lines.push_back(CDURightLine(CDULineNumber::FIVE, "VS1001"));
+	//lines.push_back(CDURightLine(CDULineNumber::ONE, "GENX-1B76"));
+	//lines.push_back(CDURightLine(CDULineNumber::TWO, "APR21MAY18/22"));
+	//lines.push_back(CDURightLine(CDULineNumber::FIVE, "VS1001"));
 	return lines;
 }

@@ -25,9 +25,9 @@ class CDURightLine: public CDULine {
 		) : CDULine(lineNumber, content) {
 		}
 
-		CDURightLine(CDULineNumber lineNumber = CDULineNumber::ONE, std::string content = "") : CDULine(
-			lineNumber, content) {
-		};
+		CDURightLine(const CDULineNumber lineNumber, std::string content) : CDULine(lineNumber , content) {
+		}
+
 	protected:
 		CDULineAlign align = CDULineAlign::RIGHT;
 };

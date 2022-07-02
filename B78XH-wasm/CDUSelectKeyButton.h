@@ -35,6 +35,7 @@ class CDUSelectKeyButton: public CDUButton {
 
 	protected:
 		void calculateBounds() override;
+
 	private:
 		/*
 		 * Rename rightSide property

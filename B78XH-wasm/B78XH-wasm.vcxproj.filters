@@ -319,6 +319,9 @@
     <ClInclude Include="Drawable.h">
       <Filter>Source Files\Abstract</Filter>
     </ClInclude>
+    <ClInclude Include="MouseResolver.h">
+      <Filter>Source Files\Abstract</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

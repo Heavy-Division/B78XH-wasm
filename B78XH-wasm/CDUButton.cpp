@@ -16,11 +16,6 @@
 
 
 #include "CDUButton.h"
-#include "fmt/core.h"
-
-void CDUButton::setContext(NVGcontext* context) {
-	this->context = context;
-}
 
 void CDUButton::draw() {
 	if(this->context != nullptr) {
@@ -28,12 +23,10 @@ void CDUButton::draw() {
 		drawBackground();
 		drawTitle();
 		drawButtonBorders();
-	} else {
-		fmt::print(stderr, "BUTTON -> Missing context");
 	}
 }
 
-void CDUButton::drawBackground() {
+void CDUButton::drawBackground() const {
 	
 	nvgFillColor(this->context, nvgRGB(106, 107, 120));
 	nvgBeginPath(this->context);
@@ -47,8 +40,8 @@ void CDUButton::drawBackground() {
 bool CDUButton::isInFocus() {
 	this->calculateBounds();
 
-	if(this->mouseMoveResolver.positionX >= this->bounds[0] && this->mouseMoveResolver.positionX <= this->bounds[1] &&
-		this->mouseMoveResolver.positionY >= this->bounds[2] && this->mouseMoveResolver.positionY <= this->bounds[3]) {
+	if(this->mouseMoveResolver.getX() >= this->bounds[0] && this->mouseMoveResolver.getX() <= this->bounds[1] &&
+		this->mouseMoveResolver.getY() >= this->bounds[2] && this->mouseMoveResolver.getY() <= this->bounds[3]) {
 		return true;
 	}
 	return false;
@@ -56,8 +49,8 @@ bool CDUButton::isInFocus() {
 
 void CDUButton::shouldTriggerEvent() {
 	this->calculateBounds();
-	if(this->mouseClickResolver.positionX >= this->bounds[0] && this->mouseClickResolver.positionX <= this->bounds[1] &&
-		this->mouseClickResolver.positionY >= this->bounds[2] && this->mouseClickResolver.positionY <= this->bounds[
+	if(this->mouseClickResolver.getX() >= this->bounds[0] && this->mouseClickResolver.getX() <= this->bounds[1] &&
+		this->mouseClickResolver.getY() >= this->bounds[2] && this->mouseClickResolver.getY() <= this->bounds[
 			3]) {
 		if(this->event) {
 			this->mouseClickResolver.reset();

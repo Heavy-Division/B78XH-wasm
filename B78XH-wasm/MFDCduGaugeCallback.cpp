@@ -59,8 +59,7 @@ extern "C" {
 	MSFS_CALLBACK void mfd_cdu_mouse_callback(float fX, float fY, unsigned int iFlags) {
 		switch(iFlags) {
 			case MOUSE_MOVE: {
-				g_CDUGauge.getMouseMoveResolver().positionX = fX;
-				g_CDUGauge.getMouseMoveResolver().positionY = fY;
+				g_CDUGauge.getMouseMoveResolver().setPosition(fX, fY);
 			}
 			break;
 			case MOUSE_LEFTDRAG: {
@@ -75,8 +74,7 @@ extern "C" {
 			}
 			break;
 			case MOUSE_LEFTRELEASE: {
-				g_CDUGauge.getMouseClickResolver().positionX = fX;
-				g_CDUGauge.getMouseClickResolver().positionY = fY;
+				g_CDUGauge.getMouseClickResolver().setPosition(fX, fY);
 			}
 			break;
 			case MOUSE_RIGHTRELEASE: {

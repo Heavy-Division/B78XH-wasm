@@ -25,7 +25,6 @@ class CDUCenterLine: public CDULine {
 		) : CDULine(lineNumber, content) {
 		}
 
-		CDUCenterLine(CDULineNumber lineNumber = CDULineNumber::ONE, std::string content = "") : CDULine(
-			lineNumber, content) {
-		};
+		CDUCenterLine(std::string& content, const CDULineNumber lineNumber) : CDULine(lineNumber, content) {
+		}
 };

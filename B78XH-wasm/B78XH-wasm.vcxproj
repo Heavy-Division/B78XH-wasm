@@ -194,6 +194,7 @@
     <ClInclude Include="LVars.h" />
     <ClInclude Include="CDUMainKeyButton.h" />
     <ClInclude Include="MFDCduGauge.h" />
+    <ClInclude Include="MouseResolver.h" />
     <ClInclude Include="PFDAirspeedIndicator.h" />
     <ClInclude Include="PFDAltitudeIndicator.h" />
     <ClInclude Include="PFDFMA.h" />

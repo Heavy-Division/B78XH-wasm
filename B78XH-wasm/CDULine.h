@@ -35,6 +35,7 @@ class CDULine {
 	public:
 		CDULine(CDULineNumber lineNumber = CDULineNumber::ONE, std::vector<std::vector<std::string>> content = {});
 		CDULine(CDULineNumber lineNumber = CDULineNumber::ONE, std::string content = "");
+		void setContent(std::string content);
 
 		std::vector<int> r = {};
 		std::vector<int> g = {};
@@ -43,7 +44,7 @@ class CDULine {
 		float x = 0;
 		float y = 0;
 
-		void setContent(std::string content);
+		void setContent(std::string content) const;
 		void setContent(std::vector<std::vector<std::string>> content, bool settable = false);
 		void reset();
 		double getOffset();

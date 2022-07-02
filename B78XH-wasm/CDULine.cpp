@@ -22,8 +22,7 @@ CDULine::CDULine(CDULineNumber lineNumber, std::vector<std::vector<std::string>>
 	this->type = CDULineType::COMPLEX;
 }
 
-CDULine::CDULine(CDULineNumber lineNumber, std::string content) : lineNumber(lineNumber) {
-	this->setContent(content);
+CDULine::CDULine(CDULineNumber lineNumber, std::string content) : lineNumber(lineNumber), basicContent(content) {
 	this->type = CDULineType::BASIC;
 }
 
