@@ -15,4 +15,20 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "CDUMouseMoveResolver.h"
+#pragma once
+
+class MouseResolver {
+	public:
+		virtual ~MouseResolver() = default;
+		virtual void setPosition(float x, float y) = 0;
+		virtual float getX() = 0;
+		virtual float getY() = 0;
+	protected:
+		MouseResolver() = default;
+		MouseResolver(const MouseResolver& other) = default;
+		MouseResolver(MouseResolver&& other) noexcept = default;
+		MouseResolver& operator=(const MouseResolver& other) = default;
+		MouseResolver& operator=(MouseResolver&& other) noexcept = default;
+		float x;
+		float y;
+};

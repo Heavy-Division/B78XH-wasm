@@ -16,10 +16,14 @@
 
 
 #pragma once
+#include "MouseResolver.h"
 
-class CDUMouseResolver {
+class CDUMouseResolver: public MouseResolver {
 	public:
-		float positionX;
-		float positionY;
-		void setPosition(float x, float y);
+		void setPosition(float x, float y) override;
+		float getX() override;
+		float getY() override;
+
+	protected:
+		CDUMouseResolver() = default;
 };

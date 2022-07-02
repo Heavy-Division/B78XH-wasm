@@ -26,7 +26,7 @@ void CDUMouseCursor::draw() {
 		nvgFillColor(this->context, nvgRGB(255, 0, 0));
 		nvgStrokeColor(context, nvgRGB(213, 112, 255));
 		nvgStrokeWidth(this->context, 2.0f);
-		nvgTranslate(this->context, this->mouseMoveResolver.positionX - 15, this->mouseMoveResolver.positionY - 15);
+		nvgTranslate(this->context, this->mouseMoveResolver.getX() - 15, this->mouseMoveResolver.getY() - 15);
 		{
 			nvgBeginPath(this->context);
 			{

@@ -18,6 +18,14 @@
 #include "CDUMouseResolver.h"
 
 void CDUMouseResolver::setPosition(float x, float y) {
-	this->positionX = x;
-	this->positionY = y;
+	this->x = x;
+	this->y = y;
+}
+
+float CDUMouseResolver::getX() {
+	return this->x;
+}
+
+float CDUMouseResolver::getY() {
+	return this->y;
 }

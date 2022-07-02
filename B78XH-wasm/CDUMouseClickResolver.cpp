@@ -18,6 +18,5 @@
 #include "CDUMouseClickResolver.h"
 
 void CDUMouseClickResolver::reset() {
-	this->positionX = 0;
-	this->positionY = 0;
+	CDUMouseResolver::setPosition(0, 0);
 }
