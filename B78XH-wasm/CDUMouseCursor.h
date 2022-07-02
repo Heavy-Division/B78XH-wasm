@@ -17,16 +17,16 @@
 
 #pragma once
 #include "CDUMouseMoveResolver.h"
+#include "Drawable.h"
 #include "MSFS/Render/nanovg.h"
 
 
-class CDUMouseCursor {
+class CDUMouseCursor: public Drawable {
 	public:
 		CDUMouseCursor(NVGcontext*& nvgContext, CDUMouseMoveResolver& mouseMoveResolver) : context(nvgContext), mouseMoveResolver(mouseMoveResolver) {
 		}
 
-		void draw();
-
+		void draw() override;
 	private:
 		NVGcontext*& context;
 		CDUMouseMoveResolver& mouseMoveResolver;

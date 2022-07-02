@@ -21,7 +21,9 @@
 #include "MSFS/Render/nanovg.h"
 #include <functional>
 
-class CDUButton {
+#include "Drawable.h"
+
+class CDUButton: public Drawable {
 	public:
 		CDUButton(NVGcontext*& context,
 		          CDUMouseMoveResolver& mouseMoveResolver,
@@ -43,9 +45,8 @@ class CDUButton {
 		}
 
 		std::function<void()> event;
-
-		void setContext(NVGcontext* context);
-		virtual void draw();
+		
+		void draw() override;
 	protected:
 		NVGcontext*& context;
 		CDUMouseMoveResolver& mouseMoveResolver;
@@ -62,8 +63,7 @@ class CDUButton {
 		void drawTitle();
 		void drawButtonBorders();
 		void drawBackBorders(NVGcolor color = nvgRGB(0, 0, 0));
-		void drawBackground();
-		void drawHighlight();
+		void drawBackground() const;
 		bool isInFocus();
 		void shouldTriggerEvent();
 		virtual void calculateBounds();
