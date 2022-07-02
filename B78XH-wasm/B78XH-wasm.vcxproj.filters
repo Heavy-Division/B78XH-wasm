@@ -104,6 +104,42 @@
     <ClCompile Include="PFDVerticalSpeedIndicator.cpp">
       <Filter>Source Files\Gauges\PFD</Filter>
     </ClCompile>
+    <ClCompile Include="MFDCduGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURenderer.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDCduGauge.cpp">
+      <Filter>Source Files\Gauges\CDU</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUButton.cpp">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUSelectKeyButton.cpp">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMouseClickResolver.cpp">
+      <Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMouseCursor.cpp">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Cursors</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMouseMoveResolver.cpp">
+      <Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMouseResolver.cpp">
+      <Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUPageRenderer.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUIdentPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -226,6 +262,63 @@
     <ClInclude Include="PFDVerticalSpeedIndicator.h">
       <Filter>Source Files\Gauges\PFD</Filter>
     </ClInclude>
+    <ClInclude Include="CDUMainKeyButton.h">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURenderer.h">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDCduGauge.h">
+      <Filter>Source Files\Gauges\CDU</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUButton.h">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUSelectKeyButton.h">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUMouseClickResolver.h">
+      <Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUMouseResolver.h">
+      <Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUMouseMoveResolver.h">
+      <Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUMouseCursor.h">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Cursors</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPageRenderer.h">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineType.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineAlign.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULeftLine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURightLine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUCenterLine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUIdentPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Source Files\Abstract</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -272,6 +365,33 @@
     </Filter>
     <Filter Include="Source Files\Gauges\PFD">
       <UniqueIdentifier>{c8514c8c-1a29-439f-9270-f0d4e444a462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU">
+      <UniqueIdentifier>{4935e233-bbfa-492d-9541-a295100c2b06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Prototypes">
+      <UniqueIdentifier>{687e0a74-2527-4a36-9a6b-6a8f678d6b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Prototypes\Buttons">
+      <UniqueIdentifier>{b2aee9b3-f81f-4a85-bbff-ccdfd2bb74c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Renderers">
+      <UniqueIdentifier>{4e1cc909-3551-4569-a50e-4f46bae7c372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Resolvers">
+      <UniqueIdentifier>{3d2fd1bc-d777-41b6-b859-327357184bae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Prototypes\Cursors">
+      <UniqueIdentifier>{955cb3cc-bc6a-4627-ae73-a757dbd767c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Renderers\Enums">
+      <UniqueIdentifier>{5fac9a19-ce1a-4b0d-b24d-3bec52993c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\CDU\Pages">
+      <UniqueIdentifier>{cc186c7e-a4d0-4af3-bdc8-a6e716b4758f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Abstract">
+      <UniqueIdentifier>{d1823fc9-8db6-4f89-b48d-1a2dd5f64e69}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

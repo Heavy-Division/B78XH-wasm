@@ -16,9 +16,26 @@ SCALABLE REFACTORING:
 	- [DONE] VerticalSpeed indicator
 NOTES:
 	- nvgResetTransform resets all transforms of current context. nvgSave/nvgRestore has to be called when you need to resetTransform inside another nvgTransform
+	- Gauges hold fsContext and pointer to nvgContext then all gauge fragments holds only reference to nvgContext pointer (fsContext is unknown during gauge initialization -> nvgContext is nullptr
+	but because RENDERER is initialized during gauge initialization then the RENDERER get nullptr as parameter of contructor) This problem can be fixed by explicit calling setContext(NVGContext)
+	at all fragments when the context is known or passing only reference to pointer. By passing reference to pointer in constructor of fragments the fragment starts render automatically
+	when nvgContext of gauge is known / set.
 
 IDEAS:
 	use TOOLSimConnectHanglingGaugeCallback for connecting and disconecting global SimConnect instead of module_init / module_deinit
+	[CDU Renderer] Move definitions of LSKs and RSKs to page renderer
+		PROPS: 
+			- EVENT can be set during page rendering;
+		CONS: 
+			- SK buttons are not part of page
+			- page should care only about rendering data and should not care about events binding
+		IDEAS:
+			- page should not care about events binding and getting data because page should be only static thing but the page cares about this. Page need to know the data
+			  because of rendering templates (settable data)
+			- to fix the problem above... PageDataResolver could be made.... Resolver would get data for page and prepare lines for rendering then the PageRenderer could be only static Renderer
+			  because resolver would get data, prepare events
+			- SKs and MKs coulbe moved to own Buttons renderer
+
 
 FIXED BUGs:
 	[FIXED] TCPs invalidate flag has to be set to true when VHF frequencies are recieved

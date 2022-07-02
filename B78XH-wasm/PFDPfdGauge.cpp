@@ -41,7 +41,7 @@ bool PFDPfdGauge::postInstall(FsContext context) {
 	params.edgeAntiAlias = true;
 	this->nvgContext = nvgCreateInternal(&params);
 	this->baseFont = nvgCreateFont(this->nvgContext, "roboto", "./data/Roboto-Regular.ttf");
-	this->heavyFont = nvgCreateFont(nvgContext, "heavy-fmc", "./data/Heavy787FMC.ttf");;
+	this->heavyFont = nvgCreateFont(nvgContext, "heavy-fmc", "./data/Heavy787FMC.ttf");
 	this->registerVariables();
 	return true;
 }
