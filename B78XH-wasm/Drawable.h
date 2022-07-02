@@ -19,7 +19,7 @@
 
 class Drawable {
 	public:
-		virtual ~Drawable();
+		virtual ~Drawable() = default;
 		virtual void draw() = 0;
 
 	protected:
