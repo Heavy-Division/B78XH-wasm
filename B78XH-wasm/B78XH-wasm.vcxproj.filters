@@ -140,6 +140,27 @@
     <ClCompile Include="CDUIdentPage.cpp">
       <Filter>Source Files\Gauges\CDU\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULeftLine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUCenterLine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURightLine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULeftTitleLine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURightTitleLine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUCenterTitleLine.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -292,7 +313,7 @@
     <ClInclude Include="CDUPageRenderer.h">
       <Filter>Source Files\Gauges\CDU\Renderers</Filter>
     </ClInclude>
-    <ClInclude Include="CDULineType.h">
+    <ClInclude Include="CDULineRenderingType.h">
       <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
     </ClInclude>
     <ClInclude Include="CDULine.h">
@@ -321,6 +342,18 @@
     </ClInclude>
     <ClInclude Include="MouseResolver.h">
       <Filter>Source Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineType.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULeftTitleLine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURightTitleLine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUCenterTitleLine.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,8 @@
 
 #pragma once
 
+
 enum class CDULineType {
-	BASIC,
-	COMPLEX
+	LINE,
+	TITLE
 };

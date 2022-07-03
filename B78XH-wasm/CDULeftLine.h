@@ -20,11 +20,20 @@
 
 class CDULeftLine: public CDULine {
 	public:
-		CDULeftLine(CDULineNumber lineNumber = CDULineNumber::ONE,
-		                         std::vector<std::vector<std::string>> content = {}
-		): CDULine(lineNumber, content) {
+		CDULeftLine(NVGcontext*& context,
+		            CDULineNumber lineNumber = CDULineNumber::ONE,
+		            std::vector<std::vector<std::string>> content = {}
+		): CDULine(context, lineNumber, content) {
+			this->CDULeftLine::calculateHorizontalOffset();
 		}
 
-		CDULeftLine(const CDULineNumber lineNumber, std::string content) : CDULine(lineNumber, content) {
+		CDULeftLine(NVGcontext*& context, const CDULineNumber lineNumber, std::string content) : CDULine(
+			context, lineNumber, content) {
+			this->CDULeftLine::calculateHorizontalOffset();
 		}
+
+		void calculateHorizontalOffset() override;
+
+	protected:
+		CDULineAlign align = CDULineAlign::LEFT;
 };

@@ -16,22 +16,25 @@
 
 
 #pragma once
+#include "CDULine.h"
 
-#include <vector>
-
-#include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
-
-class CDUPage {
-
-	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
+class CDULeftTitleLine: public CDULine {
+	public:
+		CDULeftTitleLine(NVGcontext*& context,
+			const CDULineNumber lineNumber,
+			const std::vector<std::vector<std::string>>& content
+		) : CDULine(context, lineNumber, content) {
+			this->lineType = CDULineType::TITLE;
+			this->fontSize = 18.0f;
+			this->CDULeftTitleLine::calculateHorizontalOffset();
 		}
 
-	public:
-		std::vector<CDULine> getLines();
+		CDULeftTitleLine(NVGcontext*& context, const CDULineNumber lineNumber, const std::string& content) : CDULine(
+			context, lineNumber, content) {
+			this->lineType = CDULineType::TITLE;
+			this->fontSize = 18.0f;
+			this->CDULeftTitleLine::calculateHorizontalOffset();
+		}
 
-	protected:
-		NVGcontext*& context;
+		void calculateHorizontalOffset() override;
 };

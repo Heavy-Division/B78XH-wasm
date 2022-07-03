@@ -19,6 +19,8 @@
 
 enum class CDULineAlign {
 	LEFT,
+	CENTER_LEFT,
 	CENTER,
+	CENTER_RIGHT,
 	RIGHT
 };

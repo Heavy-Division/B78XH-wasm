@@ -15,23 +15,15 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#pragma once
+#include "CDULeftTitleLine.h"
 
-#include <vector>
+#include "Tools.h"
 
-#include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
+void CDULeftTitleLine::calculateHorizontalOffset() {
+	nvgFontSize(this->context, this->fontSize);
+	nvgTextAlign(this->context, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
 
-class CDUPage {
-
-	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
-		}
-
-	public:
-		std::vector<CDULine> getLines();
-
-	protected:
-		NVGcontext*& context;
-};
+	float translateXBounds[4];
+	nvgTextBounds(this->context, 0, 0, this->basicContent.c_str(), nullptr, translateXBounds);
+	this->horizontalOffset = 20 + (translateXBounds[2] - translateXBounds[0]);
+}

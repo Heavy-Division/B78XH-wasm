@@ -20,7 +20,8 @@
 
 class CDUIdentPage: public CDUPage {
 	public:
-		std::vector<CDULeftLine> getLeftLines();
-		std::vector<CDUCenterLine> getCenterLines();
-		std::vector<CDURightLine> getRightLines();
+		CDUIdentPage(NVGcontext*& context) : CDUPage(context) {
+		}
+
+		std::vector<CDULine> getLines();
 };

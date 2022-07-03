@@ -118,7 +118,11 @@
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
     <ClCompile Include="CDUButton.cpp" />
+    <ClCompile Include="CDUCenterLine.cpp" />
+    <ClCompile Include="CDUCenterTitleLine.cpp" />
     <ClCompile Include="CDUIdentPage.cpp" />
+    <ClCompile Include="CDULeftLine.cpp" />
+    <ClCompile Include="CDULeftTitleLine.cpp" />
     <ClCompile Include="CDULine.cpp" />
     <ClCompile Include="CDUMouseClickResolver.cpp" />
     <ClCompile Include="CDUMouseCursor.cpp" />
@@ -126,7 +130,10 @@
     <ClCompile Include="CDUMouseResolver.cpp" />
     <ClCompile Include="CDUPageRenderer.cpp" />
     <ClCompile Include="CDURenderer.cpp" />
+    <ClCompile Include="CDURightLine.cpp" />
+    <ClCompile Include="CDURightTitleLine.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
+    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="MCPVSpeedGauge.cpp" />
     <ClCompile Include="MFDCduGauge.cpp" />
     <ClCompile Include="MFDCduGaugeCallback.cpp" />
@@ -172,10 +179,13 @@
     <ClInclude Include="BaseScratchpad.h" />
     <ClInclude Include="CDUButton.h" />
     <ClInclude Include="CDUCenterLine.h" />
+    <ClInclude Include="CDUCenterTitleLine.h" />
     <ClInclude Include="CDUIdentPage.h" />
     <ClInclude Include="CDULeftLine.h" />
+    <ClInclude Include="CDULeftTitleLine.h" />
     <ClInclude Include="CDULine.h" />
     <ClInclude Include="CDULineAlign.h" />
+    <ClInclude Include="CDULineRenderingType.h" />
     <ClInclude Include="CDULineType.h" />
     <ClInclude Include="CDUMouseClickResolver.h" />
     <ClInclude Include="CDUMouseCursor.h" />
@@ -185,6 +195,7 @@
     <ClInclude Include="CDUPageRenderer.h" />
     <ClInclude Include="CDURenderer.h" />
     <ClInclude Include="CDURightLine.h" />
+    <ClInclude Include="CDURightTitleLine.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="fmt\core.h" />

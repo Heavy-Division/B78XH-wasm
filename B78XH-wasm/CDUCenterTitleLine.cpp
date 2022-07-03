@@ -14,24 +14,13 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#include "CDUCenterTitleLine.h"
+#include "MSFS/Render/nanovg.h"
 
-#pragma once
-
-#include <vector>
-
-#include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
-
-class CDUPage {
-
-	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
-		}
-
-	public:
-		std::vector<CDULine> getLines();
-
-	protected:
-		NVGcontext*& context;
-};
+void CDUCenterTitleLine::calculateHorizontalOffset() {
+	nvgFontSize(this->context, this->fontSize);
+	nvgTextAlign(this->context, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
+	float translateXBounds[4];
+	nvgTextBounds(this->context, 0, 0, this->basicContent.c_str(), nullptr, translateXBounds);
+	this->horizontalOffset = 249 + ((translateXBounds[2] - translateXBounds[0]) / 2);
+}

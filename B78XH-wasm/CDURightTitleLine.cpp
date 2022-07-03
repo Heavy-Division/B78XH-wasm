@@ -15,23 +15,8 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#pragma once
+#include "CDURightTitleLine.h"
 
-#include <vector>
-
-#include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
-
-class CDUPage {
-
-	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
-		}
-
-	public:
-		std::vector<CDULine> getLines();
-
-	protected:
-		NVGcontext*& context;
-};
+void CDURightTitleLine::calculateHorizontalOffset() {
+	this->horizontalOffset = 478;
+}

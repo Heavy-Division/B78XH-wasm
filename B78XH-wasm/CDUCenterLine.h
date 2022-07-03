@@ -20,11 +20,20 @@
 
 class CDUCenterLine: public CDULine {
 	public:
-		CDUCenterLine(CDULineNumber lineNumber = CDULineNumber::ONE,
+		CDUCenterLine(NVGcontext*& context,
+		              CDULineNumber lineNumber = CDULineNumber::ONE,
 		              std::vector<std::vector<std::string>> content = {}
-		) : CDULine(lineNumber, content) {
+		) : CDULine(context, lineNumber, content) {
+			this->CDUCenterLine::calculateHorizontalOffset();
 		}
 
-		CDUCenterLine(std::string& content, const CDULineNumber lineNumber) : CDULine(lineNumber, content) {
+		CDUCenterLine(NVGcontext*& context, const CDULineNumber lineNumber, std::string content) : CDULine(
+			context, lineNumber, content) {
+			this->CDUCenterLine::calculateHorizontalOffset();
 		}
+
+		void calculateHorizontalOffset() override;
+
+	protected:
+		CDULineAlign align = CDULineAlign::CENTER;
 };

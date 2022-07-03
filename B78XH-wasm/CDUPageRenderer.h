@@ -16,10 +16,7 @@
 
 
 #pragma once
-#include "CDUCenterLine.h"
-#include "CDULeftLine.h"
-#include "CDULine.h"
-#include "CDURightLine.h"
+
 #include "MSFS/Render/nanovg.h"
 
 class CDUPageRenderer {
@@ -32,16 +29,6 @@ class CDUPageRenderer {
 
 	protected:
 		void drawBackground();
-		void drawLine(CDULine line);
-		void drawLine(CDURightLine line);
-		void drawLine(CDUCenterLine line);
-		void drawLine(CDULeftLine line);
-		void drawBasicLine(CDULeftLine line);
-		void drawBasicLine(CDUCenterLine line);
-		void drawBasicLine(CDURightLine line);
-		void drawComplexLine(CDULeftLine line);
-		void drawComplexLine(CDUCenterLine line);
-		void drawComplexLine(CDURightLine line);
 		void drawLines();
 
 	private:

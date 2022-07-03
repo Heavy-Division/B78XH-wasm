@@ -17,9 +17,13 @@
 
 #pragma once
 #include "CDULineAlign.h"
-#include "CDULineType.h"
+#include "CDULineRenderingType.h"
 #include <string>
 #include <vector>
+
+#include "CDULineType.h"
+#include "Drawable.h"
+#include "MSFS/Render/nanovg.h"
 
 enum class CDULineNumber {
 	ONE,
@@ -31,12 +35,8 @@ enum class CDULineNumber {
 };
 
 
-class CDULine {
+class CDULine: public Drawable {
 	public:
-		CDULine(CDULineNumber lineNumber = CDULineNumber::ONE, std::vector<std::vector<std::string>> content = {});
-		CDULine(CDULineNumber lineNumber = CDULineNumber::ONE, std::string content = "");
-		void setContent(std::string content);
-
 		std::vector<int> r = {};
 		std::vector<int> g = {};
 		std::vector<int> b = {};
@@ -44,23 +44,36 @@ class CDULine {
 		float x = 0;
 		float y = 0;
 
-		void setContent(std::string content) const;
+		void draw() override;
+		void setContent(std::string content);
 		void setContent(std::vector<std::vector<std::string>> content, bool settable = false);
 		void reset();
-		double getOffset();
-		CDULineType getLineType() const;
+		float getVerticalOffset();
+		virtual void calculateHorizontalOffset();
+		CDULineRenderingType getLineType() const;
 		std::string getBasicContent();
 		std::vector<std::string> getComplexContent();
 
 	protected:
-		inline static constexpr double baseYOffset = 78;
-		inline static constexpr double yOffsetFactor = 61;
+		CDULine(NVGcontext*& context, CDULineNumber lineNumber = CDULineNumber::ONE, std::vector<std::vector<std::string>> content = {});
+		CDULine(NVGcontext*& context, CDULineNumber lineNumber = CDULineNumber::ONE, std::string content = "");
+
+		float horizontalOffset = 0;
+		inline static constexpr float titleVerticalOffset = -30;
+		inline static constexpr float baseVerticalOffset = 78;
+		inline static constexpr float yOffsetFactor = 61;
+		float fontSize = 20.0f;
 		CDULineNumber lineNumber;
-		CDULineType type = CDULineType::BASIC;
+		CDULineType lineType = CDULineType::LINE;
+		CDULineRenderingType lineRenderingType = CDULineRenderingType::BASIC;
+	
 		CDULineAlign align = CDULineAlign::LEFT;
+		NVGcontext*& context;
 
 		std::string basicContent = "";
 		std::vector<std::string> complexContent = {};
 
 		void reverseContent();
+		virtual void drawBasicLine();
+		virtual void drawComplexLine();
 };

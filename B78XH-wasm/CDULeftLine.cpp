@@ -15,23 +15,15 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#pragma once
-
-#include <vector>
-
 #include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
 
-class CDUPage {
+#include "MSFS/Render/nanovg.h"
 
-	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
-		}
+void CDULeftLine::calculateHorizontalOffset() {
+	nvgFontSize(this->context, this->fontSize);
+	nvgTextAlign(this->context, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
 
-	public:
-		std::vector<CDULine> getLines();
-
-	protected:
-		NVGcontext*& context;
-};
+	float translateXBounds[4];
+	nvgTextBounds(this->context, 0, 0, this->basicContent.c_str(), nullptr, translateXBounds);
+	this->horizontalOffset = 10 + (translateXBounds[2] - translateXBounds[0]);
+}

@@ -17,21 +17,7 @@
 
 #pragma once
 
-#include <vector>
-
-#include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
-
-class CDUPage {
-
-	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
-		}
-
-	public:
-		std::vector<CDULine> getLines();
-
-	protected:
-		NVGcontext*& context;
+enum class CDULineRenderingType {
+	BASIC,
+	COMPLEX
 };
