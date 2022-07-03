@@ -22,6 +22,7 @@
 #include <functional>
 
 #include "Drawable.h"
+#include "Tools.h"
 
 class CDUButton: public Drawable {
 	public:
@@ -62,7 +63,7 @@ class CDUButton: public Drawable {
 
 		void drawTitle();
 		void drawButtonBorders();
-		void drawBackBorders(NVGcolor color = nvgRGB(0, 0, 0));
+		void drawBackBorders(NVGcolor color = Tools::Colors::black);
 		void drawBackground() const;
 		bool isInFocus();
 		void shouldTriggerEvent();

@@ -28,7 +28,7 @@ void CDUButton::draw() {
 
 void CDUButton::drawBackground() const {
 	
-	nvgFillColor(this->context, nvgRGB(106, 107, 120));
+	nvgFillColor(this->context, Tools::Colors::cduButtonGray);
 	nvgBeginPath(this->context);
 	{
 		nvgRect(this->context, this->x, this->y, this->width, this->height);
@@ -76,7 +76,7 @@ void CDUButton::drawTitle() {
 		const double textX = this->x + (this->width / 2);
 		const double textY = this->y + (this->height / 2);
 		nvgTextAlign(this->context, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-		nvgFillColor(this->context, nvgRGB(255, 255, 255));
+		nvgFillColor(this->context, Tools::Colors::white);
 		nvgBeginPath(this->context);
 		{
 			nvgText(this->context, textX, textY, this->title, nullptr);
@@ -88,7 +88,7 @@ void CDUButton::drawTitle() {
 		const double textY = this->y + (this->height / 2) - 7;
 		const double text2Y = this->y + (this->height / 2) + 7;
 		nvgTextAlign(this->context, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-		nvgFillColor(this->context, nvgRGB(255, 255, 255));
+		nvgFillColor(this->context, Tools::Colors::white);
 		nvgBeginPath(this->context);
 		{
 			nvgText(this->context, textX, textY, this->title, nullptr);
@@ -104,7 +104,7 @@ void CDUButton::drawButtonBorders() {
 	/*
 	 * TOP
 	 */
-	nvgFillColor(this->context, nvgRGB(185, 175, 196));
+	nvgFillColor(this->context, Tools::Colors::cduButtonBorderTopGray);
 	nvgBeginPath(this->context);
 	{
 		nvgMoveTo(this->context, this->x, this->y);
@@ -119,7 +119,7 @@ void CDUButton::drawButtonBorders() {
 	/*
 	 * RIGHT
 	 */
-	nvgFillColor(this->context, nvgRGB(35, 34, 36));
+	nvgFillColor(this->context, Tools::Colors::cduButtonBorderRightGray);
 	nvgBeginPath(this->context);
 	{
 		nvgMoveTo(this->context, (this->x + this->width), (this->y));
@@ -135,7 +135,7 @@ void CDUButton::drawButtonBorders() {
 	/*
 	 * BOTTOM
 	 */
-	nvgFillColor(this->context, nvgRGB(26, 25, 28));
+	nvgFillColor(this->context, Tools::Colors::cduButtonBorderBottomGray);
 	nvgBeginPath(this->context);
 	{
 		nvgMoveTo(this->context, this->x, this->y + this->height);
@@ -153,7 +153,7 @@ void CDUButton::drawButtonBorders() {
 	 * LEFT
 	 */
 
-	nvgFillColor(this->context, nvgRGB(196, 176, 200));
+	nvgFillColor(this->context, Tools::Colors::cduButtonBorderLeftGray);
 	nvgBeginPath(this->context);
 	{
 		nvgMoveTo(this->context, this->x, this->y);
