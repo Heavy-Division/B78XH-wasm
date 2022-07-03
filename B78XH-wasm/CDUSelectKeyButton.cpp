@@ -22,7 +22,7 @@ void CDUSelectKeyButton::draw() {
 		if(this->event) {
 			CDUButton::draw();
 		} else {
-			drawBackBorders(nvgRGB(54, 201, 210));
+			drawBackBorders(Tools::Colors::cyan);
 		}
 		this->drawPointers();
 	}
@@ -47,7 +47,7 @@ void CDUSelectKeyButton::calculateBounds() {
 }
 
 void CDUSelectKeyButton::drawBorder() {
-	nvgStrokeColor(context, nvgRGB(213, 112, 255));
+	nvgStrokeColor(context, Tools::Colors::magenta);
 	nvgStrokeWidth(this->context, 5.0f);
 	if(this->rightSide) {
 		nvgBeginPath(this->context);
@@ -75,11 +75,11 @@ void CDUSelectKeyButton::drawPointers() {
 
 	nvgStrokeWidth(this->context, 1.5f);
 	if(this->event) {
-		nvgFillColor(this->context, nvgRGB(255, 255, 255));
+		nvgFillColor(this->context, Tools::Colors::white);
 	} else {
-		nvgFillColor(this->context, nvgRGB(54, 201, 210));
+		nvgFillColor(this->context, Tools::Colors::cyan);
 	}
-	nvgStrokeColor(this->context, nvgRGB(0, 0, 0));
+	nvgStrokeColor(this->context, Tools::Colors::black);
 
 	nvgBeginPath(this->context);
 	{

@@ -17,14 +17,15 @@
 
 #include "CDUMouseCursor.h"
 
+#include "Tools.h"
+
 void CDUMouseCursor::draw() {
 	if(this->context == nullptr) {
 		return;
 	}
 	nvgSave(this->context);
 	{
-		nvgFillColor(this->context, nvgRGB(255, 0, 0));
-		nvgStrokeColor(context, nvgRGB(213, 112, 255));
+		nvgStrokeColor(context, Tools::Colors::magenta);
 		nvgStrokeWidth(this->context, 2.0f);
 		nvgTranslate(this->context, this->mouseMoveResolver.getX() - 15, this->mouseMoveResolver.getY() - 15);
 		{
