@@ -19,7 +19,28 @@
 #include <MSFS/Legacy/gauges.h>
 #include <string>
 
+#include "MSFS/Render/nanovg.h"
+
 namespace Tools {
+	class Colors {
+		public:
+			inline static const NVGcolor red = nvgRGB(255, 0, 0);
+			inline static const NVGcolor green = nvgRGB(0, 255, 0);
+			inline static const NVGcolor blue = nvgRGB(0, 0, 255);
+			inline static const NVGcolor black = nvgRGB(0, 0, 0);
+			inline static const NVGcolor white = nvgRGB(255, 255, 255);
+			inline static const NVGcolor magenta = nvgRGB(255, 0, 255);
+			inline static const NVGcolor cyan = nvgRGB(54, 201, 210);
+			inline static const NVGcolor cduButtonGray = nvgRGB(106, 107, 120);
+			inline static const NVGcolor cduButtonBorderTopGray = nvgRGB(185, 175, 196);
+			inline static const NVGcolor cduButtonBorderRightGray = nvgRGB(35, 34, 36);
+			inline static const NVGcolor cduButtonBorderBottomGray = nvgRGB(26, 25, 28);
+			inline static const NVGcolor cduButtonBorderLeftGray = nvgRGB(196, 176, 200);
+	};
+
+	/*
+	 * TODO: Move to different namespace
+	 */
 	class Frequencies {
 		public:
 			enum type {
@@ -47,6 +68,9 @@ namespace Tools {
 			static bool isHz50Compliant(FLOAT64 MHz);
 	};
 
+	/*
+	 * TODO: Move to different namespace
+	 */
 	class Transponder {
 		public:
 			static bool isXPDRCompliant(std::string value);
