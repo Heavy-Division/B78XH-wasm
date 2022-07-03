@@ -19,9 +19,9 @@
 
 #include <vector>
 
-#include "CDULeftLine.h"
-#include "CDUCenterLine.h"
-#include "CDURightLine.h"
+#include "CDULine.h"
+#include "MSFS/Render/nanovg.h"
+
 
 class CDUPage {
 

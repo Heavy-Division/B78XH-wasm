@@ -136,6 +136,11 @@ void CDULine::drawBasicLine() {
 }
 
 void CDULine::drawComplexLine() {
+	std::vector<std::string> complexContent = this->complexContent;
+	const auto complexContentSize = complexContent.size();
+	std::vector<bool> settable = this->settable;
+	const auto settableSize = settable.size();
+
 	nvgSave(this->context);
 	{
 		nvgFillColor(this->context, Tools::Colors::white);
@@ -151,11 +156,11 @@ void CDULine::drawComplexLine() {
 
 			int firstSettable = -1;
 			int lastSettable = -1;
-			for(int i = 0; i < this->settable.size(); i++) {
-				if(this->settable.at(i) && firstSettable == -1) {
+			for(int i = 0; i < settableSize; i++) {
+				if(settable.at(i) && firstSettable == -1) {
 					firstSettable = i;
 					lastSettable = i;
-				} else if(this->settable.at(i) && firstSettable != -1) {
+				} else if(settable.at(i) && firstSettable != -1) {
 					lastSettable = i;
 				}
 			}
@@ -164,11 +169,11 @@ void CDULine::drawComplexLine() {
 				std::string preSettableText;
 				std::string endSettableText;
 				for(int i = 0; i < firstSettable; i++) {
-					preSettableText += this->getComplexContent().at(i);
+					preSettableText += complexContent.at(i);
 				}
 
 				for(int i = firstSettable; i <= lastSettable; i++) {
-					endSettableText += this->getComplexContent().at(i);
+					endSettableText += complexContent.at(i);
 				}
 
 				nvgTextBounds(this->context, lastBounds[2], 0, preSettableText.c_str(), nullptr, preSettableBounds);
@@ -177,8 +182,8 @@ void CDULine::drawComplexLine() {
 
 				nvgBeginPath(this->context);
 				{
-					for(int i = 0; i < this->getComplexContent().size(); i++) {
-						const std::string character = this->getComplexContent().at(i);
+					for(int i = 0; i < complexContentSize; i++) {
+						const std::string character = complexContent.at(i);
 						nvgTextBounds(this->context, lastBounds[2], 0, character.c_str(), nullptr, nextBounds);
 						nvgFillColor(this->context, nvgRGB(255, 100, 100));
 						nvgRect(this->context, preSettableBounds[0], -14,
@@ -191,8 +196,8 @@ void CDULine::drawComplexLine() {
 
 			nvgBeginPath(this->context);
 			{
-				for(int i = 0; i < this->getComplexContent().size(); i++) {
-					const std::string character = this->getComplexContent().at(i);
+				for(int i = 0; i < complexContentSize; i++) {
+					const std::string character = complexContent.at(i);
 					nvgTextBounds(this->context, lastBounds[0], 0, character.c_str(), nullptr, nextBounds);
 					const int r = this->r.at(i);
 					const int g = this->g.at(i);

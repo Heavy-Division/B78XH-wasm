@@ -19,6 +19,8 @@
 
 #include "CDUCenterTitleLine.h"
 #include "CDULeftTitleLine.h"
+#include "CDURightLine.h"
+#include "CDULeftLine.h"
 #include "CDURightTitleLine.h"
 
 std::vector<CDULine> CDUIdentPage::getLines() {
@@ -26,32 +28,32 @@ std::vector<CDULine> CDUIdentPage::getLines() {
 	/*
 	 * LEFT SIDE
 	 */
-	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::ONE, "MODEL"));
-	lines.push_back(CDULeftLine(this->context, CDULineNumber::ONE, "787-10"));
+	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::ONE, { {"MODEL", ""}}));
+	lines.push_back(CDULeftLine(this->context, CDULineNumber::ONE, { {"787-10", ""} }));
 
-	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::TWO, "NAV DATA"));
-	lines.push_back(CDULeftLine(this->context, CDULineNumber::TWO, "AIRAC"));
+	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::TWO, { {"NAV DATA", ""} }));
+	lines.push_back(CDULeftLine(this->context, CDULineNumber::TWO, { {"AIRAC", ""} }));
 
-	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::THREE, "DRAG/FF"));
+	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::THREE, { {"DRAG/FF", ""} }));
 
-	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::FOUR, "OP PROGRAM"));
-	lines.push_back(CDULeftLine(this->context, CDULineNumber::FOUR, "HD-P000-1-16-1"));
+	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::FOUR, { {"OP PROGRAM", ""} }));
+	lines.push_back(CDULeftLine(this->context, CDULineNumber::FOUR, { {"HD-P000-1-16-1", ""} }));
 
-	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::FIVE, "OPC"));
-	lines.push_back(CDULeftLine(this->context, CDULineNumber::FIVE, "HD-C000-1-16-1"));
+	lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::FIVE, { {"OPC", ""} }));
+	lines.push_back(CDULeftLine(this->context, CDULineNumber::FIVE, { {"HD-C000-1-16-1", ""} }));
 
 	/*
 	 * RIGHT SIDE
 	 */
-	lines.push_back(CDURightTitleLine(this->context, CDULineNumber::ONE, "ENGINES"));
-	lines.push_back(CDURightLine(this->context, CDULineNumber::ONE, "GENX-1B76"));
+	lines.push_back(CDURightTitleLine(this->context, CDULineNumber::ONE, { {"ENGINES", ""} }));
+	lines.push_back(CDURightLine(this->context, CDULineNumber::ONE, { {"GENX-1B76", ""} }));
 
-	lines.push_back(CDURightTitleLine(this->context, CDULineNumber::TWO, "ACTIVE"));
-	lines.push_back(CDURightLine(this->context, CDULineNumber::TWO, "APR21MAY18/22"));
+	lines.push_back(CDURightTitleLine(this->context, CDULineNumber::TWO, { {"ACTIVE", ""} }));
+	lines.push_back(CDURightLine(this->context, CDULineNumber::TWO, { {"APR21MAY18/22", ""} }));
 
 
-	lines.push_back(CDURightTitleLine(this->context, CDULineNumber::FOUR, "CO DATA"));
-	lines.push_back(CDURightLine(this->context, CDULineNumber::FOUR, "VS1001"));
+	lines.push_back(CDURightTitleLine(this->context, CDULineNumber::FOUR, { {"CO DATA", ""} }));
+	lines.push_back(CDURightLine(this->context, CDULineNumber::FOUR, { {"VS1001", ""} }));
 
 
 
