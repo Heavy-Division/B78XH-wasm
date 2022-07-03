@@ -21,7 +21,7 @@
 #include "MSFS/Render/nanovg.h"
 
 
-class CDUMouseCursor: public Drawable {
+class CDUMouseCursor : public Drawable {
 	public:
 		CDUMouseCursor(NVGcontext*& nvgContext, CDUMouseMoveResolver& mouseMoveResolver) : context(nvgContext), mouseMoveResolver(mouseMoveResolver) {
 		}

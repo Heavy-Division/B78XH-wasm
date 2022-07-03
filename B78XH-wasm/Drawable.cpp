@@ -14,19 +14,6 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#include "Drawable.h"
 
-#pragma once
-
-class Drawable {
-	public:
-		virtual ~Drawable();
-		virtual void draw() = 0;
-
-
-	protected:
-		Drawable() = default;
-		Drawable(const Drawable& other) = default;
-		Drawable(Drawable&& other) noexcept = default;
-		Drawable& operator=(const Drawable& other) = default;
-		Drawable& operator=(Drawable&& other) noexcept = default;
-};
+Drawable::~Drawable() = default;
