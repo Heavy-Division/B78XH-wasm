@@ -67,11 +67,21 @@ void CDURenderer::render(sGaugeDrawData* data) {
 		this->RSK4.draw();
 		this->RSK5.draw();
 		this->RSK6.draw();
-		
-		this->LSK1.event = []() {
-			fmt::print(stderr, "LSK1 event triggered");
-		};
 
+		/*
+		this->LSK1.event = this->pageRenderer.getCDUPage().getLSK1Event();
+		this->LSK2.event = this->pageRenderer.getCDUPage().getLSK2Event();
+		this->LSK3.event = this->pageRenderer.getCDUPage().getLSK3Event();
+		this->LSK4.event = this->pageRenderer.getCDUPage().getLSK4Event();
+		this->LSK5.event = this->pageRenderer.getCDUPage().getLSK5Event();
+		this->LSK6.event = this->pageRenderer.getCDUPage().getLSK6Event();
+		this->RSK1.event = this->pageRenderer.getCDUPage().getRSK1Event();
+		this->RSK2.event = this->pageRenderer.getCDUPage().getRSK2Event();
+		this->RSK3.event = this->pageRenderer.getCDUPage().getRSK3Event();
+		this->RSK4.event = this->pageRenderer.getCDUPage().getRSK4Event();
+		this->RSK5.event = this->pageRenderer.getCDUPage().getRSK5Event();
+		this->RSK6.event = this->pageRenderer.getCDUPage().getRSK6Event();
+		*/
 		this->mouseCursor.draw();
 	}
 	nvgEndFrame(nvgContext);

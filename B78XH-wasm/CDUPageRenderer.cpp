@@ -18,11 +18,6 @@
 #include "CDUPageRenderer.h"
 
 #include "CDULine.h"
-#include "CDUCenterLine.h"
-#include "CDUIdentPage.h"
-#include "CDULeftLine.h"
-#include "CDURightLine.h"
-#include "fmt/core.h"
 
 void CDUPageRenderer::render() {
 	this->drawBackground();
@@ -40,9 +35,9 @@ void CDUPageRenderer::drawBackground() {
 }
 
 void CDUPageRenderer::drawLines() {
-	CDUIdentPage page = CDUIdentPage(this->context);
-
-	std::vector<CDULine> lines = page.getLines();
+	
+	std::vector<CDULine> lines = this->cduPage->getLines();
+	
 	const auto numberOfLines = lines.size();
 
 	for (int i = 0; i < numberOfLines; i++) {

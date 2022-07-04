@@ -21,17 +21,43 @@
 
 #include "CDULine.h"
 #include "MSFS/Render/nanovg.h"
+#include "functional";
 
 
 class CDUPage {
 
 	protected:
-		CDUPage(NVGcontext*& context) : context(context) {
-		}
+		CDUPage(NVGcontext*& context);
 
 	public:
-		std::vector<CDULine> getLines();
+		virtual ~CDUPage();
+		virtual std::vector<CDULine>& getLines();
+		const std::function<void()>& getLSK1Event() const;
+		const std::function<void()>& getLSK2Event() const;
+		const std::function<void()>& getLSK3Event() const;
+		const std::function<void()>& getLSK4Event() const;
+		const std::function<void()>& getLSK5Event() const;
+		const std::function<void()>& getLSK6Event() const;
+		const std::function<void()>& getRSK1Event() const;
+		const std::function<void()>& getRSK2Event() const;
+		const std::function<void()>& getRSK3Event() const;
+		const std::function<void()>& getRSK4Event() const;
+		const std::function<void()>& getRSK5Event() const;
+		const std::function<void()>& getRSK6Event() const;
 
 	protected:
 		NVGcontext*& context;
+		std::vector<CDULine> lines = {};
+		std::function<void()> lsk1Event;
+		std::function<void()> lsk2Event;
+		std::function<void()> lsk3Event;
+		std::function<void()> lsk4Event;
+		std::function<void()> lsk5Event;
+		std::function<void()> lsk6Event;
+		std::function<void()> rsk1Event;
+		std::function<void()> rsk2Event;
+		std::function<void()> rsk3Event;
+		std::function<void()> rsk4Event;
+		std::function<void()> rsk5Event;
+		std::function<void()> rsk6Event;
 };

@@ -17,7 +17,12 @@
 
 #pragma once
 
+#include <utility>
+
+#include "CDUIdentPage.h"
+#include "CDUPage.h"
 #include "MSFS/Render/nanovg.h"
+#include "fmt/core.h";
 
 class CDUPageRenderer {
 	public:
@@ -26,6 +31,8 @@ class CDUPageRenderer {
 		}
 
 		void render();
+		const CDUPage* getCDUPage() const { return this->cduPage; }
+		//CDUPage* cduPage = new CDUIdentPage(context);
 
 	protected:
 		void drawBackground();
@@ -33,4 +40,6 @@ class CDUPageRenderer {
 
 	private:
 		NVGcontext*& context;
+		CDUPage* cduPage = new CDUIdentPage(context);
+
 };

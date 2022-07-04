@@ -128,6 +128,7 @@
     <ClCompile Include="CDUMouseCursor.cpp" />
     <ClCompile Include="CDUMouseMoveResolver.cpp" />
     <ClCompile Include="CDUMouseResolver.cpp" />
+    <ClCompile Include="CDUPage.cpp" />
     <ClCompile Include="CDUPageRenderer.cpp" />
     <ClCompile Include="CDURenderer.cpp" />
     <ClCompile Include="CDURightLine.cpp" />

@@ -161,6 +161,9 @@
     <ClCompile Include="CDUCenterTitleLine.cpp">
       <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
     </ClCompile>
+    <ClCompile Include="CDUPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
