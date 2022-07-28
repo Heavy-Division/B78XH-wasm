@@ -10,7 +10,7 @@ C++
 4. Download and install VS2019
 
 > Optional: If you are familiar with JetBrains tools and IDEs, and already own a license, it is recommended to download 
-> and install [ReSharper] for Visual Studio
+> and install [ReSharper](https://www.jetbrains.com/resharper/) Visual Studio Extension.
 
 5. Using the Version Control feature clone your personal fork to the IDE. 
 6. Launch the project by opening the .sln file in the IDE
