@@ -1,5 +1,6 @@
 # B78XH-wasm
-This repository contains the low level source code that is rendered in the B78XH that is compiled to Web Assembly. 
+![image](https://cdn.discordapp.com/attachments/960729491750141993/983010796189659216/hdgithub_banner.png)
+This repository contains the low level source code used in the B78XH that is compiled to Web Assembly. 
 
 See the [Contributing Docs]() to contribute to this repository.
 

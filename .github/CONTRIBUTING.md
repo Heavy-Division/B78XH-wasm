@@ -7,7 +7,7 @@ C++
 1. Fork the repository.
 2. Download the [Visual Studio Installer](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022)
 3. Follow the instructions and install Visual C++ Compiler and Build Tools
-4. Download and install VS2019
+4. Download and install VS2022 or VS2019.
 
 > Optional: If you are familiar with JetBrains tools and IDEs, and already own a license, it is recommended to download 
 > and install [ReSharper](https://www.jetbrains.com/resharper/) Visual Studio Extension.
