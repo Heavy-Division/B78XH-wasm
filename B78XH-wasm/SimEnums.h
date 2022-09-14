@@ -146,4 +146,3 @@ enum class SimNAV_AID_MODE {
 	MANUAL,
 	REMOTE,
 };
-
