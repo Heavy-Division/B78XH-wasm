@@ -142,3 +142,8 @@ auto RadioNav::setBeaconStandbyFrequency(NavEquipmentIndex navType, double frequ
 	const auto fixedFrequency = (Hz ? frequency : frequency * 1000000);
 	KEvents::execute(kEvent, fixedFrequency, "Hz");
 }
+
+auto RadioNav::setBeaconOBS(NavEquipmentIndex navType, double obs) -> void {
+	const auto kEvent = fmt::format("VOR{}_SET", static_cast<int>(navType));
+	KEvents::execute(kEvent, obs);
+}

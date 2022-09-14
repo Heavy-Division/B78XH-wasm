@@ -46,6 +46,7 @@ class RadioNav {
 		auto swapBeaconFrequencies(NavEquipmentIndex navType) -> void;
 		auto setBeaconFrequency(NavEquipmentIndex navType, double frequency, bool Hz = false) -> void;
 		auto setBeaconStandbyFrequency(NavEquipmentIndex navType, double frequency, bool Hz = false) -> void;
+		auto setBeaconOBS(NavEquipmentIndex navType, double obs) -> void;
 
 	private:
 		NavBeacon unknownBeacon = NavBeacon(NavEquipmentType::UNKNOWN, NavEquipmentIndex::UNKNOWN);
