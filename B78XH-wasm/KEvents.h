@@ -16,8 +16,36 @@
 
 
 #pragma once
+#include <string>
 
 class KEvents {
-	static auto execute(char* name, char* value) -> void;
-	static auto execute(char* name, char* value, char* unit) -> void;
+	public:
+		static auto execute(std::string name, std::string value) -> void;
+		static auto execute(std::string name, int value) -> void;
+		static auto execute(std::string name, float value) -> void;
+		static auto execute(std::string name, long value) -> void;
+		static auto execute(std::string name, double value) -> void;
+
+		static auto trigger(std::string name, std::string value) -> void;
+		static auto trigger(std::string name, int value) -> void;
+		static auto trigger(std::string name, float value) -> void;
+		static auto trigger(std::string name, long value) -> void;
+		static auto trigger(std::string name, double value) -> void;
+
+
+		static auto execute(std::string name, std::string value, std::string unit) -> void;
+		static auto execute(std::string name, int value, std::string unit) -> void;
+		static auto execute(std::string name, float value, std::string unit) -> void;
+		static auto execute(std::string name, long value, std::string unit) -> void;
+		static auto execute(std::string name, double value, std::string unit) -> void;
+
+		static auto trigger(std::string name, std::string value, std::string unit) -> void;
+		static auto trigger(std::string name, int value, std::string unit) -> void;
+		static auto trigger(std::string name, float value, std::string unit) -> void;
+		static auto trigger(std::string name, long value, std::string unit) -> void;
+		static auto trigger(std::string name, double value, std::string unit) -> void;
+	private:
+		static auto executeEvent(std::string name, std::string value) -> void;
+		static auto executeEvent(std::string name, std::string value, std::string unit) -> void;
+
 };
