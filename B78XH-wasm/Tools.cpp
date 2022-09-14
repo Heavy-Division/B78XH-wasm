@@ -25,9 +25,9 @@
 #include <MSFS/Legacy/gauges.h>
 
 namespace Tools {
-	void Frequencies::setVHFFrequency(vhf_index index, state state, FLOAT64 value) {
+	auto Frequencies::setVHFFrequency(vhf_index index, state state, FLOAT64 value) -> void {
 		std::string countedIndex;
-		switch(index) {
+		switch (index) {
 			case ONE:
 				countedIndex = "";
 				break;
@@ -48,61 +48,55 @@ namespace Tools {
 		execute_calculator_code(expression.c_str(), nullptr, nullptr, nullptr);
 	}
 
-	void Frequencies::setVHFActiveFrequency(vhf_index index, FLOAT64 value) {
+	auto Frequencies::setVHFActiveFrequency(vhf_index index, FLOAT64 value) -> void {
 		setVHFFrequency(index, ACTIVE, value);
 	}
 
-	void Frequencies::setVHFStandbyFrequency(vhf_index index, FLOAT64 value) {
+	auto Frequencies::setVHFStandbyFrequency(vhf_index index, FLOAT64 value) -> void {
 		setVHFFrequency(index, STANDBY, value);
 	}
 
-	void Frequencies::swapVHFFrequencies(vhf_index index) {
+	auto Frequencies::swapVHFFrequencies(vhf_index index) -> void {
 		const std::string event = "1 (>K:COM" + std::to_string(index) + "_RADIO_SWAP)";
 		execute_calculator_code(event.c_str(), nullptr, nullptr, nullptr);
 	}
 
-	bool Frequencies::isVHFFrequencyValid(FLOAT64 MHz) {
+	auto Frequencies::isVHFFrequencyValid(FLOAT64 MHz) -> bool {
 		if (MHz >= 118 && MHz <= 136.9 && isHz833Compliant(MHz)) {
 			return true;
 		}
 		return false;
 	}
 
-	bool Frequencies::isHz833Compliant(FLOAT64 MHz) {
+	auto Frequencies::isHz833Compliant(FLOAT64 MHz) -> bool {
 		const int spacing[16] = {0, 5, 10, 15, 25, 30, 35, 40, 50, 55, 60, 65, 75, 80, 85, 90};
 		const FLOAT64 frequency = round(MHz * 1000) / 1000;
-		fmt::print(stderr, "{}", frequency);
-
-
-		fmt::print(stderr, "{}", "ENFORCE STOP");
 		const FLOAT64 modulo = fmod(frequency * 10, 1);
-		fmt::print(stderr, "{}", "ENFORCE STOP 2");
 		const FLOAT64 fixedModulo = floor(modulo * 100);
-		fmt::print(stderr, "{}", "ENFORCE STOP 3");
-		for(const auto &value : spacing) {
-			if(fabs(value - fixedModulo) < REAL_EPSILON) {
+		for (const auto& value : spacing) {
+			if (fabs(value - fixedModulo) < REAL_EPSILON) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	bool Frequencies::isHz25Compliant(FLOAT64 MHz) {
+	auto Frequencies::isHz25Compliant(FLOAT64 MHz) -> bool {
 		const FLOAT64 frequency = round(MHz * 1000) / 1000;
 		const FLOAT64 modulo = fmod(frequency, 0.025);
 		return (modulo < 0.001 ? true : false);
 	}
 
-	bool Frequencies::isHz50Compliant(FLOAT64 MHz) {
+	auto Frequencies::isHz50Compliant(FLOAT64 MHz) -> bool {
 		const FLOAT64 frequency = round(MHz * 100) / 100;
 		const FLOAT64 modulo = fmod(frequency, 0.05);
 		return (modulo < 0.001 ? true : false);
 	}
 
-	bool Transponder::isXPDRCompliant(std::string value) {
-		if(value.length() == 4) {
-			for(const auto character : value) {
-				if(!std::isdigit(character)) {
+	auto Transponder::isXPDRCompliant(std::string value) -> bool {
+		if (value.length() == 4) {
+			for (const auto character : value) {
+				if (!std::isdigit(character)) {
 					return false;
 				}
 				const int intCharacter = std::atoi(&character);
@@ -115,15 +109,27 @@ namespace Tools {
 		return false;
 	}
 
-	void Transponder::setCode(std::string value) {
-		if(Transponder::isXPDRCompliant(value)) {
+	auto Transponder::setCode(std::string value) -> void {
+		if (isXPDRCompliant(value)) {
 			const int number = std::stoi(value, nullptr, 16);
 			const std::string command = fmt::format("{} (>K:XPNDR_SET, number)", number);
-			execute_calculator_code(command.c_str(), nullptr, nullptr, nullptr);	
+			execute_calculator_code(command.c_str(), nullptr, nullptr, nullptr);
 		}
 	}
 
-	void Transponder::ident() {
+	auto Transponder::ident() -> void {
 		execute_calculator_code("1 (>K:XPNDR_IDENT_ON, bool)", nullptr, nullptr, nullptr);
 	}
+
+	auto smoothPow(double start, double end, double factor, double deltaTime) -> double {
+		if (deltaTime <= 0 || factor <= 1.0) {
+			return end;
+		}
+		const double calculatedFactor = 1.0 - (1.0 / pow(factor, deltaTime * (1.0 / 0.033)));
+		return (end - start) * calculatedFactor + start;
+	}
+
+	auto clamp(double value, double lo, double hi) -> double {
+		return std::min<double>(hi, std::max<double>(value, lo));
+	};
 }
