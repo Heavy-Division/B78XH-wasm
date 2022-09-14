@@ -18,10 +18,13 @@
 #include "PFDAuxGauge.h"
 
 #include <cmath>
-#include <ctime>
+#include <string>
 
+#include "Tools.h"
 #include "fmt/core.h"
-#include "SimConnectConnector.h"
+#include "Simplane.h"
+
+using Colors = Tools::Colors;
 
 bool PFDAuxGauge::preInstall() {
 	return true;
@@ -78,7 +81,7 @@ bool PFDAuxGauge::preDraw(FsContext context, sGaugeDrawData* data) {
 }
 
 void PFDAuxGauge::renderMainBackground() {
-	nvgFillColor(nvgContext, nvgRGB(0, 0, 0));
+	nvgFillColor(nvgContext, Colors::black);
 	nvgBeginPath(nvgContext);
 	nvgRect(nvgContext, 0, 0, this->windowWidth, this->windowHeight);
 	nvgFill(nvgContext);
@@ -136,7 +139,7 @@ void PFDAuxGauge::renderAnalogClockBody() {
 	nvgArc(nvgContext, centerX, centerY, radius, 0, 2 * NVG_PI, NVG_CW);
 	nvgFillColor(nvgContext, nvgRGB(30, 27, 28));
 	nvgFill(nvgContext);
-	nvgStrokeColor(nvgContext, nvgRGB(255, 255, 255));
+	nvgStrokeColor(nvgContext, Colors::white);
 	nvgStrokeWidth(nvgContext, 4.0f);
 	nvgStroke(nvgContext);
 	nvgClosePath(nvgContext);
@@ -168,7 +171,7 @@ void PFDAuxGauge::renderTexts() {
 	nvgFontFace(this->nvgContext, "heavy-fmc");
 	nvgFontSize(this->nvgContext, 18.0f);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
-	nvgFillColor(this->nvgContext, nvgRGB(59, 183, 213));
+	nvgFillColor(this->nvgContext, Colors::cyan);
 
 	/*
 	 * Titles
@@ -183,14 +186,14 @@ void PFDAuxGauge::renderTexts() {
 	/*
 	 * Values
 	 */
-	nvgFillColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgFillColor(this->nvgContext, Colors::white);
 	nvgFontSize(this->nvgContext, 35.0f);
-	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[0], "ETD654", nullptr);
+	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[0], Simplane::aircraft::info::flightNumber(), nullptr);
 	nvgFontSize(this->nvgContext, 23.0f);
-	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[1], "118.100", nullptr);
-	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[2], "7344", nullptr);
-	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[3], "JM-GP", nullptr);
-	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[4], "AL-BLN", nullptr);
+	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[1], fmt::format("{:.3f}", Simplane::comFrequencies::activeFrequency1()).c_str(), nullptr);
+	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[2], fmt::format("{}", static_cast<int>(Simplane::transponder::code())).c_str(), nullptr);
+	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[3], "DH-GR", nullptr);
+	nvgText(this->nvgContext, valueHorizontalOffset, verticalOffsets[4], Simplane::aircraft::info::tailID(), nullptr);
 	nvgRestore(this->nvgContext);
 }
 
@@ -241,9 +244,9 @@ void PFDAuxGauge::drawAnalogClockHands(int hours, int minutes, double seconds) {
 	nvgLineTo(nvgContext, width / 2, 0);
 	nvgLineTo(nvgContext, -width / 2, 0);
 	nvgLineJoin(nvgContext, NVG_ROUND);
-	nvgFillColor(nvgContext, nvgRGB(255, 255, 255));
+	nvgFillColor(nvgContext, Colors::white);
 	nvgFill(nvgContext);
-	nvgStrokeColor(nvgContext, nvgRGB(255, 255, 255));
+	nvgStrokeColor(nvgContext, Colors::white);
 	nvgStrokeWidth(nvgContext, 1.0f);
 	nvgStroke(nvgContext);
 	nvgClosePath(nvgContext);
@@ -251,7 +254,7 @@ void PFDAuxGauge::drawAnalogClockHands(int hours, int minutes, double seconds) {
 
 	nvgBeginPath(nvgContext);
 	nvgArc(nvgContext, 0, 0, 4, 0, 2 * NVG_PI, NVG_CW);
-	nvgFillColor(nvgContext, nvgRGB(0, 0, 0));
+	nvgFillColor(nvgContext, Colors::black);
 	nvgFill(nvgContext);
 	nvgStrokeWidth(nvgContext, 3.0f);
 	nvgStroke(nvgContext);
@@ -262,7 +265,7 @@ void PFDAuxGauge::renderChronoDigital() {
 	const int minutes = floor(this->chronoTime) / 60;
 	const int seconds = floor(this->chronoTime) - (minutes * 60);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-	nvgFillColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgFillColor(this->nvgContext, Colors::white);
 	nvgFontSize(this->nvgContext, 23.0f);
 	nvgText(this->nvgContext, 348, 175.0f, fmt::format("{:02}:{:02}", minutes, seconds).c_str(), nullptr);
 }
@@ -272,7 +275,7 @@ void PFDAuxGauge::renderBottomSection() {
 	nvgFontFace(this->nvgContext, "heavy-fmc");
 	nvgFontSize(this->nvgContext, 18.0f);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-	nvgFillColor(this->nvgContext, nvgRGB(59, 183, 213));
+	nvgFillColor(this->nvgContext, Colors::cyan);
 	nvgText(this->nvgContext, 70.0f, 215.0f, "UTC", nullptr);
 	nvgText(this->nvgContext, 212.5, 215.0f, "DATE", nullptr);
 	nvgText(this->nvgContext, 348, 215.0f, "ELAPSED TIME", nullptr);
@@ -286,7 +289,7 @@ void PFDAuxGauge::renderBottomSection() {
 		elapsedTime = fmt::format("{:02}:{:02}", hours, minutes);
 	}
 
-	nvgFillColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgFillColor(this->nvgContext, Colors::white);
 	nvgFontSize(this->nvgContext, 23.0f);
 	nvgText(this->nvgContext, 348, 236.0f, fmt::format("{}", elapsedTime).c_str(), nullptr);
 

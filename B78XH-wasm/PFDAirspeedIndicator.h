@@ -16,16 +16,36 @@
 
 
 #pragma once
+#include "FlapsSpeedMarker.h"
+#include "V1SpeedMarker.h"
+#include "V2SpeedMarker.h"
+#include "VRefSpeedMarker.h"
+#include "VRSpeedMarker.h"
 #include "MSFS/Render/nanovg.h"
 
 class PFDAirspeedIndicator {
 	public:
-		static void draw(NVGcontext* context, float windowWidth, float windowHeight);
+		static void draw(NVGcontext* context, double deltaTime);
 	private:
-		static void drawBackground(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawGraduations(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawCursor(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawTargetPointer(NVGcontext* context, float windowWidth, float windowHeight);
+		static void drawBackground(NVGcontext* context);
+		static void drawGraduations(NVGcontext* context);
+		static void drawCursor(NVGcontext* context);
+		static void drawTargetPointer(NVGcontext* context);
+		static void drawStrips(NVGcontext* context);
+		static void drawStallStrips(NVGcontext* context);
+		static void drawProtStrip(NVGcontext* context);
+		static void drawOverSpeedStrips(NVGcontext* context);
+		static void drawSpeedMarkers(NVGcontext* context, double deltaTime);
+		static bool shouldDrawFlapsMarkers(double indicatedAltitude, double flightPhase);
+		static void drawVSpeedMarkers(NVGcontext* context, double v1, double v2, double vR, double deltaTime);
+		static void drawNOVSpeedMessage(NVGcontext* context);
+
+		inline static V1SpeedMarker v1SpeedMarker = V1SpeedMarker("V1", false);
+		inline static V2SpeedMarker v2SpeedMarker = V2SpeedMarker("V2", false);
+		inline static VRSpeedMarker vRSpeedMarker = VRSpeedMarker("VR", false);
+		inline static VRefSpeedMarker vRefSpeedMarker = VRefSpeedMarker("REF", false);
+		inline static FlapsSpeedMarker currentFlapsMarker = FlapsSpeedMarker("", true);
+		inline static FlapsSpeedMarker nextFlapsMarker = FlapsSpeedMarker("", true);
 };
 
 

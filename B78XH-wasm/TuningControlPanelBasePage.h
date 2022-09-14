@@ -81,11 +81,13 @@ class TuningControlPanelBasePage {
 	public:
 		virtual ~TuningControlPanelBasePage() = default;
 
-		virtual void loadData(){};
+		virtual void loadData() {
+		};
 
 		virtual void render(NVGcontext* context, float windowWidth, float windowHeight, float devicePixelRatio);
 
-		virtual void handleEvent(TuningControlPanelControlPageEventsID eventId){};
+		virtual void handleEvent(TuningControlPanelControlPageEventsID eventId) {
+		};
 
 		virtual void renderScratchpad(NVGcontext* context) {
 			nvgFontSize(context, 25.0f);

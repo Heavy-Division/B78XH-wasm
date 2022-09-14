@@ -16,14 +16,14 @@
 
 
 #include "CDULine.h"
-
+#include "fmt/core.h"
 #include "Tools.h"
 
 CDULine::CDULine(NVGcontext*& context,
                  CDULineNumber lineNumber,
                  std::vector<std::vector<std::string>> content
-) : context(context),
-    lineNumber(lineNumber) {
+		) : context(context),
+		    lineNumber(lineNumber) {
 	this->setContent(content);
 	this->lineRenderingType = CDULineRenderingType::COMPLEX;
 }
@@ -39,59 +39,137 @@ void CDULine::setContent(std::string content) {
 }
 
 void CDULine::draw() {
-	if(this->lineRenderingType == CDULineRenderingType::COMPLEX) {
+	if (this->lineRenderingType == CDULineRenderingType::COMPLEX) {
 		this->drawComplexLine();
-	} else {
+	}
+	else {
 		this->drawBasicLine();
 	}
 }
 
 void CDULine::setContent(std::vector<std::vector<std::string>> content, bool settable) {
 	this->reset();
-	for(int i = 0; i < content.size(); i++) {
-		for(int j = 0; j < content.at(i)[0].length(); j++) {
-			const std::string character = content.at(i)[0].substr(j, 1);
-			this->basicContent.append(character);
-			this->complexContent.push_back(character);
-			if(content.at(i)[1].find("cred") != std::string::npos) {
+	for (int i = 0; i < content.size(); i++) {
+		//const auto contentPart = content.at(i)[0];
+		//const char* contentC = contentPart.c_str();
+		const char* contentC = "";
+		//const int contentCSize = strlen(contentC);
+		const int contentCSize = 1;
+		for (int j = 0; j < contentCSize;) {
+			int numberOfOctet;
+			//
+			// Checking how much octets character uses (support for UTF8)
+			//
+			if ((contentC[j] & 0x80) == 0) {
+				// character is 1 octet
+				numberOfOctet = 1;
+			}
+			else if ((contentC[j] & 0xE0) == 0xC0) {
+				// character is 2 octet
+				numberOfOctet = 2;
+			}
+			else if ((contentC[j] & 0xF0) == 0xE0) {
+				// character is 3 octet
+				numberOfOctet = 3;
+			}
+			else if ((contentC[j] & 0xF8) == 0xF0) {
+				// character is 4 octet
+				numberOfOctet = 4;
+			}
+			else {
+				numberOfOctet = 1;
+			}
+			
+			const int shiftPosition = j + numberOfOctet;
+			/*
+			const std::string character = contentPart.substr(j, numberOfOctet);
+			int r = 255;
+			int g = 255;
+			int b = 255;
+			bool internalSettable = false;
+
+			//this->getBasicContent().append(character);
+			//this->getComplexContent().push_back(character);
+			
+			if (content.at(i)[1].find("cred") != std::string::npos) {
+				r = 255;
+				g = 0;
+				b = 0;
+			}
+
+			if (settable) {
+				internalSettable = true;
+			} else {
+				if (content.at(i)[1].find("settable") != std::string::npos) {
+					internalSettable = true;
+				}
+				else {
+					internalSettable = false;
+				}
+			}
+			*/
+			//this->complexContentData.push_back(std::tuple<std::string, int, int, int, bool>(character, r, g, b, internalSettable));
+
+
+
+			/* Vector edition
+			const std::string character = contentPart.substr(j, numberOfOctet);
+			
+			this->getBasicContent().append(character);
+			this->getComplexContent().push_back(character);
+
+			if (content.at(i)[1].find("cred") != std::string::npos) {
 				this->r.push_back(255);
 				this->g.push_back(0);
 				this->b.push_back(0);
-			} else {
+			}
+			else {
 				this->r.push_back(255);
 				this->g.push_back(255);
 				this->b.push_back(255);
 			}
+			
 
-			if(settable) {
+
+
+			if (settable) {
 				this->settable.push_back(true);
-			} else {
-				if(content.at(i)[1].find("settable") != std::string::npos) {
+			}
+			else {
+				if (content.at(i)[1].find("settable") != std::string::npos) {
 					this->settable.push_back(true);
-				} else {
+				}
+				else {
 					this->settable.push_back(false);
 				}
 			}
+			*/
+		
+			j = shiftPosition;
+		
 		}
 	}
+
 	this->reverseContent();
 };
 
 void CDULine::reverseContent() {
+	/*
 	std::reverse(this->complexContent.begin(), this->complexContent.end());
 	std::reverse(this->r.begin(), this->r.end());
 	std::reverse(this->g.begin(), this->g.end());
 	std::reverse(this->b.begin(), this->b.end());
 	std::reverse(this->settable.begin(), this->settable.end());
+	*/
 }
 
 void CDULine::reset() {
 	this->basicContent.clear();
-	this->complexContent.clear();
-	this->r.clear();
-	this->g.clear();
-	this->b.clear();
-	this->settable.clear();
+	//this->complexContent.clear();
+	//this->r.clear();
+	//this->g.clear();
+	//this->b.clear();
+	//this->settable.clear();
 }
 
 float CDULine::getVerticalOffset() {
@@ -107,15 +185,32 @@ CDULineRenderingType CDULine::getLineType() const {
 	return this->lineRenderingType;
 }
 
-std::string CDULine::getBasicContent() {
+std::string& CDULine::getBasicContent() {
 	return this->basicContent;
 }
-
-std::vector<std::string> CDULine::getComplexContent() {
+/*
+std::vector<std::string>& CDULine::getComplexContent() {
 	return this->complexContent;
 }
 
+std::vector<bool>& CDULine::getSettable() {
+	return this->settable;
+}
+
+std::vector<int>& CDULine::getR() {
+	return this->r;
+}
+
+std::vector<int>& CDULine::getG() {
+	return this->g;
+}
+
+std::vector<int>& CDULine::getB() {
+	return this->b;
+}
+*/
 void CDULine::drawBasicLine() {
+	/*
 	nvgSave(this->context);
 	{
 		nvgFillColor(this->context, Tools::Colors::white);
@@ -133,14 +228,17 @@ void CDULine::drawBasicLine() {
 		nvgResetTransform(this->context);
 	}
 	nvgRestore(this->context);
+	*/
 }
 
 void CDULine::drawComplexLine() {
-	std::vector<std::string> complexContent = this->complexContent;
+	return;
+	/*
+	std::vector<std::string>& complexContent = this->getComplexContent();
 	const auto complexContentSize = complexContent.size();
-	std::vector<bool> settable = this->settable;
+	std::vector<bool>& settable = this->getSettable();
 	const auto settableSize = settable.size();
-
+	
 	nvgSave(this->context);
 	{
 		nvgFillColor(this->context, Tools::Colors::white);
@@ -156,23 +254,24 @@ void CDULine::drawComplexLine() {
 
 			int firstSettable = -1;
 			int lastSettable = -1;
-			for(int i = 0; i < settableSize; i++) {
-				if(settable.at(i) && firstSettable == -1) {
+			for (int i = 0; i < settableSize; i++) {
+				if (settable.at(i) && firstSettable == -1) {
 					firstSettable = i;
 					lastSettable = i;
-				} else if(settable.at(i) && firstSettable != -1) {
+				}
+				else if (settable.at(i) && firstSettable != -1) {
 					lastSettable = i;
 				}
 			}
 
-			if(firstSettable != -1) {
+			if (firstSettable != -1) {
 				std::string preSettableText;
 				std::string endSettableText;
-				for(int i = 0; i < firstSettable; i++) {
+				for (int i = 0; i < firstSettable; i++) {
 					preSettableText += complexContent.at(i);
 				}
 
-				for(int i = firstSettable; i <= lastSettable; i++) {
+				for (int i = firstSettable; i <= lastSettable; i++) {
 					endSettableText += complexContent.at(i);
 				}
 
@@ -182,7 +281,7 @@ void CDULine::drawComplexLine() {
 
 				nvgBeginPath(this->context);
 				{
-					for(int i = 0; i < complexContentSize; i++) {
+					for (int i = 0; i < complexContentSize; i++) {
 						const std::string character = complexContent.at(i);
 						nvgTextBounds(this->context, lastBounds[2], 0, character.c_str(), nullptr, nextBounds);
 						nvgFillColor(this->context, nvgRGB(255, 100, 100));
@@ -196,12 +295,12 @@ void CDULine::drawComplexLine() {
 
 			nvgBeginPath(this->context);
 			{
-				for(int i = 0; i < complexContentSize; i++) {
+				for (int i = 0; i < complexContentSize; i++) {
 					const std::string character = complexContent.at(i);
 					nvgTextBounds(this->context, lastBounds[0], 0, character.c_str(), nullptr, nextBounds);
-					const int r = this->r.at(i);
-					const int g = this->g.at(i);
-					const int b = this->b.at(i);
+					const int r = this->getR().at(i);
+					const int g = this->getG().at(i);
+					const int b = this->getB().at(i);
 					nvgFillColor(this->context, nvgRGB(r, g, b));
 					nvgText(this->context, lastBounds[0], 0, character.c_str(), nullptr);
 					lastBounds[0] = nextBounds[0];
@@ -216,4 +315,5 @@ void CDULine::drawComplexLine() {
 		nvgResetTransform(this->context);
 	}
 	nvgRestore(this->context);
+	*/
 }

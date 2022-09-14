@@ -27,6 +27,7 @@ class MFDCduGauge : public BaseGauge {
 	public:
 	bool preInstall() override;
 	bool postInstall(FsContext context) override;
+	bool preUpdate();
 	bool preDraw(sGaugeDrawData* data) override;
 	bool preDraw(FsContext context, sGaugeDrawData* data) override;
 	bool preKill() override;
@@ -39,6 +40,7 @@ class MFDCduGauge : public BaseGauge {
 		CDUMouseMoveResolver mouseMoveResolver = CDUMouseMoveResolver();
 		CDUMouseClickResolver mouseClickResolver = CDUMouseClickResolver();
 		CDURenderer renderer = CDURenderer(nvgContext, mouseMoveResolver, mouseClickResolver);
+
 		float devicePixelRatio = 0;
 		float windowWidth = 0;
 		float windowHeight = 0;

@@ -14,6 +14,7 @@ SCALABLE REFACTORING:
 	- [DONE] Target Airspeed
 	- [DONE] Target Altitude
 	- [DONE] VerticalSpeed indicator
+
 NOTES:
 	- nvgResetTransform resets all transforms of current context. nvgSave/nvgRestore has to be called when you need to resetTransform inside another nvgTransform
 	- Gauges hold fsContext and pointer to nvgContext then all gauge fragments holds only reference to nvgContext pointer (fsContext is unknown during gauge initialization -> nvgContext is nullptr
@@ -40,3 +41,23 @@ IDEAS:
 FIXED BUGs:
 	[FIXED] TCPs invalidate flag has to be set to true when VHF frequencies are recieved
 	[FIXED] IDs for CONTROL LVARs have to be 1,2,3 because of locked XML files
+
+DOCUMENTATION:
+	CDU:
+		RENDERERs:
+			- CDULineRenderer
+				1) Should have less performance impact
+				2) CDUPage only prepares lines
+				3) CDUPageRender pushes lines to CDULineRenderer
+				4) Lines have to be cleared pre draw
+				5) Lines container has to be cleared pre draw
+				6) Uses more memory
+				7) All lines are created during construction
+			- CDU*Line classes
+				1) Probably have bigger performance impact
+				2) CDUPageRenderer calls draw method of CDU*Line classes (could be called inside CDUPage)
+				3) CDU*Line classes are able to render self
+				4) Should use less memory
+				5) Lines container has to be cleared pre draw
+				6) Lines are created every pre draw cycle
+				7) Easier to use

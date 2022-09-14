@@ -17,6 +17,9 @@
 
 #include "MCPVSpeedGauge.h"
 #include "SimConnectData.h"
+#include "Tools.h"
+
+using Colors = Tools::Colors;
 
 bool MCPVSpeedGauge::preInstall() {
 	this->verticalSpeedValueVariable = check_named_variable("AP_VS_ACTIVE");
@@ -74,21 +77,21 @@ bool MCPVSpeedGauge::preDraw(sGaugeDrawData* data) {
 	
 	nvgBeginFrame(this->nvgContext, p_draw_data->winWidth, p_draw_data->winHeight, pxRatio);
 	{
-		nvgFillColor(this->nvgContext, nvgRGB(0, 0, 0));
+		nvgFillColor(this->nvgContext, Colors::black);
 		nvgBeginPath(this->nvgContext);
 		nvgRect(this->nvgContext, 0, 0, p_draw_data->winWidth, p_draw_data->winHeight);
 		nvgFill(this->nvgContext);
 		if (fVSpeedActive != 0) {
 			nvgFontSize(this->nvgContext, 80.0f);
 			nvgFontFace(this->nvgContext, "roboto");
-			nvgFillColor(this->nvgContext, nvgRGBA(255, 255, 255, 255));
+			nvgFillColor(this->nvgContext, Colors::white);
 
 			nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT | NVG_ALIGN_TOP);
 			nvgText(this->nvgContext, 12, -10, sVSpeedMode.c_str(), nullptr);
 
 			nvgFontSize(this->nvgContext, 85.0f);
 			nvgFontFace(this->nvgContext, "dseg");
-			nvgFillColor(this->nvgContext, nvgRGBA(255, 255, 255, 255));
+			nvgFillColor(this->nvgContext, Colors::white);
 
 			nvgTextAlign(this->nvgContext, NVG_ALIGN_RIGHT | NVG_ALIGN_TOP);
 			nvgText(this->nvgContext, 500, 12, sVSpeed.c_str(), nullptr);

@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-su9-stable\SimObjects\Airplanes\Asobo_B787_10\panel\</OutDir>
+    <OutDir>..\..\..\..\WebstormProjects\B78XH-su9-stable\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -70,7 +70,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode />
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <ExternalWarningLevel>Level1</ExternalWarningLevel>
@@ -99,7 +99,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat />
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -117,27 +117,53 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
+    <ClCompile Include="AHRU.cpp" />
+    <ClCompile Include="Alignable.cpp" />
+    <ClCompile Include="B78XHConfiguration.cpp" />
+    <ClCompile Include="CCS.cpp" />
+    <ClCompile Include="CCSGaugeCallback.cpp" />
     <ClCompile Include="CDUButton.cpp" />
     <ClCompile Include="CDUCenterLine.cpp" />
     <ClCompile Include="CDUCenterTitleLine.cpp" />
+    <ClCompile Include="CDUHeavyConfigurationPage.cpp" />
+    <ClCompile Include="CDUHeavyPage.cpp" />
+    <ClCompile Include="CDUHeavyPayloadManagerPage.cpp" />
+    <ClCompile Include="CDUHeavySimbriefConfigurationPage.cpp" />
     <ClCompile Include="CDUIdentPage.cpp" />
+    <ClCompile Include="CDUInopPage.cpp" />
+    <ClCompile Include="CDUHeavyIRSPage.cpp" />
     <ClCompile Include="CDULeftLine.cpp" />
     <ClCompile Include="CDULeftTitleLine.cpp" />
     <ClCompile Include="CDULine.cpp" />
+    <ClCompile Include="CDULineRenderer.cpp" />
+    <ClCompile Include="CDUMainKeyButton.cpp" />
     <ClCompile Include="CDUMouseClickResolver.cpp" />
     <ClCompile Include="CDUMouseCursor.cpp" />
     <ClCompile Include="CDUMouseMoveResolver.cpp" />
     <ClCompile Include="CDUMouseResolver.cpp" />
+    <ClCompile Include="CDUNavRadioPage.cpp" />
     <ClCompile Include="CDUPage.cpp" />
     <ClCompile Include="CDUPageRenderer.cpp" />
     <ClCompile Include="CDURenderer.cpp" />
     <ClCompile Include="CDURightLine.cpp" />
     <ClCompile Include="CDURightTitleLine.cpp" />
+    <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
     <ClCompile Include="Drawable.cpp" />
+    <ClCompile Include="ERS.cpp" />
+    <ClCompile Include="FlapsSpeedMarker.cpp" />
+    <ClCompile Include="IRS.cpp" />
+    <ClCompile Include="IRU.cpp" />
+    <ClCompile Include="KEvents.cpp" />
+    <ClCompile Include="LVar.cpp" />
+    <ClCompile Include="LVars.cpp" />
     <ClCompile Include="MCPVSpeedGauge.cpp" />
     <ClCompile Include="MFDCduGauge.cpp" />
     <ClCompile Include="MFDCduGaugeCallback.cpp" />
+    <ClCompile Include="MFDNDGauge.cpp" />
+    <ClCompile Include="MFDNDGaugeCallback.cpp" />
+    <ClCompile Include="NavData.cpp" />
+    <ClCompile Include="Operable.cpp" />
     <ClCompile Include="PFDAirspeedIndicator.cpp" />
     <ClCompile Include="PFDAltitudeIndicator.cpp" />
     <ClCompile Include="PFDAuxGauge.cpp" />
@@ -148,16 +174,26 @@
     <ClCompile Include="MCPAltitudeGaugeCallback.cpp" />
     <ClCompile Include="MCPVSpeedGaugeCallback.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGaugeCallback.cpp" />
+    <ClCompile Include="PFDBaroIndicator.cpp" />
+    <ClCompile Include="PFDFlightDirector.cpp" />
     <ClCompile Include="PFDFMA.cpp" />
+    <ClCompile Include="PFDILSIndicator.cpp" />
+    <ClCompile Include="PFDMinimumIndicator.cpp" />
     <ClCompile Include="PFDPfdGauge.cpp" />
     <ClCompile Include="PFDPfdGaugeCallback.cpp" />
+    <ClCompile Include="PFDRadioAltitudeIndicator.cpp" />
     <ClCompile Include="PFDTargetAirspeed.cpp" />
     <ClCompile Include="PFDTargetAltitude.cpp" />
     <ClCompile Include="PFDVerticalSpeedIndicator.cpp" />
+    <ClCompile Include="RadioNav.cpp" />
+    <ClCompile Include="SimConnectFacilityLoader.cpp" />
+    <ClCompile Include="SimpleINI\ConvertUTF.c" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
     <ClCompile Include="SimulationVariables.cpp" />
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
+    <ClCompile Include="SpeedMarker.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
     <ClCompile Include="TuningControlPanelSATCOMPage.cpp" />
@@ -171,48 +207,116 @@
     <ClCompile Include="TuningControlPanelRenderer.cpp" />
     <ClCompile Include="TuningControlPanelCABPage.cpp" />
     <ClCompile Include="TuningControlPanelXPDRPage.cpp" />
+    <ClCompile Include="Updateable.cpp" />
+    <ClCompile Include="V1SpeedMarker.cpp" />
+    <ClCompile Include="V2SpeedMarker.cpp" />
+    <ClCompile Include="VRefSpeedMarker.cpp" />
+    <ClCompile Include="VRSpeedMarker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
+    <ClInclude Include="AHRU.h" />
+    <ClInclude Include="AircraftSpeedLimit.h" />
+    <ClInclude Include="AircraftUnitsType.h" />
+    <ClInclude Include="AirportClass.h" />
+    <ClInclude Include="AirportPrivateType.h" />
+    <ClInclude Include="AirwayType.h" />
+    <ClInclude Include="Alignable.h" />
+    <ClInclude Include="AltitudeRestrictionType.h" />
+    <ClInclude Include="B78XHConfiguration.h" />
     <ClInclude Include="BaseGauge.h" />
     <ClInclude Include="BaseScratchpad.h" />
+    <ClInclude Include="CCS.h" />
     <ClInclude Include="CDUButton.h" />
     <ClInclude Include="CDUCenterLine.h" />
     <ClInclude Include="CDUCenterTitleLine.h" />
+    <ClInclude Include="CDUEvent.h" />
+    <ClInclude Include="CDUHeavyConfigurationPage.h" />
+    <ClInclude Include="CDUHeavyPage.h" />
+    <ClInclude Include="CDUHeavyPayloadManagerPage.h" />
+    <ClInclude Include="CDUHeavySimbriefConfigurationPage.h" />
     <ClInclude Include="CDUIdentPage.h" />
+    <ClInclude Include="CDUInopPage.h" />
+    <ClInclude Include="CDUHeavyIRSPage.h" />
     <ClInclude Include="CDULeftLine.h" />
     <ClInclude Include="CDULeftTitleLine.h" />
     <ClInclude Include="CDULine.h" />
     <ClInclude Include="CDULineAlign.h" />
+    <ClInclude Include="CDULinePerformance.h" />
+    <ClInclude Include="CDULineRenderer.h" />
     <ClInclude Include="CDULineRenderingType.h" />
     <ClInclude Include="CDULineType.h" />
     <ClInclude Include="CDUMouseClickResolver.h" />
     <ClInclude Include="CDUMouseCursor.h" />
     <ClInclude Include="CDUMouseMoveResolver.h" />
     <ClInclude Include="CDUMouseResolver.h" />
+    <ClInclude Include="CDUNavRadioPage.h" />
     <ClInclude Include="CDUPage.h" />
     <ClInclude Include="CDUPageRenderer.h" />
+    <ClInclude Include="CDUPageType.h" />
     <ClInclude Include="CDURenderer.h" />
     <ClInclude Include="CDURightLine.h" />
     <ClInclude Include="CDURightTitleLine.h" />
+    <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="ERS.h" />
+    <ClInclude Include="FacilitySearchType.h" />
+    <ClInclude Include="FacilityType.h" />
+    <ClInclude Include="FlapsSpeedLimit.h" />
+    <ClInclude Include="FlapsSpeedMarker.h" />
     <ClInclude Include="fmt\core.h" />
     <ClInclude Include="fmt\format-inl.h" />
     <ClInclude Include="fmt\format.h" />
+    <ClInclude Include="FPSyncStrategyType.h" />
     <ClInclude Include="GaugesInvalidateFlags.h" />
+    <ClInclude Include="GearsSpeedLimit.h" />
+    <ClInclude Include="GpsBoolean.h" />
+    <ClInclude Include="GPSTools.h" />
+    <ClInclude Include="ILSBeacon.h" />
+    <ClInclude Include="IRS.h" />
+    <ClInclude Include="IRSAlignTimeType.h" />
+    <ClInclude Include="IRSState.h" />
+    <ClInclude Include="IRSSwitchState.h" />
+    <ClInclude Include="IRU.h" />
+    <ClInclude Include="KEvents.h" />
+    <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
+    <ClInclude Include="NavBeacon.h" />
+    <ClInclude Include="NavData.h" />
+    <ClInclude Include="NavRadioEnums.h" />
+    <ClInclude Include="OnOffState.h" />
+    <ClInclude Include="Operable.h" />
+    <ClInclude Include="PFDBaroIndicator.h" />
+    <ClInclude Include="PFDFlightDirector.h" />
+    <ClInclude Include="PFDILSIndicator.h" />
+    <ClInclude Include="PFDMinimumIndicator.h" />
+    <ClInclude Include="PFDRadioAltitudeIndicator.h" />
+    <ClInclude Include="RadioNav.h" />
+    <ClInclude Include="SimbriefImportStrategyType.h" />
+    <ClInclude Include="SimConnectFacilityLoader.h" />
+    <ClInclude Include="SimConnectFacilityTypes.h" />
+    <ClInclude Include="SimpleINI\ConvertUTF.h" />
+    <ClInclude Include="SimpleINI\SimpleIni.h" />
+    <ClInclude Include="SpeedMarker.h" />
+    <ClInclude Include="LegTurnDirection.h" />
+    <ClInclude Include="LegType.h" />
+    <ClInclude Include="LVarsGetter.h" />
     <ClInclude Include="CDUMainKeyButton.h" />
     <ClInclude Include="MFDCduGauge.h" />
+    <ClInclude Include="MFDNDGauge.h" />
     <ClInclude Include="MouseResolver.h" />
+    <ClInclude Include="NdbType.h" />
     <ClInclude Include="PFDAirspeedIndicator.h" />
     <ClInclude Include="PFDAltitudeIndicator.h" />
     <ClInclude Include="PFDFMA.h" />
     <ClInclude Include="PFDTargetAirspeed.h" />
     <ClInclude Include="PFDTargetAltitude.h" />
     <ClInclude Include="PFDVerticalSpeedIndicator.h" />
+    <ClInclude Include="RunwayLightingType.h" />
+    <ClInclude Include="RunwaySurfaceType.h" />
     <ClInclude Include="SimEnums.h" />
     <ClInclude Include="Simplane.h" />
     <ClInclude Include="MCPVSpeedGauge.h" />
@@ -221,6 +325,9 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
+    <ClInclude Include="Systems.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TokenVars.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />
     <ClInclude Include="TuningControlPanelGPWSPage.h" />
@@ -239,6 +346,14 @@
     <ClInclude Include="TuningControlPanelVHFStorage.h" />
     <ClInclude Include="TuningControlPanelCABPage.h" />
     <ClInclude Include="TuningControlPanelXPDRPage.h" />
+    <ClInclude Include="Updateable.h" />
+    <ClInclude Include="V1SpeedMarker.h" />
+    <ClInclude Include="V2SpeedMarker.h" />
+    <ClInclude Include="VORBeacon.h" />
+    <ClInclude Include="VorClass.h" />
+    <ClInclude Include="VorType.h" />
+    <ClInclude Include="VRefSpeedMarker.h" />
+    <ClInclude Include="VRSpeedMarker.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty_licenses.md" />

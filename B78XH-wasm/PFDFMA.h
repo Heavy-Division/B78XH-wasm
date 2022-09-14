@@ -20,7 +20,7 @@
 
 class PFDFMA {
 	public:
-		static void draw(NVGcontext* context, float windowWidth, float windowHeight);
+		static void draw(NVGcontext* context);
 	private:
 		struct ThrottleMode {
 			static constexpr auto HOLD = "HOLD";
@@ -63,8 +63,8 @@ class PFDFMA {
 			static constexpr auto NONE = "";
 		};
 
-		static void drawBackground(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawTexts(NVGcontext* context, float windowWidth, float windowHeight);
+		static void drawBackground(NVGcontext* context);
+		static void drawTexts(NVGcontext* context);
 		static const char* resolveActiveThrustMode();
 		static const char* resolveActiveRollMode();
 		static const char* resolveArmedRollMode();

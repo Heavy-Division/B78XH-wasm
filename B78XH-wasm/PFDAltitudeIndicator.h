@@ -20,10 +20,12 @@
 
 class PFDAltitudeIndicator {
 	public:
-		static void draw(NVGcontext* context, float windowWidth, float windowHeight);
+		void draw(NVGcontext* context, double deltaTime);
 	private:
-		static void drawBackground(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawGraduations(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawCursor(NVGcontext* context, float windowWidth, float windowHeight);
-		static void drawTargetPointer(NVGcontext* context, float windowWidth, float windowHeight);
+		void drawBackground(NVGcontext* context);
+		void drawGraduations(NVGcontext* context);
+		void drawCursor(NVGcontext* context);
+		void drawTargetPointer(NVGcontext* context);
+		void drawGroundRibbon(NVGcontext* context, double deltaTime);
+		double groundReference = 0.0;
 };

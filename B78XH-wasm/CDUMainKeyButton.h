@@ -30,4 +30,6 @@ class CDUMainKeyButton: public CDUButton {
 		) : CDUButton(context, mouseMoveResolver, mouseClickResolver, x, y, 72, 48, title, title2) {
 			this->borderWidth = 3;
 		}
+
+		void draw() override;
 };

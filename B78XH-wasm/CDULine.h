@@ -37,10 +37,10 @@ enum class CDULineNumber {
 
 class CDULine: public Drawable {
 	public:
-		std::vector<int> r = {};
-		std::vector<int> g = {};
-		std::vector<int> b = {};
-		std::vector<bool> settable = {};
+		//std::vector<int> r = {};
+		//std::vector<int> g = {};
+		//std::vector<int> b = {};
+		//std::vector<bool> settable = {};
 		float x = 0;
 		float y = 0;
 
@@ -51,8 +51,12 @@ class CDULine: public Drawable {
 		float getVerticalOffset();
 		virtual void calculateHorizontalOffset();
 		CDULineRenderingType getLineType() const;
-		std::string getBasicContent();
-		std::vector<std::string> getComplexContent();
+		std::string& getBasicContent();
+		//std::vector<std::string>& getComplexContent();
+		//std::vector<bool>& getSettable();
+		//std::vector<int>& getR();
+		//std::vector<int>& getG();
+		//std::vector<int>& getB();
 
 	protected:
 		CDULine(NVGcontext*& context, CDULineNumber lineNumber = CDULineNumber::ONE, std::vector<std::vector<std::string>> content = {});
@@ -71,7 +75,9 @@ class CDULine: public Drawable {
 		NVGcontext*& context;
 
 		std::string basicContent = "";
-		std::vector<std::string> complexContent = {};
+		//std::vector<std::string> complexContent = {};
+
+		//std::vector<std::tuple<std::string, int, int, int, bool>> complexContentData;
 
 		void reverseContent();
 		virtual void drawBasicLine();

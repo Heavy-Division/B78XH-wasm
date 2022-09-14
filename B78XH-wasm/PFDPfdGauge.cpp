@@ -18,17 +18,25 @@
 #include "PFDPfdGauge.h"
 
 #include <cmath>
-#include <string>
 
+#include "GPSTools.h"
 #include "PFDVerticalSpeedIndicator.h"
 #include "PFDAirspeedIndicator.h"
 #include "PFDAltitudeIndicator.h"
+#include "PFDBaroIndicator.h"
+#include "PFDFlightDirector.h"
 #include "PFDTargetAirspeed.h"
 #include "PFDTargetAltitude.h"
 #include "PFDFMA.h"
+#include "PFDILSIndicator.h"
+#include "PFDMinimumIndicator.h"
+#include "PFDRadioAltitudeIndicator.h"
 #include "SimConnectData.h"
+#include "SimConnectFacilityLoader.h"
 #include "Simplane.h"
+#include "Tools.h"
 
+using Colors = Tools::Colors;
 
 bool PFDPfdGauge::preInstall() {
 	return true;
@@ -41,7 +49,7 @@ bool PFDPfdGauge::postInstall(FsContext context) {
 	params.edgeAntiAlias = true;
 	this->nvgContext = nvgCreateInternal(&params);
 	this->baseFont = nvgCreateFont(this->nvgContext, "roboto", "./data/Roboto-Regular.ttf");
-	this->heavyFont = nvgCreateFont(nvgContext, "heavy-fmc", "./data/Heavy787FMC.ttf");
+	this->heavyFont = nvgCreateFont(this->nvgContext, "heavy-fmc", "./data/Heavy787FMC.ttf");
 	this->registerVariables();
 	return true;
 }
@@ -55,33 +63,86 @@ bool PFDPfdGauge::preDraw(sGaugeDrawData* data) {
 	this->devicePixelRatio = static_cast<float>(data->fbWidth) / static_cast<float>(data->winWidth);
 	this->windowWidth = static_cast<float>(data->winWidth);
 	this->windowHeight = static_cast<float>(data->winHeight);
-
-
 	nvgBeginFrame(this->nvgContext, this->windowWidth, this->windowHeight, this->devicePixelRatio);
 	{
 		this->renderMainBackground();
 		this->renderAttitude();
 
-		//nvgTranslate(this->nvgContext, 100, 100);
-		//nvgScale(this->nvgContext, 2, 2);
-		//PFDVerticalSpeedIndicator::draw(this->nvgContext, this->windowWidth, this->windowHeight);
-		//nvgResetTransform(this->nvgContext);
-		//PFDAltitudeIndicator::draw(this->nvgContext, this->windowWidth, this->windowHeight);
-		//PFDFMA::draw(this->nvgContext, this->windowWidth, this->windowHeight);
-		//PFDAirspeedIndicator::draw(this->nvgContext, this->windowWidth, this->windowHeight);
+		nvgTranslate(this->nvgContext, 735, (this->windowHeight / 2 - 161) - 1);
+		{
+			PFDVerticalSpeedIndicator::draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, 155, (this->windowHeight / 2 - 465 / 2) - 1);
+		{
+			PFDAirspeedIndicator::draw(this->nvgContext, data->dt);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, 635, (this->windowHeight / 2 - 465 / 2) - 1);
+		{
+			altitudeIndicator.draw(this->nvgContext, data->dt);
+		}
+		nvgResetTransform(this->nvgContext);
 
 
-		//PFDTargetAirspeed::draw(this->nvgContext, this->windowWidth, this->windowHeight);
+		nvgTranslate(this->nvgContext, this->windowWidth / 2 - 376 / 2, 5);
+		{
+			PFDFMA::draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
 
-		//PFDTargetAltitude::draw(this->nvgContext, this->windowWidth, this->windowHeight);
+		nvgTranslate(this->nvgContext, 157, 30);
+		{
+			PFDTargetAirspeed::draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, 635, 30);
+		{
+			PFDTargetAltitude::draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, windowWidth / 2 - 50, 520);
+		{
+			radioAltitudeIndicator.draw(this->nvgContext, data->dt);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, 635, 570);
+		{
+			PFDBaroIndicator::draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, windowWidth / 2, windowHeight / 2);
+		{
+			this->flightDirector.draw(this->nvgContext, data->dt);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, windowWidth / 2, windowHeight / 2);
+		{
+			this->ilsIndicator.draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+
+		nvgTranslate(this->nvgContext, 0, 0);
+		{
+			PFDMinimumIndicator::draw(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
 	}
 	nvgEndFrame(nvgContext);
+	
 	return true;
 }
 
 
 void PFDPfdGauge::renderMainBackground() {
-	nvgFillColor(nvgContext, nvgRGB(0, 0, 0));
+	nvgFillColor(nvgContext, Colors::black);
 	nvgBeginPath(nvgContext);
 	nvgRect(nvgContext, 0, 0, this->windowWidth, this->windowHeight);
 	nvgFill(nvgContext);
@@ -89,11 +150,27 @@ void PFDPfdGauge::renderMainBackground() {
 }
 
 void PFDPfdGauge::renderAttitude() {
+	/*
+	 * Pitch graduation:
+	 *		is linear: true
+	 *		+ resolution in degrees: +45
+	 *		- resolution in degrees: -45
+	 *		full resolution in degrees: 90
+	 *
+	 *	Ingame PFD values:
+	 *		full resolution in pixels (height): 622
+	 *		half resolution in pixels (height): 311
+	 *		pixels per degree: 6.91111111111
+	 *		size of attitude: 1057.3121
+	 *		middle of size = 528.65605
+	 */
+
+
 	// top  - nvgRGB(4,113,203)
 	// bottom - nvgRGB(112,78,5)
 
 	const float size = sqrt(this->windowWidth * this->windowWidth + this->windowHeight * windowHeight);
-	const float h = size * 0.5f * (1.0f - sin(SimConnectData::Aircraft::state.pitch * M_PI / 180.0f));
+	const float h = size * 0.5f + -(6.91111111111 * SimConnectData::Aircraft::state.pitch);
 
 
 	nvgTranslate(this->nvgContext, this->windowWidth * 0.5f, this->windowHeight * 0.5f);
@@ -122,99 +199,105 @@ void PFDPfdGauge::renderAttitude() {
 }
 
 void PFDPfdGauge::renderPitch() {
-	const float size = sqrt(this->windowWidth * this->windowWidth + this->windowHeight * windowHeight) * 1.1f;
-	const float h = size * 0.5f * (1.0f - sin(SimConnectData::Aircraft::state.pitch * M_PI / 180.0f));
+	const float size = sqrt(this->windowWidth * this->windowWidth + this->windowHeight * windowHeight);
+	//const float h = size * 0.5f * (1.0f - sin(SimConnectData::Aircraft::state.pitch / 2 * M_PI / 180.0f));
+	const float h = size * 0.5f + -(6.91111111111 * SimConnectData::Aircraft::state.pitch);
 	const double center = -(size * 0.5f) + h - 1.5;
-	//const double pitchFactor = 7.234318872616745;
-	const double pitchFactor = 9.9157225753;
+	const double pitchFactor = 6.91111111111;
 	nvgTranslate(this->nvgContext, this->windowWidth * 0.5f, this->windowHeight * 0.5f);
-	nvgRotate(this->nvgContext, SimConnectData::Aircraft::state.bank * M_PI / 180.0f);
-	nvgScissor(this->nvgContext, -85, -130, 170, 315);
-	nvgFillColor(this->nvgContext, nvgRGB(255, 255, 255));
-	nvgBeginPath(this->nvgContext);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * -2.5 - 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -30, center + pitchFactor * -5 - 3 / 2, 60, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * -7.5 - 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -10 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * -12.5 - 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -30, center + pitchFactor * -15 - 3 / 2, 60, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * -17.5 - 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -20 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * -22.5 - 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -30, center + pitchFactor * -25 - 3 / 2, 60, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -30 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -40 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -50 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -60 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -70 - 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * -80 - 3 / 2, 120, 3);
+	{
+		nvgRotate(this->nvgContext, SimConnectData::Aircraft::state.bank * M_PI / 180.0f);
+		nvgScissor(this->nvgContext, -85, -130, 170, 280);
+		{
+			nvgFillColor(this->nvgContext, Colors::white);
+			nvgBeginPath(this->nvgContext);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * -2.5 - 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -30, center + pitchFactor * -5 - 3 / 2, 60, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * -7.5 - 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -10 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * -12.5 - 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -30, center + pitchFactor * -15 - 3 / 2, 60, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * -17.5 - 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -20 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * -22.5 - 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -30, center + pitchFactor * -25 - 3 / 2, 60, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -30 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -40 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -50 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -60 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -70 - 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * -80 - 3 / 2, 120, 3);
 
-	nvgRect(this->nvgContext, -20, center + pitchFactor * 2.5 + 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -30, center + pitchFactor * 5 + 3 / 2, 60, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * 7.5 + 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 10 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * 12.5 + 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -30, center + pitchFactor * 15 + 3 / 2, 60, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * 17.5 + 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 20 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -20, center + pitchFactor * 22.5 + 2 / 2, 40, 2);
-	nvgRect(this->nvgContext, -30, center + pitchFactor * 25 + 3 / 2, 60, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 30 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 40 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 50 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 60 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 70 + 3 / 2, 120, 3);
-	nvgRect(this->nvgContext, -60, center + pitchFactor * 80 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * 2.5 + 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -30, center + pitchFactor * 5 + 3 / 2, 60, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * 7.5 + 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 10 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * 12.5 + 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -30, center + pitchFactor * 15 + 3 / 2, 60, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * 17.5 + 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 20 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -20, center + pitchFactor * 22.5 + 2 / 2, 40, 2);
+			nvgRect(this->nvgContext, -30, center + pitchFactor * 25 + 3 / 2, 60, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 30 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 40 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 50 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 60 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 70 + 3 / 2, 120, 3);
+			nvgRect(this->nvgContext, -60, center + pitchFactor * 80 + 3 / 2, 120, 3);
 
-	nvgFontSize(this->nvgContext, 20.0f);
-	nvgTextAlign(this->nvgContext, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 10 + 1.5, "10", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -10 - 1.5, "10", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 20 + 1.5, "20", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -20 - 1.5, "20", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 30 + 1.5, "30", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -30 - 1.5, "30", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 40 + 1.5, "40", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -40 - 1.5, "40", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 50 + 1.5, "50", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -50 - 1.5, "50", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 60 + 1.5, "60", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -60 - 1.5, "60", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 70 + 1.5, "70", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -70 - 1.5, "70", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * 80 + 1.5, "80", nullptr);
-	nvgText(this->nvgContext, -65, center + pitchFactor * -80 - 1.5, "80", nullptr);
+			nvgFontSize(this->nvgContext, 20.0f);
+			nvgTextAlign(this->nvgContext, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 10 + 1.5, "10", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -10 - 1.5, "10", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 20 + 1.5, "20", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -20 - 1.5, "20", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 30 + 1.5, "30", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -30 - 1.5, "30", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 40 + 1.5, "40", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -40 - 1.5, "40", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 50 + 1.5, "50", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -50 - 1.5, "50", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 60 + 1.5, "60", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -60 - 1.5, "60", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 70 + 1.5, "70", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -70 - 1.5, "70", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * 80 + 1.5, "80", nullptr);
+			nvgText(this->nvgContext, -65, center + pitchFactor * -80 - 1.5, "80", nullptr);
 
-	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 10 + 1.5, "10", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -10 - 1.5, "10", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 20 + 1.5, "20", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -20 - 1.5, "20", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 30 + 1.5, "30", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -30 - 1.5, "30", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 40 + 1.5, "40", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -40 - 1.5, "40", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 50 + 1.5, "50", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -50 - 1.5, "50", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 60 + 1.5, "60", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -60 - 1.5, "60", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 70 + 1.5, "70", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -70 - 1.5, "70", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * 80 + 1.5, "80", nullptr);
-	nvgText(this->nvgContext, 65, center + pitchFactor * -80 - 1.5, "80", nullptr);
+			nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 10 + 1.5, "10", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -10 - 1.5, "10", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 20 + 1.5, "20", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -20 - 1.5, "20", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 30 + 1.5, "30", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -30 - 1.5, "30", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 40 + 1.5, "40", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -40 - 1.5, "40", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 50 + 1.5, "50", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -50 - 1.5, "50", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 60 + 1.5, "60", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -60 - 1.5, "60", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 70 + 1.5, "70", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -70 - 1.5, "70", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * 80 + 1.5, "80", nullptr);
+			nvgText(this->nvgContext, 65, center + pitchFactor * -80 - 1.5, "80", nullptr);
 
 
-	nvgClosePath(this->nvgContext);
-	nvgFill(this->nvgContext);
-	nvgResetScissor(this->nvgContext);
+			nvgClosePath(this->nvgContext);
+			nvgFill(this->nvgContext);
+		}
+
+		nvgResetScissor(this->nvgContext);
+	}
+
 	nvgResetTransform(this->nvgContext);
 }
 
 void PFDPfdGauge::renderTriangle() {
 	nvgTranslate(this->nvgContext, this->windowWidth * 0.5f, this->windowHeight * 0.5f);
-	nvgStrokeColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgStrokeColor(this->nvgContext, Colors::white);
 	nvgStrokeWidth(this->nvgContext, 1.0f);
-	nvgFillColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgFillColor(this->nvgContext, Colors::white);
 	nvgBeginPath(this->nvgContext);
 	nvgMoveTo(this->nvgContext, 0, -160);
 	nvgLineTo(this->nvgContext, -6, -169);
@@ -241,7 +324,7 @@ void PFDPfdGauge::renderDashes() {
 void PFDPfdGauge::renderDash(int angle, int length) {
 	nvgTranslate(this->nvgContext, this->windowWidth * 0.5f, this->windowHeight * 0.5f);
 	nvgRotate(this->nvgContext, angle * NVG_PI / 180);
-	nvgStrokeColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgStrokeColor(this->nvgContext, Colors::white);
 	nvgStrokeWidth(this->nvgContext, 3.0f);
 
 	nvgBeginPath(this->nvgContext);
@@ -253,9 +336,9 @@ void PFDPfdGauge::renderDash(int angle, int length) {
 
 void PFDPfdGauge::renderCursor() {
 	nvgTranslate(this->nvgContext, this->windowWidth * 0.5f, this->windowHeight * 0.5f);
-	nvgStrokeColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgStrokeColor(this->nvgContext, Colors::white);
 	nvgStrokeWidth(this->nvgContext, 2.0f);
-	nvgFillColor(this->nvgContext, nvgRGB(0, 0, 0));
+	nvgFillColor(this->nvgContext, Colors::black);
 
 	/*
 	 * Center
@@ -314,9 +397,9 @@ void PFDPfdGauge::renderCursor() {
 void PFDPfdGauge::renderSlipSkid() {
 	const double position = aircraft_varget(this->slipSkidVariableId, this->slipSkidUnitsId, 0);
 
-	nvgStrokeColor(this->nvgContext, nvgRGB(255, 255, 255));
+	nvgStrokeColor(this->nvgContext, Colors::white);
 	nvgStrokeWidth(this->nvgContext, 2.0f);
-	nvgFillColor(this->nvgContext, nvgRGB(0, 0, 0));
+	nvgFillColor(this->nvgContext, Colors::black);
 
 
 	/*

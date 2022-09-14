@@ -71,24 +71,30 @@ void CDUButton::calculateBounds() {
 	this->bounds[3] = this->y + this->height;
 }
 
-void CDUButton::drawTitle() {
+void CDUButton::drawTitle(NVGcolor color) {
 	if(this->title != nullptr && this->title2 == nullptr) {
-		const double textX = this->x + (this->width / 2);
+		const double textX = (this->titleAlign == NVG_ALIGN_CENTER ? this->x + (this->width / 2) : this->x + 10);
 		const double textY = this->y + (this->height / 2);
-		nvgTextAlign(this->context, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-		nvgFillColor(this->context, Tools::Colors::white);
+		nvgTextAlign(this->context, this->titleAlign | NVG_ALIGN_MIDDLE);
+		nvgFillColor(this->context, color);
 		nvgBeginPath(this->context);
 		{
 			nvgText(this->context, textX, textY, this->title, nullptr);
 		}
 		nvgClosePath(this->context);
 		nvgFill(this->context);
-	} else if(this->title != nullptr && this->title2 != nullptr) {
-		const double textX = this->x + (this->width / 2);
+	}
+	else if (this->title != nullptr && this->title2 != nullptr) {
+
+		float titleBounds[4];
+
+		nvgTextBounds(context, 0 , 0, this->title, nullptr, titleBounds);
+
+		const double textX = (this->titleAlign == NVG_ALIGN_CENTER ? this->x + (this->width / 2) : this->x + 10);
 		const double textY = this->y + (this->height / 2) - 7;
 		const double text2Y = this->y + (this->height / 2) + 7;
-		nvgTextAlign(this->context, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-		nvgFillColor(this->context, Tools::Colors::white);
+		nvgTextAlign(this->context, this->titleAlign | NVG_ALIGN_MIDDLE);
+		nvgFillColor(this->context, color);
 		nvgBeginPath(this->context);
 		{
 			nvgText(this->context, textX, textY, this->title, nullptr);

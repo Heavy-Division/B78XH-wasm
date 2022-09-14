@@ -17,24 +17,26 @@
 
 #include "PFDFMA.h"
 #include "Simplane.h"
+#include "Tools.h"
 
-void PFDFMA::draw(NVGcontext* context, float windowWidth, float windowHeight) {
-	drawBackground(context, windowWidth, windowHeight);
-	drawTexts(context, windowWidth, windowHeight);
+using Colors = Tools::Colors;
+
+void PFDFMA::draw(NVGcontext* context) {
+	drawBackground(context);
+	drawTexts(context);
 }
 
-void PFDFMA::drawBackground(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDFMA::drawBackground(NVGcontext* context) {
 	nvgFillColor(context, nvgRGBA(0, 0, 0, 100));
 
 	nvgBeginPath(context);
 	{
-		//nvgRect(context, -188, -21, 376, 42);
 		nvgRect(context, 0, 0, 376, 42);
 	}
 	nvgFill(context);
 
 	constexpr double separatorHorizontalOffset = 376.0 / 3 - 1.5;
-	nvgFillColor(context, nvgRGB(255, 255, 255));
+	nvgFillColor(context, Colors::white);
 	nvgBeginPath(context);
 	{
 		nvgRect(context,  separatorHorizontalOffset, 0, 3, 42);
@@ -43,10 +45,10 @@ void PFDFMA::drawBackground(NVGcontext* context, float windowWidth, float window
 	nvgFill(context);
 }
 
-void PFDFMA::drawTexts(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDFMA::drawTexts(NVGcontext* context) {
 	constexpr double textPositionFactor = 376.0 / 6;
 
-	nvgFillColor(context, nvgRGB(0, 255, 0));
+	nvgFillColor(context, Colors::green);
 	nvgTextAlign(context, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
 	nvgFontFace(context, "heavy-fmc");
 	nvgFontSize(context, 24.0f);
@@ -59,7 +61,7 @@ void PFDFMA::drawTexts(NVGcontext* context, float windowWidth, float windowHeigh
 	}
 	nvgFill(context);
 
-	nvgFillColor(context, nvgRGB(255, 255, 255));
+	nvgFillColor(context, Colors::white);
 	nvgFontSize(context, 18.0f);
 	nvgBeginPath(context);
 	{
@@ -78,7 +80,7 @@ const char* PFDFMA::resolveActiveThrustMode() {
 		return ThrottleMode::NONE;
 	}
 
-	if(!LVars::isSpeedActive()) {
+	if(!LVarsGetter::isSpeedActive()) {
 		return ThrottleMode::NONE;
 	}
 
@@ -106,11 +108,11 @@ const char* PFDFMA::resolveActiveThrustMode() {
 		return ThrottleMode::HOLD;
 	}
 
-	if(LVars::isFLCHActive()) {
+	if(LVarsGetter::isFLCHActive()) {
 		return ThrottleMode::THR_REF;
 	}
 
-	if(LVars::isSpeedActive()) {
+	if(LVarsGetter::isSpeedActive()) {
 		return ThrottleMode::SPD;
 	}
 
@@ -118,7 +120,7 @@ const char* PFDFMA::resolveActiveThrustMode() {
 		return ThrottleMode::THR_REF;
 	}
 
-	if(LVars::isSpeedInterventionActive()) {
+	if(LVarsGetter::isSpeedInterventionActive()) {
 		return ThrottleMode::SPD;
 	}
 
@@ -137,37 +139,44 @@ const char* PFDFMA::resolveActiveRollMode() {
 	const bool approachActive = Autopilot::approach::approachActive();
 
 	if(approachHold && approachActive) {
-		return (Autopilot::approach::approachType() == 10 ? RollMode::FAC : RollMode::LOC);
+		return (Autopilot::approach::approachType() == SimApproachType::APPROACH_TYPE_RNAV ? RollMode::FAC : RollMode::LOC);
 	}
+
+	/*
+	 * Missing ROLLOUT
+	 */
 
 	if(static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) == SimThrottleMode::TOGA) {
 		return RollMode::TOGA;
 	}
 
-	if(LVars::isLNAVActive()) {
+	if(LVarsGetter::isLNAVActive()) {
 		return RollMode::LNAV;
 	}
 
 	if(Autopilot::state::isMasterActive() || Autopilot::flightDirector::isFlightDirector1Active() ||
 		Autopilot::flightDirector::isFlightDirector2Active()) {
-		if(LVars::isLNAVArmed() && static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) ==
+		if(LVarsGetter::isLNAVArmed() && static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) ==
 			SimThrottleMode::HOLD) {
 			return RollMode::TOGA;
 		}
 	}
 
 	if(Autopilot::heading::headingLock()) {
-		return (LVars::isHeadingHoldActive() ? RollMode::HDG_HOLD : RollMode::HDG_SEL);
+		return (LVarsGetter::isHeadingHoldActive() ? RollMode::HDG_HOLD : RollMode::HDG_SEL);
 	}
 
 	if(Autopilot::state::isMasterActive()) {
 		if(Autopilot::heading::headingLock()) {
-			if(LVars::isHeadingHoldActive()) {
-				return (LVars::isTRKModeActive() ? RollMode::TRK_HOLD : RollMode::HDG_HOLD);
-			} else {
-				return (LVars::isTRKModeActive() ? RollMode::TRK_SEL : RollMode::HDG_SEL);
+			if(LVarsGetter::isHeadingHoldActive()) {
+				return (LVarsGetter::isTRKModeActive() ? RollMode::TRK_HOLD : RollMode::HDG_HOLD);
 			}
+			return (LVarsGetter::isTRKModeActive() ? RollMode::TRK_SEL : RollMode::HDG_SEL);
 		}
+	}
+
+	if(Autopilot::flightDirector::isFlightDirector1Active() && Simplane::aircraft::state::altitudeAboveGround() < 10) {
+		return RollMode::TOGA;
 	}
 
 	return RollMode::NONE;
@@ -177,12 +186,16 @@ const char* PFDFMA::resolveArmedRollMode() {
 	namespace Autopilot = Simplane::autopilot;
 
 	if(Autopilot::approach::approachHold() && Autopilot::approach::approachArm()) {
-		return (Autopilot::approach::approachType() == 10 ? RollMode::FAC : RollMode::LOC);
+		return (Autopilot::approach::approachType() == SimApproachType::APPROACH_TYPE_RNAV ? RollMode::FAC : RollMode::LOC);
 	}
 
-	if(LVars::isLNAVArmed() && !LVars::isLNAVActive()) {
+	if(LVarsGetter::isLNAVArmed() && !LVarsGetter::isLNAVActive()) {
 		return RollMode::LNAV;
 	}
+
+	/*
+	 * Missing Rollout
+	 */
 
 	return RollMode::NONE;
 }
@@ -197,21 +210,17 @@ const char* PFDFMA::resolveActivePitchMode() {
 	const bool glideSlopeActive = Autopilot::glideSlope::glideSlopeActive();
 
 	if(approachHold && approachActive && glideSlopeHold && glideSlopeActive) {
-		if(Autopilot::approach::approachType() == 10) {
-			return PitchMode::GP;
-		} else {
-			return PitchMode::GS;
-		}
+		return (Autopilot::approach::approachType() == SimApproachType::APPROACH_TYPE_RNAV ? PitchMode::GP : PitchMode::GS);
 	}
 
 	if(static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) == SimThrottleMode::TOGA) {
 		return PitchMode::TOGA;
 	}
 
-	if(LVars::isVNAVActive()) {
+	if(LVarsGetter::isVNAVActive()) {
 		if(Autopilot::altitude::altitudeLock()) {
 			const double indicatedAltitude = Aircraft::state::indicatedAltitude();
-			const double cruiseAltitude = LVars::airlinerCruiseAltitude();
+			const double cruiseAltitude = LVarsGetter::airlinerCruiseAltitude();
 			if(indicatedAltitude > cruiseAltitude + 100) {
 				return PitchMode::VNAV_ALT;
 			}
@@ -221,30 +230,34 @@ const char* PFDFMA::resolveActivePitchMode() {
 	}
 
 	if(static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) == SimThrottleMode::HOLD &&
-		LVars::isVNAVArmed()) {
+		LVarsGetter::isVNAVArmed()) {
 		return PitchMode::TOGA;
 	}
 
-	if(LVars::isFLCHActive()) {
+	if(LVarsGetter::isFLCHActive()) {
 		return PitchMode::FLCH_SPD;
 	}
 
-	if(LVars::isAltitudeHoldActive()) {
+	if(LVarsGetter::isAltitudeHoldActive()) {
 		return PitchMode::ALT;
 	}
 
+	/**
+	 * Missing FLARE
+	 */
+
 	if(Autopilot::state::isMasterActive()) {
-		if(Autopilot::altitude::altitudeLock()) {
-			return PitchMode::ALT;
+		if(Autopilot::verticalSpeed::verticalSpeedHold()) {
+			return (LVarsGetter::isFPAModeActive() ? PitchMode::FPA : PitchMode::VS);
 		}
 
-		if(Autopilot::verticalSpeed::verticaSpeedlHold()) {
-			if(LVars::isFPAModeActive()) {
-				return PitchMode::FPA;
-			} else {
-				return PitchMode::VS;
-			}
+		if (Autopilot::altitude::altitudeLock()) {
+			return PitchMode::ALT;
 		}
+	}
+
+	if(Autopilot::flightDirector::isFlightDirector1Active() && Aircraft::state::altitudeAboveGround() < 10) {
+		return PitchMode::TOGA;
 	}
 
 	return PitchMode::NONE;
@@ -259,14 +272,14 @@ const char* PFDFMA::resolveArmedPitchMode() {
 	const bool glideSlopeActive = Autopilot::glideSlope::glideSlopeActive();
 
 	if(approachHold && glideSlopeHold && !(approachActive && glideSlopeActive)) {
-		if(Autopilot::approach::approachType() == 10) {
+		if(Autopilot::approach::approachType() == SimApproachType::APPROACH_TYPE_RNAV) {
 			return PitchMode::GP;
 		} else {
 			return PitchMode::GS;
 		}
 	}
 
-	if(LVars::isVNAVArmed() && !LVars::isVNAVActive()) {
+	if(LVarsGetter::isVNAVArmed() && !LVarsGetter::isVNAVActive()) {
 		return PitchMode::VNAV;
 	}
 

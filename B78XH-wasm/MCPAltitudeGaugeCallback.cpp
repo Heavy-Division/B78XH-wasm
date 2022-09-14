@@ -29,15 +29,21 @@
 #endif
 
 extern MCPAltitudeGauge g_MCPAltitudeGauge;
+
+
 /*
 const auto workAround = "B78XH_WASM_TRANSFER_DATA";
 const auto workAroundVariable = check_named_variable(workAround);
 const auto position = "B78XH_WASM_REQUEST_DATA_POSITION";
 const auto positionVariable = check_named_variable(position);
 std::string transfer;
+
 const auto displayedAltitudeLockValueUnit = get_units_enum("STRING");
 const auto displayedAltitudeLockValue = get_aircraft_var_enum("DROPPABLE OBJECTS TYPE");
 */
+
+
+
 // ------------------------
 // Callbacks
 extern "C" {

@@ -21,6 +21,7 @@
 
 #include "CDUMouseMoveResolver.h"
 #include "MFDCduGauge.h"
+#include "fmt/color.h"
 
 
 #ifdef _MSC_VER
@@ -35,7 +36,7 @@ MFDCduGauge g_CDUGauge;
 // Callbacks
 extern "C" {
 	MSFS_CALLBACK bool mfd_cdu_gauge_callback(FsContext ctx, int service_id, void* pData) {
-		switch(service_id) {
+		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
 				return g_CDUGauge.preInstall();
 			}
@@ -44,6 +45,10 @@ extern "C" {
 				return g_CDUGauge.postInstall(ctx);
 			}
 			break;
+			case PANEL_SERVICE_PRE_UPDATE: {
+				return g_CDUGauge.preUpdate();
+			}
+										 break;
 			case PANEL_SERVICE_PRE_DRAW: {
 				return g_CDUGauge.preDraw(static_cast<sGaugeDrawData*>(pData));
 			}
@@ -57,70 +62,18 @@ extern "C" {
 	}
 
 	MSFS_CALLBACK void mfd_cdu_mouse_callback(float fX, float fY, unsigned int iFlags) {
-		switch(iFlags) {
+		switch (iFlags) {
 			case MOUSE_MOVE: {
 				g_CDUGauge.getMouseMoveResolver().setPosition(fX, fY);
-			}
-			break;
-			case MOUSE_LEFTDRAG: {
-			}
-			break;
-			case MOUSE_RIGHTDRAG: {
-
-			}
-			break;
-			case MOUSE_MIDDLEDRAG: {
-
 			}
 			break;
 			case MOUSE_LEFTRELEASE: {
 				g_CDUGauge.getMouseClickResolver().setPosition(fX, fY);
 			}
 			break;
-			case MOUSE_RIGHTRELEASE: {
-
-			}
-			break;
-			case MOUSE_MIDDLERELEASE: {
-
-			}
-			break;
-			case MOUSE_LEFTSINGLE: {
-
-			}
-			break;
-			case MOUSE_RIGHTSINGLE: {
-
-			}
-			break;
-			case MOUSE_MIDDLESINGLE: {
-
-			}
-			break;
-			case MOUSE_LEFTDOUBLE: {
-
-			}
-			break;
-			case MOUSE_RIGHTDOUBLE: {
-
-			}
-			break;
-			case MOUSE_MIDDLEDOUBLE: {
-
-			}
-			break;
-			case MOUSE_WHEEL_UP: {
-
-			}
-			break;
-			case MOUSE_WHEEL_DOWN: {
-
-			}
-			break;
 			default:
 				break;
 		}
-
 		/*
 		 *
 		 *  MOUSE_MOVE: the mouse cursor has moved.

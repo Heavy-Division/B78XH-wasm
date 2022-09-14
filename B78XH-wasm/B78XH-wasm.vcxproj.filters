@@ -164,6 +164,127 @@
     <ClCompile Include="CDUPage.cpp">
       <Filter>Source Files\Gauges\CDU\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="MFDNDGauge.cpp">
+      <Filter>Source Files\Gauges\ND</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDNDGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="V1SpeedMarker.cpp">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClCompile>
+    <ClCompile Include="V2SpeedMarker.cpp">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClCompile>
+    <ClCompile Include="VRefSpeedMarker.cpp">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedMarker.cpp">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClCompile>
+    <ClCompile Include="VRSpeedMarker.cpp">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClCompile>
+    <ClCompile Include="FlapsSpeedMarker.cpp">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDRadioAltitudeIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files\Tools\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDBaroIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDFlightDirector.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDILSIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="RadioNav.cpp">
+      <Filter>Source Files\Systems\RadioNav</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDMinimumIndicator.cpp">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="SimConnectFacilityLoader.cpp">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClCompile>
+    <ClCompile Include="NavData.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUInopPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMainKeyButton.cpp">
+      <Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUHeavyPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURoutePage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULineRenderer.cpp">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUHeavyPayloadManagerPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUHeavyIRSPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUHeavyConfigurationPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleINI\ConvertUTF.c" />
+    <ClCompile Include="B78XHConfiguration.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUHeavySimbriefConfigurationPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUNavRadioPage.cpp">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="KEvents.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="IRU.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRU</Filter>
+    </ClCompile>
+    <ClCompile Include="AHRU.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\AHRU</Filter>
+    </ClCompile>
+    <ClCompile Include="IRS.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRS</Filter>
+    </ClCompile>
+    <ClCompile Include="ERS.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\ERS</Filter>
+    </ClCompile>
+    <ClCompile Include="Alignable.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Operable.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="CCS.cpp">
+      <Filter>Source Files\Systems\CCS</Filter>
+    </ClCompile>
+    <ClCompile Include="CCSGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="LVar.cpp">
+      <Filter>Source Files\Tools\LVars</Filter>
+    </ClCompile>
+    <ClCompile Include="LVars.cpp">
+      <Filter>Source Files\Tools\LVars</Filter>
+    </ClCompile>
+    <ClCompile Include="Updateable.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -265,7 +386,7 @@
     <ClInclude Include="PFDFMA.h">
       <Filter>Source Files\Gauges\PFD</Filter>
     </ClInclude>
-    <ClInclude Include="LVars.h">
+    <ClInclude Include="LVarsGetter.h">
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="SimEnums.h">
@@ -358,6 +479,224 @@
     <ClInclude Include="CDUCenterTitleLine.h">
       <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="MFDNDGauge.h">
+      <Filter>Source Files\Gauges\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="AltitudeRestrictionType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="LegType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="RunwayLightingType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="RunwaySurfaceType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="VorType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="NdbType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="AirwayType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="LegTurnDirection.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="AirportPrivateType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="GpsBoolean.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="VorClass.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="FacilityType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="FacilitySearchType.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="AirportClass.h">
+      <Filter>Source Files\Tools\FlightPlan\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="AircraftSpeedLimit.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="FlapsSpeedLimit.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="GearsSpeedLimit.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedMarker.h">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClInclude>
+    <ClInclude Include="V1SpeedMarker.h">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClInclude>
+    <ClInclude Include="V2SpeedMarker.h">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClInclude>
+    <ClInclude Include="VRSpeedMarker.h">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClInclude>
+    <ClInclude Include="VRefSpeedMarker.h">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClInclude>
+    <ClInclude Include="FlapsSpeedMarker.h">
+      <Filter>Source Files\Gauges\PFD\Markers</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDRadioAltitudeIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Source Files\Tools\Timers</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDBaroIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDFlightDirector.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDILSIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenVars.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioNav.h">
+      <Filter>Source Files\Systems\RadioNav</Filter>
+    </ClInclude>
+    <ClInclude Include="NavRadioEnums.h">
+      <Filter>Source Files\Systems\RadioNav</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems.h">
+      <Filter>Source Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="NavBeacon.h">
+      <Filter>Source Files\Equipment\WorldEquipment\Beacons</Filter>
+    </ClInclude>
+    <ClInclude Include="VORBeacon.h">
+      <Filter>Source Files\Equipment\WorldEquipment\Beacons</Filter>
+    </ClInclude>
+    <ClInclude Include="ILSBeacon.h">
+      <Filter>Source Files\Equipment\WorldEquipment\Beacons</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDMinimumIndicator.h">
+      <Filter>Source Files\Gauges\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="GPSTools.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectFacilityLoader.h">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectFacilityTypes.h">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClInclude>
+    <ClInclude Include="NavData.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUInopPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPageType.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUHeavyPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURoutePage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineRenderer.h">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULinePerformance.h">
+      <Filter>Source Files\Gauges\CDU\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUEvent.h">
+      <Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUHeavyPayloadManagerPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUHeavyIRSPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUHeavyConfigurationPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="IRSState.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="IRSSwitchState.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleINI\SimpleIni.h" />
+    <ClInclude Include="SimpleINI\ConvertUTF.h" />
+    <ClInclude Include="IRSAlignTimeType.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="B78XHConfiguration.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="AircraftUnitsType.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSyncStrategyType.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="SimbriefImportStrategyType.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="OnOffState.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUHeavySimbriefConfigurationPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUNavRadioPage.h">
+      <Filter>Source Files\Gauges\CDU\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="KEvents.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="IRU.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRU</Filter>
+    </ClInclude>
+    <ClInclude Include="AHRU.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\AHRU</Filter>
+    </ClInclude>
+    <ClInclude Include="IRS.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRS</Filter>
+    </ClInclude>
+    <ClInclude Include="ERS.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\ERS</Filter>
+    </ClInclude>
+    <ClInclude Include="Alignable.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Operable.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="CCS.h">
+      <Filter>Source Files\Systems\CCS</Filter>
+    </ClInclude>
+    <ClInclude Include="LVar.h">
+      <Filter>Source Files\Tools\LVars</Filter>
+    </ClInclude>
+    <ClInclude Include="LVars.h">
+      <Filter>Source Files\Tools\LVars</Filter>
+    </ClInclude>
+    <ClInclude Include="Updateable.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -431,6 +770,114 @@
     </Filter>
     <Filter Include="Source Files\Abstract">
       <UniqueIdentifier>{d1823fc9-8db6-4f89-b48d-1a2dd5f64e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\ND">
+      <UniqueIdentifier>{ecf73bdb-71b9-44ac-ab86-c8b1131618a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\FlightPlan">
+      <UniqueIdentifier>{bc6fc5b9-f087-46b4-a1e4-76120ee32b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\FlightPlan\enums">
+      <UniqueIdentifier>{b798bc6c-ffcb-4456-b29d-298313b8d823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\staticdata">
+      <UniqueIdentifier>{0f16d3ea-0845-4186-b4ea-8f45742da68f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gauges\PFD\Markers">
+      <UniqueIdentifier>{2957feaa-0f3a-467a-bf82-764adf8132a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\Timers">
+      <UniqueIdentifier>{ef11e9f9-21a8-4c9e-b043-41662aefcfdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems">
+      <UniqueIdentifier>{a5c70a5f-d2e1-40c0-882a-87129cbc0c12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems\RadioNav">
+      <UniqueIdentifier>{c75093f1-2811-40da-87d9-0e19a1b555fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment">
+      <UniqueIdentifier>{e30b3990-a6ff-462c-bbfb-5078ab173509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment">
+      <UniqueIdentifier>{556103ba-c0a5-4e30-89a1-ee8f6792e352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation">
+      <UniqueIdentifier>{90ddadba-754d-461c-b32b-47fef278f862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\IRS">
+      <UniqueIdentifier>{16a6394a-5077-44d0-8400-7f944500e5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\ERS">
+      <UniqueIdentifier>{2ebf7485-1b23-41e3-b3ee-f655ad6416a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\IRU">
+      <UniqueIdentifier>{442ae78e-9937-4f0d-bdcd-757b64ee094d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\AHRU">
+      <UniqueIdentifier>{dbd78091-90ff-4d34-90d8-dfe54cb67237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Miscellaneous">
+      <UniqueIdentifier>{9642f6f9-c77a-4f7c-8838-361f40f501c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Electrical Power">
+      <UniqueIdentifier>{4eebea1e-8426-4fe4-88b9-df74c32abd0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Communication">
+      <UniqueIdentifier>{772a7d8b-019c-4b34-90af-2656dd1a7156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Autoflight">
+      <UniqueIdentifier>{4a63ef68-47fb-4120-8a5c-a5070a6a236f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Fuel">
+      <UniqueIdentifier>{38c7a01c-41d1-4ec7-8dbf-69a899bdab1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Auxiliary Power Unit">
+      <UniqueIdentifier>{b95759a1-b8eb-4460-8c40-fcfbad800163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Hydraulic">
+      <UniqueIdentifier>{7324ed3a-514b-4b16-b96d-b6640311afe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Landing Gear">
+      <UniqueIdentifier>{92d60b86-be35-41bc-9355-baf92b825825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Flight Controls">
+      <UniqueIdentifier>{4f5d2f4f-f257-42cd-976c-317e5051d967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Environmental">
+      <UniqueIdentifier>{2b2178ef-4206-4f04-97ed-3fdea2720d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Fire Protection">
+      <UniqueIdentifier>{284dd6d3-b46e-4c29-8214-de34dff570c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Ice and Rain Protection">
+      <UniqueIdentifier>{6a1a9748-5b0b-4762-a5d5-ba15952b2195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Cabin">
+      <UniqueIdentifier>{daf109d3-ec66-4b61-a647-115d89c608ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Lights">
+      <UniqueIdentifier>{76d3eb34-4751-4c17-a0fd-99fd14a20e55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Doors and Windows">
+      <UniqueIdentifier>{8eacc33d-f9de-43e3-b8f2-3bf035fd4b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Cargo Handling">
+      <UniqueIdentifier>{5f60ee55-5d54-421e-b391-3fdf4a96c577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Bases">
+      <UniqueIdentifier>{dbbcb0e3-f712-4952-a02d-1ba5f108f146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\WorldEquipment">
+      <UniqueIdentifier>{d820347f-bfb1-4a7a-b8a8-56e249abdb55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\WorldEquipment\Beacons">
+      <UniqueIdentifier>{e7cc4f96-488d-4dbf-9f0b-a92a343ea7b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems\CCS">
+      <UniqueIdentifier>{d2b85f2f-f353-416a-9763-8db2ef6b5d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\LVars">
+      <UniqueIdentifier>{a4046750-4ccb-4bf9-9402-6f841a78c254}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
