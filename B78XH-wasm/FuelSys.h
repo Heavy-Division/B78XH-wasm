@@ -34,28 +34,28 @@
 
 class FuelSystem final : public Updateable {
     // todo: expose fuel flow rates, other parameters, etc
-    public:
-        auto update(double deltaTime) -> void override;
+public:
+    auto update(double deltaTime) -> void override;
 
-        auto getLeftTankFuel() -> double;
-        auto getRightTankFuel() -> double;
-        auto getCenterTankFuel() -> double;
-    private:
-        static constexpr double LEFT_RIGHT_MAIN_TANK_CAPACITY_GALLONS = 5520;
-        static constexpr double CENTER_TANK_CAPACITY_GALLONS = 22340;
-        static constexpr double LEFT_RIGHT_SURGE_TANK_CAPACITY_GALLONS = 996.5;
+    auto getLeftTankFuel() -> double;
+    auto getRightTankFuel() -> double;
+    auto getCenterTankFuel() -> double;
+private:
+    static constexpr double LEFT_RIGHT_MAIN_TANK_CAPACITY_GALLONS = 5520;
+    static constexpr double CENTER_TANK_CAPACITY_GALLONS = 22340;
+    static constexpr double LEFT_RIGHT_SURGE_TANK_CAPACITY_GALLONS = 996.5;
 
-        static constexpr double FUEL_DENSITY_LBS_PER_GALLON = 6.7;
+    static constexpr double FUEL_DENSITY_LBS_PER_GALLON = 6.7;
 
-        double leftTankFuel;
-        double rightTankFuel;
-        double centerTankFuel;
+    double leftTankFuel;
+    double rightTankFuel;
+    double centerTankFuel;
 
-        // todo: better way to represent refuel speed. want 3 speeds instant, fast, and real like i've seen other mods. For now can use 0/1/2 or wtv
-        bool refueling;
-        int refuelSpeed;
+    // todo: better way to represent refuel speed. want 3 speeds instant, fast, and real like i've seen other mods. For now can use 0/1/2 or wtv
+    bool refueling;
+    int refuelSpeed;
 
-        // are there default lvars for this? not sure
-        bool leftJettisonNozzleOn;
-        bool rightJettisonNozzleOn;
+    // are there default lvars for this? not sure
+    bool leftJettisonNozzleOn;
+    bool rightJettisonNozzleOn;
 };
