@@ -19,6 +19,10 @@
 #include "MCPAltitudeGauge.h"
 #include "SimConnectData.h"
 
+#include "Tools.h"
+
+using Colors = Tools::Colors;
+
 bool MCPAltitudeGauge::preInstall() {
 	return true;
 }
@@ -49,13 +53,13 @@ bool MCPAltitudeGauge::preDraw(sGaugeDrawData* data) {
 
 	nvgBeginFrame(this->nvgContext, winWidth, winHeight, pxRatio);
 	{
-		nvgFillColor(this->nvgContext, nvgRGB(0, 0, 0));
+		nvgFillColor(this->nvgContext, Colors::black);
 		nvgBeginPath(this->nvgContext);
 		nvgRect(this->nvgContext, 0, 0, winWidth, winHeight);
 		nvgFill(this->nvgContext);
 		nvgFontSize(this->nvgContext, 90.0f);
 		nvgFontFace(this->nvgContext, "dseg7");
-		nvgFillColor(this->nvgContext, nvgRGBA(255, 255, 255, 255));
+		nvgFillColor(this->nvgContext, Colors::white);
 
 		nvgTextAlign(this->nvgContext, NVG_ALIGN_RIGHT | NVG_ALIGN_TOP);
 		nvgText(this->nvgContext, 500, 12, sAltitude.c_str(), nullptr);

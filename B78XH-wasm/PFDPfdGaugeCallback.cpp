@@ -18,6 +18,7 @@
 #include <MSFS\MSFS.h>
 #include "MSFS\MSFS_Render.h"
 #include <MSFS\Legacy\gauges.h>
+#include "fmt/core.h"
 
 #include "PFDPfdGauge.h"
 

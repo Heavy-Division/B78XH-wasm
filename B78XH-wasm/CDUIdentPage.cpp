@@ -16,57 +16,41 @@
 
 
 #include "CDUIdentPage.h"
-
-#include "CDUCenterTitleLine.h"
-#include "CDULeftTitleLine.h"
-#include "CDURightLine.h"
-#include "CDULeftLine.h"
-#include "CDURightTitleLine.h"
 #include "fmt/core.h"
 
-std::vector<CDULine>& CDUIdentPage::getLines() {
-	this->lines.clear();
-	/*
-	this->lsk1Event = []() {
-		fmt::print(stderr, "LSK1 EVENT");
-	};
-
-	this->lsk2Event = []() {
-		fmt::print(stderr, "LSK2 EVENT");
-	};
-
-	this->rsk1Event = []() {
-		fmt::print(stderr, "RSK1 EVENT");
-	};
-	*/
+void CDUIdentPage::preparePage() {
 	/*
 	 * LEFT SIDE
 	 */
-	this->lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::ONE, { {"MODEL", ""} }));
-	this->lines.push_back(CDULeftLine(this->context, CDULineNumber::ONE, { {"787-10", ""} }));
+	 /*
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::ONE, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"MODEL", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::ONE, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"787-10", ""} })));
 
-	this->lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::TWO, { {"NAV DATA", ""} }));
-	this->lines.push_back(CDULeftLine(this->context, CDULineNumber::TWO, { {"AIRAC", ""} }));
 
-	this->lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::THREE, { {"DRAG/FF", ""} }));
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::TWO, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"NAV DATA", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::TWO, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"AIRAC", ""} })));
 
-	this->lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::FOUR, { {"OP PROGRAM", ""} }));
-	this->lines.push_back(CDULeftLine(this->context, CDULineNumber::FOUR, { {"HD-P000-1-16-1", ""} }));
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::THREE, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"DRAG/FF", ""} })));
 
-	this->lines.push_back(CDULeftTitleLine(this->context, CDULineNumber::FIVE, { {"OPC", ""} }));
-	this->lines.push_back(CDULeftLine(this->context, CDULineNumber::FIVE, { {"HD-C000-1-16-1", ""} }));
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::FOUR, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"OP PROGRAM", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::FOUR, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"HD-P000-1-16-1", ""} })));
 
-	/*
-	 * RIGHT SIDE
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::FIVE, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"OPC", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::FIVE, CDULineAlign::LEFT, std::vector<std::vector<std::string>>({ {"HD-C000-1-16-1", ""} })));
 	 */
-	this->lines.push_back(CDURightTitleLine(this->context, CDULineNumber::ONE, { {"ENGINES", ""} }));
-	this->lines.push_back(CDURightLine(this->context, CDULineNumber::ONE, { {"GENX-1B76", ""} }));
+	 /*
+	  * RIGHT SIDE
+	  */
+	  /*
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::ONE, CDULineAlign::RIGHT, std::vector<std::vector<std::string>>({ {"ENGINES", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::ONE, CDULineAlign::RIGHT, std::vector<std::vector<std::string>>({ {"GENX-1B76", ""} })));
 
-	this->lines.push_back(CDURightTitleLine(this->context, CDULineNumber::TWO, { {"ACTIVE", ""} }));
-	this->lines.push_back(CDURightLine(this->context, CDULineNumber::TWO, { {"APR21MAY18/22", ""} }));
 
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::TWO, CDULineAlign::RIGHT, std::vector<std::vector<std::string>>({ {"ACTIVE", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::TWO, CDULineAlign::RIGHT, std::vector<std::vector<std::string>>({ {"APR21MAY18/22", ""} })));
 
-	this->lines.push_back(CDURightTitleLine(this->context, CDULineNumber::FOUR, { {"CO DATA", ""} }));
-	this->lines.push_back(CDURightLine(this->context, CDULineNumber::FOUR, { {"VS1001", ""} }));
-	return this->lines;
+	 this->lines.push_back(std::make_tuple(CDULineType::TITLE, CDULineNumber::FOUR, CDULineAlign::RIGHT, std::vector<std::vector<std::string>>({ {"CO DATA", ""} })));
+	 this->lines.push_back(std::make_tuple(CDULineType::LINE, CDULineNumber::FOUR, CDULineAlign::RIGHT, std::vector<std::vector<std::string>>({ {"VS1001", ""} })));
+	 */
+	
 }

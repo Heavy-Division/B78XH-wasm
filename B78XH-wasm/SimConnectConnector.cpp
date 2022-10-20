@@ -19,11 +19,11 @@
 #include "SimConnectConnector.h"
 #include "GaugesInvalidateFlags.h"
 
-bool SimConnectConnector::connect(const char* name) {
+auto SimConnectConnector::connect(const char* name) -> bool {
 	fmt::print("B78XH WASM: SimConnect connecting...");
 	fflush(stdout);
 	this->connectionResult = SimConnect_Open(&simConnectHandle, name, nullptr, 0, 0, 0);
-	if(this->connectionResult == S_OK) {
+	if (this->connectionResult == S_OK) {
 		fmt::print("B78XH WASM : SimConnect client \"{}\" connected", name);
 		fflush(stdout);
 	}
@@ -33,7 +33,30 @@ bool SimConnectConnector::connect(const char* name) {
 	return true;
 }
 
-void SimConnectConnector::prepareDataDefinitions() {
+auto SimConnectConnector::prepareDataDefinitions() -> void {
+	/*
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "OPEN AIRPORT");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "LATITUDE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "LONGITUDE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "ALTITUDE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "MAGVAR");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "NAME");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "TOWER_LATITUDE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "TOWER_LONGITUDE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "TOWER_ALTITUDE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_RUNWAYS");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_FREQUENCIES");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_HELIPADS");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_APPROACHS");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_DEPARTURES");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_ARRIVALS");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_TAXI_PARKINGS");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_TAXI_PATHS");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_TAXI_NAMES");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_JETWAYS");
+	*/
+
+
 	/**
 	 * VHF
 	 */
@@ -72,9 +95,12 @@ void SimConnectConnector::prepareDataDefinitions() {
 	/**
 	 * Aircraft -> State
 	 */
-	
+
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "GEAR IS ON GROUND", "Boolean");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "GEAR POSITION", "Percent");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "ATTITUDE INDICATOR BANK DEGREES", "Degree");
@@ -96,17 +122,38 @@ void SimConnectConnector::prepareDataDefinitions() {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "FLAPS HANDLE INDEX", "Number");
-	
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "PLANE LATITUDE", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "PLANE LONGITUDE", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "PLANE HEADING DEGREES TRUE", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "PLANE HEADING DEGREES MAGNETIC", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "TOTAL WEIGHT", "Pounds");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "MAX GROSS WEIGHT", "Pounds");
+
 	/*
 	 * Autopilot - State
 	 */
-	
+
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
 	                                                        "AUTOPILOT MASTER", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
 	                                                        "AUTOPILOT FLIGHT LEVEL CHANGE", "bool");
-															
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
+	                                                        "GPS DRIVES NAV1", "bool");
+
 
 	/*
 	 * Autopilot - Flight Director
@@ -149,10 +196,13 @@ void SimConnectConnector::prepareDataDefinitions() {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
 	                                                        "GPS APPROACH APPROACH TYPE", "Number");
 
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
+	                                                        "GPS IS APPROACH LOADED", "Bool");
+
 	/*
 	 * Autopilot - GlideSlope
 	 */
-	
+
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
 	                                                        "AUTOPILOT GLIDESLOPE HOLD", "Bool");
 
@@ -161,11 +211,18 @@ void SimConnectConnector::prepareDataDefinitions() {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
 	                                                        "AUTOPILOT GLIDESLOPE ARM", "Bool");
-	                                                        
+
+	/*
+	 * Autopilot - Navigation
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_NAVIGATION,
+	                                                        "AUTOPILOT BACKCOURSE HOLD", "Bool");
+
 	/*
 	 * Autopilot - Throttle
 	 */
-	
+
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
 	                                                        "AUTOPILOT THROTTLE ARM", "Bool");
 
@@ -293,6 +350,218 @@ void SimConnectConnector::prepareDataDefinitions() {
 	                                                        "AUTOPILOT HEADING LOCK DIR:3", "Degrees");
 
 	/*
+	 * Equipment - RadioNav - Unit1
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV GSI:1", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV GLIDE SLOPE ERROR:1", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV CDI:1", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV HAS LOCALIZER:1", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV HAS NAV:1", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV HAS DME:1", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV DME:1", "Nautical miles");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV HAS GLIDE SLOPE:1", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV OBS:1", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV RADIAL:1", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV ACTIVE FREQUENCY:1", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV STANDBY FREQUENCY:1", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV LOCALIZER:1", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV NAME:1", "", SIMCONNECT_DATATYPE_STRING256);
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                        "NAV IDENT:1", "", SIMCONNECT_DATATYPE_STRING256);
+
+	/*
+	 * Equipment - RadioNav - Unit2
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV GSI:2", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV GLIDE SLOPE ERROR:2", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV CDI:2", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV HAS LOCALIZER:2", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV HAS NAV:2", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV HAS DME:2", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV DME:2", "Nautical miles");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV HAS GLIDE SLOPE:2", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV OBS:2", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV RADIAL:2", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV ACTIVE FREQUENCY:2", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV STANDBY FREQUENCY:2", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV LOCALIZER:2", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV NAME:2", "", SIMCONNECT_DATATYPE_STRING256);
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                        "NAV IDENT:2", "", SIMCONNECT_DATATYPE_STRING256);
+
+	/*
+	 * Equipment - RadioNav - Unit3
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV GSI:3", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV GLIDE SLOPE ERROR:3", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV CDI:3", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV HAS LOCALIZER:3", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV HAS NAV:3", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV HAS DME:3", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV DME:3", "Nautical miles");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV HAS GLIDE SLOPE:3", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV OBS:3", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV RADIAL:3", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV ACTIVE FREQUENCY:3", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV STANDBY FREQUENCY:3", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV LOCALIZER:3", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV NAME:3", "", SIMCONNECT_DATATYPE_STRING256);
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                        "NAV IDENT:3", "", SIMCONNECT_DATATYPE_STRING256);
+
+	/*
+	 * Equipment - RadioNav - Unit3
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV GSI:4", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV GLIDE SLOPE ERROR:4", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV CDI:4", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV HAS LOCALIZER:4", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV HAS NAV:4", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV HAS DME:4", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV DME:4", "Nautical miles");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV HAS GLIDE SLOPE:4", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV OBS:4", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV RADIAL:4", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV ACTIVE FREQUENCY:4", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV STANDBY FREQUENCY:4", "Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV LOCALIZER:4", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV NAME:4", "", SIMCONNECT_DATATYPE_STRING256);
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                        "NAV IDENT:4", "", SIMCONNECT_DATATYPE_STRING256);
+
+	/*
+	 * Barometer - Setting
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
+	                                                        "KOHLSMAN SETTING HG", "inHg");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
+	                                                        "KOHLSMAN SETTING MB", "Millibars");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
+	                                                        "DECISION HEIGHT", "Feet");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
+	                                                        "DECISION ALTITUDE MSL", "Feet");
+
+	/*
 	 * Misc
 	 */
 
@@ -312,11 +581,11 @@ void SimConnectConnector::prepareDataDefinitions() {
 	                                                        "Number");
 }
 
-void SimConnectConnector::prepareClientDataDefinitions() {
+auto SimConnectConnector::prepareClientDataDefinitions() -> void {
 
 }
 
-void SimConnectConnector::prepareRequests() {
+auto SimConnectConnector::prepareRequests() -> void {
 	//connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "DROPPABLE OBJECTS TYPE:1", "", SIMCONNECT_DATATYPE_STRING256);
 
 
@@ -370,6 +639,11 @@ void SimConnectConnector::prepareRequests() {
 	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_BAROMETER_SETTING,
+	                                                           DEFINITION_BAROMETER_SETTING, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_MISC_TIME,
 	                                                           DEFINITION_MISC_TIME, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
@@ -385,6 +659,31 @@ void SimConnectConnector::prepareRequests() {
 	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_NAVIGATION,
+	                                                           DEFINITION_AUTOPILOT_NAVIGATION,
+	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT1,
+	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT2,
+	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT3,
+	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT4,
+	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_THROTTLE,
 	                                                           DEFINITION_AUTOPILOT_THROTTLE, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
@@ -392,31 +691,20 @@ void SimConnectConnector::prepareRequests() {
 }
 
 
-void SimConnectConnector::requestDispatchMessages() {
+auto SimConnectConnector::requestDispatchMessages() -> void {
 	DWORD cbData;
 	SIMCONNECT_RECV* pData;
-	while(SUCCEEDED(SimConnect_GetNextDispatch(simConnectHandle, &pData, &cbData))) {
+	while (SUCCEEDED(SimConnect_GetNextDispatch(simConnectHandle, &pData, &cbData))) {
 		this->processDispatchMessage(pData, &cbData);
 	}
 }
 
-void SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cbData) {
-	switch(pData->dwID) {
-		case SIMCONNECT_RECV_ID_OPEN:
-			fmt::print("B78XH WASM: SimConnect connection established");
-			fflush(stdout);
-			break;
-
-		case SIMCONNECT_RECV_ID_QUIT:
-			fmt::print("B78XH WASM: Received SimConnect connection quit message");
-			fflush(stdout);
-			disconnect();
-			break;
-
+auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cbData) -> void {
+	switch (pData->dwID) {
 		case SIMCONNECT_RECV_ID_SIMOBJECT_DATA: {
 			// process data
-			SIMCONNECT_RECV_SIMOBJECT_DATA* pObjData = static_cast<SIMCONNECT_RECV_SIMOBJECT_DATA*>(pData);
-			switch(pObjData->dwRequestID) {
+			auto pObjData = static_cast<SIMCONNECT_RECV_SIMOBJECT_DATA*>(pData);
+			switch (pObjData->dwRequestID) {
 				case REQUEST_VHF: {
 					SimConnectData::comFrequencies = (*reinterpret_cast<SimConnectData::ComFrequencies*>(&pObjData->
 						dwData));
@@ -463,6 +751,11 @@ void SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 						pObjData->dwData));
 					break;
 				}
+				case REQUEST_AUTOPILOT_NAVIGATION: {
+					SimConnectData::Autopilot::navigation = (*reinterpret_cast<SimConnectData::Autopilot::Navigation*>(&
+						pObjData->dwData));
+					break;
+				}
 				case REQUEST_AUTOPILOT_THROTTLE: {
 					SimConnectData::Autopilot::throttle = (*reinterpret_cast<SimConnectData::Autopilot::Throttle*>(&
 						pObjData->dwData));
@@ -494,6 +787,40 @@ void SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 					break;
 				}
 
+				case REQUEST_EQUIPMENT_RADIONAV_UNIT1: {
+					SimConnectData::Equipment::RadioNav::unit1 = (*reinterpret_cast<
+						SimConnectData::Equipment::RadioNav::Unit1*>(&
+						pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_EQUIPMENT_RADIONAV_UNIT2: {
+					SimConnectData::Equipment::RadioNav::unit2 = (*reinterpret_cast<
+						SimConnectData::Equipment::RadioNav::Unit2*>(&
+						pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_EQUIPMENT_RADIONAV_UNIT3: {
+					SimConnectData::Equipment::RadioNav::unit3 = (*reinterpret_cast<
+						SimConnectData::Equipment::RadioNav::Unit3*>(&
+						pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_EQUIPMENT_RADIONAV_UNIT4: {
+					SimConnectData::Equipment::RadioNav::unit4 = (*reinterpret_cast<
+						SimConnectData::Equipment::RadioNav::Unit4*>(&
+						pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_BAROMETER_SETTING: {
+					SimConnectData::Barometer::setting = (*reinterpret_cast<SimConnectData::Barometer::Setting*>(&
+						pObjData->dwData));
+					break;
+				}
+
 				case REQUEST_MISC_TIME: {
 					SimConnectData::Misc::time = (*reinterpret_cast<SimConnectData::Misc::Time*>(&pObjData->dwData));
 					break;
@@ -503,31 +830,68 @@ void SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 			}
 		}
 		break;
+		/*
+		case SIMCONNECT_RECV_ID_FACILITY_DATA: {
+			fmt::print(stderr, "FACILITY EVENT");
+			const auto data = static_cast<SIMCONNECT_RECV_FACILITY_DATA*>(pData);
+			switch (data->dwType) {
+				case SIMCONNECT_FACILITY_DATA_AIRPORT: {
+					auto airport = (TestAirport*)&data->Data;
+					fmt::print(stderr, "AIRPORT NAME: {}", airport->name);
+					fmt::print(stderr, "AIRPORT LATITUDE: {}", airport->latitude);
+					fmt::print(stderr, "AIRPORT LONGITUDE: {}", airport->longitude);
+					delete airport;
+				}
+				default: ;
+			}
+		}
+		break;
+		*/
+		case SIMCONNECT_RECV_ID_FACILITY_DATA_END: {
+
+		}
+		break;
+		case SIMCONNECT_RECV_ID_OPEN:
+			fmt::print("B78XH WASM: SimConnect connection established");
+			fflush(stdout);
+			break;
+
+		case SIMCONNECT_RECV_ID_QUIT:
+			fmt::print("B78XH WASM: Received SimConnect connection quit message");
+			fflush(stdout);
+			disconnect();
+			break;
 		case SIMCONNECT_RECV_ID_EXCEPTION: {
-			SIMCONNECT_RECV_EXCEPTION* except = (SIMCONNECT_RECV_EXCEPTION*)pData;
+			auto except = static_cast<SIMCONNECT_RECV_EXCEPTION*>(pData);
 			fmt::print(stderr, "EXCEPTION SIMCONNECT ID {}", except->dwException);
 		}
-			break;
+		break;
 		case SIMCONNECT_RECV_ID_EVENT:
-		case SIMCONNECT_RECV_ID_CLIENT_DATA: default:
+		case SIMCONNECT_RECV_ID_CLIENT_DATA:
+		default:
 			break;
 	}
 }
 
-HRESULT SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,
-                                                SIMCONNECT_OBJECT_ID ObjectID,
-                                                SIMCONNECT_DATA_SET_FLAG Flags,
-                                                DWORD ArrayCount,
-                                                DWORD cbUnitSize,
-                                                void* pDataSet) {
+auto SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,
+                                             SIMCONNECT_OBJECT_ID ObjectID,
+                                             SIMCONNECT_DATA_SET_FLAG Flags,
+                                             DWORD ArrayCount,
+                                             DWORD cbUnitSize,
+                                             void* pDataSet
+		) -> HRESULT {
 
 	return SimConnect_SetDataOnSimObject(simConnectHandle, DefineID, ObjectID, Flags, ArrayCount, cbUnitSize, pDataSet);
 }
 
-void SimConnectConnector::disconnect() {
+auto SimConnectConnector::disconnect() -> void {
 	fmt::print("B78XH WASM: SimConnect disconnecting...");
 	fflush(stdout);
 	SimConnect_Close(simConnectHandle);
 	fmt::print("B78XH WASM: SimConnect disconnected...");
 	fflush(stdout);
+}
+
+auto SimConnectConnector::getHandle() -> HANDLE {
+	return this->simConnectHandle;
 }

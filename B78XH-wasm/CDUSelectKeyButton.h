@@ -28,6 +28,7 @@ class CDUSelectKeyButton: public CDUButton {
 		                   bool rightSide = false
 		) : CDUButton(context, mouseMoveResolver, mouseClickResolver, x, y, 28, 46) {
 			this->borderWidth = 2;
+			this->titleAlign = NVG_ALIGN_LEFT;
 			this->rightSide = rightSide;
 		}
 

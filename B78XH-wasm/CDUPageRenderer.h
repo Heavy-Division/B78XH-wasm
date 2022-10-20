@@ -20,19 +20,24 @@
 #include <utility>
 
 #include "CDUIdentPage.h"
+#include "CDULineRenderer.h"
 #include "CDUPage.h"
+#include "CDUPageType.h"
 #include "MSFS/Render/nanovg.h"
-#include "fmt/core.h";
 
 class CDUPageRenderer {
 	public:
 		CDUPageRenderer(NVGcontext*& context) : context(context) {
-			
+
 		}
 
+		void switchPage(CDUPageType page);
+		auto preparePage() -> void;
 		void render();
-		const CDUPage* getCDUPage() const { return this->cduPage; }
-		//CDUPage* cduPage = new CDUIdentPage(context);
+
+		CDUPage* getCDUPage() const {
+			return this->cduPage;
+		}
 
 	protected:
 		void drawBackground();
@@ -41,5 +46,6 @@ class CDUPageRenderer {
 	private:
 		NVGcontext*& context;
 		CDUPage* cduPage = new CDUIdentPage(context);
+		CDULineRenderer lineRenderer = CDULineRenderer(context);
 
 };

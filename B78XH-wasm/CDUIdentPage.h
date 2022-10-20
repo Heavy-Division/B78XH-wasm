@@ -17,13 +17,12 @@
 
 #pragma once
 #include "CDUPage.h"
-#include "fmt/core.h"
 
 class CDUIdentPage: public CDUPage {
 	public:
-		CDUIdentPage(NVGcontext*& context) : CDUPage(context) {
+		CDUIdentPage(NVGcontext*& context) : CDUPage(context){
+
 		}
 
-		std::vector<CDULine>& getLines() override;
-
+		auto preparePage() -> void override;
 };

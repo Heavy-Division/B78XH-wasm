@@ -19,16 +19,19 @@
 #include <cmath>
 #include "Simplane.h"
 #include "fmt/core.h"
+#include "Tools.h"
 
-void PFDTargetAirspeed::draw(NVGcontext* context, float windowWidth, float windowHeight) {
+using Colors = Tools::Colors;
+
+void PFDTargetAirspeed::draw(NVGcontext* context) {
 	nvgSave(context);
-	drawBackground(context, windowWidth, windowHeight);
-	drawValue(context, windowWidth, windowHeight);
+	drawBackground(context);
+	drawValue(context);
 	nvgRestore(context);
 }
 
-void PFDTargetAirspeed::drawBackground(NVGcontext* context, float windowWidth, float windowHeight) {
-	nvgFillColor(context, nvgRGB(0, 0, 0));
+void PFDTargetAirspeed::drawBackground(NVGcontext* context) {
+	nvgFillColor(context, Colors::black);
 	nvgBeginPath(context);
 	{
 		//nvgRect(context, 155, 30, 78, 38);
@@ -38,10 +41,10 @@ void PFDTargetAirspeed::drawBackground(NVGcontext* context, float windowWidth, f
 	nvgFill(context);
 }
 
-void PFDTargetAirspeed::drawValue(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDTargetAirspeed::drawValue(NVGcontext* context) {
 	namespace Autopilot = Simplane::autopilot;
 	const auto resolveTargetSpeed = []()-> std::string {
-		if(!LVars::isMachModeActive()) {
+		if(!LVarsGetter::isMachModeActive()) {
 			return fmt::format("{:03}", round(Autopilot::airspeed::airspeedHoldVar()));
 		}
 		return fmt::format("{:.3f}", Autopilot::airspeed::machHoldVar()).substr(1, 4);
@@ -50,7 +53,7 @@ void PFDTargetAirspeed::drawValue(NVGcontext* context, float windowWidth, float 
 
 	nvgFontFace(context, "roboto");
 	nvgFontSize(context, 40.0f);
-	nvgFillColor(context, nvgRGB(213, 112, 255));
+	nvgFillColor(context, Colors::magenta);
 	nvgTextAlign(context, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
 	nvgBeginPath(context);
 	{

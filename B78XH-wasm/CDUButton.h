@@ -57,11 +57,12 @@ class CDUButton: public Drawable {
 		double width;
 		double height;
 		double borderWidth = 5;
+		NVGalign titleAlign = NVG_ALIGN_CENTER;
 		char* title;
 		char* title2;
 		float bounds[4] = {0, 0, 0, 0};
 
-		void drawTitle();
+		void drawTitle(NVGcolor color = Tools::Colors::white);
 		void drawButtonBorders();
 		void drawBackBorders(NVGcolor color = Tools::Colors::black);
 		void drawBackground() const;

@@ -16,62 +16,117 @@
 
 
 #pragma once
-#include <MSFS/Legacy/gauges.h>
+#include <unordered_map>
+#include <map>
+#include "LVar.h"
 
-namespace LVars {
-	inline auto isMachModeActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("XMLVAR_AirSpeedIsInMach"), get_units_enum("bool"));
-	};
+class LVars {
+	public:
+		enum LVarsName {
+			/*
+			 * BOOLEAN
+			 */
+			XMLVAR_AirSpeedIsInMach,
+			AP_SPEED_INTERVENTION_ACTIVE,
+			AP_HEADING_HOLD_ACTIVE,
+			AP_SPD_ACTIVE,
+			AP_FLCH_ACTIVE,
+			AP_VNAV_ACTIVE,
+			AP_VNAV_ARMED,
+			AP_LNAV_ACTIVE,
+			AP_LNAV_ARMED,
+			AP_ALT_HOLD_ACTIVE,
+			XMLVAR_FPA_MODE_ACTIVE,
+			XMLVAR_TRK_MODE_ACTIVE,
+			XMLVAR_TRK_FPA_MODE_ACTIVE,
 
-	inline auto isSpeedInterventionActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_SPEED_INTERVENTION_ACTIVE"), get_units_enum("bool"));
-	};
+			/*
+			 * NUMBERS
+			 */
 
-	inline auto isHeadingHoldActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_HEADING_HOLD_ACTIVE"), get_units_enum("bool"));
-	};
+			AIRLINER_CRUISE_ALTITUDE,
+			B78XH_L_TRANSFER_PROTOCOL_STALL_SPEED,
+			B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MIN_SPEED,
+			B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MAX_SPEED,
 
-	inline auto isSpeedActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_SPD_ACTIVE"), get_units_enum("bool"));
-	};
+			/*
+			 * KNOTS
+			 */
 
-	inline auto isFLCHActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_FLCH_ACTIVE"), get_units_enum("bool"));
-	};
+			AIRLINER_V1_SPEED,
+			AIRLINER_V2_SPEED,
+			AIRLINER_VR_SPEED,
+			AIRLINER_VREF_SPEED,
 
-	inline auto isVNAVActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_VNAV_ACTIVE"), get_units_enum("bool"));
-	};
+			/*
+			 * NUMBERS
+			 */
+			AIRLINER_APPROACH_FLAPS,
+			AIRLINER_FLIGHT_PHASE,
 
-	inline auto isVNAVArmed = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_VNAV_ARMED"), get_units_enum("bool"));
-	};
+			/*
+			 * BOOLEANS
+			 */
 
-	inline auto isLNAVActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_LNAV_ACTIVE"), get_units_enum("bool"));
-	};
+			XMLVAR_Baro_Selector_HPA_1,
+			XMLVAR_Baro1_forcedToSTD,
+			XMLVAR_Mins_Selector_Baro,
 
-	inline auto isLNAVArmed = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_LNAV_ARMED"), get_units_enum("bool"));
-	};
+			/*
+			 * NUMBERS
+			 */
 
-	inline auto isAltitudeHoldActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("AP_ALT_HOLD_ACTIVE"), get_units_enum("bool"));
-	};
+			RADIONAV_SOURCE,
+			B78XH_IS_IRS_INITED,
+			B78XH_IRS_R_STATE,
+			B78XH_IRS_L_STATE,
+			B78XH_IRS_R_SWITCH_STATE,
+			B78XH_IRS_L_SWITCH_STATE
 
-	inline auto isFPAModeActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("XMLVAR_FPA_MODE_ACTIVE"), get_units_enum("bool"));
-	};
 
-	inline auto isTRKModeActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("XMLVAR_TRK_MODE_ACTIVE"), get_units_enum("bool"));
-	};
+		};
 
-	inline auto isTRKFPAModeActive = []()-> bool {
-		return get_named_variable_typed_value(register_named_variable("XMLVAR_TRK_FPA_MODE_ACTIVE"), get_units_enum("bool"));
-	};
-
-	inline auto airlinerCruiseAltitude = []()-> double {
-		return get_named_variable_typed_value(register_named_variable("AIRLINER_CRUISE_ALTITUDE"), get_units_enum("Number"));
-	};
-}
+		auto update() -> void;
+		auto get(LVarsName name) -> LVar&;
+	private:
+		std::unordered_map<LVarsName, LVar> data = {
+			{XMLVAR_AirSpeedIsInMach, LVar("XMLVAR_AirSpeedIsInMach", "bool")},
+			{AP_SPEED_INTERVENTION_ACTIVE, LVar("AP_SPEED_INTERVENTION_ACTIVE", "bool")},
+			{AP_HEADING_HOLD_ACTIVE, LVar("AP_HEADING_HOLD_ACTIVE", "bool")},
+			{AP_SPD_ACTIVE, LVar("AP_SPD_ACTIVE", "bool")},
+			{AP_FLCH_ACTIVE, LVar("AP_FLCH_ACTIVE", "bool")},
+			{AP_VNAV_ACTIVE, LVar("AP_VNAV_ACTIVE", "bool")},
+			{AP_VNAV_ARMED, LVar("AP_VNAV_ARMED", "bool")},
+			{AP_LNAV_ACTIVE, LVar("AP_LNAV_ACTIVE", "bool")},
+			{AP_LNAV_ARMED, LVar("AP_LNAV_ARMED", "bool")},
+			{AP_ALT_HOLD_ACTIVE, LVar("AP_ALT_HOLD_ACTIVE", "bool")},
+			{XMLVAR_FPA_MODE_ACTIVE, LVar("XMLVAR_FPA_MODE_ACTIVE", "bool")},
+			{XMLVAR_TRK_MODE_ACTIVE, LVar("XMLVAR_TRK_MODE_ACTIVE", "bool")},
+			{XMLVAR_TRK_FPA_MODE_ACTIVE, LVar("XMLVAR_TRK_FPA_MODE_ACTIVE", "bool")},
+			{AIRLINER_CRUISE_ALTITUDE, LVar("AIRLINER_CRUISE_ALTITUDE", "Number")},
+			{B78XH_L_TRANSFER_PROTOCOL_STALL_SPEED, LVar("B78XH_L_TRANSFER_PROTOCOL_STALL_SPEED", "Number")},
+			{
+				B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MIN_SPEED,
+				LVar("B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MIN_SPEED", "Number")
+			},
+			{
+				B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MAX_SPEED,
+				LVar("B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MAX_SPEED", "Number")
+			},
+			{AIRLINER_V1_SPEED, LVar("AIRLINER_V1_SPEED", "Knots")},
+			{AIRLINER_V2_SPEED, LVar("AIRLINER_V2_SPEED", "Knots")},
+			{AIRLINER_VR_SPEED, LVar("AIRLINER_VR_SPEED", "Knots")},
+			{AIRLINER_VREF_SPEED, LVar("AIRLINER_VREF_SPEED", "Knots")},
+			{AIRLINER_APPROACH_FLAPS, LVar("AIRLINER_APPROACH_FLAPS", "Number")},
+			{AIRLINER_FLIGHT_PHASE, LVar("AIRLINER_FLIGHT_PHASE", "Number")},
+			{XMLVAR_Baro_Selector_HPA_1, LVar("XMLVAR_Baro_Selector_HPA_1", "bool")},
+			{XMLVAR_Baro1_forcedToSTD, LVar("XMLVAR_Baro1_forcedToSTD", "bool")},
+			{XMLVAR_Mins_Selector_Baro, LVar("XMLVAR_Mins_Selector_Baro", "bool")},
+			{RADIONAV_SOURCE, LVar("RADIONAV_SOURCE", "Number")},
+			{B78XH_IS_IRS_INITED, LVar("B78XH_IS_IRS_INITED", "Number")},
+			{B78XH_IRS_R_STATE, LVar("B78XH_IRS_R_STATE", "Number")},
+			{B78XH_IRS_L_STATE, LVar("B78XH_IRS_L_STATE", "Number")},
+			{B78XH_IRS_R_SWITCH_STATE, LVar("B78XH_IRS_R_SWITCH_STATE", "Number")},
+			{B78XH_IRS_L_SWITCH_STATE, LVar("B78XH_IRS_L_SWITCH_STATE", "Number")},
+		};
+};

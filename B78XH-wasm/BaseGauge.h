@@ -28,6 +28,7 @@ class BaseGauge {
 		virtual bool preInstall() = 0;
 		virtual bool postInstall(FsContext context) = 0;
 		virtual bool preDraw(sGaugeDrawData* data) = 0;
+
 		virtual bool preDraw(FsContext context, sGaugeDrawData* data) {
 			return true;
 		};

@@ -16,18 +16,34 @@
 
 
 #include <MSFS/MSFS.h>
+
+#include "IRSAlignTimeType.h"
 #include "SimConnectConnector.h"
+#include "fmt/core.h"
+#include "NavData.h"
+#include "SimpleINI/SimpleIni.h"
+#include "B78XHConfiguration.h"
+CSimpleIniA ini;
 
 // ------------------------
 // Callbacks
 extern "C" {
-	MSFS_CALLBACK bool tool_simconnect_handling_gauge_callback(FsContext ctx, int service_id, void* pData) {
-		switch(service_id) {
+	auto EventHandler(ID32 event, UINT32 evdata, PVOID userdata) -> void {
+		if (event == 66978 || event == 66981 || event == 66984) {
+		}
+		//fmt::print(stderr, "EVENT {}", event);
+	}
+
+	MSFS_CALLBACK auto tool_simconnect_handling_gauge_callback(FsContext ctx, int service_id, void* pData) -> bool {
+		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
+				//NavData::prepareWaypoints();
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
+				//register_key_event_handler((GAUGE_KEY_EVENT_HANDLER)EventHandler, NULL);
+				B78XHConfiguration::data.load();
 				return true;
 			}
 			break;
@@ -37,6 +53,8 @@ extern "C" {
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
+				B78XHConfiguration::data.save();
+				//unregister_key_event_handler((GAUGE_KEY_EVENT_HANDLER)EventHandler, NULL);
 				return true;
 			}
 			break;

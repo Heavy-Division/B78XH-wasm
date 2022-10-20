@@ -19,16 +19,19 @@
 #include <cmath>
 #include "fmt/core.h"
 #include "Simplane.h"
+#include "Tools.h"
 
-void PFDTargetAltitude::draw(NVGcontext* context, float windowWidth, float windowHeight) {
+using Colors = Tools::Colors;
+
+void PFDTargetAltitude::draw(NVGcontext* context) {
 	nvgSave(context);
-	drawBackground(context, windowWidth, windowHeight);
-	drawValue(context, windowWidth, windowHeight);
+	drawBackground(context);
+	drawValue(context);
 	nvgRestore(context);
 }
 
-void PFDTargetAltitude::drawBackground(NVGcontext* context, float windowWidth, float windowHeight) {
-	nvgFillColor(context, nvgRGB(0, 0, 0));
+void PFDTargetAltitude::drawBackground(NVGcontext* context) {
+	nvgFillColor(context, Colors::black);
 	nvgBeginPath(context);
 	{
 		//nvgRect(context, 635, 30, 80, 38);
@@ -38,7 +41,7 @@ void PFDTargetAltitude::drawBackground(NVGcontext* context, float windowWidth, f
 	nvgFill(context);
 }
 
-void PFDTargetAltitude::drawValue(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDTargetAltitude::drawValue(NVGcontext* context) {
 	namespace Autopilot = Simplane::autopilot;
 
 	const double selectedAltitude = Autopilot::altitude::altitudeLockVar();
@@ -49,7 +52,7 @@ void PFDTargetAltitude::drawValue(NVGcontext* context, float windowWidth, float 
 
 	nvgFontFace(context, "roboto");
 	nvgFontSize(context, 30.0f);
-	nvgFillColor(context, nvgRGB(213, 112, 255));
+	nvgFillColor(context, Colors::magenta);
 	nvgTextAlign(context, NVG_ALIGN_RIGHT | NVG_ALIGN_BOTTOM);
 
 

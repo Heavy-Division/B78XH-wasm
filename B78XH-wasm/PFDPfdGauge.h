@@ -18,6 +18,10 @@
 #pragma once
 
 #include "BaseGauge.h"
+#include "PFDAltitudeIndicator.h"
+#include "PFDFlightDirector.h"
+#include "PFDILSIndicator.h"
+#include "PFDRadioAltitudeIndicator.h"
 #include "MSFS/Render/nanovg.h"
 
 
@@ -38,6 +42,7 @@ class PFDPfdGauge: public BaseGauge {
 		void renderSlipSkid();
 		bool preDraw(FsContext context, sGaugeDrawData* data) override;
 		bool preKill() override;
+		static double deltaTime;
 	private:
 		FsContext fsContext = 0;
 		NVGcontext* nvgContext = 0;
@@ -52,4 +57,8 @@ class PFDPfdGauge: public BaseGauge {
 
 		double pitchPosition = 0;
 		double centerPosition = 0;
+		PFDRadioAltitudeIndicator radioAltitudeIndicator;
+		PFDFlightDirector flightDirector;
+		PFDILSIndicator ilsIndicator;
+		PFDAltitudeIndicator altitudeIndicator;
 };

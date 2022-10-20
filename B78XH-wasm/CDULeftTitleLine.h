@@ -22,14 +22,14 @@ class CDULeftTitleLine: public CDULine {
 	public:
 		CDULeftTitleLine(NVGcontext*& context,
 			const CDULineNumber lineNumber,
-			const std::vector<std::vector<std::string>>& content
+			std::vector<std::vector<std::string>> content
 		) : CDULine(context, lineNumber, content) {
 			this->lineType = CDULineType::TITLE;
 			this->fontSize = 18.0f;
 			this->CDULeftTitleLine::calculateHorizontalOffset();
 		}
 
-		CDULeftTitleLine(NVGcontext*& context, const CDULineNumber lineNumber, const std::string& content) : CDULine(
+		CDULeftTitleLine(NVGcontext*& context, const CDULineNumber lineNumber, const std::string content) : CDULine(
 			context, lineNumber, content) {
 			this->lineType = CDULineType::TITLE;
 			this->fontSize = 18.0f;

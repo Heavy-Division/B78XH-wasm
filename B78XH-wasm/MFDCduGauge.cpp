@@ -18,16 +18,22 @@
 #include "MFDCduGauge.h"
 
 bool MFDCduGauge::preInstall() {
+	renderer.preInstall();
 	return true;
 }
 
 bool MFDCduGauge::postInstall(FsContext context) {
-	renderer.setContext(context);
+	renderer.postInstall(context);
+	return true;
+}
+
+bool MFDCduGauge::preUpdate() {
+	renderer.preUpdate();
 	return true;
 }
 
 bool MFDCduGauge::preDraw(sGaugeDrawData* data) {
-	renderer.render(data);
+	renderer.preDraw(data);
 	return true;
 }
 
@@ -36,7 +42,7 @@ bool MFDCduGauge::preDraw(FsContext context, sGaugeDrawData* data) {
 }
 
 bool MFDCduGauge::preKill() {
-	renderer.kill();
+	renderer.preKill();
 	return true;
 }
 

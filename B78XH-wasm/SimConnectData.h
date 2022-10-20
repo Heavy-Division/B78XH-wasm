@@ -27,12 +27,18 @@ enum DATA_DEFINE_ID {
 	DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
 	DEFINITION_AUTOPILOT_APPROACH,
 	DEFINITION_AUTOPILOT_GLIDESLOPE,
+	DEFINITION_AUTOPILOT_NAVIGATION,
 	DEFINITION_AUTOPILOT_THROTTLE,
 	DEFINITION_AUTOPILOT_ALTITUDE,
 	DEFINITION_AUTOPILOT_VERTICAL_SPEED,
 	DEFINITION_AUTOPILOT_AIRSPEED,
 	DEFINITION_AUTOPILOT_HEADING,
-	DEFINITION_MISC_TIME
+	DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+	DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+	DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+	DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+	DEFINITION_BAROMETER_SETTING,
+	DEFINITION_MISC_TIME,
 };
 
 enum DATA_REQUEST_ID {
@@ -44,11 +50,17 @@ enum DATA_REQUEST_ID {
 	REQUEST_AUTOPILOT_FLIGHT_DIRECTOR,
 	REQUEST_AUTOPILOT_APPROACH,
 	REQUEST_AUTOPILOT_GLIDESLOPE,
+	REQUEST_AUTOPILOT_NAVIGATION,
 	REQUEST_AUTOPILOT_THROTTLE,
 	REQUEST_AUTOPILOT_ALTITUDE,
 	REQUEST_AUTOPILOT_VERTICAL_SPEED,
 	REQUEST_AUTOPILOT_AIRSPEED,
 	REQUEST_AUTOPILOT_HEADING,
+	REQUEST_EQUIPMENT_RADIONAV_UNIT1,
+	REQUEST_EQUIPMENT_RADIONAV_UNIT2,
+	REQUEST_EQUIPMENT_RADIONAV_UNIT3,
+	REQUEST_EQUIPMENT_RADIONAV_UNIT4,
+	REQUEST_BAROMETER_SETTING,
 	REQUEST_MISC_TIME
 };
 
@@ -91,6 +103,7 @@ namespace SimConnectData {
 
 		struct State {
 			double isGearOnGround;
+			double gearPosition;
 			double bank;
 			double pitch;
 			double indicatedAltitude;
@@ -98,6 +111,12 @@ namespace SimConnectData {
 			double verticalSpeed;
 			double altitudeAboveGround;
 			double flapsHandleIndex;
+			double latitude;
+			double longitude;
+			double headingTrue;
+			double headingMagnetic;
+			double weight;
+			double maxWeight;
 
 			/*
 			 * Calculated
@@ -127,6 +146,7 @@ namespace SimConnectData {
 			 */
 			double master;
 			double isFLCHActive;
+			double isGPSDriven;
 		};
 
 		inline State state;
@@ -142,12 +162,13 @@ namespace SimConnectData {
 		inline FlightDirector flightDirector;
 
 		struct Approach {
-			bool approachHold;
+			double approachHold;
 			double approachActive;
 			double approachCaptured;
 			double approachArm;
 			double approachIsLocalizer;
 			double approachType;
+			double approachIsLoaded;
 		};
 
 		inline Approach approach;
@@ -159,6 +180,12 @@ namespace SimConnectData {
 		};
 
 		inline GlideSlope glideSlope;
+
+		struct Navigation {
+			double backCourseHold;
+		};
+
+		inline Navigation navigation;
 
 		/*
 		 * LEFT ENGINE ID = 1
@@ -191,13 +218,14 @@ namespace SimConnectData {
 		inline Altitude altitude;
 
 		struct VerticalSpeed {
-			double verticaSpeedlHold;
+			double verticalSpeedHold;
 			double verticalSpeedHoldVar;
 			double verticalSpeedHoldVar1;
 			double verticalSpeedHoldVar2;
 			double verticalSpeedHoldVar3;
 			double verticalSpeedSlotIndex;
 		};
+
 		inline VerticalSpeed verticalSpeed;
 
 		struct Airspeed {
@@ -227,6 +255,99 @@ namespace SimConnectData {
 		inline Heading heading;
 	}
 
+	namespace Equipment::RadioNav {
+		struct Unit1 {
+			double gsi;
+			double glideSlopeError;
+			double cdi;
+			double hasLocalizer;
+			double hasNav;
+			double hasDme;
+			double dme;
+			double hasGlideSlope;
+			double obs;
+			double radial;
+			double activeFrequency;
+			double standbyFrequency;
+			double localizer;
+			char name[256];
+			char ident[256];
+		};
+
+		inline Unit1 unit1;
+
+		struct Unit2 {
+			double gsi;
+			double glideSlopeError;
+			double cdi;
+			double hasLocalizer;
+			double hasNav;
+			double hasDme;
+			double dme;
+			double hasGlideSlope;
+			double obs;
+			double radial;
+			double activeFrequency;
+			double standbyFrequency;
+			double localizer;
+			char name[256];
+			char ident[256];
+		};
+
+		inline Unit2 unit2;
+
+		struct Unit3 {
+			double gsi;
+			double glideSlopeError;
+			double cdi;
+			double hasLocalizer;
+			double hasNav;
+			double hasDme;
+			double dme;
+			double hasGlideSlope;
+			double obs;
+			double radial;
+			double activeFrequency;
+			double standbyFrequency;
+			double localizer;
+			char name[256];
+			char ident[256];
+		};
+
+		inline Unit3 unit3;
+
+		struct Unit4 {
+			double gsi;
+			double glideSlopeError;
+			double cdi;
+			double hasLocalizer;
+			double hasNav;
+			double hasDme;
+			double dme;
+			double hasGlideSlope;
+			double obs;
+			double radial;
+			double activeFrequency;
+			double standbyFrequency;
+			double localizer;
+			char name[256];
+			char ident[256];
+		};
+
+		inline Unit4 unit4;
+	}
+
+	namespace Barometer {
+		struct Setting {
+			double kohlsmanHG;
+			double kohlsmanMB;
+			double decisionHeight;
+			double decisionAltitudeMSL;
+		};
+
+		inline Setting setting;
+	}
+
 	namespace Misc {
 		struct Time {
 			double absoluteTime;
@@ -240,3 +361,23 @@ namespace SimConnectData {
 	}
 
 }
+
+struct TestAirport {
+	double latitude;
+	double longitude;
+	double altitude;
+	double magVar;
+	char name[32];
+	double towerLatitude;
+	double towerLongitude;
+	double towerAltitude;
+	int runways;
+	int frequencies;
+	int helipads;
+	int departures;
+	int arrivals;
+	int taxiParkings;
+	int taxiPaths;
+	int taxiNames;
+	int jetways;
+};

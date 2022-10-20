@@ -15,14 +15,11 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-
-
 #include <MSFS\MSFS.h>
 #include "MSFS\MSFS_Render.h"
 #include <MSFS\Legacy\gauges.h>
 
 #include "PFDAuxGauge.h"
-
 
 #ifdef _MSC_VER
 #define snprintf _snprintf_s

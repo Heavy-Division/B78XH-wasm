@@ -18,17 +18,20 @@
 #include "PFDVerticalSpeedIndicator.h"
 #include "Simplane.h"
 #include <cstdlib>
+#include "Tools.h"
 
-void PFDVerticalSpeedIndicator::draw(NVGcontext* context, float windowWidth, float windowHeight) {
+using Colors = Tools::Colors;
+
+void PFDVerticalSpeedIndicator::draw(NVGcontext* context) {
 	nvgSave(context);
-	drawBackground(context, windowWidth, windowHeight);
-	drawGraduations(context, windowWidth, windowHeight);
-	drawCursor(context, windowWidth, windowHeight);
-	drawTargetPointer(context, windowWidth, windowHeight);
+	drawBackground(context);
+	drawGraduations(context);
+	drawCursor(context);
+	drawTargetPointer(context);
 	nvgRestore(context);
 }
 
-void PFDVerticalSpeedIndicator::drawBackground(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDVerticalSpeedIndicator::drawBackground(NVGcontext* context) {
 	nvgSave(context);
 	{
 		nvgTranslate(context, 0, 161);
@@ -59,7 +62,7 @@ void PFDVerticalSpeedIndicator::drawBackground(NVGcontext* context, float window
 	nvgRestore(context);
 }
 
-void PFDVerticalSpeedIndicator::drawGraduations(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDVerticalSpeedIndicator::drawGraduations(NVGcontext* context) {
 	constexpr auto height = 2.0f;
 
 	/*
@@ -74,7 +77,7 @@ void PFDVerticalSpeedIndicator::drawGraduations(NVGcontext* context, float windo
 		nvgTranslate(context, 14, 161);
 		{
 			
-			nvgStrokeColor(context, nvgRGB(255, 255, 255));
+			nvgStrokeColor(context, Colors::white);
 			/*
 			 * Major
 			 */
@@ -104,7 +107,7 @@ void PFDVerticalSpeedIndicator::drawGraduations(NVGcontext* context, float windo
 			nvgFontFace(context, "roboto");
 			nvgFontSize(context, 20.0f);
 			nvgTextAlign(context, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
-			nvgFillColor(context, nvgRGB(255, 255, 255));
+			nvgFillColor(context, Colors::white);
 			nvgBeginPath(context);
 			{
 				nvgText(context, -2, offsetsMajor[1][0], "1", nullptr);
@@ -139,7 +142,7 @@ void PFDVerticalSpeedIndicator::drawGraduations(NVGcontext* context, float windo
 	nvgRestore(context);
 }
 
-void PFDVerticalSpeedIndicator::drawCursor(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDVerticalSpeedIndicator::drawCursor(NVGcontext* context) {
 	namespace Aircraft = Simplane::aircraft;
 	const double verticalSpeed = Aircraft::state::verticalSpeed();
 	/*
@@ -171,7 +174,7 @@ void PFDVerticalSpeedIndicator::drawCursor(NVGcontext* context, float windowWidt
 	nvgSave(context);
 	{
 		nvgStrokeWidth(context, 3.0f);
-		nvgStrokeColor(context, nvgRGB(255, 255, 255));
+		nvgStrokeColor(context, Colors::white);
 		nvgLineCap(context, NVG_ROUND);
 		nvgTranslate(context, 120, 161);
 		{
@@ -190,9 +193,9 @@ void PFDVerticalSpeedIndicator::drawCursor(NVGcontext* context, float windowWidt
 	nvgRestore(context);
 }
 
-void PFDVerticalSpeedIndicator::drawTargetPointer(NVGcontext* context, float windowWidth, float windowHeight) {
+void PFDVerticalSpeedIndicator::drawTargetPointer(NVGcontext* context) {
 	namespace Autopilot = Simplane::autopilot;
-	if (!Autopilot::verticalSpeed::verticaSpeedlHold()) {
+	if (!Autopilot::verticalSpeed::verticalSpeedHold()) {
 		return;
 	}
 	const double verticalSpeedSelected = Autopilot::verticalSpeed::verticalSpeedHoldVar();
@@ -222,7 +225,7 @@ void PFDVerticalSpeedIndicator::drawTargetPointer(NVGcontext* context, float win
 		nvgTranslate(context, 14, 161);
 		{
 			nvgStrokeWidth(context, 4);
-			nvgStrokeColor(context, nvgRGB(213, 112, 255));
+			nvgStrokeColor(context, Colors::magenta);
 			nvgBeginPath(context);
 			{
 				nvgMoveTo(context, 0, offset);

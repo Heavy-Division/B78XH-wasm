@@ -34,8 +34,8 @@ class PEDESTALTuningControlPanelGauge: public BaseGauge {
 	private:
 		TuningControlPanelRenderer renderer;
 		std::string controlSwitchIdVariable;
-		ID controlSwitchIdVariableID{};
-		TuningControlPanelControlSwitchID controlSwitchIdVariableValue{};
+		ID controlSwitchIdVariableID;
+		TuningControlPanelControlSwitchID controlSwitchIdVariableValue;
 		bool isGaugeOff = false;
 		void setGaugeOff(bool state, sGaugeDrawData* data);
 };
