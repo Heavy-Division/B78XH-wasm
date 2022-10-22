@@ -285,6 +285,42 @@
     <ClCompile Include="Updateable.cpp">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClCompile>
+    <ClCompile Include="FQIS.cpp">
+      <Filter>Source Files\Systems\Fuel</Filter>
+    </ClCompile>
+    <ClCompile Include="FQDCSide.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel</Filter>
+    </ClCompile>
+    <ClCompile Include="FQMS.cpp">
+      <Filter>Source Files\Systems\Fuel</Filter>
+    </ClCompile>
+    <ClCompile Include="FuelCompensatorSensor.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="FuelDensitySensor.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="FuelHeightSensor.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="FuelHeightTemperatureSensor.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="CenterFuelSensorGroupA.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClCompile>
+    <ClCompile Include="CenterFuelSensorGroupB.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFuelSensorGroupA.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFuelSensorGroupB.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClCompile>
+    <ClCompile Include="FQDCCenter.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -697,6 +733,46 @@
     <ClInclude Include="Updateable.h">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="PrincipalCharacteristics.h">
+      <Filter>Source Files\Tools\staticdata</Filter>
+    </ClInclude>
+    <ClInclude Include="FQIS.h">
+      <Filter>Source Files\Systems\Fuel</Filter>
+    </ClInclude>
+    <ClInclude Include="FQDCSide.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel</Filter>
+    </ClInclude>
+    <ClInclude Include="FQMS.h">
+      <Filter>Source Files\Systems\Fuel</Filter>
+    </ClInclude>
+    <ClInclude Include="FuelCompensatorSensor.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="FuelDensitySensor.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="FuelHeightSensor.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="FuelHeightTemperatureSensor.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="CenterFuelSensorGroupA.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClInclude>
+    <ClInclude Include="CenterFuelSensorGroupB.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFuelSensorGroupA.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFuelSensorGroupB.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups</Filter>
+    </ClInclude>
+    <ClInclude Include="FQDCCenter.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Fuel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -878,6 +954,15 @@
     </Filter>
     <Filter Include="Source Files\Tools\LVars">
       <UniqueIdentifier>{a4046750-4ccb-4bf9-9402-6f841a78c254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems\Fuel">
+      <UniqueIdentifier>{d940d724-092b-47d5-b599-891e8fbe0ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Fuel\Sensors">
+      <UniqueIdentifier>{1bb92db7-bef7-4646-803d-1d344a31ae3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Fuel\SensorGroups">
+      <UniqueIdentifier>{da86a793-f4e6-449d-bf50-898554ede86f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

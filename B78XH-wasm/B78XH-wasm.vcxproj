@@ -40,6 +40,7 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\..\..\..\MSFS SDK\SimConnect SDK\VS\SimConnectClient.props" />
+    <Import Project="..\..\..\..\..\MSFS SDK\SimConnect SDK\VS\SimConnectClient.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -51,7 +52,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-su9-stable\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>..\..\..\AppData\Roaming\Microsoft Flight Simulator\Packages\Community\B78XH-main\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -149,14 +150,26 @@
     <ClCompile Include="CDURightTitleLine.cpp" />
     <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
+    <ClCompile Include="CenterFuelSensorGroupA.cpp" />
+    <ClCompile Include="CenterFuelSensorGroupB.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="ERS.cpp" />
     <ClCompile Include="FlapsSpeedMarker.cpp" />
+    <ClCompile Include="FQDCCenter.cpp" />
+    <ClCompile Include="FQDCSide.cpp" />
+    <ClCompile Include="FQIS.cpp" />
+    <ClCompile Include="FQMS.cpp" />
+    <ClCompile Include="FuelCompensatorSensor.cpp" />
+    <ClCompile Include="FuelDensitySensor.cpp" />
+    <ClCompile Include="FuelHeightSensor.cpp" />
+    <ClCompile Include="FuelHeightTemperatureSensor.cpp" />
     <ClCompile Include="IRS.cpp" />
     <ClCompile Include="IRU.cpp" />
     <ClCompile Include="KEvents.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
+    <ClCompile Include="MainFuelSensorGroupA.cpp" />
+    <ClCompile Include="MainFuelSensorGroupB.cpp" />
     <ClCompile Include="MCPVSpeedGauge.cpp" />
     <ClCompile Include="MFDCduGauge.cpp" />
     <ClCompile Include="MFDCduGaugeCallback.cpp" />
@@ -261,6 +274,8 @@
     <ClInclude Include="CDURightTitleLine.h" />
     <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
+    <ClInclude Include="CenterFuelSensorGroupA.h" />
+    <ClInclude Include="CenterFuelSensorGroupB.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="FacilitySearchType.h" />
@@ -271,6 +286,14 @@
     <ClInclude Include="fmt\format-inl.h" />
     <ClInclude Include="fmt\format.h" />
     <ClInclude Include="FPSyncStrategyType.h" />
+    <ClInclude Include="FQDCCenter.h" />
+    <ClInclude Include="FQDCSide.h" />
+    <ClInclude Include="FQIS.h" />
+    <ClInclude Include="FQMS.h" />
+    <ClInclude Include="FuelCompensatorSensor.h" />
+    <ClInclude Include="FuelDensitySensor.h" />
+    <ClInclude Include="FuelHeightSensor.h" />
+    <ClInclude Include="FuelHeightTemperatureSensor.h" />
     <ClInclude Include="GaugesInvalidateFlags.h" />
     <ClInclude Include="GearsSpeedLimit.h" />
     <ClInclude Include="GpsBoolean.h" />
@@ -284,6 +307,8 @@
     <ClInclude Include="KEvents.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
+    <ClInclude Include="MainFuelSensorGroupA.h" />
+    <ClInclude Include="MainFuelSensorGroupB.h" />
     <ClInclude Include="NavBeacon.h" />
     <ClInclude Include="NavData.h" />
     <ClInclude Include="NavRadioEnums.h" />
@@ -294,7 +319,9 @@
     <ClInclude Include="PFDILSIndicator.h" />
     <ClInclude Include="PFDMinimumIndicator.h" />
     <ClInclude Include="PFDRadioAltitudeIndicator.h" />
+    <ClInclude Include="PrincipalCharacteristics.h" />
     <ClInclude Include="RadioNav.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
     <ClInclude Include="SimConnectFacilityTypes.h" />
