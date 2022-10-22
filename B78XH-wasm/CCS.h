@@ -17,6 +17,7 @@
 
 #pragma once
 #include "ERS.h"
+#include "FQIS.h"
 #include "LVars.h"
 
 /*
@@ -31,6 +32,7 @@ class CCS {
 		auto reset() -> void;
 	private:
 		ERS ers;
+		FQIS fqis;
 		LVars lvars;
 		auto updateLVars() -> void;
 		auto updateERS(double deltaTime) -> void;
