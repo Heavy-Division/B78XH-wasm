@@ -285,6 +285,9 @@
     <ClCompile Include="Updateable.cpp">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClCompile>
+    <ClCompile Include="TCPEventDispatcher.cpp">
+      <Filter>Source Files\Tools\Events\Dispatchers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -697,6 +700,15 @@
     <ClInclude Include="Updateable.h">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClInclude>
+    <ClInclude Include="SimConnectClientEvents.h">
+      <Filter>Source Files\Tools\SimConnect</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDispatchers.h">
+      <Filter>Source Files\Tools\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPEventDispatcher.h">
+      <Filter>Source Files\Tools\Events\Dispatchers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -878,6 +890,12 @@
     </Filter>
     <Filter Include="Source Files\Tools\LVars">
       <UniqueIdentifier>{a4046750-4ccb-4bf9-9402-6f841a78c254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\Events">
+      <UniqueIdentifier>{e4047d2b-94f9-4788-81df-c40eabaff2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\Events\Dispatchers">
+      <UniqueIdentifier>{0e1e3799-591b-4c0d-a805-4424e63303a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -17,25 +17,24 @@
 
 #include "BaseGauge.h"
 #include "PEDESTALTuningControlPanelGauge.h"
+#include "EventDispatchers.h"
 
 PEDESTALTuningControlPanelGauge::PEDESTALTuningControlPanelGauge(int id) {
-	(*this).controlSwitchIdVariable = ("CONTROL_SWITCH_COM_" + std::to_string(id + 1));
 	(*this).id = id;
 }
 
 bool PEDESTALTuningControlPanelGauge::preInstall() {
-	(*this).controlSwitchIdVariableID = check_named_variable((*this).controlSwitchIdVariable.c_str());
 	return true;
 }
 
 bool PEDESTALTuningControlPanelGauge::postInstall(FsContext context) {
 	renderer.setContext(context);
-	set_named_variable_value((*this).controlSwitchIdVariableID, 1);
+	EventDispatchers::tcpEventDispatcher[this->id].push(TCPEventDispatcher::EVENT_LIST::VFH);
 	return true;
 }
 
 bool PEDESTALTuningControlPanelGauge::preDraw(sGaugeDrawData* data) {
-	this->controlSwitchIdVariableValue = static_cast<TuningControlPanelControlSwitchID>(get_named_variable_value((*this).controlSwitchIdVariableID));
+	this->controlSwitchIdVariableValue = static_cast<TuningControlPanelControlSwitchID>(EventDispatchers::tcpEventDispatcher[this->id].get());
 
 	if(this->controlSwitchIdVariableValue == TuningControlPanelControlSwitchID::off && this->isGaugeOff) {
 		this->setGaugeOff(false, data);
@@ -60,13 +59,12 @@ bool PEDESTALTuningControlPanelGauge::preKill() {
 
 void PEDESTALTuningControlPanelGauge::redrawControl(sGaugeDrawData* data) {
 	GaugesInvalidateFlags.PEDESTALTuningControlGauge[(*this).id] = false;
-	set_named_variable_value((*this).controlSwitchIdVariableID, 0);
+
 	renderer.render(static_cast<TuningControlPanelControlSwitchID>((*this).controlSwitchIdVariableValue), data);
 }
 
 void PEDESTALTuningControlPanelGauge::setGaugeOff(bool state, sGaugeDrawData* data) {
 	if(state) {
-		set_named_variable_value((*this).controlSwitchIdVariableID, 0);
 		renderer.renderOff(data);
 	}
 	this->isGaugeOff = state;

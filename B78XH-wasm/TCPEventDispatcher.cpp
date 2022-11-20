@@ -15,25 +15,40 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#pragma once
-#include "BaseGauge.h"
-#include "TuningControlPanelRenderer.h"
+#include "TCPEventDispatcher.h"
 
-class PEDESTALTuningControlPanelGauge: public BaseGauge {
-	public:
-		PEDESTALTuningControlPanelGauge(int id);
-		bool preInstall() override;
-		bool postInstall(FsContext context) override;
-		bool preDraw(sGaugeDrawData* data) override;
-		bool preKill() override;
+auto TCPEventDispatcher::get() -> EVENT_LIST {
+	if(this->empty()) {
+		return EVENT_LIST::NONE;
+	}
 
-		bool isControlInvalid();
-		void invalidateControl() const;
-		void redrawControl(sGaugeDrawData* data);
-		int id;
-	private:
-		TuningControlPanelRenderer renderer;
-		TuningControlPanelControlSwitchID controlSwitchIdVariableValue;
-		bool isGaugeOff = false;
-		void setGaugeOff(bool state, sGaugeDrawData* data);
-};
+	const auto eventToReturn = this->front();
+	this->pop();
+	return eventToReturn;
+}
+
+auto TCPEventDispatcher::front() -> EVENT_LIST {
+	return this->queue.front();
+}
+
+auto TCPEventDispatcher::back() -> EVENT_LIST {
+	return this->queue.back();
+}
+
+auto TCPEventDispatcher::push(EVENT_LIST event) -> void {
+	this->queue.push(event);
+}
+
+auto TCPEventDispatcher::pop() -> void {
+	if (!this->empty()) {
+		this->queue.pop();
+	}
+}
+
+auto TCPEventDispatcher::empty() -> bool {
+	return this->queue.empty();
+}
+
+auto TCPEventDispatcher::size() -> int {
+	return this->queue.size();
+}

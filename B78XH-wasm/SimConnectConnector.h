@@ -19,6 +19,8 @@
 #include "SimConnectData.h"
 #include <SimConnect.h>
 
+#include "SimConnectClientEvents.h"
+
 
 class SimConnectConnector {
 	private:
@@ -29,10 +31,16 @@ class SimConnectConnector {
 		SimConnectConnector() = default;
 		~SimConnectConnector() = default;
 		auto connect(const char* name) -> bool;
+		auto prepareEvents() -> void;
+		auto mapEvent(const ClientEvents eventId,
+		              const char* eventName,
+		              const BOOL maskable) -> void;
+		auto mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId, const char* eventName, const BOOL maskable) -> void;
 		auto disconnect() -> void;
 		auto getHandle() -> HANDLE;
 		auto requestDispatchMessages() -> void;
 		auto processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cbData) -> void;
+		void handleCustomEvents(SIMCONNECT_RECV_EVENT_EX1* data);
 		auto prepareDataDefinitions() -> void;
 		auto prepareClientDataDefinitions() -> void;
 		auto prepareRequests() -> void;

@@ -147,3 +147,13 @@ auto RadioNav::setBeaconOBS(NavEquipmentIndex navType, double obs) -> void {
 	const auto kEvent = fmt::format("VOR{}_SET", static_cast<int>(navType));
 	KEvents::execute(kEvent, obs);
 }
+
+auto RadioNav::tuneClosestILS() -> void {
+	const auto kEvent = fmt::format("NAV1_CLOSE_FREQ_SET");
+	KEvents::execute(kEvent, 1, "Bool");
+}
+
+auto RadioNav::tuneClosestILS2() -> void {
+	const auto kEvent = fmt::format("NAV1_CLOSE_FREQ_SET");
+	KEvents::execute(kEvent, 0, "Bool");
+}

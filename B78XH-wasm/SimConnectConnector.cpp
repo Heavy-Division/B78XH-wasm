@@ -18,6 +18,8 @@
 #include "fmt/core.h"
 #include "SimConnectConnector.h"
 #include "GaugesInvalidateFlags.h"
+#include "SimConnectClientEvents.h"
+#include "EventDispatchers.h"
 
 auto SimConnectConnector::connect(const char* name) -> bool {
 	fmt::print("B78XH WASM: SimConnect connecting...");
@@ -28,9 +30,31 @@ auto SimConnectConnector::connect(const char* name) -> bool {
 		fflush(stdout);
 	}
 
+	this->prepareEvents();
 	this->prepareDataDefinitions();
 	this->prepareRequests();
 	return true;
+}
+
+auto SimConnectConnector::prepareEvents() -> void {
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_TCP_1, "B78XH.CONTROL_IDS_TCP_1", FALSE);
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_TCP_2, "B78XH.CONTROL_IDS_TCP_2", FALSE);
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_TCP_3, "B78XH.CONTROL_IDS_TCP_3", FALSE);
+
+	this->mapEvent(ClientEvents::B78XH_BUTTON_CLOCK_PUSH, "B78XH.BUTTON_CLOCK_PUSH", FALSE);
+}
+
+auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId, const char* eventName = "", const BOOL maskable = FALSE) -> void {
+	const auto clientEvent = static_cast<SIMCONNECT_CLIENT_EVENT_ID>(eventId);
+
+	SimConnect_MapClientEventToSimEvent(simConnectHandle, clientEvent, eventName);
+	SimConnect_AddClientEventToNotificationGroup(simConnectHandle, groupId, clientEvent, maskable);
+
+	SimConnect_SetNotificationGroupPriority(simConnectHandle, groupId, SIMCONNECT_GROUP_PRIORITY_HIGHEST_MASKABLE);
+}
+
+auto SimConnectConnector::mapEvent(const ClientEvents eventId, const char* eventName = "", const BOOL maskable = FALSE) -> void {
+	this->mapEvent(0, eventId, eventName, maskable);
 }
 
 auto SimConnectConnector::prepareDataDefinitions() -> void {
@@ -55,7 +79,6 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_TAXI_NAMES");
 	this->connectionResult = SimConnect_AddToFacilityDefinition(simConnectHandle, FACILITY_DATA_DEF_AIRPORT, "N_JETWAYS");
 	*/
-
 
 	/**
 	 * VHF
@@ -588,7 +611,6 @@ auto SimConnectConnector::prepareClientDataDefinitions() -> void {
 auto SimConnectConnector::prepareRequests() -> void {
 	//connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "DROPPABLE OBJECTS TYPE:1", "", SIMCONNECT_DATATYPE_STRING256);
 
-
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_VHF, DEFINITION_VHF,
 	                                                           SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
@@ -828,8 +850,8 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 				default:
 					break;
 			}
+			break;
 		}
-		break;
 		/*
 		case SIMCONNECT_RECV_ID_FACILITY_DATA: {
 			fmt::print(stderr, "FACILITY EVENT");
@@ -848,14 +870,12 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 		break;
 		*/
 		case SIMCONNECT_RECV_ID_FACILITY_DATA_END: {
-
+			break;
 		}
-		break;
 		case SIMCONNECT_RECV_ID_OPEN:
 			fmt::print("B78XH WASM: SimConnect connection established");
 			fflush(stdout);
 			break;
-
 		case SIMCONNECT_RECV_ID_QUIT:
 			fmt::print("B78XH WASM: Received SimConnect connection quit message");
 			fflush(stdout);
@@ -866,11 +886,45 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 			fmt::print(stderr, "EXCEPTION SIMCONNECT ID {}", except->dwException);
 		}
 		break;
-		case SIMCONNECT_RECV_ID_EVENT:
+		case SIMCONNECT_RECV_ID_EVENT: {
+			this->handleCustomEvents(static_cast<SIMCONNECT_RECV_EVENT_EX1*>(pData));
+
+		}
 		case SIMCONNECT_RECV_ID_CLIENT_DATA:
 		default:
 			break;
 	}
+}
+
+auto SimConnectConnector::handleCustomEvents(SIMCONNECT_RECV_EVENT_EX1* data) -> void {
+	const auto eventId = static_cast<ClientEvents>(data->uEventID);
+	const auto data0 = data->dwData0;
+	switch (eventId) {
+		case ClientEvents::B78XH_CONTROL_IDS_TCP_1: {
+			EventDispatchers::tcpEventDispatcher[0].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
+			break;
+		};
+
+		case ClientEvents::B78XH_CONTROL_IDS_TCP_2: {
+			EventDispatchers::tcpEventDispatcher[1].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
+			break;
+		};
+
+		case ClientEvents::B78XH_CONTROL_IDS_TCP_3: {
+			EventDispatchers::tcpEventDispatcher[2].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
+			break;
+		};
+
+		default: {
+			fmt::print(stderr, "CLIENT EVENT: Unknown event");
+			break;
+		}
+	}
+
+	fmt::print(stderr, "---------------------------------------------");
+	fmt::print(stderr, "EVENT ID: {}", static_cast<int>(eventId));
+	fmt::print(stderr, "EVENT DATA0: {}", data->dwData0);
+	fmt::print(stderr, "---------------------------------------------");
 }
 
 auto SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,

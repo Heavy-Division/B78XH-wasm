@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-su9-stable\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -193,6 +193,7 @@
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
     <ClCompile Include="SpeedMarker.cpp" />
+    <ClCompile Include="TCPEventDispatcher.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="CDUSelectKeyButton.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
+    <ClInclude Include="EventDispatchers.h" />
     <ClInclude Include="FacilitySearchType.h" />
     <ClInclude Include="FacilityType.h" />
     <ClInclude Include="FlapsSpeedLimit.h" />
@@ -296,6 +298,7 @@
     <ClInclude Include="PFDRadioAltitudeIndicator.h" />
     <ClInclude Include="RadioNav.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
+    <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
     <ClInclude Include="SimConnectFacilityTypes.h" />
     <ClInclude Include="SimpleINI\ConvertUTF.h" />
@@ -326,6 +329,7 @@
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
     <ClInclude Include="Systems.h" />
+    <ClInclude Include="TCPEventDispatcher.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="Tools.h" />

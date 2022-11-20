@@ -1,4 +1,4 @@
-//    B78XH-wasm
+﻿//    B78XH-wasm
 //    Copyright (C) 2022  Heavy Division
 //
 //    This program is free software: you can redistribute it and/or modify
@@ -16,24 +16,17 @@
 
 
 #pragma once
-#include "BaseGauge.h"
-#include "TuningControlPanelRenderer.h"
 
-class PEDESTALTuningControlPanelGauge: public BaseGauge {
-	public:
-		PEDESTALTuningControlPanelGauge(int id);
-		bool preInstall() override;
-		bool postInstall(FsContext context) override;
-		bool preDraw(sGaugeDrawData* data) override;
-		bool preKill() override;
+enum class ClientEvents {
+	/*
+	 * Control IDs 
+	 */
+	B78XH_CONTROL_IDS_TCP_1,
+	B78XH_CONTROL_IDS_TCP_2,
+	B78XH_CONTROL_IDS_TCP_3,
 
-		bool isControlInvalid();
-		void invalidateControl() const;
-		void redrawControl(sGaugeDrawData* data);
-		int id;
-	private:
-		TuningControlPanelRenderer renderer;
-		TuningControlPanelControlSwitchID controlSwitchIdVariableValue;
-		bool isGaugeOff = false;
-		void setGaugeOff(bool state, sGaugeDrawData* data);
+	/*
+	 * Others
+	 */
+	B78XH_BUTTON_CLOCK_PUSH
 };
