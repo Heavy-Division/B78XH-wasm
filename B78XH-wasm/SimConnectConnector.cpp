@@ -15,19 +15,18 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "fmt/core.h"
 #include "SimConnectConnector.h"
+
+#include "Console.h"
 #include "GaugesInvalidateFlags.h"
 #include "SimConnectClientEvents.h"
 #include "EventDispatchers.h"
 
 auto SimConnectConnector::connect(const char* name) -> bool {
-	fmt::print("B78XH WASM: SimConnect connecting...");
-	fflush(stdout);
+	Console::info("B78XH WASM: SimConnect connecting...");
 	this->connectionResult = SimConnect_Open(&simConnectHandle, name, nullptr, 0, 0, 0);
 	if (this->connectionResult == S_OK) {
-		fmt::print("B78XH WASM : SimConnect client \"{}\" connected", name);
-		fflush(stdout);
+		Console::info("B78XH WASM: SimConnect client \"{}\" connected", name);
 	}
 
 	this->prepareEvents();
@@ -873,17 +872,15 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 			break;
 		}
 		case SIMCONNECT_RECV_ID_OPEN:
-			fmt::print("B78XH WASM: SimConnect connection established");
-			fflush(stdout);
+			Console::info("B78XH WASM: SimConnect connection established");
 			break;
 		case SIMCONNECT_RECV_ID_QUIT:
-			fmt::print("B78XH WASM: Received SimConnect connection quit message");
-			fflush(stdout);
+			Console::info("B78XH WASM: Received SimConnect connection quit message");
 			disconnect();
 			break;
 		case SIMCONNECT_RECV_ID_EXCEPTION: {
 			auto except = static_cast<SIMCONNECT_RECV_EXCEPTION*>(pData);
-			fmt::print(stderr, "EXCEPTION SIMCONNECT ID {}", except->dwException);
+			Console::error("(SimConnectConnector::processDispatchMessage) EXCEPTION SIMCONNECT ID {}", except->dwException);
 		}
 		break;
 		case SIMCONNECT_RECV_ID_EVENT: {
@@ -916,15 +913,10 @@ auto SimConnectConnector::handleCustomEvents(SIMCONNECT_RECV_EVENT_EX1* data) ->
 		};
 
 		default: {
-			fmt::print(stderr, "CLIENT EVENT: Unknown event");
+			Console::error("(SimConnectConnector::handleCustomEvents) Unknown client event");
 			break;
 		}
 	}
-
-	fmt::print(stderr, "---------------------------------------------");
-	fmt::print(stderr, "EVENT ID: {}", static_cast<int>(eventId));
-	fmt::print(stderr, "EVENT DATA0: {}", data->dwData0);
-	fmt::print(stderr, "---------------------------------------------");
 }
 
 auto SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,
@@ -939,11 +931,9 @@ auto SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,
 }
 
 auto SimConnectConnector::disconnect() -> void {
-	fmt::print("B78XH WASM: SimConnect disconnecting...");
-	fflush(stdout);
+	Console::info("B78XH WASM: SimConnect disconnecting...");
 	SimConnect_Close(simConnectHandle);
-	fmt::print("B78XH WASM: SimConnect disconnected...");
-	fflush(stdout);
+	Console::info("B78XH WASM: SimConnect disconnected...");
 }
 
 auto SimConnectConnector::getHandle() -> HANDLE {
