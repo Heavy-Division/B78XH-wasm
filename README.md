@@ -7,7 +7,7 @@ https://github.com/Heavy-Division/B78XH/tree/main/SimObjects/Airplanes/Asobo_B78
 
 The WASM module is responsible for rendering panels, performing systems logic, and managing LVars used in the source aircraft.
 
-See the [Contributing Docs]() to contribute to this repository.
+See the [Contributing Docs](.github/CONTRIBUTING.md) to contribute to this repository.
 
 To download the mod, head to [the main repository](https://github.com/Heavy-Division/B78XH-wasm.git) and download the zip file. 
 
