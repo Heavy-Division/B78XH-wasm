@@ -9,6 +9,6 @@ The WASM module is responsible for rendering panels, performing systems logic, a
 
 See the [Contributing Docs]() to contribute to this repository.
 
-To download the mod, head to [The main repository](https://github.com/Heavy-Division/B78XH-wasm.git) and download the zip file. 
+To download the mod, head to [the main repository](https://github.com/Heavy-Division/B78XH-wasm.git) and download the zip file. 
 
 
