@@ -16,8 +16,12 @@
 
 
 #include "RadioNav.h"
+
+#include <string>
+
 #include "NavRadioEnums.h"
 #include "Simplane.h"
+#include "KEvents.h"
 
 auto RadioNav::getBeacon(NavEquipmentIndex index, bool onlyValid) -> NavBeacon& {
 	return this->getEquipment(index, onlyValid);
@@ -120,4 +124,36 @@ auto RadioNav::convertNavTypeToNavSource(NavEquipmentIndex navType) -> NavSource
 			return NavSource::AUTO;
 		}
 	}
+}
+
+auto RadioNav::swapBeaconFrequencies(NavEquipmentIndex navType) -> void {
+	const auto kEvent = fmt::format("NAV{}_RADIO_SWAP", static_cast<int>(navType));
+	KEvents::execute(kEvent, 1, "Bool");
+}
+
+auto RadioNav::setBeaconFrequency(NavEquipmentIndex navType, double frequency, bool Hz) -> void {
+	const auto kEvent = fmt::format("NAV{}_RADIO_SET_HZ", static_cast<int>(navType));
+	const auto fixedFrequency = (Hz ? frequency : frequency * 1000000);
+	KEvents::execute(kEvent, fixedFrequency, "Hz");
+}
+
+auto RadioNav::setBeaconStandbyFrequency(NavEquipmentIndex navType, double frequency, bool Hz) -> void {
+	const auto kEvent = fmt::format("NAV{}_STBY_SET_HZ", static_cast<int>(navType));
+	const auto fixedFrequency = (Hz ? frequency : frequency * 1000000);
+	KEvents::execute(kEvent, fixedFrequency, "Hz");
+}
+
+auto RadioNav::setBeaconOBS(NavEquipmentIndex navType, double obs) -> void {
+	const auto kEvent = fmt::format("VOR{}_SET", static_cast<int>(navType));
+	KEvents::execute(kEvent, obs);
+}
+
+auto RadioNav::tuneClosestILS() -> void {
+	const auto kEvent = fmt::format("NAV1_CLOSE_FREQ_SET");
+	KEvents::execute(kEvent, 1, "Bool");
+}
+
+auto RadioNav::tuneClosestILS2() -> void {
+	const auto kEvent = fmt::format("NAV1_CLOSE_FREQ_SET");
+	KEvents::execute(kEvent, 0, "Bool");
 }

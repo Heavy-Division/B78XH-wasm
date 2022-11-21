@@ -1,3 +1,12 @@
+TODO (PFD/AUX PRE RELEASE):
+	- MINIMA POSITION
+	- MINIMA Updating
+	- MINIMA Pointer ???
+	- AClock reset logic
+
+
+
+
 TODO:
 	- Fragments of displays should not use windowWidth and windowHeight. The fragments should be standalone. Rendering should start at 0x0 pixel and position of the fragment should be controlled by main gauge/diplay
 	  Example: AirspeedIndicator should not care about position on PFD screen. The indicator should be drawn as is and PFD display should translate the indicator to correct position on the display

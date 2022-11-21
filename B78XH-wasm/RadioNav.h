@@ -43,6 +43,13 @@ class RadioNav {
 		 */
 		auto getBestVORBeacon(UseNavSource useNavSource = UseNavSource::YES) -> NavBeacon&;
 
+		auto swapBeaconFrequencies(NavEquipmentIndex navType) -> void;
+		auto setBeaconFrequency(NavEquipmentIndex navType, double frequency, bool Hz = false) -> void;
+		auto setBeaconStandbyFrequency(NavEquipmentIndex navType, double frequency, bool Hz = false) -> void;
+		auto setBeaconOBS(NavEquipmentIndex navType, double obs) -> void;
+		auto tuneClosestILS() -> void;
+		auto tuneClosestILS2() -> void;
+
 	private:
 		NavBeacon unknownBeacon = NavBeacon(NavEquipmentType::UNKNOWN, NavEquipmentIndex::UNKNOWN);
 		ILSBeacon ilsBeacon1 = ILSBeacon(NavEquipmentIndex::ILS1);
@@ -76,5 +83,4 @@ class RadioNav {
 		 * @return NavSource
 		 */
 		static auto convertNavTypeToNavSource(NavEquipmentIndex navType) -> NavSource;
-
 };

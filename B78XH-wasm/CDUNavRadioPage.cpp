@@ -39,6 +39,7 @@ void CDUNavRadioPage::preparePage() {
 	this->LL4(this->getIlsLine());
 	this->LLP6({"------","settable"});
 
+
 	/*
 	 * Center
 	 */

@@ -29,7 +29,8 @@ CSimpleIniA ini;
 // Callbacks
 extern "C" {
 	auto EventHandler(ID32 event, UINT32 evdata, PVOID userdata) -> void {
-		if (event == 66978 || event == 66981 || event == 66984) {
+		if (event == 66978 || event == 66981 || event == 66984 || event == 65762 || event == 65763 || event == 65764) {
+			return;
 		}
 		//fmt::print(stderr, "EVENT {}", event);
 	}
@@ -42,7 +43,7 @@ extern "C" {
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				//register_key_event_handler((GAUGE_KEY_EVENT_HANDLER)EventHandler, NULL);
+				//register_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
 				B78XHConfiguration::data.load();
 				return true;
 			}
@@ -54,7 +55,7 @@ extern "C" {
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
 				B78XHConfiguration::data.save();
-				//unregister_key_event_handler((GAUGE_KEY_EVENT_HANDLER)EventHandler, NULL);
+				//unregister_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
 				return true;
 			}
 			break;

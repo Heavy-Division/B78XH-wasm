@@ -17,15 +17,97 @@
 
 #include "KEvents.h"
 
+#include <string>
+#include <string>
 #include <MSFS/Legacy/gauges.h>
 #include "fmt/core.h"
 
-auto KEvents::execute(char* name, char* value) -> void {
+auto KEvents::execute(std::string name, std::string value) -> void {
+	executeEvent(name, value);
+}
+
+auto KEvents::execute(std::string name, int value) -> void {
+	executeEvent(name, std::to_string(value));
+}
+
+auto KEvents::execute(std::string name, float value) -> void {
+	executeEvent(name, std::to_string(value));
+}
+
+auto KEvents::execute(std::string name, long value) -> void {
+	executeEvent(name, std::to_string(value));
+}
+
+auto KEvents::execute(std::string name, double value) -> void {
+	executeEvent(name, std::to_string(value));
+}
+
+auto KEvents::trigger(std::string name, std::string value) -> void {
+	execute(name, value);
+}
+
+auto KEvents::trigger(std::string name, int value) -> void {
+	execute(name, value);
+}
+
+auto KEvents::trigger(std::string name, float value) -> void {
+	execute(name, value);
+}
+
+auto KEvents::trigger(std::string name, long value) -> void {
+	execute(name, value);
+}
+
+auto KEvents::trigger(std::string name, double value) -> void {
+	execute(name, value);
+}
+
+auto KEvents::execute(std::string name, std::string value, std::string unit) -> void {
+	executeEvent(name, value, unit);
+}
+
+auto KEvents::execute(std::string name, int value, std::string unit) -> void {
+	executeEvent(name, std::to_string(value), unit);
+}
+
+auto KEvents::execute(std::string name, float value, std::string unit) -> void {
+	executeEvent(name, std::to_string(value), unit);
+}
+
+auto KEvents::execute(std::string name, long value, std::string unit) -> void {
+	executeEvent(name, std::to_string(value), unit);
+}
+
+auto KEvents::execute(std::string name, double value, std::string unit) -> void {
+	executeEvent(name, std::to_string(value), unit);
+}
+
+auto KEvents::trigger(std::string name, std::string value, std::string unit) -> void {
+	execute(name, value, unit);
+}
+
+auto KEvents::trigger(std::string name, int value, std::string unit) -> void {
+	execute(name, value, unit);
+}
+
+auto KEvents::trigger(std::string name, float value, std::string unit) -> void {
+	execute(name, value, unit);
+}
+
+auto KEvents::trigger(std::string name, long value, std::string unit) -> void {
+	execute(name, value, unit);
+}
+
+auto KEvents::trigger(std::string name, double value, std::string unit) -> void {
+	execute(name, value, unit);
+}
+
+auto KEvents::executeEvent(std::string name, std::string value) -> void {
 	const auto command = fmt::format("{} (>K:{})", value, name);
 	execute_calculator_code(command.c_str(), nullptr, nullptr, nullptr);
 }
 
-auto KEvents::execute(char* name, char* value, char* unit) -> void {
+auto KEvents::executeEvent(std::string name, std::string value, std::string unit) -> void {
 	const auto command = fmt::format("{} (>K:{}, {})", value, name, unit);
 	execute_calculator_code(command.c_str(), nullptr, nullptr, nullptr);
 }
