@@ -17,10 +17,7 @@
 
 #include <MSFS/MSFS.h>
 
-#include "IRSAlignTimeType.h"
 #include "SimConnectConnector.h"
-#include "fmt/core.h"
-#include "NavData.h"
 #include "SimpleINI/SimpleIni.h"
 #include "B78XHConfiguration.h"
 CSimpleIniA ini;
@@ -32,7 +29,7 @@ extern "C" {
 		if (event == 66978 || event == 66981 || event == 66984 || event == 65762 || event == 65763 || event == 65764) {
 			return;
 		}
-		//fmt::print(stderr, "EVENT {}", event);
+		//Console::error("EVENT {}", event);
 	}
 
 	MSFS_CALLBACK auto tool_simconnect_handling_gauge_callback(FsContext ctx, int service_id, void* pData) -> bool {
