@@ -16,7 +16,7 @@ C++
 6. Launch the project by opening the .sln file in the IDE
 7. Create a new branch with a title of what you are chaning 
 8. Download the [B78XH]() mod file, name it `B78XH-dev` if you already have it downloaded, extract it somewhere outside of the community folder, and link it to the community folder using a [symbolic link]() program. 
-10. Select the build path of the wasm repo by right clicking the solution file, and selecting `preferences`. In the C++ output path option select your `B78XH-dev` folder and set the path to `B78XH-dev/SimObjects/Airplanes/Asobo_B787/panel/`
+10. Select the build path of the wasm repo by right clicking the top level .sln file in the IDE file explorer, and selecting `preferences`. In the C++ output path option select your `B78XH-dev` folder and set the path to `B78XH-dev/SimObjects/Airplanes/Asobo_B787/panel/`
 11. Load the simulator and open the developer menu. 
 12. Under `windows` menu select the `WASM debug` window. 
 13. Make your changes in the IDE, save, and build the .wasm binary. 
