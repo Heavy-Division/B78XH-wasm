@@ -709,6 +709,9 @@
     <ClInclude Include="TCPEventDispatcher.h">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
     </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Source Files\Tools\Console</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -896,6 +899,9 @@
     </Filter>
     <Filter Include="Source Files\Tools\Events\Dispatchers">
       <UniqueIdentifier>{0e1e3799-591b-4c0d-a805-4424e63303a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\Console">
+      <UniqueIdentifier>{a66ac76f-ef7d-4e81-8dc1-b4240fcdbdc5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

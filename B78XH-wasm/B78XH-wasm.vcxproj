@@ -262,6 +262,7 @@
     <ClInclude Include="CDURightTitleLine.h" />
     <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
