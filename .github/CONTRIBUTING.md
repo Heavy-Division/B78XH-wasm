@@ -22,7 +22,7 @@ C++
 13. Make your changes in the IDE, save, and build the .wasm binary. 
 14. Restart the flight to see your changes. 
 
-> Note: It is recommended to use Fast WASM compilation in the MSFS developer menu. When returning to normal flying, it is recommended to turn this off. 
+> Note: It is recommended to use Fast WASM compilation in the MSFS developer options menu. When returning to normal flying, it is recommended to turn this off. 
 
 
 
