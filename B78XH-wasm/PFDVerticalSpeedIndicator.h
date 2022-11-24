@@ -18,6 +18,7 @@
 #pragma once
 #include "MSFS/Render/nanovg.h"
 
+
 class PFDVerticalSpeedIndicator {
 	public:
 		static void draw(NVGcontext* context);

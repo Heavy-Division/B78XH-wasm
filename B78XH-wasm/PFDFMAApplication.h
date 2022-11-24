@@ -1,27 +1,10 @@
-//    B78XH-wasm
-//    Copyright (C) 2022  Heavy Division
-//
-//    This program is free software: you can redistribute it and/or modify
-//    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License, or
-//    (at your option) any later version.
-//
-//    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//    GNU General Public License for more details.
-//
-//    You should have received a copy of the GNU General Public License
-//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
 #pragma once
-#include "MSFS/Render/nanovg.h"
+#include "Application.h"
 
-
-class PFDFMA {
+class PFDFMAApplication : public Application {
 	public:
-		static void draw(NVGcontext* context);
+		auto render(sGaugeDrawData* data) -> void override;
+
 	private:
 		struct ThrottleMode {
 			static constexpr auto HOLD = "HOLD";
@@ -64,11 +47,11 @@ class PFDFMA {
 			static constexpr auto NONE = "";
 		};
 
-		static void drawBackground(NVGcontext* context);
-		static void drawTexts(NVGcontext* context);
-		static const char* resolveActiveThrustMode();
-		static const char* resolveActiveRollMode();
-		static const char* resolveArmedRollMode();
-		static const char* resolveActivePitchMode();
-		static const char* resolveArmedPitchMode();
+		void drawBackground();
+		void drawTexts();
+		const char* resolveActiveThrustMode();
+		const char* resolveActiveRollMode();
+		const char* resolveArmedRollMode();
+		const char* resolveActivePitchMode();
+		const char* resolveArmedPitchMode();
 };

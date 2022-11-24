@@ -1,118 +1,62 @@
-//    B78XH-wasm
-//    Copyright (C) 2022  Heavy Division
-//
-//    This program is free software: you can redistribute it and/or modify
-//    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License, or
-//    (at your option) any later version.
-//
-//    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//    GNU General Public License for more details.
-//
-//    You should have received a copy of the GNU General Public License
-//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-#include "PFDAuxGauge.h"
-
-#include <cmath>
-#include <string>
-
+#include "PFDAuxApplication.h"
 #include "Tools.h"
-#include "fmt/core.h"
 #include "Simplane.h"
+#include <cmath>
 
 using Colors = Tools::Colors;
 
-bool PFDAuxGauge::preInstall() {
-	return true;
-}
-
-bool PFDAuxGauge::postInstall(FsContext context) {
-	this->fsContext = context;
-	NVGparams params;
-	params.userPtr = context;
-	params.edgeAntiAlias = true;
-
-	nvgContext = nvgCreateInternal(&params);
-	nvgCreateFont(nvgContext, "heavy-fmc", "./data/Heavy787FMC.ttf");
-	return true;
-}
-
-bool PFDAuxGauge::preDraw(sGaugeDrawData* data) {
-	return true;
-}
-
-bool PFDAuxGauge::preDraw(FsContext context, sGaugeDrawData* data) {
+void PFDAuxApplication::render(sGaugeDrawData* data) {
 	this->chronoTime += data->dt;
-	this->throttleTimeCheck += data->dt;
-	if (this->throttleTimeCheck < 0.05) {
-		return true;
-	}
-	this->throttleTimeCheck = 0;
 
 	if (this->flightStartTime == 0) {
 		this->flightStartTime = SimConnectData::Misc::time.absoluteTime;
 	}
 
-	this->devicePixelRatio = static_cast<float>(data->fbWidth) / static_cast<float>(data->winWidth);
-	this->devicePixelRatio = 2;
-	this->windowWidth = static_cast<float>(data->winWidth);
-	this->windowHeight = static_cast<float>(data->winHeight);
 
-	nvgBeginFrame(nvgContext, windowWidth, windowHeight, devicePixelRatio);
-	{
-		
-		this->renderMainBackground();
-		this->renderBackground();
-		this->renderMainBorders();
-		this->renderBorders();
-		this->renderAnalogClock();
+	this->renderMainBackground();
+	this->renderBackground();
+	this->renderMainBorders();
+	this->renderBorders();
+	this->renderAnalogClock();
 
-		this->renderTexts();
-		this->renderChronoDigital();
-		this->renderBottomSection();
-		
-	}
-	nvgEndFrame(nvgContext);
-	return true;
+	this->renderTexts();
+	this->renderChronoDigital();
+	this->renderBottomSection();
 }
 
-void PFDAuxGauge::renderMainBackground() {
+void PFDAuxApplication::renderMainBackground() const {
 	nvgFillColor(nvgContext, Colors::black);
 	nvgBeginPath(nvgContext);
-	nvgRect(nvgContext, 0, 0, this->windowWidth, this->windowHeight);
+	nvgRect(nvgContext, 0, 0, this->width, this->height);
 	nvgFill(nvgContext);
 	nvgClosePath(nvgContext);
 }
 
-void PFDAuxGauge::renderBackground() {
+void PFDAuxApplication::renderBackground() const {
 	nvgFillColor(nvgContext, nvgRGB(49, 49, 51));
 	nvgBeginPath(nvgContext);
-	nvgRect(nvgContext, 0, 0, this->windowWidth, 250);
+	nvgRect(nvgContext, 0, 0, this->width, 250);
 	nvgFill(nvgContext);
 	nvgClosePath(nvgContext);
 }
 
-void PFDAuxGauge::renderMainBorders() {
+void PFDAuxApplication::renderMainBorders() const {
 	nvgBeginPath(nvgContext);
-	nvgMoveTo(nvgContext, this->windowWidth - 2, 0);
-	nvgLineTo(nvgContext, this->windowWidth - 2, this->windowHeight);
+	nvgMoveTo(nvgContext, this->width - 2, 0);
+	nvgLineTo(nvgContext, this->width - 2, this->height);
 	nvgStrokeColor(nvgContext, nvgRGB(78, 78, 80));
 	nvgStrokeWidth(nvgContext, 4.0f);
 	nvgStroke(nvgContext);
 	nvgClosePath(nvgContext);
 }
 
-void PFDAuxGauge::renderBorders() {
+void PFDAuxApplication::renderBorders() const {
 	nvgBeginPath(nvgContext);
 	nvgMoveTo(nvgContext, 2, 0);
 	nvgLineTo(nvgContext, 2, 250);
-	nvgLineTo(nvgContext, this->windowWidth, 250);
+	nvgLineTo(nvgContext, this->width, 250);
 	nvgMoveTo(nvgContext, 2, 200);
-	nvgLineTo(nvgContext, this->windowWidth, 200);
+	nvgLineTo(nvgContext, this->width, 200);
 
 
 	//nvgMoveTo(nvgContext, 0, 200);
@@ -123,14 +67,14 @@ void PFDAuxGauge::renderBorders() {
 	nvgClosePath(nvgContext);
 }
 
-void PFDAuxGauge::renderAnalogClock() {
+void PFDAuxApplication::renderAnalogClock() {
 	this->renderAnalogClockBody();
 	this->renderAnalogClockMarkers();
 
 	this->drawAnalogClockHands(3, 30, this->chronoTime);
 }
 
-void PFDAuxGauge::renderAnalogClockBody() {
+void PFDAuxApplication::renderAnalogClockBody() const {
 	constexpr float centerX = 348;
 	constexpr float centerY = 75;
 	constexpr float radius = 67;
@@ -145,7 +89,7 @@ void PFDAuxGauge::renderAnalogClockBody() {
 	nvgClosePath(nvgContext);
 }
 
-void PFDAuxGauge::renderAnalogClockMarkers() {
+void PFDAuxApplication::renderAnalogClockMarkers() {
 	this->drawAnalogClockMarker(30);
 	this->drawAnalogClockMarker(60);
 	this->drawAnalogClockMarker(90, true);
@@ -160,10 +104,10 @@ void PFDAuxGauge::renderAnalogClockMarkers() {
 	this->drawAnalogClockMarker(360, true);
 }
 
-void PFDAuxGauge::renderTexts() {
+void PFDAuxApplication::renderTexts() const {
 	constexpr float titleHorizontalOffset = 15.0f;
 	constexpr float valueHorizontalOffset = 95.0f;
-	constexpr int verticalOffsets[5] = {25, 62, 99, 136, 175};
+	constexpr int verticalOffsets[5] = { 25, 62, 99, 136, 175 };
 
 
 	nvgResetTransform(this->nvgContext);
@@ -197,7 +141,7 @@ void PFDAuxGauge::renderTexts() {
 	nvgRestore(this->nvgContext);
 }
 
-void PFDAuxGauge::drawAnalogClockMarker(int angle, bool isBold) {
+void PFDAuxApplication::drawAnalogClockMarker(int angle, bool isBold) const {
 	constexpr float centerX = 348;
 	constexpr float centerY = 75;
 	constexpr float radius = 67;
@@ -215,7 +159,7 @@ void PFDAuxGauge::drawAnalogClockMarker(int angle, bool isBold) {
 	nvgRestore(nvgContext);
 }
 
-void PFDAuxGauge::drawAnalogClockHands(int hours, int minutes, double seconds) {
+void PFDAuxApplication::drawAnalogClockHands(int hours, int minutes, double seconds) const {
 	constexpr float centerX = 348;
 	constexpr float centerY = 75;
 	constexpr float radius = 67;
@@ -261,7 +205,7 @@ void PFDAuxGauge::drawAnalogClockHands(int hours, int minutes, double seconds) {
 	nvgClosePath(nvgContext);
 }
 
-void PFDAuxGauge::renderChronoDigital() {
+void PFDAuxApplication::renderChronoDigital() {
 	const int minutes = floor(this->chronoTime) / 60;
 	const int seconds = floor(this->chronoTime) - (minutes * 60);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
@@ -270,7 +214,7 @@ void PFDAuxGauge::renderChronoDigital() {
 	nvgText(this->nvgContext, 348, 175.0f, fmt::format("{:02}:{:02}", minutes, seconds).c_str(), nullptr);
 }
 
-void PFDAuxGauge::renderBottomSection() {
+void PFDAuxApplication::renderBottomSection() {
 
 	nvgFontFace(this->nvgContext, "heavy-fmc");
 	nvgFontSize(this->nvgContext, 18.0f);
@@ -297,7 +241,7 @@ void PFDAuxGauge::renderBottomSection() {
 	 * Date
 	 */
 	const std::string months[12] = { "JAN", "FEB", "MAR", "APR", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" };
-	const std::string year = std::to_string(SimConnectData::Misc::time.localYear).substr(2,2);
+	const std::string year = std::to_string(SimConnectData::Misc::time.localYear).substr(2, 2);
 	const std::string date = fmt::format("{:02} {} {}", SimConnectData::Misc::time.localDayOfMonth, months[static_cast<int>(SimConnectData::Misc::time.localMonthOfYear) - 1], year);
 	nvgText(this->nvgContext, 212.5f, 236.0f, fmt::format("{}", date).c_str(), nullptr);
 
@@ -311,9 +255,4 @@ void PFDAuxGauge::renderBottomSection() {
 	const int seconds = floor(zulu - (minutes * 60) - (hours * 3600));
 	nvgText(this->nvgContext, 70.0f, 236.0f, fmt::format("{:02}:{:02}:{:02}z", hours, minutes, seconds).c_str(), nullptr);
 
-}
-
-bool PFDAuxGauge::preKill() {
-	nvgDeleteInternal(nvgContext);
-	return true;
 }

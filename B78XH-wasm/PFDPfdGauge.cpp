@@ -71,18 +71,21 @@ bool PFDPfdGauge::preDraw(sGaugeDrawData* data) {
 		nvgTranslate(this->nvgContext, 735, (this->windowHeight / 2 - 161) - 1);
 		{
 			PFDVerticalSpeedIndicator::draw(this->nvgContext);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, 155, (this->windowHeight / 2 - 465 / 2) - 1);
 		{
 			PFDAirspeedIndicator::draw(this->nvgContext, data->dt);
+			// Done (requires transfer protocol)
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, 635, (this->windowHeight / 2 - 465 / 2) - 1);
 		{
 			altitudeIndicator.draw(this->nvgContext, data->dt);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
@@ -90,42 +93,49 @@ bool PFDPfdGauge::preDraw(sGaugeDrawData* data) {
 		nvgTranslate(this->nvgContext, this->windowWidth / 2 - 376 / 2, 5);
 		{
 			PFDFMA::draw(this->nvgContext);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, 157, 30);
 		{
 			PFDTargetAirspeed::draw(this->nvgContext);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, 635, 30);
 		{
 			PFDTargetAltitude::draw(this->nvgContext);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, windowWidth / 2 - 50, 520);
 		{
 			radioAltitudeIndicator.draw(this->nvgContext, data->dt);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, 635, 570);
 		{
 			PFDBaroIndicator::draw(this->nvgContext);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, windowWidth / 2, windowHeight / 2);
 		{
 			this->flightDirector.draw(this->nvgContext, data->dt);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
 		nvgTranslate(this->nvgContext, windowWidth / 2, windowHeight / 2);
 		{
 			this->ilsIndicator.draw(this->nvgContext);
+			// Done
 		}
 		nvgResetTransform(this->nvgContext);
 
@@ -168,6 +178,7 @@ void PFDPfdGauge::renderAttitude() {
 
 	// top  - nvgRGB(4,113,203)
 	// bottom - nvgRGB(112,78,5)
+
 
 	const float size = sqrt(this->windowWidth * this->windowWidth + this->windowHeight * windowHeight);
 	const float h = size * 0.5f + -(6.91111111111 * SimConnectData::Aircraft::state.pitch);
