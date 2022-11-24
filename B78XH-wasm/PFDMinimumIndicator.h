@@ -18,6 +18,7 @@
 #pragma once
 #include "MSFS/Render/nanovg.h"
 
+
 class PFDMinimumIndicator {
 	public:
 		static void draw(NVGcontext* context);

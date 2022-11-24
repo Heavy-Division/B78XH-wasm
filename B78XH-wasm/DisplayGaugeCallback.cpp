@@ -15,45 +15,52 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include <MSFS/MSFS.h>
+#include <MSFS\MSFS.h>
+#include "MSFS\MSFS_Render.h"
+#include <MSFS\Legacy\gauges.h>
 
-#include "SimConnectConnector.h"
-#include "SimpleINI/SimpleIni.h"
-#include "B78XHConfiguration.h"
-CSimpleIniA ini;
+#include "MCPAltitudeGauge.h"
+#include "PFDDisplay.h"
+
+
+#ifdef _MSC_VER
+#define snprintf _snprintf_s
+#elif !defined(__MINGW32__)
+#include <iconv.h>
+#endif
+
+extern MCPAltitudeGauge g_MCPAltitudeGauge;
+namespace Displays {
+	PFDDisplay pfd;
+
+	auto getDisplay() -> Display& {
+		return pfd;
+	}
+}
 
 // ------------------------
 // Callbacks
 extern "C" {
-	auto EventHandler(ID32 event, UINT32 evdata, PVOID userdata) -> void {
-		if (event == 66978 || event == 66981 || event == 66984 || event == 65762 || event == 65763 || event == 65764) {
-			return;
-		}
-		//Console::error("EVENT {}", event);
-	}
-
-	MSFS_CALLBACK auto tool_simconnect_handling_gauge_callback(FsContext ctx, int service_id, void* pData) -> bool {
+	MSFS_CALLBACK bool display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				//NavData::prepareWaypoints();
-				return true;
+				//return true;
+				return Displays::getDisplay().preInstall();
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				//register_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
-				B78XHConfiguration::data.load();
-				return true;
+				//return true;
+				return Displays::getDisplay().postInstall(ctx);
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				connector.requestDispatchMessages();
-				return true;
+				//return true;
+				return Displays::getDisplay().preDraw(static_cast<sGaugeDrawData*>(pData));
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				B78XHConfiguration::data.save();
-				//unregister_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
-				return true;
+				//return true;
+				return Displays::getDisplay().preKill();
 			}
 			break;
 		}

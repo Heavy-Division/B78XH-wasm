@@ -288,6 +288,60 @@
     <ClCompile Include="TCPEventDispatcher.cpp">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
     </ClCompile>
+    <ClCompile Include="DisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="RedApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDDisplay.cpp">
+      <Filter>Source Files\Applications\Displays</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files\Applications\Displays</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAttitudeApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDVerticalSpeedIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAirspeedIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDFMAApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAltitudeIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDTargetAirspeedApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDTargetAltitudeApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDRadioAltitudeIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDBaroIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDFlightDirectorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDILSIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDMinimumIndicatorApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAuxApplication.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -709,6 +763,63 @@
     <ClInclude Include="TCPEventDispatcher.h">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
     </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Source Files\Tools\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Source Files\Applications\Displays</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDDisplay.h">
+      <Filter>Source Files\Applications\Displays</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="RedApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAttitudeApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDVerticalSpeedIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAirspeedIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDFMAApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAltitudeIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDTargetAirspeedApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDTargetAltitudeApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDRadioAltitudeIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDBaroIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDFlightDirectorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDILSIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDMinimumIndicatorApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAuxApplication.h">
+      <Filter>Source Files\Applications</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -896,6 +1007,15 @@
     </Filter>
     <Filter Include="Source Files\Tools\Events\Dispatchers">
       <UniqueIdentifier>{0e1e3799-591b-4c0d-a805-4424e63303a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\Console">
+      <UniqueIdentifier>{a66ac76f-ef7d-4e81-8dc1-b4240fcdbdc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications">
+      <UniqueIdentifier>{201d6b8a-3c59-4c33-b98e-7a1068b792a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\Displays">
+      <UniqueIdentifier>{b3390576-4123-4887-b6e0-7bd81f9a91fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

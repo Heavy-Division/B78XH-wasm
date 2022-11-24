@@ -24,7 +24,6 @@
 #include "PFDRadioAltitudeIndicator.h"
 #include "MSFS/Render/nanovg.h"
 
-
 class PFDPfdGauge: public BaseGauge {
 	public:
 		bool preInstall() override;

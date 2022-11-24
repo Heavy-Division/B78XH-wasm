@@ -19,7 +19,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "fmt/core.h"
+#include "Console.h"
 
 using namespace std;
 
@@ -66,7 +66,7 @@ namespace NavData {
 				}
 			}
 		} else {
-			fmt::print(stderr, "FILE NOT FOUND");
+			Console::error("(NavData::prepareWaypoints) FILE NOT FOUND");
 		}
 	}
 }

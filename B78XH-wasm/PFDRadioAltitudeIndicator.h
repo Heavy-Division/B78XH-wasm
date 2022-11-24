@@ -19,6 +19,7 @@
 #include "Timer.h"
 #include "MSFS/Render/nanovg.h"
 
+
 class PFDRadioAltitudeIndicator {
 	public:
 		void draw(NVGcontext* context, double deltaTime);
