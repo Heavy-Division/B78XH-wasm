@@ -22,8 +22,9 @@ C++
 13. Make your changes in the IDE, save, and build the .wasm binary. 
 14. Restart the flight to see your changes. 
 
-**If creating or editing displays read below** 
-To view or create a new display you'll need to create a callback function to that display, and edit the panel.cfg in SimObjects. 
+# Creating and Editing Displays 
+
+Read below if creating or modifying a display.
 
 ## NanoVg
 The displays are rendered with the [NanoVG](https://github.com/memononen/nanovg) vector graphics library. Take some time to read docs from the NanoVG repo to learn how to use it.
