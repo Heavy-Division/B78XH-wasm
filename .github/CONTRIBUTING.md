@@ -93,7 +93,7 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
  		case MOUSE_RIGHTRELEASE: {
 
  		}
- 							   break;
+ 							  break;
  		case MOUSE_MIDDLERELEASE: {
 
  		}
@@ -105,11 +105,11 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
  		case MOUSE_RIGHTSINGLE: {
 
  		}
- 							  break;
+ 							 break;
  		case MOUSE_MIDDLESINGLE: {
 
  		}
- 							   break;
+ 							 break;
  		case MOUSE_LEFTDOUBLE: {
 
  		}
@@ -117,11 +117,11 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
  		case MOUSE_RIGHTDOUBLE: {
 
  		}
- 							  break;
+ 							 break;
  		case MOUSE_MIDDLEDOUBLE: {
 
  		}
- 							   break;
+ 							 break;
  		case MOUSE_WHEEL_UP: {
 
  		}
@@ -140,7 +140,7 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
 
 
 
-Header file where variable types and function return types are defined, as well as the Class
+Header file where Classes, variable types, and function return types are defined
 `MFCCommBaseGauge.h`:
 ```cpp
  #pragma once
