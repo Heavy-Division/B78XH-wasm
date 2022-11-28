@@ -28,10 +28,11 @@ To view or create a new display you'll need to create a callback function to tha
 Below is an example of a basic implementation of a new MFD Gauge using the Mouse Resolver:
 New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
 ```cpp
+ #pragma once 
+ 
  #include <MSFS\MSFS.h>
  #include "MSFS\MSFS_Render.h"
  #include <MSFS\Legacy\gauges.h>
-
  #include "MFDCommGauge.h"
 
 
@@ -141,7 +142,8 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
 Header file where variable types and function return types are defined, as well as the Class
 `MFCCommBaseGauge.h`:
 ```cpp
-pragma once
+ #pragma once
+ 
  #include "CDUMouseClickResolver.h"
  #include "CDUMouseMoveResolver.h"
  #include "Drawable.h"
@@ -221,6 +223,7 @@ CPP file where the functions are defined:
  	}
  	nvgClosePath(this->context);
  	nvgFill(this->context);
+```
 
 ## Panel.cfg
 Open the `PANEL.CFG` file located at `B78XH/SimObjects/Airplanes/Asobo_B787/panel/`
@@ -238,6 +241,24 @@ htmlgauge00=WasmInstrument/WasmInstrument.html?wasm_module=B78XH-wasm.wasm&wasm_
 
 replacing `<callback_name>` with the name of the callback you choose.
 
+**Include a copy of the license a the top of every new file** 
+```cpp
+ //    B78XH-wasm
+ //    Copyright (C) 2022  Heavy Division
+ //
+ //    This program is free software: you can redistribute it and/or modify
+ //    it under the terms of the GNU General Public License as published by
+ //    the Free Software Foundation, either version 3 of the License, or
+ //    (at your option) any later version.
+ //
+ //    This program is distributed in the hope that it will be useful,
+ //    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ //    GNU General Public License for more details.
+ //
+ //    You should have received a copy of the GNU General Public License
+ //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
 > Note: It is recommended to use Fast WASM compilation in the MSFS developer options menu. When returning to normal flying, it is recommended to turn this off. 
 
 
