@@ -25,6 +25,8 @@ C++
 **If creating or editing displays read below** 
 To view or create a new display you'll need to create a callback function to that display, and edit the panel.cfg in SimObjects. 
 
+The displays are rendered with the [NanoVG](https://github.com/memononen/nanovg) vector graphics library. Take some time to read docs from the NanoVG repo to learn how to use it.
+
 Below is an example of a basic implementation of a new MFD Gauge using the Mouse Resolver:
 New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
 ```cpp
