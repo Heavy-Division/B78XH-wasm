@@ -15,29 +15,40 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "CCS.h"
-#include "LVars.h"
+#include "PFDEventDispatcher.h"
 
-auto CCS::init() -> void {
+auto PFDEventDispatcher::get() -> EVENT_LIST {
+	if (this->empty()) {
+		return EVENT_LIST::NONE;
+	}
+
+	const auto eventToReturn = this->front();
+	this->pop();
+	return eventToReturn;
 }
 
-auto CCS::prepare() -> void {
-	this->updateLVars();
+auto PFDEventDispatcher::front() -> EVENT_LIST {
+	return this->queue.front();
 }
 
-auto CCS::update(double deltaTime) -> void {
-	this->updateERS(deltaTime);
+auto PFDEventDispatcher::back() -> EVENT_LIST {
+	return this->queue.back();
 }
 
-auto CCS::reset() -> void {
+auto PFDEventDispatcher::push(EVENT_LIST event) -> void {
+	this->queue.push(event);
 }
 
-auto CCS::updateLVars() -> void {
-	LVars::update();
+auto PFDEventDispatcher::pop() -> void {
+	if (!this->empty()) {
+		this->queue.pop();
+	}
 }
 
-auto CCS::updateERS(double deltaTime) -> void {
-	this->ers.setLeftIRSSwitchPosition(LVars::get(LVars::B78XH_IRS_L_SWITCH_STATE).isValue());
-	this->ers.setRightIRSSwitchPosition(LVars::get(LVars::B78XH_IRS_R_SWITCH_STATE).isValue());
-	this->ers.update(deltaTime);
+auto PFDEventDispatcher::empty() -> bool {
+	return this->queue.empty();
+}
+
+auto PFDEventDispatcher::size() -> int {
+	return this->queue.size();
 }

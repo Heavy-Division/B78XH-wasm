@@ -18,7 +18,7 @@
 #include "LVars.h"
 
 auto LVars::update() -> void {
-	for (auto& [key, value] : this->data) {
+	for (auto& [key, value] : data) {
 		value.update();
 	}
 }
@@ -27,5 +27,5 @@ auto LVars::get(LVarsName name) -> LVar& {
 	/*
 	 * TODO: Implement NULL Object pattern???
 	 */
-	return this->data.find(name)->second;
+	return data.find(name)->second;
 }

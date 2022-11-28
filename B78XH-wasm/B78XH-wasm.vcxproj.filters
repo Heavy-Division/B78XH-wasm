@@ -342,6 +342,9 @@
     <ClCompile Include="PFDAuxApplication.cpp">
       <Filter>Source Files\Applications</Filter>
     </ClCompile>
+    <ClCompile Include="PFDEventDispatcher.cpp">
+      <Filter>Source Files\Tools\Events\Dispatchers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -819,6 +822,9 @@
     </ClInclude>
     <ClInclude Include="PFDAuxApplication.h">
       <Filter>Source Files\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDEventDispatcher.h">
+      <Filter>Source Files\Tools\Events\Dispatchers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
