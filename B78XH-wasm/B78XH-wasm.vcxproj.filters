@@ -381,6 +381,24 @@
     <ClCompile Include="McpAltitudeDisplay.cpp">
       <Filter>Source Files\Displays\McpAltitudeDisplay</Filter>
     </ClCompile>
+    <ClCompile Include="RightInboardDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="McpSpeedDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="McpVerticalSpeedDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="McpAltitudeDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="McpHeadingDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />

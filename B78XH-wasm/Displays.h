@@ -32,7 +32,7 @@ namespace Displays {
 	/*
 	 * RightOutboardDisplay is not needed for default ASOBO 787
 	 */
-	//inline RightOutboardDisplay rightOutboardDisplay;
+	inline RightOutboardDisplay rightOutboardDisplay;
 	inline RightInboardDisplay rightInboardDisplay;
 	inline LowerCenterDisplay lowerCenterDisplay;
 	inline McpAltitudeDisplay mcpAltitudeDisplay;
