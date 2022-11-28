@@ -15,10 +15,10 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "LeftInboardDisplay.h"
+#include "McpVerticalSpeedDisplay.h"
 
-auto LeftInboardDisplay::prepareApplications() -> void {
+auto McpVerticalSpeedDisplay::prepareApplications() -> void {
 }
 
-auto LeftInboardDisplay::setupApplications() -> void {
+auto McpVerticalSpeedDisplay::setupApplications() -> void {
 }

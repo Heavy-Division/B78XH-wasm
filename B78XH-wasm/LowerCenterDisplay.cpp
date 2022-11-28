@@ -15,10 +15,10 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "LeftInboardDisplay.h"
+#include "LowerCenterDisplay.h"
 
-auto LeftInboardDisplay::prepareApplications() -> void {
+auto LowerCenterDisplay::prepareApplications() -> void {
 }
 
-auto LeftInboardDisplay::setupApplications() -> void {
+auto LowerCenterDisplay::setupApplications() -> void {
 }

@@ -163,8 +163,13 @@
     <ClCompile Include="IRS.cpp" />
     <ClCompile Include="IRU.cpp" />
     <ClCompile Include="KEvents.cpp" />
+    <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
+    <ClCompile Include="McpAltitudeDisplay.cpp" />
+    <ClCompile Include="McpHeadingDisplay.cpp" />
+    <ClCompile Include="McpSpeedDisplay.cpp" />
+    <ClCompile Include="McpVerticalSpeedDisplay.cpp" />
     <ClCompile Include="MCPVSpeedGauge.cpp" />
     <ClCompile Include="MFDCduGauge.cpp" />
     <ClCompile Include="MFDCduGaugeCallback.cpp" />
@@ -210,6 +215,8 @@
     <ClCompile Include="PFDVerticalSpeedIndicatorApplication.cpp" />
     <ClCompile Include="RadioNav.cpp" />
     <ClCompile Include="RedApplication.cpp" />
+    <ClCompile Include="RightInboardDisplay.cpp" />
+    <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
     <ClCompile Include="SimpleINI\ConvertUTF.c" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
@@ -317,8 +324,13 @@
     <ClInclude Include="IRU.h" />
     <ClInclude Include="KEvents.h" />
     <ClInclude Include="LeftInboardDisplay.h" />
+    <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
+    <ClInclude Include="McpAltitudeDisplay.h" />
+    <ClInclude Include="McpHeadingDisplay.h" />
+    <ClInclude Include="McpSpeedDisplay.h" />
+    <ClInclude Include="McpVerticalSpeedDisplay.h" />
     <ClInclude Include="NavBeacon.h" />
     <ClInclude Include="NavData.h" />
     <ClInclude Include="NavRadioEnums.h" />
@@ -346,6 +358,8 @@
     <ClInclude Include="PFDVerticalSpeedIndicatorApplication.h" />
     <ClInclude Include="RadioNav.h" />
     <ClInclude Include="RedApplication.h" />
+    <ClInclude Include="RightInboardDisplay.h" />
+    <ClInclude Include="RightOutboardDisplay.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />

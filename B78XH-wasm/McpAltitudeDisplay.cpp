@@ -15,10 +15,10 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "LeftInboardDisplay.h"
+#include "McpAltitudeDisplay.h"
 
-auto LeftInboardDisplay::prepareApplications() -> void {
+auto McpAltitudeDisplay::prepareApplications() -> void {
 }
 
-auto LeftInboardDisplay::setupApplications() -> void {
+auto McpAltitudeDisplay::setupApplications() -> void {
 }

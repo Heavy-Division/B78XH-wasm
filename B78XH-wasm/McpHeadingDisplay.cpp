@@ -15,10 +15,10 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "LeftInboardDisplay.h"
+#include "McpHeadingDisplay.h"
 
-auto LeftInboardDisplay::prepareApplications() -> void {
+auto McpHeadingDisplay::prepareApplications() -> void {
 }
 
-auto LeftInboardDisplay::setupApplications() -> void {
+auto McpHeadingDisplay::setupApplications() -> void {
 }

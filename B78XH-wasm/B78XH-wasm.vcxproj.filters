@@ -360,6 +360,27 @@
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp">
       <Filter>Source Files\Examples\HelloWorldDisplay\MSFS Callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="LowerCenterDisplay.cpp">
+      <Filter>Source Files\Displays\LowerCenterDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="RightOutboardDisplay.cpp">
+      <Filter>Source Files\Displays\RightOutboardDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="RightInboardDisplay.cpp">
+      <Filter>Source Files\Displays\RightInboardDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="McpSpeedDisplay.cpp">
+      <Filter>Source Files\Displays\McpSpeedDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="McpHeadingDisplay.cpp">
+      <Filter>Source Files\Displays\McpHeadingDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="McpVerticalSpeedDisplay.cpp">
+      <Filter>Source Files\Displays\McpVerticalSpeedDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="McpAltitudeDisplay.cpp">
+      <Filter>Source Files\Displays\McpAltitudeDisplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -856,6 +877,27 @@
     <ClInclude Include="RedApplication.h">
       <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
     </ClInclude>
+    <ClInclude Include="LowerCenterDisplay.h">
+      <Filter>Source Files\Displays\LowerCenterDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="RightOutboardDisplay.h">
+      <Filter>Source Files\Displays\RightOutboardDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="RightInboardDisplay.h">
+      <Filter>Source Files\Displays\RightInboardDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="McpSpeedDisplay.h">
+      <Filter>Source Files\Displays\McpSpeedDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="McpHeadingDisplay.h">
+      <Filter>Source Files\Displays\McpHeadingDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="McpVerticalSpeedDisplay.h">
+      <Filter>Source Files\Displays\McpVerticalSpeedDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="McpAltitudeDisplay.h">
+      <Filter>Source Files\Displays\McpAltitudeDisplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1088,6 +1130,18 @@
     </Filter>
     <Filter Include="Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay">
       <UniqueIdentifier>{ce9458ef-b74e-46cf-9602-02d7a1571439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\McpSpeedDisplay">
+      <UniqueIdentifier>{6e80babe-81c7-4e39-b2ee-5e0d8773177c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\McpHeadingDisplay">
+      <UniqueIdentifier>{96921291-a9dd-4894-b06e-9314a37ec959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\McpVerticalSpeedDisplay">
+      <UniqueIdentifier>{715c5197-b454-477d-b382-dc9cf34bfe34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\McpAltitudeDisplay">
+      <UniqueIdentifier>{41594e11-8ab8-414d-8bf9-b23816aa3ee6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

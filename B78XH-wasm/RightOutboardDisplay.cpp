@@ -15,10 +15,10 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "LeftInboardDisplay.h"
+#include "RightOutboardDisplay.h"
 
-auto LeftInboardDisplay::prepareApplications() -> void {
+auto RightOutboardDisplay::prepareApplications() -> void {
 }
 
-auto LeftInboardDisplay::setupApplications() -> void {
+auto RightOutboardDisplay::setupApplications() -> void {
 }

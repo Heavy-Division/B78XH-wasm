@@ -15,10 +15,12 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "LeftInboardDisplay.h"
+#pragma once
+#include "Display.h"
 
-auto LeftInboardDisplay::prepareApplications() -> void {
-}
-
-auto LeftInboardDisplay::setupApplications() -> void {
-}
+class RightOutboardDisplay : public Display {
+	protected:
+		auto prepareApplications() -> void override;
+		auto setupApplications() -> void override;
+	private:
+};
