@@ -17,6 +17,8 @@
 
 #include "LVars.h"
 
+#include "Console.h"
+
 auto LVars::update() -> void {
 	for (auto& [key, value] : data) {
 		value.update();

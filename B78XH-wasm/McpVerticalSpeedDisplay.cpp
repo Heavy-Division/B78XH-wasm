@@ -18,7 +18,13 @@
 #include "McpVerticalSpeedDisplay.h"
 
 auto McpVerticalSpeedDisplay::prepareApplications() -> void {
+	this->addApplication(this->mcpVerticalSpeedApplication);
 }
 
 auto McpVerticalSpeedDisplay::setupApplications() -> void {
+	this->mcpVerticalSpeedApplication.setSize(512.0, 102.0);
+}
+
+void McpVerticalSpeedDisplay::setupDisplay() {
+	this->setAutoClearing(false);
 }
