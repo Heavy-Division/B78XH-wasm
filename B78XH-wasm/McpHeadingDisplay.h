@@ -17,10 +17,13 @@
 
 #pragma once
 #include "Display.h"
+#include "MCPHeadingApplication.h"
 
 class McpHeadingDisplay : public Display {
 	protected:
 		auto prepareApplications() -> void override;
 		auto setupApplications() -> void override;
+		auto setupDisplay() -> void override;
 	private:
+		MCPHeadingApplication mcpHeadingApplication;
 };

@@ -18,7 +18,13 @@
 #include "McpHeadingDisplay.h"
 
 auto McpHeadingDisplay::prepareApplications() -> void {
+	this->addApplication(this->mcpHeadingApplication);
 }
 
 auto McpHeadingDisplay::setupApplications() -> void {
+	this->mcpHeadingApplication.setSize(512.0, 204.0);
+}
+
+void McpHeadingDisplay::setupDisplay() {
+	this->setAutoClearing(false);
 }

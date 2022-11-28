@@ -108,6 +108,7 @@ namespace SimConnectData {
 			double gearPosition;
 			double bank;
 			double pitch;
+			double groundSpeed;
 			double indicatedAltitude;
 			double indicatedAirspeed;
 			double verticalSpeed;
@@ -117,6 +118,7 @@ namespace SimConnectData {
 			double longitude;
 			double headingTrue;
 			double headingMagnetic;
+			double headingMagneticGround;
 			double weight;
 			double maxWeight;
 

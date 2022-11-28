@@ -426,6 +426,9 @@
     <ClCompile Include="MCPVerticalSpeedApplication.cpp">
       <Filter>Source Files\Applications\MCPVerticalSpeed</Filter>
     </ClCompile>
+    <ClCompile Include="MCPHeadingApplication.cpp">
+      <Filter>Source Files\Applications\MCPHeading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -961,6 +964,9 @@
     <ClInclude Include="MCPVerticalSpeedApplication.h">
       <Filter>Source Files\Applications\MCPVerticalSpeed</Filter>
     </ClInclude>
+    <ClInclude Include="MCPHeadingApplication.h">
+      <Filter>Source Files\Applications\MCPHeading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1223,6 +1229,9 @@
     </Filter>
     <Filter Include="Source Files\Applications\MCPVerticalSpeed">
       <UniqueIdentifier>{452ccdce-dde5-431f-86a5-57fddedef382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\MCPHeading">
+      <UniqueIdentifier>{eb235f6f-3706-43e5-8da3-03f25ce69088}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

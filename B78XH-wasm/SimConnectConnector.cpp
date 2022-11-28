@@ -43,7 +43,8 @@ auto SimConnectConnector::prepareEvents() -> void {
 	this->mapEvent(ClientEvents::B78XH_BUTTON_CLOCK_PUSH, "B78XH.BUTTON_CLOCK_PUSH", FALSE);
 }
 
-auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId, const char* eventName = "", const BOOL maskable = FALSE) -> void {
+auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId,
+                                   const char* eventName = "", const BOOL maskable = FALSE) -> void {
 	const auto clientEvent = static_cast<SIMCONNECT_CLIENT_EVENT_ID>(eventId);
 
 	SimConnect_MapClientEventToSimEvent(simConnectHandle, clientEvent, eventName);
@@ -52,7 +53,8 @@ auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupI
 	SimConnect_SetNotificationGroupPriority(simConnectHandle, groupId, SIMCONNECT_GROUP_PRIORITY_HIGHEST_MASKABLE);
 }
 
-auto SimConnectConnector::mapEvent(const ClientEvents eventId, const char* eventName = "", const BOOL maskable = FALSE) -> void {
+auto SimConnectConnector::mapEvent(const ClientEvents eventId, const char* eventName = "",
+                                   const BOOL maskable = FALSE) -> void {
 	this->mapEvent(0, eventId, eventName, maskable);
 }
 
@@ -131,6 +133,9 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	                                                        "ATTITUDE INDICATOR PITCH DEGREES", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "GPS GROUND SPEED", "knots");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "INDICATED ALTITUDE", "foot");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
@@ -156,6 +161,9 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "PLANE HEADING DEGREES MAGNETIC", "Degree");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "GPS GROUND MAGNETIC TRACK", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "TOTAL WEIGHT", "Pounds");
@@ -749,6 +757,7 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 				case REQUEST_AIRCRAFT_STATE: {
 					SimConnectData::Aircraft::state = (*reinterpret_cast<SimConnectData::Aircraft::State*>(&pObjData->
 						dwData));
+					GaugesInvalidateFlags.MCPHeadingGaugeTrack = true;
 					break;
 				}
 				case REQUEST_AUTOPILOT_STATE: {
@@ -805,6 +814,7 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 				case REQUEST_AUTOPILOT_HEADING: {
 					SimConnectData::Autopilot::heading = (*reinterpret_cast<SimConnectData::Autopilot::Heading*>(&
 						pObjData->dwData));
+					GaugesInvalidateFlags.MCPHeadingGaugeHeading = true;
 					break;
 				}
 
@@ -880,7 +890,8 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 			break;
 		case SIMCONNECT_RECV_ID_EXCEPTION: {
 			auto except = static_cast<SIMCONNECT_RECV_EXCEPTION*>(pData);
-			Console::error("(SimConnectConnector::processDispatchMessage) EXCEPTION SIMCONNECT ID {}", except->dwException);
+			Console::error("(SimConnectConnector::processDispatchMessage) EXCEPTION SIMCONNECT ID {}",
+			               except->dwException);
 		}
 		break;
 		case SIMCONNECT_RECV_ID_EVENT: {

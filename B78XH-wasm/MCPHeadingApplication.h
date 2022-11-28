@@ -18,9 +18,19 @@
 #pragma once
 #include "Application.h"
 
-class MCPAltitudeApplication: public Application {
+class MCPHeadingApplication: public Application {
 	public:
 		auto render(sGaugeDrawData* data) -> void override;
+
 	private:
+		auto renderMode() -> void;
+		auto renderValue() -> void;
+		auto getTrack() -> int;
+		auto getHeading() -> int;
 		auto clearApplication() -> void;
+		auto isControlInvalid() -> bool;
+		bool trackModeActive = false;
+		bool lastTrackModeActive = false;
+		int lastTrackValue = 0;
+		int trackValue = 0;
 };

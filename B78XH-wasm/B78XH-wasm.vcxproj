@@ -170,6 +170,7 @@
     <ClCompile Include="MCPAltitudeApplication.cpp" />
     <ClCompile Include="McpAltitudeDisplay.cpp" />
     <ClCompile Include="McpAltitudeDisplayGaugeCallback.cpp" />
+    <ClCompile Include="MCPHeadingApplication.cpp" />
     <ClCompile Include="McpHeadingDisplay.cpp" />
     <ClCompile Include="McpHeadingDisplayGaugeCallback.cpp" />
     <ClCompile Include="McpSpeedDisplay.cpp" />
@@ -345,6 +346,7 @@
     <ClInclude Include="LVars.h" />
     <ClInclude Include="MCPAltitudeApplication.h" />
     <ClInclude Include="McpAltitudeDisplay.h" />
+    <ClInclude Include="MCPHeadingApplication.h" />
     <ClInclude Include="McpHeadingDisplay.h" />
     <ClInclude Include="McpSpeedDisplay.h" />
     <ClInclude Include="MCPVerticalSpeedApplication.h" />
