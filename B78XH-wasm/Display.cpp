@@ -74,6 +74,7 @@ auto Display::postInstall(FsContext context) -> bool {
 auto Display::setupFonts() -> void {
 	this->addFont(nvgCreateFont(this->nvgContext, "roboto", "./data/Roboto-Regular.ttf"));
 	this->addFont(nvgCreateFont(this->nvgContext, "heavy-fmc", "./data/Heavy787FMC.ttf"));
+	this->addFont(nvgCreateFont(this->nvgContext, "dseg7", "./data/DSEG7ClassicMini-Italic.ttf"));
 }
 
 auto Display::preDraw(sGaugeDrawData* data) -> bool {
