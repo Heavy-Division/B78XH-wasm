@@ -28,5 +28,7 @@ enum class ClientEvents {
 	/*
 	 * Others
 	 */
-	B78XH_BUTTON_CLOCK_PUSH
+	B78XH_BUTTON_CLOCK_PUSH,
+	B78XH_BUTTON_MTRS_PUSH,
+	B78XH_BUTTON_FPV_PUSH,
 };

@@ -17,7 +17,6 @@
 
 #pragma once
 #include "ERS.h"
-#include "LVars.h"
 
 /*
  * Common Core System
@@ -31,7 +30,6 @@ class CCS {
 		auto reset() -> void;
 	private:
 		ERS ers;
-		LVars lvars;
 		auto updateLVars() -> void;
 		auto updateERS(double deltaTime) -> void;
 };

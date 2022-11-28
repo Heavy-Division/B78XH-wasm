@@ -15,29 +15,25 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "CCS.h"
-#include "LVars.h"
+#pragma once
 
-auto CCS::init() -> void {
-}
+#include <queue>
 
-auto CCS::prepare() -> void {
-	this->updateLVars();
-}
+class PFDEventDispatcher {
+	public:
+		enum class EVENT_LIST {
+			NONE,
+			MTRS = 1
+		};
 
-auto CCS::update(double deltaTime) -> void {
-	this->updateERS(deltaTime);
-}
+		auto get() -> EVENT_LIST;
+		auto front() -> EVENT_LIST;
+		auto back() -> EVENT_LIST;
+		auto push(EVENT_LIST event) -> void;
+		auto pop() -> void;
+		auto empty() -> bool;
+		auto size() -> int;
 
-auto CCS::reset() -> void {
-}
-
-auto CCS::updateLVars() -> void {
-	LVars::update();
-}
-
-auto CCS::updateERS(double deltaTime) -> void {
-	this->ers.setLeftIRSSwitchPosition(LVars::get(LVars::B78XH_IRS_L_SWITCH_STATE).isValue());
-	this->ers.setRightIRSSwitchPosition(LVars::get(LVars::B78XH_IRS_R_SWITCH_STATE).isValue());
-	this->ers.update(deltaTime);
-}
+	protected:
+		std::queue<EVENT_LIST> queue{};
+};

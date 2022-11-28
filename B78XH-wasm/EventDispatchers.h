@@ -17,6 +17,7 @@
 
 #pragma once
 
+#include "PFDEventDispatcher.h"
 #include "TCPEventDispatcher.h"
 
 namespace EventDispatchers {
@@ -25,4 +26,6 @@ namespace EventDispatchers {
 		TCPEventDispatcher(),
 		TCPEventDispatcher(),
 	};
+
+	inline PFDEventDispatcher pfdEventDispatcher;
 };

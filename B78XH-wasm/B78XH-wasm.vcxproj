@@ -184,6 +184,7 @@
     <ClCompile Include="PFDBaroIndicator.cpp" />
     <ClCompile Include="PFDBaroIndicatorApplication.cpp" />
     <ClCompile Include="PFDDisplay.cpp" />
+    <ClCompile Include="PFDEventDispatcher.cpp" />
     <ClCompile Include="PFDFlightDirector.cpp" />
     <ClCompile Include="PFDFlightDirectorApplication.cpp" />
     <ClCompile Include="PFDFMA.cpp" />
@@ -320,6 +321,7 @@
     <ClInclude Include="PFDBaroIndicator.h" />
     <ClInclude Include="PFDBaroIndicatorApplication.h" />
     <ClInclude Include="PFDDisplay.h" />
+    <ClInclude Include="PFDEventDispatcher.h" />
     <ClInclude Include="PFDFlightDirector.h" />
     <ClInclude Include="PFDFlightDirectorApplication.h" />
     <ClInclude Include="PFDFMAApplication.h" />
