@@ -35,7 +35,6 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
  #include <MSFS\Legacy\gauges.h>
  #include "MFDCommGauge.h"
 
-
  #ifdef _MSC_VER
  #define snprintf _snprintf_s
  #elif !defined(__MINGW32__)
@@ -44,8 +43,6 @@ New MFD Gauge Callback example: `MFDCommGaugeCallBack.cpp`
 
  MFDCommGauge g_MFDCommGauge;
 
- // ------------------------
- // Callbacks
  extern "C" {
  	MSFS_CALLBACK bool mfd_comm_gauge_callback(FsContext ctx, int service_id, void* pData) {
  		switch (service_id) {
