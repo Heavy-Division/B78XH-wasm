@@ -18,7 +18,13 @@
 #include "McpAltitudeDisplay.h"
 
 auto McpAltitudeDisplay::prepareApplications() -> void {
+	this->addApplication(this->mcpAltitudeApplication);
 }
 
 auto McpAltitudeDisplay::setupApplications() -> void {
+	this->mcpAltitudeApplication.setSize(512.0, 204.0);
+}
+
+void McpAltitudeDisplay::setupDisplay() {
+	this->setAutoClearing(false);
 }

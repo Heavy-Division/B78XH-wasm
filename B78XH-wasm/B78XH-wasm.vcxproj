@@ -167,6 +167,7 @@
     <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
+    <ClCompile Include="MCPAltitudeApplication.cpp" />
     <ClCompile Include="McpAltitudeDisplay.cpp" />
     <ClCompile Include="McpAltitudeDisplayGaugeCallback.cpp" />
     <ClCompile Include="McpHeadingDisplay.cpp" />
@@ -341,6 +342,7 @@
     <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
+    <ClInclude Include="MCPAltitudeApplication.h" />
     <ClInclude Include="McpAltitudeDisplay.h" />
     <ClInclude Include="McpHeadingDisplay.h" />
     <ClInclude Include="McpSpeedDisplay.h" />

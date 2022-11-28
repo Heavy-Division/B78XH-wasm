@@ -53,7 +53,15 @@ auto Display::clearDisplay(double width, double height) -> void {
 	nvgClosePath(nvgContext);
 }
 
+auto Display::setAutoClearing(bool autoClearing) -> void {
+	this->autoClearing = autoClearing;
+}
+
+auto Display::setupDisplay() -> void {
+}
+
 auto Display::preInstall() -> bool {
+	this->setupDisplay();
 	this->prepareApplications();
 	this->setupApplications();
 	return true;
@@ -86,17 +94,21 @@ auto Display::preDraw(sGaugeDrawData* data) -> bool {
 	const auto winHeight = static_cast<float>(data->winHeight);
 
 	nvgBeginFrame(this->nvgContext, winWidth, winHeight, pxRatio); {
-		this->clearDisplay(winWidth, winHeight);
+		if (this->autoClearing) {
+			this->clearDisplay(winWidth, winHeight);
+		}
+		
 		for (auto application : applications) {
-			const bool applicationAutoCrop = application.get().getAutoCrop();
+			const auto app = application.get();
+			const bool applicationAutoCrop = app.getAutoCrop();
 			nvgSave(this->nvgContext);
 			{
-				nvgTranslate(this->nvgContext, application.get().getMarginLeft(), application.get().getMarginTop());
+				nvgTranslate(this->nvgContext, app.getMarginLeft(), app.getMarginTop());
 				{
 					nvgSave(this->nvgContext);
 					{
 						if (applicationAutoCrop == true) {
-							nvgScissor(this->nvgContext, application.get().getCropMarginLeft(), application.get().getCropMarginTop(), application.get().getWidth(), application.get().getHeight());
+							nvgScissor(this->nvgContext, app.getCropMarginLeft(), app.getCropMarginTop(), app.getWidth(), app.getHeight());
 							application.get().render(data);
 							nvgResetScissor(this->nvgContext);
 						}

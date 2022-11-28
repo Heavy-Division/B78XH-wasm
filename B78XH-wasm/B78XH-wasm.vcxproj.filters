@@ -420,6 +420,9 @@
     <ClCompile Include="TcpRightDisplayGaugeCallback.cpp">
       <Filter>Source Files\MSFS Callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="MCPAltitudeApplication.cpp">
+      <Filter>Source Files\Applications\MCPAltitude</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -949,6 +952,9 @@
     <ClInclude Include="IsfdDisplay.h">
       <Filter>Source Files\Displays\IsfdDisplay</Filter>
     </ClInclude>
+    <ClInclude Include="MCPAltitudeApplication.h">
+      <Filter>Source Files\Applications\MCPAltitude</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1205,6 +1211,9 @@
     </Filter>
     <Filter Include="Source Files\Displays\IsfdDisplay">
       <UniqueIdentifier>{70f5ffd2-2573-49d1-8258-54133b02a438}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\MCPAltitude">
+      <UniqueIdentifier>{4f85911a-18a2-494d-89db-a272635b0974}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

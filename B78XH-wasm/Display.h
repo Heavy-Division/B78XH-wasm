@@ -30,11 +30,14 @@ class Display {
 		sGaugeDrawData* storedGaugeDrawData = nullptr;
 		std::vector<int> fonts;
 		std::vector<std::reference_wrapper<Application>> applications;
+		bool autoClearing = true;
 		virtual auto prepareApplications() -> void = 0;
 		virtual auto setupApplications() -> void = 0;
 		virtual auto addApplication(Application& application) -> void;
 		virtual auto addFont(int font) -> void;
 		virtual auto clearDisplay(double width, double height) -> void;
+		virtual auto setAutoClearing(bool autoClearing) -> void final;
+		virtual auto setupDisplay() -> void;
 	public:
 		virtual ~Display() = default;
 		virtual auto preInstall() -> bool;
