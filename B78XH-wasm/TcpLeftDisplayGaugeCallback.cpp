@@ -29,22 +29,22 @@
 // ------------------------
 // Callbacks
 extern "C" {
-	MSFS_CALLBACK bool right_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
+	MSFS_CALLBACK bool tcp_left_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				return Displays::rightInboardDisplay.preInstall();
+				return Displays::tcpLeftDisplay.preInstall();
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				return Displays::rightInboardDisplay.postInstall(ctx);
+				return Displays::tcpLeftDisplay.postInstall(ctx);
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				return Displays::rightInboardDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
+				return Displays::tcpLeftDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				return Displays::rightInboardDisplay.preKill();
+				return Displays::tcpLeftDisplay.preKill();
 			}
 			break;
 		}

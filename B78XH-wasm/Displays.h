@@ -16,6 +16,7 @@
 
 
 #pragma once
+#include "IsfdDisplay.h"
 #include "LeftInboardDisplay.h"
 #include "LeftOutboardDisplay.h"
 #include "LowerCenterDisplay.h"
@@ -25,19 +26,26 @@
 #include "McpVerticalSpeedDisplay.h"
 #include "RightInboardDisplay.h"
 #include "RightOutboardDisplay.h"
+#include "TcpCenterDisplay.h"
+#include "TcpLeftDisplay.h"
+#include "TcpRightDisplay.h"
 
 namespace Displays {
 	inline LeftOutboardDisplay leftOutboardDisplay;
 	inline LeftInboardDisplay leftInboardDisplay;
-	/*
-	 * RightOutboardDisplay is not needed for default ASOBO 787
-	 */
 	inline RightOutboardDisplay rightOutboardDisplay;
 	inline RightInboardDisplay rightInboardDisplay;
 	inline LowerCenterDisplay lowerCenterDisplay;
+
 	inline McpAltitudeDisplay mcpAltitudeDisplay;
 	inline McpHeadingDisplay mcpHeadingDisplay;
 	inline McpSpeedDisplay mcpSpeedDisplay;
 	inline McpVerticalSpeedDisplay mcpVerticalSpeedDisplay;
+
+	inline IsfdDisplay isfdDisplay;
+
+	inline TcpLeftDisplay tcpLeftDisplay;
+	inline TcpCenterDisplay tcpCenterDisplay;
+	inline TcpRightDisplay tcpRightDisplay;
 
 }

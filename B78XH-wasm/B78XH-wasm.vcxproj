@@ -153,6 +153,7 @@
     <ClCompile Include="HelloWorldDisplay.cpp" />
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
     <ClCompile Include="HelloWorldApplication.cpp" />
+    <ClCompile Include="IsfdDisplay.cpp" />
     <ClCompile Include="LeftInboardDisplay.cpp" />
     <ClCompile Include="LeftInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="LeftOutboardDisplayGaugeCallback.cpp" />
@@ -230,7 +231,13 @@
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
     <ClCompile Include="SpeedMarker.cpp" />
+    <ClCompile Include="TcpCenterDisplay.cpp" />
+    <ClCompile Include="TcpCenterDisplayGaugeCallback.cpp" />
     <ClCompile Include="TCPEventDispatcher.cpp" />
+    <ClCompile Include="TcpLeftDisplay.cpp" />
+    <ClCompile Include="TcpLeftDisplayGaugeCallback.cpp" />
+    <ClCompile Include="TcpRightDisplay.cpp" />
+    <ClCompile Include="TcpRightDisplayGaugeCallback.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
@@ -328,6 +335,7 @@
     <ClInclude Include="IRSState.h" />
     <ClInclude Include="IRSSwitchState.h" />
     <ClInclude Include="IRU.h" />
+    <ClInclude Include="IsfdDisplay.h" />
     <ClInclude Include="KEvents.h" />
     <ClInclude Include="LeftInboardDisplay.h" />
     <ClInclude Include="LowerCenterDisplay.h" />
@@ -398,7 +406,10 @@
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
     <ClInclude Include="Systems.h" />
+    <ClInclude Include="TcpCenterDisplay.h" />
     <ClInclude Include="TCPEventDispatcher.h" />
+    <ClInclude Include="TcpLeftDisplay.h" />
+    <ClInclude Include="TcpRightDisplay.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="Tools.h" />

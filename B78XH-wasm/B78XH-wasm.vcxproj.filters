@@ -399,6 +399,27 @@
     <ClCompile Include="McpHeadingDisplayGaugeCallback.cpp">
       <Filter>Source Files\MSFS Callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="TcpRightDisplay.cpp">
+      <Filter>Source Files\Displays\TcpRightDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpCenterDisplay.cpp">
+      <Filter>Source Files\Displays\TcpCenterDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpLeftDisplay.cpp">
+      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="IsfdDisplay.cpp">
+      <Filter>Source Files\Displays\IsfdDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpLeftDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpCenterDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpRightDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -916,6 +937,18 @@
     <ClInclude Include="McpAltitudeDisplay.h">
       <Filter>Source Files\Displays\McpAltitudeDisplay</Filter>
     </ClInclude>
+    <ClInclude Include="TcpRightDisplay.h">
+      <Filter>Source Files\Displays\TcpRightDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpCenterDisplay.h">
+      <Filter>Source Files\Displays\TcpCenterDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpLeftDisplay.h">
+      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="IsfdDisplay.h">
+      <Filter>Source Files\Displays\IsfdDisplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1160,6 +1193,18 @@
     </Filter>
     <Filter Include="Source Files\Displays\McpAltitudeDisplay">
       <UniqueIdentifier>{41594e11-8ab8-414d-8bf9-b23816aa3ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\TcpLeftDisplay">
+      <UniqueIdentifier>{f0d4d421-05c1-4922-b96d-3713775a50b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\TcpCenterDisplay">
+      <UniqueIdentifier>{dc695835-540c-4d4c-b6a0-e48736947c89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\TcpRightDisplay">
+      <UniqueIdentifier>{8da22926-f867-4e15-8caa-3f7c7cb907b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\IsfdDisplay">
+      <UniqueIdentifier>{70f5ffd2-2573-49d1-8258-54133b02a438}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
