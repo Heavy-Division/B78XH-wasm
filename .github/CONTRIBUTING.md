@@ -17,10 +17,10 @@ C++
 7. Create a new branch with a title of what you are changing 
 8. Download the the development version of the [B78XH](https://github.com/Heavy-Division/B78XH/archive/refs/heads/main.zip) mod file, name it `B78XH-developer` if you already have it downloaded, extract it somewhere outside of the community folder, and link it to the community folder using a [symbolic link](https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html) program. 
 10. Select the build path of the wasm repo by right clicking the `B78XH-wasm (MSFS)` at the top in the IDE file explorer, and selecting "properties". In the `Output Directory` field, open your `B78XH-developer` folder and set the path to `B78XH-developer/SimObjects/Airplanes/Asobo_B787/panel/`
-12. Open the simulator and open the developer menu. If you don't have developer mode active, head to general settings -> developers, and enable developer mode.
-13. Under `Options` menu on the top bar, select the `WASM debug` window. 
-14. Make your changes in the IDE, save, and build the .wasm binary. 
-15. Restart the flight to see your changes. 
+11. Open the simulator and open the developer menu. If you don't have developer mode active, head to general settings -> developers, and enable developer mode.
+12. Under `Options` menu on the top bar, select the `WASM debug` window. 
+13. Make your changes in the IDE, save, and build the .wasm binary. 
+14. Restart the flight to see your changes. 
 
 **If creating or editing displays read below** 
 To view or create a new display you'll need to create a callback function to that display, and edit the panel.cfg in SimObjects. 
