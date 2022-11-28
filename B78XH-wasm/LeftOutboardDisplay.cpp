@@ -1,8 +1,23 @@
-#include "PFDDisplay.h"
+//    B78XH-wasm
+//    Copyright (C) 2022  Heavy Division
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "PFDAttitudeApplication.h"
 
-auto PFDDisplay::prepareApplications() -> void {
+#include "LeftOutboardDisplay.h"
+
+auto LeftOutboardDisplay::prepareApplications() -> void {
 	this->addApplication(this->pfdAttitudeApplication);
 	this->addApplication(this->pfdVerticalSpeedIndicatorApplication);
 	this->addApplication(this->pfdAirspeedIndicatorApplication);
@@ -18,7 +33,7 @@ auto PFDDisplay::prepareApplications() -> void {
 	this->addApplication(this->pfdAuxApplication);
 }
 
-auto PFDDisplay::setupApplications() -> void {
+auto LeftOutboardDisplay::setupApplications() -> void {
 	this->pfdAttitudeApplication.setMargin(425, 0);
 	this->pfdAttitudeApplication.setSize(855, 622);
 	this->pfdVerticalSpeedIndicatorApplication.setMargin(425 + 735, (622 / 2) - (161));

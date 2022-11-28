@@ -19,8 +19,7 @@
 #include "MSFS\MSFS_Render.h"
 #include <MSFS\Legacy\gauges.h>
 
-#include "MCPAltitudeGauge.h"
-#include "PFDDisplay.h"
+#include "Displays.h"
 
 
 #ifdef _MSC_VER
@@ -29,38 +28,25 @@
 #include <iconv.h>
 #endif
 
-extern MCPAltitudeGauge g_MCPAltitudeGauge;
-namespace Displays {
-	PFDDisplay pfd;
-
-	auto getDisplay() -> Display& {
-		return pfd;
-	}
-}
-
 // ------------------------
 // Callbacks
 extern "C" {
-	MSFS_CALLBACK bool display_gauge_callback(FsContext ctx, int service_id, void* pData) {
+	MSFS_CALLBACK bool left_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				//return true;
-				return Displays::getDisplay().preInstall();
+				return Displays::leftInboardDisplay.preInstall();
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				//return true;
-				return Displays::getDisplay().postInstall(ctx);
+				return Displays::leftInboardDisplay.postInstall(ctx);
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				//return true;
-				return Displays::getDisplay().preDraw(static_cast<sGaugeDrawData*>(pData));
+				return Displays::leftInboardDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				//return true;
-				return Displays::getDisplay().preKill();
+				return Displays::leftInboardDisplay.preKill();
 			}
 			break;
 		}

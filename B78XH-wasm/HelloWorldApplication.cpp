@@ -15,14 +15,25 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#pragma once
-#include "Application.h"
+#include "HelloWorldApplication.h"
 
-class PFDVerticalSpeedIndicatorApplication: public Application {
-	public:
-		auto render(sGaugeDrawData* data) -> void override;
-		void drawGraduations();
-		void drawCursor();
-		void drawTargetPointer();
-		void drawBackground();
-};
+using Colors = Tools::Colors;
+
+void HelloWorldApplication::render(sGaugeDrawData* data) {
+	if (this->nvgContext == nullptr) {
+		return;
+	}
+	nvgFillColor(this->nvgContext, this->textColor);
+	nvgFontSize(this->nvgContext, 90.0f);
+	nvgFontFace(this->nvgContext, "heavy-fmc");
+	nvgTextAlign(this->nvgContext, NVG_ALIGN_TOP | NVG_ALIGN_LEFT);
+	nvgBeginPath(this->nvgContext);
+	{
+		nvgText(this->nvgContext, 10, 10, "Hello World!!!", nullptr);
+	}
+	nvgFill(this->nvgContext);
+}
+
+auto HelloWorldApplication::setColor(NVGcolor color) -> void {
+	this->textColor = color;
+}

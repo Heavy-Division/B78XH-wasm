@@ -16,13 +16,16 @@
 
 
 #pragma once
-#include "Application.h"
+#include "HelloWorldDisplay.h"
+#include "LeftOutboardDisplay.h"
 
-class PFDVerticalSpeedIndicatorApplication: public Application {
-	public:
-		auto render(sGaugeDrawData* data) -> void override;
-		void drawGraduations();
-		void drawCursor();
-		void drawTargetPointer();
-		void drawBackground();
-};
+namespace Displays {
+	inline LeftOutboardDisplay leftOutboardDisplay;
+	inline HelloWorldDisplay leftInboardDisplay;
+	/*
+	 * RightOutboardDisplay is not needed for default ASOBO 787
+	 */
+	//RightOutboardDisplay rightOutboardDisplay;
+	//RightInboardDisplay rightInboardDisplay;
+	//LowerCenterDisplay lowerCenterDisplay;
+}

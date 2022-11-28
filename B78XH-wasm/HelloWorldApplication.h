@@ -16,13 +16,17 @@
 
 
 #pragma once
-#include "Application.h"
 
-class PFDVerticalSpeedIndicatorApplication: public Application {
+#include "Application.h"
+#include "Tools.h"
+
+using Colors = Tools::Colors;
+
+class HelloWorldApplication: public Application {
+
 	public:
 		auto render(sGaugeDrawData* data) -> void override;
-		void drawGraduations();
-		void drawCursor();
-		void drawTargetPointer();
-		void drawBackground();
+		auto setColor(NVGcolor color) -> void;
+	private:
+		NVGcolor textColor = Colors::white;
 };

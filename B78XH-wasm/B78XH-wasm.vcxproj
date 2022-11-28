@@ -150,7 +150,12 @@
     <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
     <ClCompile Include="Display.cpp" />
-    <ClCompile Include="DisplayGaugeCallback.cpp" />
+    <ClCompile Include="HelloWorldDisplay.cpp" />
+    <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
+    <ClCompile Include="HelloWorldApplication.cpp" />
+    <ClCompile Include="LeftInboardDisplay.cpp" />
+    <ClCompile Include="LeftInboardDisplayGaugeCallback.cpp" />
+    <ClCompile Include="LeftOutboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="ERS.cpp" />
     <ClCompile Include="FlapsSpeedMarker.cpp" />
@@ -183,7 +188,7 @@
     <ClCompile Include="PEDESTALTuningControlPanelGaugeCallback.cpp" />
     <ClCompile Include="PFDBaroIndicator.cpp" />
     <ClCompile Include="PFDBaroIndicatorApplication.cpp" />
-    <ClCompile Include="PFDDisplay.cpp" />
+    <ClCompile Include="LeftOutboardDisplay.cpp" />
     <ClCompile Include="PFDEventDispatcher.cpp" />
     <ClCompile Include="PFDFlightDirector.cpp" />
     <ClCompile Include="PFDFlightDirectorApplication.cpp" />
@@ -284,9 +289,12 @@
     <ClInclude Include="CDUSelectKeyButton.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="Displays.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
+    <ClInclude Include="HelloWorldDisplay.h" />
+    <ClInclude Include="ExampleDisplays.h" />
     <ClInclude Include="FacilitySearchType.h" />
     <ClInclude Include="FacilityType.h" />
     <ClInclude Include="FlapsSpeedLimit.h" />
@@ -300,6 +308,7 @@
     <ClInclude Include="GpsBoolean.h" />
     <ClInclude Include="GPSTools.h" />
     <ClInclude Include="GreenApplication.h" />
+    <ClInclude Include="HelloWorldApplication.h" />
     <ClInclude Include="ILSBeacon.h" />
     <ClInclude Include="IRS.h" />
     <ClInclude Include="IRSAlignTimeType.h" />
@@ -307,6 +316,7 @@
     <ClInclude Include="IRSSwitchState.h" />
     <ClInclude Include="IRU.h" />
     <ClInclude Include="KEvents.h" />
+    <ClInclude Include="LeftInboardDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
     <ClInclude Include="NavBeacon.h" />
@@ -320,7 +330,7 @@
     <ClInclude Include="PFDAuxApplication.h" />
     <ClInclude Include="PFDBaroIndicator.h" />
     <ClInclude Include="PFDBaroIndicatorApplication.h" />
-    <ClInclude Include="PFDDisplay.h" />
+    <ClInclude Include="LeftOutboardDisplay.h" />
     <ClInclude Include="PFDEventDispatcher.h" />
     <ClInclude Include="PFDFlightDirector.h" />
     <ClInclude Include="PFDFlightDirectorApplication.h" />

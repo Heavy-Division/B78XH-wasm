@@ -288,62 +288,77 @@
     <ClCompile Include="TCPEventDispatcher.cpp">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
     </ClCompile>
-    <ClCompile Include="DisplayGaugeCallback.cpp">
+    <ClCompile Include="LeftOutboardDisplayGaugeCallback.cpp">
       <Filter>Source Files\MSFS Callbacks</Filter>
-    </ClCompile>
-    <ClCompile Include="RedApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="GreenApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDDisplay.cpp">
-      <Filter>Source Files\Applications\Displays</Filter>
-    </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Source Files\Applications\Displays</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDAttitudeApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDVerticalSpeedIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDAirspeedIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDFMAApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDAltitudeIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDTargetAirspeedApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDTargetAltitudeApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDRadioAltitudeIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDBaroIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDFlightDirectorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDILSIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDMinimumIndicatorApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="PFDAuxApplication.cpp">
-      <Filter>Source Files\Applications</Filter>
     </ClCompile>
     <ClCompile Include="PFDEventDispatcher.cpp">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files\Displays</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftOutboardDisplay.cpp">
+      <Filter>Source Files\Displays\LeftOutboardDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAirspeedIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAltitudeIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAttitudeApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDAuxApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDBaroIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDFlightDirectorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDFMAApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDILSIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDMinimumIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDRadioAltitudeIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDTargetAirspeedApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDTargetAltitudeApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PFDVerticalSpeedIndicatorApplication.cpp">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftInboardDisplayGaugeCallback.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftInboardDisplay.cpp">
+      <Filter>Source Files\Displays\LeftInboardDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloWorldDisplay.cpp">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenApplication.cpp">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloWorldApplication.cpp">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="RedApplication.cpp">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleDisplayGaugeCallback.cpp">
+      <Filter>Source Files\Examples\HelloWorldDisplay\MSFS Callbacks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -772,59 +787,74 @@
     <ClInclude Include="Application.h">
       <Filter>Source Files\Applications</Filter>
     </ClInclude>
-    <ClInclude Include="Display.h">
-      <Filter>Source Files\Applications\Displays</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDDisplay.h">
-      <Filter>Source Files\Applications\Displays</Filter>
-    </ClInclude>
-    <ClInclude Include="GreenApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="RedApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDAttitudeApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDVerticalSpeedIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDAirspeedIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDFMAApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDAltitudeIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDTargetAirspeedApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDTargetAltitudeApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDRadioAltitudeIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDBaroIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDFlightDirectorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDILSIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDMinimumIndicatorApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="PFDAuxApplication.h">
-      <Filter>Source Files\Applications</Filter>
-    </ClInclude>
     <ClInclude Include="PFDEventDispatcher.h">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
+    </ClInclude>
+    <ClInclude Include="Displays.h">
+      <Filter>Source Files\Displays</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Source Files\Displays</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftOutboardDisplay.h">
+      <Filter>Source Files\Displays\LeftOutboardDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAirspeedIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAltitudeIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAttitudeApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDAuxApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDBaroIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDFlightDirectorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDFMAApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDILSIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDMinimumIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDRadioAltitudeIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDTargetAirspeedApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDTargetAltitudeApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="PFDVerticalSpeedIndicatorApplication.h">
+      <Filter>Source Files\Applications\PFD</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftInboardDisplay.h">
+      <Filter>Source Files\Displays\LeftInboardDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="HelloWorldDisplay.h">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleDisplays.h">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Displays</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenApplication.h">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="HelloWorldApplication.h">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+    </ClInclude>
+    <ClInclude Include="RedApplication.h">
+      <Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1020,8 +1050,44 @@
     <Filter Include="Source Files\Applications">
       <UniqueIdentifier>{201d6b8a-3c59-4c33-b98e-7a1068b792a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Applications\Displays">
-      <UniqueIdentifier>{b3390576-4123-4887-b6e0-7bd81f9a91fe}</UniqueIdentifier>
+    <Filter Include="Source Files\Applications\PFD">
+      <UniqueIdentifier>{ee1fcfbe-81ba-4bbe-92c4-427a7ab94bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays">
+      <UniqueIdentifier>{19bf43bc-3afb-426e-ae49-30b93b02f7af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\LeftOutboardDisplay">
+      <UniqueIdentifier>{5682a554-92d0-4c24-897d-7240458629f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\RightOutboardDisplay">
+      <UniqueIdentifier>{ac296416-b01b-4b51-9c42-afabe8652f7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\LeftInboardDisplay">
+      <UniqueIdentifier>{3435c8a5-a31b-4350-ad4d-1a6ab26e3e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\RightInboardDisplay">
+      <UniqueIdentifier>{8ba596df-8525-4e5a-9dc9-376bb3870e66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\LowerCenterDisplay">
+      <UniqueIdentifier>{c6ff05d4-2d24-4ad6-ab92-a9a010e6a422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Examples">
+      <UniqueIdentifier>{17be480a-6ae9-4533-b7d1-9f33e21f65c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Examples\HelloWorldDisplay">
+      <UniqueIdentifier>{d4acb82b-3c53-4a2b-930f-b930c7548ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Examples\HelloWorldDisplay\Displays">
+      <UniqueIdentifier>{779f4dcf-8cb4-4d5c-9a7b-55107a523121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Examples\HelloWorldDisplay\Applications">
+      <UniqueIdentifier>{1ccb68a8-8485-428b-8442-6b8452f53af1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Examples\HelloWorldDisplay\MSFS Callbacks">
+      <UniqueIdentifier>{a78d1626-4fc2-4bc1-9b07-2113bfb4025a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay">
+      <UniqueIdentifier>{ce9458ef-b74e-46cf-9602-02d7a1571439}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

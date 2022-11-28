@@ -16,13 +16,17 @@
 
 
 #pragma once
-#include "Application.h"
+#include "Display.h"
+#include "HelloWorldApplication.h"
 
-class PFDVerticalSpeedIndicatorApplication: public Application {
-	public:
-		auto render(sGaugeDrawData* data) -> void override;
-		void drawGraduations();
-		void drawCursor();
-		void drawTargetPointer();
-		void drawBackground();
+class HelloWorldDisplay: public Display {
+	protected:
+		auto prepareApplications() -> void override;
+		auto setupApplications() -> void override;
+
+	private:
+		HelloWorldApplication helloWorldApplication;
+		HelloWorldApplication helloWorldApplicationGreen;
+		HelloWorldApplication helloWorldApplicationAutoCrop;
+		HelloWorldApplication helloWorldApplicationCropMargin;
 };
