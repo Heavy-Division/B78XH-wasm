@@ -31,3 +31,7 @@ auto LVars::get(LVarsName name) -> LVar& {
 	 */
 	return data.find(name)->second;
 }
+
+auto LVars::get(PSTRINGZ name) -> LVar {
+	return {name, "Number"};
+}

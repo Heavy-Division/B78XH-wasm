@@ -25,6 +25,6 @@ auto McpHeadingDisplay::setupApplications() -> void {
 	this->mcpHeadingApplication.setSize(512.0, 204.0);
 }
 
-void McpHeadingDisplay::setupDisplay() {
+auto McpHeadingDisplay::setupDisplay() -> void {
 	this->setAutoClearing(false);
 }

@@ -89,6 +89,7 @@ class LVars {
 
 		static auto update() -> void;
 		static auto get(LVarsName name) -> LVar&;
+		static auto get(PSTRINGZ name) -> LVar;
 	private:
 		inline static std::unordered_map<LVarsName, LVar> data = {
 			{XMLVAR_AirSpeedIsInMach, LVar("XMLVAR_AirSpeedIsInMach", "bool")},

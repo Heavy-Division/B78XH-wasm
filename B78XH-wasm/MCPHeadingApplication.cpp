@@ -27,7 +27,7 @@
 
 using Colors = Tools::Colors;
 
-void MCPHeadingApplication::render(sGaugeDrawData* data) {
+auto MCPHeadingApplication::render(sGaugeDrawData* data) -> void {
 	this->trackModeActive = LVars::get(LVars::XMLVAR_TRK_MODE_ACTIVE).isValue();
 	this->trackValue = this->getTrack();
 	if(!this->isControlInvalid()) {

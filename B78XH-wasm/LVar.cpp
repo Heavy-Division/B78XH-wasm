@@ -25,8 +25,18 @@ auto LVar::getValue() -> double {
 	return this->value;
 }
 
+auto LVar::forceGetValue() -> double {
+	this->update();
+	return this->getValue();
+}
+
 auto LVar::isValue() -> bool {
 	return static_cast<bool>(this->value);
+}
+
+auto LVar::forceIsValue() -> bool {
+	this->update();
+	return this->isValue();
 }
 
 auto LVar::update() -> void {

@@ -22,7 +22,9 @@ class LVar {
 	public:
 		LVar(PSTRINGZ id, PSTRINGZ unit);
 		auto getValue() -> double;
+		auto forceGetValue() -> double;
 		auto isValue() -> bool;
+		auto forceIsValue() -> bool;
 		auto update() -> void;
 		auto set(double value) -> void;
 		auto set(bool value) -> void;

@@ -24,7 +24,7 @@
 
 using Colors = Tools::Colors;
 
-void MCPVerticalSpeedApplication::render(sGaugeDrawData* data) {
+auto MCPVerticalSpeedApplication::render(sGaugeDrawData* data) -> void {
 	this->verticalSpeedModeActive = LVars::get(LVars::AP_VS_ACTIVE).isValue();
 	this->fpaModeActive = LVars::get(LVars::XMLVAR_FPA_MODE_ACTIVE).isValue();
 

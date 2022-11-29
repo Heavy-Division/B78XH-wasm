@@ -25,6 +25,6 @@ auto McpAltitudeDisplay::setupApplications() -> void {
 	this->mcpAltitudeApplication.setSize(512.0, 204.0);
 }
 
-void McpAltitudeDisplay::setupDisplay() {
+auto McpAltitudeDisplay::setupDisplay() -> void {
 	this->setAutoClearing(false);
 }

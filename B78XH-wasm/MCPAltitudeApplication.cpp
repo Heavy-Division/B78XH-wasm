@@ -23,7 +23,7 @@
 
 using Colors = Tools::Colors;
 
-void MCPAltitudeApplication::render(sGaugeDrawData* data) {
+auto MCPAltitudeApplication::render(sGaugeDrawData* data) -> void {
 	if (GaugesInvalidateFlags.MCPAltitudeGauge != true) {
 		return;
 	}
