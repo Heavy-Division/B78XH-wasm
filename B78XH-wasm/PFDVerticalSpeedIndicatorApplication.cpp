@@ -65,6 +65,8 @@ auto PFDVerticalSpeedIndicatorApplication::drawBackground() -> void {
 auto PFDVerticalSpeedIndicatorApplication::drawValue() -> void {
 	const int verticalSpeed = static_cast<int>(round(SimConnectData::Aircraft::state.verticalSpeed));
 	const int absoluteVerticalSpeed = abs(verticalSpeed);
+	const double modulo50 = absoluteVerticalSpeed % 50;
+	const int roundedVerticalSpeed = static_cast<int>(absoluteVerticalSpeed - modulo50 + (modulo50 >= 25 ? 50 : 0));
 	constexpr float baseVerticalOffset = 185;
 	const float verticalOffsetModifier = (verticalSpeed < 0 ? 1.0 : -1.0);
 	if (absoluteVerticalSpeed < 400) {
@@ -82,7 +84,7 @@ auto PFDVerticalSpeedIndicatorApplication::drawValue() -> void {
 			nvgBeginPath(this->nvgContext);
 			{
 				nvgText(this->nvgContext, 50, baseVerticalOffset * verticalOffsetModifier,
-				        std::to_string(absoluteVerticalSpeed).c_str(), nullptr);
+				        std::to_string(roundedVerticalSpeed).c_str(), nullptr);
 			}
 			nvgFill(this->nvgContext);
 		}
