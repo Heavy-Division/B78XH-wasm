@@ -19,6 +19,7 @@
 
 #include "Simplane.h"
 #include "Tools.h"
+#include <cmath>
 
 using Colors = Tools::Colors;
 
@@ -27,9 +28,10 @@ void PFDVerticalSpeedIndicatorApplication::render(sGaugeDrawData* data) {
 	drawGraduations();
 	drawCursor();
 	drawTargetPointer();
+	drawValue();
 }
 
-void PFDVerticalSpeedIndicatorApplication::drawBackground() {
+auto PFDVerticalSpeedIndicatorApplication::drawBackground() -> void {
 	nvgSave(this->nvgContext);
 	{
 		nvgTranslate(this->nvgContext, 0, 161);
@@ -60,21 +62,49 @@ void PFDVerticalSpeedIndicatorApplication::drawBackground() {
 	nvgRestore(this->nvgContext);
 }
 
-void PFDVerticalSpeedIndicatorApplication::drawGraduations() {
+auto PFDVerticalSpeedIndicatorApplication::drawValue() -> void {
+	const int verticalSpeed = static_cast<int>(round(SimConnectData::Aircraft::state.verticalSpeed));
+	const int absoluteVerticalSpeed = abs(verticalSpeed);
+	constexpr float baseVerticalOffset = 185;
+	const float verticalOffsetModifier = (verticalSpeed < 0 ? 1.0 : -1.0);
+	if (absoluteVerticalSpeed < 400) {
+		return;
+	}
+
+	nvgSave(this->nvgContext);
+	{
+		nvgTranslate(this->nvgContext, 0, 161);
+		{
+			nvgFillColor(this->nvgContext, Colors::white);
+			nvgTextAlign(this->nvgContext, NVG_ALIGN_MIDDLE | NVG_ALIGN_RIGHT);
+			nvgFontSize(this->nvgContext, 28.0f);
+			nvgFontFace(this->nvgContext, "roboto");
+			nvgBeginPath(this->nvgContext);
+			{
+				nvgText(this->nvgContext, 50, baseVerticalOffset * verticalOffsetModifier,
+				        std::to_string(absoluteVerticalSpeed).c_str(), nullptr);
+			}
+			nvgFill(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+	}
+	nvgRestore(this->nvgContext);
+}
+
+auto PFDVerticalSpeedIndicatorApplication::drawGraduations() -> void {
 	constexpr auto height = 2.0f;
 
 	/*
 	 * DEFINITION:
 	 * {offset, width}
 	 */
-	constexpr int offsetsMajor[4][2] = { {0, 20}, {68, 8}, {116, 8}, {150, 8} };
+	constexpr int offsetsMajor[4][2] = {{0, 20}, {68, 8}, {116, 8}, {150, 8}};
 
-	constexpr int offsetsMinor[3][2] = { {34, 8}, {92, 8}, {133, 8}, };
+	constexpr int offsetsMinor[3][2] = {{34, 8}, {92, 8}, {133, 8},};
 	nvgSave(this->nvgContext);
 	{
 		nvgTranslate(this->nvgContext, 14, 161);
 		{
-
 			nvgStrokeColor(this->nvgContext, Colors::white);
 			/*
 			 * Major
@@ -140,7 +170,7 @@ void PFDVerticalSpeedIndicatorApplication::drawGraduations() {
 	nvgRestore(this->nvgContext);
 }
 
-void PFDVerticalSpeedIndicatorApplication::drawCursor() {
+auto PFDVerticalSpeedIndicatorApplication::drawCursor() -> void {
 	namespace Aircraft = Simplane::aircraft;
 	const double verticalSpeed = Aircraft::state::verticalSpeed();
 	/*
@@ -194,7 +224,7 @@ void PFDVerticalSpeedIndicatorApplication::drawCursor() {
 	nvgRestore(this->nvgContext);
 }
 
-void PFDVerticalSpeedIndicatorApplication::drawTargetPointer() {
+auto PFDVerticalSpeedIndicatorApplication::drawTargetPointer() -> void {
 	namespace Autopilot = Simplane::autopilot;
 	if (!Autopilot::verticalSpeed::verticalSpeedHold()) {
 		return;

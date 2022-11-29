@@ -21,8 +21,9 @@
 class PFDVerticalSpeedIndicatorApplication: public Application {
 	public:
 		auto render(sGaugeDrawData* data) -> void override;
-		void drawGraduations();
-		void drawCursor();
-		void drawTargetPointer();
-		void drawBackground();
+		auto drawGraduations() -> void;
+		auto drawCursor() -> void;
+		auto drawTargetPointer() -> void;
+		auto drawBackground() -> void;
+		auto drawValue() -> void;
 };
