@@ -32,3 +32,19 @@ auto LVar::isValue() -> bool {
 auto LVar::update() -> void {
 	this->value = get_named_variable_typed_value(this->id, this->unit);
 }
+
+auto LVar::set(double value) -> void {
+	set_named_variable_value(this->id, value);
+}
+
+auto LVar::set(bool value) -> void {
+	this->set(static_cast<double>(value));
+}
+
+auto LVar::set(int value) -> void {
+	this->set(static_cast<double>(value));
+}
+
+auto LVar::set(float value) -> void {
+	this->set(static_cast<double>(value));
+}

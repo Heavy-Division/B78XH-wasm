@@ -24,6 +24,10 @@ class LVar {
 		auto getValue() -> double;
 		auto isValue() -> bool;
 		auto update() -> void;
+		auto set(double value) -> void;
+		auto set(bool value) -> void;
+		auto set(int value) -> void;
+		auto set(float value) -> void;
 	private:
 		ID id;
 		ENUM unit;
