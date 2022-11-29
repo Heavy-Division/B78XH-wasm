@@ -16,6 +16,8 @@
 
 
 #include "PFDFMA.h"
+
+#include "LVars.h"
 #include "Simplane.h"
 #include "Tools.h"
 
@@ -80,10 +82,10 @@ const char* PFDFMA::resolveActiveThrustMode() {
 		return ThrottleMode::NONE;
 	}
 
-	if(!LVarsGetter::isSpeedActive()) {
+	if(!LVars::get(LVars::AP_SPD_ACTIVE).isValue()) {
 		return ThrottleMode::NONE;
 	}
-
+	
 	if(static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) == SimThrottleMode::TOGA) {
 		return ThrottleMode::THR_REF;
 	}
@@ -108,11 +110,11 @@ const char* PFDFMA::resolveActiveThrustMode() {
 		return ThrottleMode::HOLD;
 	}
 
-	if(LVarsGetter::isFLCHActive()) {
+	if(LVars::get(LVars::AP_FLCH_ACTIVE).isValue()) {
 		return ThrottleMode::THR_REF;
 	}
 
-	if(LVarsGetter::isSpeedActive()) {
+	if(LVars::get(LVars::AP_SPD_ACTIVE).isValue()) {
 		return ThrottleMode::SPD;
 	}
 
@@ -120,7 +122,7 @@ const char* PFDFMA::resolveActiveThrustMode() {
 		return ThrottleMode::THR_REF;
 	}
 
-	if(LVarsGetter::isSpeedInterventionActive()) {
+	if(LVars::get(LVars::AP_SPEED_INTERVENTION_ACTIVE).isValue()) {
 		return ThrottleMode::SPD;
 	}
 
@@ -150,28 +152,28 @@ const char* PFDFMA::resolveActiveRollMode() {
 		return RollMode::TOGA;
 	}
 
-	if(LVarsGetter::isLNAVActive()) {
+	if(LVars::get(LVars::AP_LNAV_ACTIVE).isValue()) {
 		return RollMode::LNAV;
 	}
 
 	if(Autopilot::state::isMasterActive() || Autopilot::flightDirector::isFlightDirector1Active() ||
 		Autopilot::flightDirector::isFlightDirector2Active()) {
-		if(LVarsGetter::isLNAVArmed() && static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) ==
+		if(LVars::get(LVars::AP_LNAV_ARMED).isValue() && static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) ==
 			SimThrottleMode::HOLD) {
 			return RollMode::TOGA;
 		}
 	}
 
 	if(Autopilot::heading::headingLock()) {
-		return (LVarsGetter::isHeadingHoldActive() ? RollMode::HDG_HOLD : RollMode::HDG_SEL);
+		return (LVars::get(LVars::AP_HEADING_HOLD_ACTIVE).isValue() ? RollMode::HDG_HOLD : RollMode::HDG_SEL);
 	}
 
 	if(Autopilot::state::isMasterActive()) {
 		if(Autopilot::heading::headingLock()) {
-			if(LVarsGetter::isHeadingHoldActive()) {
-				return (LVarsGetter::isTRKModeActive() ? RollMode::TRK_HOLD : RollMode::HDG_HOLD);
+			if(LVars::get(LVars::AP_HEADING_HOLD_ACTIVE).isValue()) {
+				return (LVars::get(LVars::XMLVAR_TRK_MODE_ACTIVE).isValue() ? RollMode::TRK_HOLD : RollMode::HDG_HOLD);
 			}
-			return (LVarsGetter::isTRKModeActive() ? RollMode::TRK_SEL : RollMode::HDG_SEL);
+			return (LVars::get(LVars::XMLVAR_TRK_MODE_ACTIVE).isValue() ? RollMode::TRK_SEL : RollMode::HDG_SEL);
 		}
 	}
 
@@ -189,7 +191,7 @@ const char* PFDFMA::resolveArmedRollMode() {
 		return (Autopilot::approach::approachType() == SimApproachType::APPROACH_TYPE_RNAV ? RollMode::FAC : RollMode::LOC);
 	}
 
-	if(LVarsGetter::isLNAVArmed() && !LVarsGetter::isLNAVActive()) {
+	if(LVars::get(LVars::AP_LNAV_ARMED).isValue() && !LVars::get(LVars::AP_LNAV_ACTIVE).isValue()) {
 		return RollMode::LNAV;
 	}
 
@@ -217,10 +219,10 @@ const char* PFDFMA::resolveActivePitchMode() {
 		return PitchMode::TOGA;
 	}
 
-	if(LVarsGetter::isVNAVActive()) {
+	if(LVars::get(LVars::AP_VNAV_ACTIVE).isValue()) {
 		if(Autopilot::altitude::altitudeLock()) {
 			const double indicatedAltitude = Aircraft::state::indicatedAltitude();
-			const double cruiseAltitude = LVarsGetter::airlinerCruiseAltitude();
+			const double cruiseAltitude = LVars::get(LVars::AIRLINER_CRUISE_ALTITUDE).getValue();
 			if(indicatedAltitude > cruiseAltitude + 100) {
 				return PitchMode::VNAV_ALT;
 			}
@@ -230,15 +232,15 @@ const char* PFDFMA::resolveActivePitchMode() {
 	}
 
 	if(static_cast<SimThrottleMode>(Autopilot::throttle::leftEngineThrottleMode()) == SimThrottleMode::HOLD &&
-		LVarsGetter::isVNAVArmed()) {
+		LVars::get(LVars::AP_VNAV_ARMED).isValue()) {
 		return PitchMode::TOGA;
 	}
 
-	if(LVarsGetter::isFLCHActive()) {
+	if(LVars::get(LVars::AP_FLCH_ACTIVE).isValue()) {
 		return PitchMode::FLCH_SPD;
 	}
 
-	if(LVarsGetter::isAltitudeHoldActive()) {
+	if(LVars::get(LVars::AP_ALT_HOLD_ACTIVE).isValue()) {
 		return PitchMode::ALT;
 	}
 
@@ -248,7 +250,7 @@ const char* PFDFMA::resolveActivePitchMode() {
 
 	if(Autopilot::state::isMasterActive()) {
 		if(Autopilot::verticalSpeed::verticalSpeedHold()) {
-			return (LVarsGetter::isFPAModeActive() ? PitchMode::FPA : PitchMode::VS);
+			return (LVars::get(LVars::XMLVAR_TRK_FPA_MODE_ACTIVE).isValue() ? PitchMode::FPA : PitchMode::VS);
 		}
 
 		if (Autopilot::altitude::altitudeLock()) {
@@ -279,7 +281,7 @@ const char* PFDFMA::resolveArmedPitchMode() {
 		}
 	}
 
-	if(LVarsGetter::isVNAVArmed() && !LVarsGetter::isVNAVActive()) {
+	if(LVars::get(LVars::AP_VNAV_ARMED).isValue() && !LVars::get(LVars::AP_VNAV_ACTIVE).isValue()) {
 		return PitchMode::VNAV;
 	}
 

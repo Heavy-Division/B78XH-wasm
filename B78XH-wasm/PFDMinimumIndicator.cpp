@@ -19,13 +19,14 @@
 
 #include <string>
 
+#include "LVars.h"
 #include "Simplane.h"
 #include "Tools.h"
 
 using Colors = Tools::Colors;
 
 void PFDMinimumIndicator::draw(NVGcontext* context) {
-	const bool isReferenceBaro = LVarsGetter::isMinimumSelectorBaro();
+	const bool isReferenceBaro = LVars::get(LVars::XMLVAR_Mins_Selector_Baro).isValue();
 	const double value = (isReferenceBaro ? Simplane::barometer::setting::decisionAltitudeMSL() : Simplane::barometer::setting::decisionHeight());
 	nvgSave(context);
 	{

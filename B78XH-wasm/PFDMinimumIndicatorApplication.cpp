@@ -17,13 +17,14 @@
 
 #include "PFDMinimumIndicatorApplication.h"
 
+#include "LVars.h"
 #include "Simplane.h"
 #include "Tools.h"
 
 using Colors = Tools::Colors;
 
 void PFDMinimumIndicatorApplication::render(sGaugeDrawData* data) {
-	const bool isReferenceBaro = LVarsGetter::isMinimumSelectorBaro();
+	const bool isReferenceBaro = LVars::get(LVars::XMLVAR_Mins_Selector_Baro).isValue();
 	const double value = (isReferenceBaro ? Simplane::barometer::setting::decisionAltitudeMSL() : Simplane::barometer::setting::decisionHeight());
 	nvgSave(this->nvgContext);
 	{

@@ -25,6 +25,7 @@
 #include "algorithm"
 #include "IRSState.h"
 #include "IRSSwitchState.h"
+#include "LVars.h"
 #include "NavRadioEnums.h"
 #include "fmt/core.h"
 
@@ -214,34 +215,34 @@ namespace Simplane {
 
 		namespace l {
 			inline auto isAligned() -> bool {
-				return static_cast<IRSState>(LVarsGetter::irsLState()) == IRSState::ALIGNED;
+				return static_cast<IRSState>(LVars::get(LVars::B78XH_IRS_L_STATE).getValue()) == IRSState::ALIGNED;
 			}
 
 			inline auto state() -> IRSState {
-				return static_cast<IRSState>(LVarsGetter::irsLState());
+				return static_cast<IRSState>(LVars::get(LVars::B78XH_IRS_L_STATE).getValue());
 			}
 
 			inline auto switchState() -> IRSSwitchState {
-				return static_cast<IRSSwitchState>(LVarsGetter::irsLSwitchState());
+				return static_cast<IRSSwitchState>(LVars::get(LVars::B78XH_IRS_L_SWITCH_STATE).getValue());
 			}
 		}
 
 		namespace r {
 			inline auto isAligned() -> bool {
-				return static_cast<IRSState>(LVarsGetter::irsRState()) == IRSState::ALIGNED;
+				return static_cast<IRSState>(LVars::get(LVars::B78XH_IRS_R_STATE).getValue()) == IRSState::ALIGNED;
 			}
 
 			inline auto state() -> IRSState {
-				return static_cast<IRSState>(LVarsGetter::irsRState());
+				return static_cast<IRSState>(LVars::get(LVars::B78XH_IRS_R_STATE).getValue());
 			}
 
 			inline auto switchState() -> IRSSwitchState {
-				return static_cast<IRSSwitchState>(LVarsGetter::irsRSwitchState());
+				return static_cast<IRSSwitchState>(LVars::get(LVars::B78XH_IRS_R_SWITCH_STATE).getValue());
 			}
 		}
 
 		inline auto isInited() -> bool {
-			return LVarsGetter::isIRSInited();
+			return LVars::get(LVars::B78XH_IS_IRS_INITED).isValue();
 		}
 
 		inline auto setIsInited(bool value) -> void {
@@ -1108,11 +1109,11 @@ inline auto Simplane::barometer::setting::kohlsmanMB() -> double {
 }
 
 inline auto Simplane::barometer::setting::forcedToSTD() -> bool {
-	return LVarsGetter::isBaroForcedToSTD();
+	return LVars::get(LVars::XMLVAR_Baro1_forcedToSTD).isValue();
 }
 
 inline auto Simplane::barometer::setting::isBaroInHPA() -> bool {
-	return LVarsGetter::isBaroInHPA();
+	return LVars::get(LVars::XMLVAR_Baro_Selector_HPA_1).isValue();
 }
 
 inline auto Simplane::barometer::setting::decisionHeight() -> double {
@@ -1144,27 +1145,27 @@ inline auto Simplane::misc::time::localYear() -> double {
 }
 
 inline auto Simplane::instruments::cdu::v1() -> double {
-	return LVarsGetter::v1Speed();
+	return LVars::get(LVars::AIRLINER_V1_SPEED).getValue();
 }
 
 inline auto Simplane::instruments::cdu::v2() -> double {
-	return LVarsGetter::v2Speed();
+	return LVars::get(LVars::AIRLINER_V2_SPEED).getValue();
 }
 
 inline auto Simplane::instruments::cdu::vR() -> double {
-	return LVarsGetter::vRSpeed();
+	return LVars::get(LVars::AIRLINER_VR_SPEED).getValue();
 }
 
 inline auto Simplane::instruments::cdu::vREF() -> double {
-	return LVarsGetter::vREFSpeed();
+	return LVars::get(LVars::AIRLINER_VREF_SPEED).getValue();
 }
 
 inline auto Simplane::instruments::cdu::approachFlaps() -> double {
-	return LVarsGetter::approachFlaps();
+	return LVars::get(LVars::AIRLINER_APPROACH_FLAPS).getValue();
 }
 
 inline auto Simplane::flight::flightPhase() -> double {
-	return LVarsGetter::flightPhase();
+	return LVars::get(LVars::AIRLINER_FLIGHT_PHASE).getValue();
 }
 
 inline auto Simplane::equipment::radioNav::unit1::glideSlopeError() -> double {

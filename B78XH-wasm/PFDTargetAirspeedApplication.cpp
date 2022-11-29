@@ -17,6 +17,8 @@
 
 #include "PFDTargetAirspeedApplication.h"
 #include <cmath>
+
+#include "LVars.h"
 #include "Simplane.h"
 #include "Tools.h"
 
@@ -42,7 +44,7 @@ void PFDTargetAirspeedApplication::drawBackground() const {
 void PFDTargetAirspeedApplication::drawValue() const {
 	namespace Autopilot = Simplane::autopilot;
 	const auto resolveTargetSpeed = []()-> std::string {
-		if (!LVarsGetter::isMachModeActive()) {
+		if (!LVars::get(LVars::XMLVAR_AirSpeedIsInMach).isValue()) {
 			return fmt::format("{:03}", round(Autopilot::airspeed::airspeedHoldVar()));
 		}
 		return fmt::format("{:.3f}", Autopilot::airspeed::machHoldVar()).substr(1, 4);
