@@ -18,7 +18,7 @@
 #include "PFDVerticalSpeedIndicatorApplication.h"
 
 #include "Simplane.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
 #include <cmath>
 
 using Colors = Tools::Colors;

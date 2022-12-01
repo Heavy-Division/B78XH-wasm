@@ -19,7 +19,7 @@
 #include "MCPAltitudeGauge.h"
 #include "SimConnectData.h"
 
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 using Colors = Tools::Colors;
 

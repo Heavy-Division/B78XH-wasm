@@ -18,7 +18,7 @@
 #include "TuningControlPanelXPDRPage.h"
 #include "SimConnectData.h"
 #include "fmt/core.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 TuningControlPanelXPDRPage::TuningControlPanelXPDRPage(TuningControlPanelScratchpad* scratchpad) {
 	this->scratchpad = scratchpad;

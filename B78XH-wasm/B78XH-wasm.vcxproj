@@ -65,7 +65,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_MSFS_WASM;_STRING_H_CPLUSPLUS_98_CONFORMANCE_;_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_;_LIBCPP_NO_EXCEPTIONS;_LIBCPP_HAS_NO_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_MSFS_WASM;_STRING_H_CPLUSPLUS_98_CONFORMANCE_;_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_;_LIBCPP_NO_EXCEPTIONS;_LIBCPP_HAS_NO_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat />
@@ -120,6 +120,7 @@
     <ClCompile Include="AHRU.cpp" />
     <ClCompile Include="Alignable.cpp" />
     <ClCompile Include="B78XHConfiguration.cpp" />
+    <ClCompile Include="BaseControl.cpp" />
     <ClCompile Include="CCS.cpp" />
     <ClCompile Include="CCSGaugeCallback.cpp" />
     <ClCompile Include="CDUButton.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="FirstGenerationControl.cpp" />
     <ClCompile Include="HelloWorldDisplay.cpp" />
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
     <ClCompile Include="HelloWorldApplication.cpp" />
@@ -164,9 +166,12 @@
     <ClCompile Include="IRS.cpp" />
     <ClCompile Include="IRU.cpp" />
     <ClCompile Include="KEvents.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LineDisplay.cpp" />
     <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
+    <ClCompile Include="MasterControl.cpp" />
     <ClCompile Include="MCPAltitudeApplication.cpp" />
     <ClCompile Include="McpAltitudeDisplay.cpp" />
     <ClCompile Include="McpAltitudeDisplayGaugeCallback.cpp" />
@@ -193,7 +198,6 @@
     <ClCompile Include="PFDAuxApplication.cpp" />
     <ClCompile Include="PFDAuxGauge.cpp" />
     <ClCompile Include="PFDAuxGaugeCallback.cpp" />
-    <ClCompile Include="format.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MCPAltitudeGauge.cpp" />
     <ClCompile Include="MCPAltitudeGaugeCallback.cpp" />
@@ -227,6 +231,7 @@
     <ClCompile Include="RightInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
+    <ClCompile Include="SecondGenerationControl.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
     <ClCompile Include="SimpleINI\ConvertUTF.c" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
@@ -239,14 +244,17 @@
     <ClCompile Include="TCPEventDispatcher.cpp" />
     <ClCompile Include="TcpLeftDisplay.cpp" />
     <ClCompile Include="TcpLeftDisplayGaugeCallback.cpp" />
+    <ClCompile Include="TCPLeftLine.cpp" />
+    <ClCompile Include="TCPLineDisplay.cpp" />
+    <ClCompile Include="TCPLineDisplayApplication.cpp" />
     <ClCompile Include="TcpRightDisplay.cpp" />
     <ClCompile Include="TcpRightDisplayGaugeCallback.cpp" />
+    <ClCompile Include="ThirdGenerationControl.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
     <ClCompile Include="TuningControlPanelSATCOMPage.cpp" />
     <ClCompile Include="TuningControlPanelVHFStorage.cpp" />
-    <ClCompile Include="Tools.cpp" />
     <ClCompile Include="TOOLSimConnectHandlingGaugeCallback.cpp" />
     <ClCompile Include="TuningControlPanelINOPPage.cpp" />
     <ClCompile Include="TuningControlPanelMENUPage.cpp" />
@@ -275,6 +283,7 @@
     <ClInclude Include="AltitudeRestrictionType.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="B78XHConfiguration.h" />
+    <ClInclude Include="BaseControl.h" />
     <ClInclude Include="BaseGauge.h" />
     <ClInclude Include="BaseScratchpad.h" />
     <ClInclude Include="CCS.h" />
@@ -310,21 +319,18 @@
     <ClInclude Include="CDURightTitleLine.h" />
     <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
-    <ClInclude Include="Console.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Displays.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
+    <ClInclude Include="FirstGenerationControl.h" />
     <ClInclude Include="HelloWorldDisplay.h" />
     <ClInclude Include="ExampleDisplays.h" />
     <ClInclude Include="FacilitySearchType.h" />
     <ClInclude Include="FacilityType.h" />
     <ClInclude Include="FlapsSpeedLimit.h" />
     <ClInclude Include="FlapsSpeedMarker.h" />
-    <ClInclude Include="fmt\core.h" />
-    <ClInclude Include="fmt\format-inl.h" />
-    <ClInclude Include="fmt\format.h" />
     <ClInclude Include="FPSyncStrategyType.h" />
     <ClInclude Include="GaugesInvalidateFlags.h" />
     <ClInclude Include="GearsSpeedLimit.h" />
@@ -341,9 +347,13 @@
     <ClInclude Include="IsfdDisplay.h" />
     <ClInclude Include="KEvents.h" />
     <ClInclude Include="LeftInboardDisplay.h" />
+    <ClInclude Include="LifeCycle.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="LineDisplay.h" />
     <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
+    <ClInclude Include="MasterControl.h" />
     <ClInclude Include="MCPAltitudeApplication.h" />
     <ClInclude Include="McpAltitudeDisplay.h" />
     <ClInclude Include="MCPHeadingApplication.h" />
@@ -380,6 +390,7 @@
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
+    <ClInclude Include="SecondGenerationControl.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
@@ -415,10 +426,13 @@
     <ClInclude Include="TcpCenterDisplay.h" />
     <ClInclude Include="TCPEventDispatcher.h" />
     <ClInclude Include="TcpLeftDisplay.h" />
+    <ClInclude Include="TCPLeftLine.h" />
+    <ClInclude Include="TCPLineDisplay.h" />
+    <ClInclude Include="TCPLineDisplayApplication.h" />
     <ClInclude Include="TcpRightDisplay.h" />
+    <ClInclude Include="ThirdGenerationControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
-    <ClInclude Include="Tools.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />
     <ClInclude Include="TuningControlPanelGPWSPage.h" />
     <ClInclude Include="TuningControlPanelINOPPage.h" />
@@ -451,6 +465,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="B78XH-wasm.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fmt\fmt.vcxproj">
+      <Project>{06dc21b8-0b00-413a-b6d2-58c8844f94a7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.vcxproj">
+      <Project>{7ec92233-171f-4cc6-8638-75a469c78d7c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

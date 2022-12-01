@@ -17,9 +17,12 @@
 
 #pragma once
 #include "Display.h"
+#include "TCPLineDisplayApplication.h"
 
 class TcpLeftDisplay : public Display {
 	protected:
 		auto prepareApplications() -> void override;
 		auto setupApplications() -> void override;
+	private:
+		TCPLineDisplayApplication tcpLineDisplayApplication;
 };

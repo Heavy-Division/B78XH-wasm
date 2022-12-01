@@ -49,4 +49,5 @@ class Display {
 		virtual auto setupApplicationsContext() -> void final;
 		virtual auto runApplicationsPostInstall() -> void final;
 		virtual auto runApplicationsPreKill() -> void final;
+		auto drawApplication(std::reference_wrapper<Application> application, sGaugeDrawData* data) -> void;
 };

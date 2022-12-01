@@ -19,7 +19,8 @@
 
 #include "GaugesInvalidateFlags.h"
 #include "SimConnectData.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
+#include "fmt/core.h"
 
 #include <cmath>
 

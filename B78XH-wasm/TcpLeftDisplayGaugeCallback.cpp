@@ -18,6 +18,7 @@
 #include <MSFS\MSFS.h>
 
 #include "Displays.h"
+#include "LifeCycle.h"
 
 
 #ifdef _MSC_VER
@@ -32,19 +33,28 @@ extern "C" {
 	MSFS_CALLBACK bool tcp_left_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				return Displays::tcpLeftDisplay.preInstall();
+				Displays::masterControl.startup(static_cast<sGaugeInstallData*>(pData));
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				return Displays::tcpLeftDisplay.postInstall(ctx);
+				Displays::masterControl.afterStartup(ctx);
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_PRE_UPDATE: {
+				Displays::masterControl.beforeRender();
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				return Displays::tcpLeftDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
+				Displays::masterControl.render(static_cast<sGaugeDrawData*>(pData));
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				return Displays::tcpLeftDisplay.preKill();
+				Displays::masterControl.shutdown();
+				return true;
 			}
 			break;
 		}

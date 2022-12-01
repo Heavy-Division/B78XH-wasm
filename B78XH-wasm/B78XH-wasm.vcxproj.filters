@@ -47,14 +47,8 @@
     <ClCompile Include="TuningControlPanelScratchpad.cpp">
       <Filter>Source Files\Renderers\Scratchpad</Filter>
     </ClCompile>
-    <ClCompile Include="Tools.cpp">
-      <Filter>Source Files\Tools</Filter>
-    </ClCompile>
     <ClCompile Include="TuningControlPanelVHFStorage.cpp">
       <Filter>Source Files\Renderers\TuningControlPanel\Storages</Filter>
-    </ClCompile>
-    <ClCompile Include="format.cc">
-      <Filter>fmt</Filter>
     </ClCompile>
     <ClCompile Include="TuningControlPanelSATCOMPage.cpp">
       <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
@@ -429,6 +423,36 @@
     <ClCompile Include="MCPHeadingApplication.cpp">
       <Filter>Source Files\Applications\MCPHeading</Filter>
     </ClCompile>
+    <ClCompile Include="TCPLineDisplayApplication.cpp">
+      <Filter>Source Files\Applications\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="LineDisplay.cpp">
+      <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source Files\Applications\_Implementations\Lines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPLeftLine.cpp">
+      <Filter>Source Files\Applications\_Implementations\Lines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPLineDisplay.cpp">
+      <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstGenerationControl.cpp">
+      <Filter>Source Files\Controls\WorkingImplementation\FirstGenerationControl</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondGenerationControl.cpp">
+      <Filter>Source Files\Controls\WorkingImplementation\SecondGenerationControl</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseControl.cpp">
+      <Filter>Source Files\Controls\WorkingImplementation\BaseControl</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterControl.cpp">
+      <Filter>Source Files\Controls\WorkingImplementation\MasterControl</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdGenerationControl.cpp">
+      <Filter>Source Files\Controls\WorkingImplementation\ThirdGenerationControl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
@@ -482,20 +506,8 @@
     <ClInclude Include="ScratchpadEvents.h">
       <Filter>Source Files\Renderers\Scratchpad</Filter>
     </ClInclude>
-    <ClInclude Include="Tools.h">
-      <Filter>Source Files\Tools</Filter>
-    </ClInclude>
     <ClInclude Include="TuningControlPanelVHFStorage.h">
       <Filter>Source Files\Renderers\TuningControlPanel\Storages</Filter>
-    </ClInclude>
-    <ClInclude Include="fmt\core.h">
-      <Filter>fmt</Filter>
-    </ClInclude>
-    <ClInclude Include="fmt\format.h">
-      <Filter>fmt</Filter>
-    </ClInclude>
-    <ClInclude Include="fmt\format-inl.h">
-      <Filter>fmt</Filter>
     </ClInclude>
     <ClInclude Include="TuningControlPanelSATCOMPage.h">
       <Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
@@ -850,9 +862,6 @@
     <ClInclude Include="TCPEventDispatcher.h">
       <Filter>Source Files\Tools\Events\Dispatchers</Filter>
     </ClInclude>
-    <ClInclude Include="Console.h">
-      <Filter>Source Files\Tools\Console</Filter>
-    </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>Source Files\Applications</Filter>
     </ClInclude>
@@ -967,6 +976,39 @@
     <ClInclude Include="MCPHeadingApplication.h">
       <Filter>Source Files\Applications\MCPHeading</Filter>
     </ClInclude>
+    <ClInclude Include="TCPLineDisplayApplication.h">
+      <Filter>Source Files\Applications\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="LineDisplay.h">
+      <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Source Files\Applications\_Implementations\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLeftLine.h">
+      <Filter>Source Files\Applications\_Implementations\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLineDisplay.h">
+      <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeCycle.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstGenerationControl.h">
+      <Filter>Source Files\Controls\WorkingImplementation\FirstGenerationControl</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondGenerationControl.h">
+      <Filter>Source Files\Controls\WorkingImplementation\SecondGenerationControl</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseControl.h">
+      <Filter>Source Files\Controls\WorkingImplementation\BaseControl</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterControl.h">
+      <Filter>Source Files\Controls\WorkingImplementation\MasterControl</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdGenerationControl.h">
+      <Filter>Source Files\Controls\WorkingImplementation\ThirdGenerationControl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1007,9 +1049,6 @@
     </Filter>
     <Filter Include="Source Files\Renderers\TuningControlPanel\Storages">
       <UniqueIdentifier>{df3e32ef-2aeb-4d11-90f4-bdc0388075ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fmt">
-      <UniqueIdentifier>{a91b68ff-4936-4781-90f3-dcdb9c32318b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Gauges\PFD">
       <UniqueIdentifier>{c8514c8c-1a29-439f-9270-f0d4e444a462}</UniqueIdentifier>
@@ -1155,9 +1194,6 @@
     <Filter Include="Source Files\Tools\Events\Dispatchers">
       <UniqueIdentifier>{0e1e3799-591b-4c0d-a805-4424e63303a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Tools\Console">
-      <UniqueIdentifier>{a66ac76f-ef7d-4e81-8dc1-b4240fcdbdc5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Applications">
       <UniqueIdentifier>{201d6b8a-3c59-4c33-b98e-7a1068b792a8}</UniqueIdentifier>
     </Filter>
@@ -1232,6 +1268,39 @@
     </Filter>
     <Filter Include="Source Files\Applications\MCPHeading">
       <UniqueIdentifier>{eb235f6f-3706-43e5-8da3-03f25ce69088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\TCP">
+      <UniqueIdentifier>{e4e41e4d-3221-401d-b7d1-833c2cd89fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\_Implementations">
+      <UniqueIdentifier>{3e95e1f0-d4e4-46d7-ab9b-5539ba154490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\_Implementations\SoftwareDisplays">
+      <UniqueIdentifier>{2b8ef0e0-4865-40a5-ade8-1f00eb9947ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\_Implementations\Lines">
+      <UniqueIdentifier>{84d6c8a7-9e47-437b-8208-c8023cfc2d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls">
+      <UniqueIdentifier>{99e6431d-376e-405c-8020-0807dd34e461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\WorkingImplementation">
+      <UniqueIdentifier>{f5badf0f-c9e6-4e66-bbc6-6e6bc4f071c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\WorkingImplementation\BaseControl">
+      <UniqueIdentifier>{c9d3fd6c-3f01-4fb4-9f07-07383f9931dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\WorkingImplementation\FirstGenerationControl">
+      <UniqueIdentifier>{60703206-267b-49b3-9574-6b3ca393013b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\WorkingImplementation\SecondGenerationControl">
+      <UniqueIdentifier>{5665d1ca-abd5-4f44-abc3-3e61e080b403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\WorkingImplementation\MasterControl">
+      <UniqueIdentifier>{244dc62a-fd96-4c6e-ab91-396344789149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\WorkingImplementation\ThirdGenerationControl">
+      <UniqueIdentifier>{36a4a247-74da-440f-a20c-50d0adeb93e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

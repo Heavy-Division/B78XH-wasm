@@ -20,7 +20,8 @@
 #include "GaugesInvalidateFlags.h"
 #include "LVars.h"
 #include "SimConnectData.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
+#include "fmt/core.h"
 
 using Colors = Tools::Colors;
 

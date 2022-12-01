@@ -17,7 +17,7 @@
 
 #include "SimConnectConnector.h"
 
-#include "Console.h"
+#include "Tools\Console.h"
 #include "GaugesInvalidateFlags.h"
 #include "SimConnectClientEvents.h"
 #include "EventDispatchers.h"

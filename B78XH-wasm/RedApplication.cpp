@@ -17,8 +17,8 @@
 
 #include "RedApplication.h"
 
-#include "Console.h"
-#include "Tools.h"
+#include "Tools\Console.h"
+#include "Tools/Tools.h"
 
 auto RedApplication::render(sGaugeDrawData* data) -> void {
 	if(this->nvgContext == nullptr) {

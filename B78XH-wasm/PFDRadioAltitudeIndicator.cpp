@@ -19,7 +19,7 @@
 #include "PFDRadioAltitudeIndicator.h"
 #include "Simplane.h"
 #include <cmath>
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 using Colors = Tools::Colors;
 

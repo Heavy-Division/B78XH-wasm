@@ -16,7 +16,7 @@
 
 
 #include <MSFS/MSFS.h>
-#include "Console.h"
+#include "Tools\Console.h"
 #include "SimConnectConnector.h"
 
 extern "C" MSFS_CALLBACK void module_init(void) {

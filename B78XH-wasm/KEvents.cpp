@@ -18,7 +18,6 @@
 #include "KEvents.h"
 
 #include <string>
-#include <string>
 #include <MSFS/Legacy/gauges.h>
 #include "fmt/core.h"
 

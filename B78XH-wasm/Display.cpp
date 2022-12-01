@@ -17,11 +17,14 @@
 
 #include "Display.h"
 
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 auto Display::setupApplicationsContext() -> void {
 	for (auto application : applications) {
 		application.get().setContext(this->nvgContext);
+		if (application.get().hasSubApplications()) {
+			application.get().setupApplicationsContext();
+		}
 	}
 }
 
@@ -35,6 +38,31 @@ auto Display::runApplicationsPreKill() -> void {
 	for (auto application : applications) {
 		application.get().preKill();
 	}
+}
+
+auto Display::drawApplication(std::reference_wrapper<Application> application, sGaugeDrawData* data) -> void {
+	const auto app = application.get();
+	const bool applicationAutoCrop = app.getAutoCrop();
+	nvgSave(this->nvgContext);
+	{
+		nvgTranslate(this->nvgContext, app.getMarginLeft(), app.getMarginTop());
+		{
+			nvgSave(this->nvgContext);
+			{
+				if (applicationAutoCrop == true) {
+					nvgScissor(this->nvgContext, app.getCropMarginLeft(), app.getCropMarginTop(), app.getWidth(), app.getHeight());
+					application.get().render(data);
+					nvgResetScissor(this->nvgContext);
+				}
+				else {
+					application.get().render(data);
+				}
+			}
+			nvgRestore(this->nvgContext);
+		}
+		nvgResetTransform(this->nvgContext);
+	}
+	nvgRestore(this->nvgContext);
 }
 
 auto Display::addApplication(Application& application) -> void {
@@ -99,28 +127,7 @@ auto Display::preDraw(sGaugeDrawData* data) -> bool {
 		}
 		
 		for (auto application : applications) {
-			const auto app = application.get();
-			const bool applicationAutoCrop = app.getAutoCrop();
-			nvgSave(this->nvgContext);
-			{
-				nvgTranslate(this->nvgContext, app.getMarginLeft(), app.getMarginTop());
-				{
-					nvgSave(this->nvgContext);
-					{
-						if (applicationAutoCrop == true) {
-							nvgScissor(this->nvgContext, app.getCropMarginLeft(), app.getCropMarginTop(), app.getWidth(), app.getHeight());
-							application.get().render(data);
-							nvgResetScissor(this->nvgContext);
-						}
-						else {
-							application.get().render(data);
-						}
-					}
-					nvgRestore(this->nvgContext);
-				}
-				nvgResetTransform(this->nvgContext);
-			}
-			nvgRestore(this->nvgContext);
+			this->drawApplication(application, data);
 		}
 	}
 	nvgEndFrame(this->nvgContext);

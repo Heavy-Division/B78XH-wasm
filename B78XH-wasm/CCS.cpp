@@ -17,6 +17,9 @@
 
 #include "CCS.h"
 #include "LVars.h"
+#include "Tools/Console.h"
+#include "KEvents.h"
+
 
 auto CCS::init() -> void {
 }

@@ -17,7 +17,7 @@
 
 #include "CDULineRenderer.h"
 #include "fmt/core.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 CDULineRenderer::CDULineRenderer(NVGcontext*& context): context(context) {
 }

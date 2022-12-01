@@ -17,7 +17,7 @@
 
 #include "CDUMouseCursor.h"
 
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 void CDUMouseCursor::draw() {
 	if(this->context == nullptr) {

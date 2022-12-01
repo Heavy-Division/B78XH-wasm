@@ -20,6 +20,7 @@
 #include "LeftInboardDisplay.h"
 #include "LeftOutboardDisplay.h"
 #include "LowerCenterDisplay.h"
+#include "MasterControl.h"
 #include "McpAltitudeDisplay.h"
 #include "McpHeadingDisplay.h"
 #include "McpSpeedDisplay.h"
@@ -47,5 +48,7 @@ namespace Displays {
 	inline TcpLeftDisplay tcpLeftDisplay;
 	inline TcpCenterDisplay tcpCenterDisplay;
 	inline TcpRightDisplay tcpRightDisplay;
+
+	inline MasterControl masterControl;
 
 }

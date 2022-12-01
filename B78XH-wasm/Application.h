@@ -16,9 +16,9 @@
 
 
 #pragma once
-#include "Console.h"
 #include <MSFS/Legacy/gauges.h>
 #include "MSFS/Render/nanovg.h"
+#include <vector>
 
 class Application {
 	public:
@@ -83,6 +83,19 @@ class Application {
 			return this->cropMarginTop;
 		}
 
+		auto hasSubApplications() -> bool {
+			return (this->applications.size() > 0 ? true : false);
+		}
+
+		auto setupApplicationsContext() -> void {
+			for (auto application : applications) {
+				application.get().setContext(this->nvgContext);
+				if(application.get().hasSubApplications()) {
+					application.get().setupApplicationsContext();
+				}
+			}
+		}
+
 		virtual auto postInstall() -> void {
 			
 		};
@@ -105,5 +118,5 @@ class Application {
 		double height = 0;
 		double cropMarginLeft = 0;
 		double cropMarginTop = 0;
-
+		std::vector<std::reference_wrapper<Application>> applications;
 };

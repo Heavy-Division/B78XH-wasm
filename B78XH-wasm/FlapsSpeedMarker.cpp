@@ -18,7 +18,7 @@
 #include "FlapsSpeedMarker.h"
 #include "Simplane.h"
 #include "fmt/core.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 auto FlapsSpeedMarker::draw(NVGcontext* context, double target, double indicatedAirspeed) -> void {
 	SpeedMarker::draw(context, target, indicatedAirspeed);

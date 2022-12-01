@@ -17,7 +17,7 @@
 
 #include "CDULeftTitleLine.h"
 
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 void CDULeftTitleLine::calculateHorizontalOffset() {
 	nvgFontSize(this->context, this->fontSize);

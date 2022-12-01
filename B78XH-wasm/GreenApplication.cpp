@@ -17,7 +17,7 @@
 
 #include "GreenApplication.h"
 
-#include "Tools.h"
+#include "Tools/Tools.h"
 
 auto GreenApplication::render(sGaugeDrawData* data) -> void {
 	if (this->nvgContext == nullptr) {

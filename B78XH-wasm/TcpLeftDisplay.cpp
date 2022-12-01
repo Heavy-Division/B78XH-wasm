@@ -18,6 +18,7 @@
 #include "TcpLeftDisplay.h"
 
 auto TcpLeftDisplay::prepareApplications() -> void {
+	this->addApplication(this->tcpLineDisplayApplication);
 }
 
 auto TcpLeftDisplay::setupApplications() -> void {

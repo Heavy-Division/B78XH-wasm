@@ -17,7 +17,7 @@
 
 #include "PFDFlightDirector.h"
 #include "Simplane.h"
-#include "Tools.h"
+#include "Tools/Tools.h"
 #include "fmt/core.h"
 
 using Colors = Tools::Colors;

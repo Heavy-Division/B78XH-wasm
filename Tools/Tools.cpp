@@ -1,45 +1,29 @@
-//    B78XH-wasm
-//    Copyright (C) 2022  Heavy Division
-//
-//    This program is free software: you can redistribute it and/or modify
-//    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License, or
-//    (at your option) any later version.
-//
-//    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//    GNU General Public License for more details.
-//
-//    You should have received a copy of the GNU General Public License
-//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+﻿// Tools.cpp
 
 #include "Tools.h"
 
 #include <cctype>
 #include <cmath>
-#include <string>
+
 #include "fmt/core.h"
 
-#include <MSFS/Legacy/gauges.h>
 
 namespace Tools {
 	auto Frequencies::setVHFFrequency(vhf_index index, state state, FLOAT64 value) -> void {
 		std::string countedIndex;
 		switch (index) {
-			case ONE:
-				countedIndex = "";
-				break;
-			case TWO:
-				countedIndex = "2";
-				break;
-			case THREE:
-				countedIndex = "3";
-				break;
-			default:
-				countedIndex = "";
-				break;
+		case ONE:
+			countedIndex = "";
+			break;
+		case TWO:
+			countedIndex = "2";
+			break;
+		case THREE:
+			countedIndex = "3";
+			break;
+		default:
+			countedIndex = "";
+			break;
 		}
 		constexpr int factor = 1000000;
 		const FLOAT64 toSet = value * factor;
@@ -69,7 +53,7 @@ namespace Tools {
 	}
 
 	auto Frequencies::isHz833Compliant(FLOAT64 MHz) -> bool {
-		const int spacing[16] = {0, 5, 10, 15, 25, 30, 35, 40, 50, 55, 60, 65, 75, 80, 85, 90};
+		const int spacing[16] = { 0, 5, 10, 15, 25, 30, 35, 40, 50, 55, 60, 65, 75, 80, 85, 90 };
 		const FLOAT64 frequency = round(MHz * 1000) / 1000;
 		const FLOAT64 modulo = fmod(frequency * 10, 1);
 		const FLOAT64 fixedModulo = floor(modulo * 100);
