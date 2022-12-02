@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B78XH-wasm", "B78XH-wasm\B78XH-wasm.vcxproj", "{D736E6DA-19FB-431F-8F48-0A9E43490063}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B78XH", "B78XH\B78XH.vcxproj", "{D736E6DA-19FB-431F-8F48-0A9E43490063}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unit Tests", "Unit Tests\Unit Tests.vcxproj", "{8FFE60DC-5D87-459E-9200-86C847BFA9B3}"
 EndProject
