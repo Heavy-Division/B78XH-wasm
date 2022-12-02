@@ -39,11 +39,11 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\..\..\MSFS SDK\SimConnect SDK\VS\SimConnectClient.props" />
+    <Import Project="$(MSFS_SDK)SimConnect SDK\VS\SimConnectClient.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\..\..\MSFS SDK\SimConnect SDK\VS\SimConnectClient.props" />
+    <Import Project="$(MSFS_SDK)SimConnect SDK\VS\SimConnectClient.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'">
@@ -116,7 +116,6 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
     <ClCompile Include="AHRU.cpp" />
     <ClCompile Include="Alignable.cpp" />
     <ClCompile Include="B78XHConfiguration.cpp" />
@@ -233,7 +232,6 @@
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="SecondGenerationControl.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
-    <ClCompile Include="SimpleINI\ConvertUTF.c" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
     <ClCompile Include="SimulationVariables.cpp" />
     <ClCompile Include="SimConnectConnector.cpp" />
@@ -270,9 +268,6 @@
     <ClCompile Include="VRSpeedMarker.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
-    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
-    <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
     <ClInclude Include="AHRU.h" />
     <ClInclude Include="AircraftSpeedLimit.h" />
     <ClInclude Include="AircraftUnitsType.h" />
@@ -395,8 +390,6 @@
     <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
     <ClInclude Include="SimConnectFacilityTypes.h" />
-    <ClInclude Include="SimpleINI\ConvertUTF.h" />
-    <ClInclude Include="SimpleINI\SimpleIni.h" />
     <ClInclude Include="SpeedMarker.h" />
     <ClInclude Include="LegTurnDirection.h" />
     <ClInclude Include="LegType.h" />
@@ -469,6 +462,9 @@
   <ItemGroup>
     <ProjectReference Include="..\fmt\fmt.vcxproj">
       <Project>{06dc21b8-0b00-413a-b6d2-58c8844f94a7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleIni\SimpleIni.vcxproj">
+      <Project>{b0048d6f-2b70-4409-8b9b-2c4099f37770}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Tools\Tools.vcxproj">
       <Project>{7ec92233-171f-4cc6-8638-75a469c78d7c}</Project>

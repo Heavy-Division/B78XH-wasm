@@ -18,7 +18,6 @@
 #include <MSFS/MSFS.h>
 
 #include "SimConnectConnector.h"
-#include "SimpleINI/SimpleIni.h"
 #include "B78XHConfiguration.h"
 CSimpleIniA ini;
 
