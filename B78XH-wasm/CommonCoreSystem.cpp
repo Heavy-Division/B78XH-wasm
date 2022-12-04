@@ -15,45 +15,28 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include <MSFS/MSFS.h>
-
 #include "CommonCoreSystem.h"
-#include <MSFS/MSFS_Render.h>
-#include <MSFS/Legacy/gauges.h>
+#include "fmt/core.h"
 
-CommonCoreSystem ccs;
+auto CommonCoreSystem::init() -> void {
+}
 
-// ------------------------
-// Callbacks
-extern "C" {
-	MSFS_CALLBACK bool ccs_gauge_callback(FsContext ctx, int service_id, void* pData) {
-		switch (service_id) {
-			case PANEL_SERVICE_PRE_INSTALL: {
-				return true;
-			}
-			break;
-			case PANEL_SERVICE_POST_INSTALL: {
-				ccs.init();
-				return true;
-			}
-			case PANEL_SERVICE_PRE_UPDATE: {
-				ccs.prepare();
-				return true;
-			}
-			case PANEL_SERVICE_POST_UPDATE: {
-				return true;
-			}
-			break;
-			case PANEL_SERVICE_PRE_DRAW: {
-				ccs.update(static_cast<sGaugeDrawData*>(pData)->dt);
-				return true;
-			}
-			break;
-			case PANEL_SERVICE_PRE_KILL: {
-				return true;
-			}
-			break;
-		}
-		return false;
-	}
+auto CommonCoreSystem::prepare() -> void {
+	this->updateLVars();
+}
+
+auto CommonCoreSystem::update(double deltaTime) -> void {
+	this->updateERS(deltaTime);
+}
+
+auto CommonCoreSystem::reset() -> void {}
+
+auto CommonCoreSystem::updateLVars() -> void {
+	this->lvars.update();
+}
+
+auto CommonCoreSystem::updateERS(double deltaTime) -> void {
+	this->ers.setLeftIRSSwitchPosition(this->lvars.get(LVars::B78XH_IRS_L_SWITCH_STATE).isValue());
+	this->ers.setRightIRSSwitchPosition(this->lvars.get(LVars::B78XH_IRS_R_SWITCH_STATE).isValue());
+	this->ers.update(deltaTime);
 }

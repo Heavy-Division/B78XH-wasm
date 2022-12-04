@@ -14,19 +14,16 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 #pragma once
-#include "Alignable.h"
-#include "Operable.h"
-#include "Updateable.h"
 
-class IRU final : public Operable, Alignable, Updateable {
-	public:
-		auto getAlignState() -> AlignState& override;
-		auto getTimeToAlign() -> double override;
-		auto setTimeToAlign(double time) -> void override;
-		auto isAligned() -> bool override;
-		auto isAligning() -> bool override;
-		auto setAlignState(AlignState state) -> void override;
-		auto update(double deltaTime) -> void override;
-};
+// #include "Circuits.h"
+// Circuits::Circuits(PSTRINGZ id, PSTRINGZ unit) {}
+// auto Circuits::getValue() -> double {}
+// auto Circuits::forceGetValue() -> double {}
+// auto Circuits::isValue() -> bool {}
+// auto Circuits::forceIsValue() -> bool {}
+// auto Circuits::update() -> void {}
+// auto Circuits::set(double value) -> void {}
+// auto Circuits::set(bool value) -> void {}
+// auto Circuits::set(int value) -> void {}
+// auto Circuits::set(float value) -> void {}

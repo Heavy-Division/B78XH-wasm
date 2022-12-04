@@ -252,17 +252,17 @@
     <ClCompile Include="KEvents.cpp">
       <Filter>Source Files\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="IRU.cpp">
-      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRU</Filter>
+    <ClCompile Include="InertialReferenceUnit.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\InertialReferenceUnit</Filter>
     </ClCompile>
-    <ClCompile Include="AHRU.cpp">
-      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\AHRU</Filter>
+    <ClCompile Include="AltitudeHeadingRefUnit.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\AltitudeHeadingRefUnit</Filter>
     </ClCompile>
     <ClCompile Include="IRS.cpp">
       <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRS</Filter>
     </ClCompile>
-    <ClCompile Include="ERS.cpp">
-      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\ERS</Filter>
+    <ClCompile Include="EarthReferenceSystem.cpp">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\EarthReferenceSystem</Filter>
     </ClCompile>
     <ClCompile Include="Alignable.cpp">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
@@ -270,8 +270,8 @@
     <ClCompile Include="Operable.cpp">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClCompile>
-    <ClCompile Include="CCS.cpp">
-      <Filter>Source Files\Systems\CCS</Filter>
+    <ClCompile Include="CommonCoreSystem.cpp">
+      <Filter>Source Files\Systems\CommonCoreSystem</Filter>
     </ClCompile>
     <ClCompile Include="CCSGaugeCallback.cpp">
       <Filter>Source Files\MSFS Callbacks</Filter>
@@ -667,17 +667,17 @@
     <ClInclude Include="KEvents.h">
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="IRU.h">
-      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRU</Filter>
+    <ClInclude Include="InertialReferenceUnit.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\InertialReferenceUnit</Filter>
     </ClInclude>
-    <ClInclude Include="AHRU.h">
-      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\AHRU</Filter>
+    <ClInclude Include="AltitudeHeadingRefUnit.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\AltitudeHeadingRefUnit</Filter>
     </ClInclude>
     <ClInclude Include="IRS.h">
       <Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRS</Filter>
     </ClInclude>
-    <ClInclude Include="ERS.h">
-      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\ERS</Filter>
+    <ClInclude Include="EarthReferenceSystem.h">
+      <Filter>Source Files\Equipment\AircraftEquipment\Navigation\EarthReferenceSystem</Filter>
     </ClInclude>
     <ClInclude Include="Alignable.h">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
@@ -685,8 +685,8 @@
     <ClInclude Include="Operable.h">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClInclude>
-    <ClInclude Include="CCS.h">
-      <Filter>Source Files\Systems\CCS</Filter>
+    <ClInclude Include="CommonCoreSystem.h">
+      <Filter>Source Files\Systems\CommonCoreSystem</Filter>
     </ClInclude>
     <ClInclude Include="LVar.h">
       <Filter>Source Files\Tools\LVars</Filter>
@@ -807,15 +807,6 @@
     <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\IRS">
       <UniqueIdentifier>{16a6394a-5077-44d0-8400-7f944500e5f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\ERS">
-      <UniqueIdentifier>{2ebf7485-1b23-41e3-b3ee-f655ad6416a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\IRU">
-      <UniqueIdentifier>{442ae78e-9937-4f0d-bdcd-757b64ee094d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\AHRU">
-      <UniqueIdentifier>{dbd78091-90ff-4d34-90d8-dfe54cb67237}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Equipment\AircraftEquipment\Miscellaneous">
       <UniqueIdentifier>{9642f6f9-c77a-4f7c-8838-361f40f501c0}</UniqueIdentifier>
     </Filter>
@@ -873,11 +864,20 @@
     <Filter Include="Source Files\Equipment\WorldEquipment\Beacons">
       <UniqueIdentifier>{e7cc4f96-488d-4dbf-9f0b-a92a343ea7b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Systems\CCS">
-      <UniqueIdentifier>{d2b85f2f-f353-416a-9763-8db2ef6b5d1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Tools\LVars">
       <UniqueIdentifier>{a4046750-4ccb-4bf9-9402-6f841a78c254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems\CommonCoreSystem">
+      <UniqueIdentifier>{d2b85f2f-f353-416a-9763-8db2ef6b5d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\AltitudeHeadingRefUnit">
+      <UniqueIdentifier>{dbd78091-90ff-4d34-90d8-dfe54cb67237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\EarthReferenceSystem">
+      <UniqueIdentifier>{2ebf7485-1b23-41e3-b3ee-f655ad6416a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\InertialReferenceUnit">
+      <UniqueIdentifier>{442ae78e-9937-4f0d-bdcd-757b64ee094d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

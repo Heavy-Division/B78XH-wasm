@@ -15,29 +15,27 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "CCS.h"
-#include "fmt/core.h"
+#pragma once
+#include "IRS.h"
+#include "Updateable.h"
 
-auto CCS::init() -> void {
-}
+class EarthReferenceSystem : public Updateable {
+	public:
+		enum IRSPosition {
+			LEFT,
+			RIGHT
+		};
 
-auto CCS::prepare() -> void {
-	this->updateLVars();
-}
+		auto setLeftIRSSwitchPosition(bool position) -> void;
+		auto setRightIRSSwitchPosition(bool position) -> void;
+		auto getLeftIRS() -> IRS&;
+		auto getRightIRS() -> IRS&;
+		auto getIRS(IRSPosition position) -> IRS&;
+		auto update(double deltaTime) -> void override;
+	private:
+		IRS leftIRS;
+		IRS rightIRS;
+		bool leftIRSSwitchPosition = false;
+		bool rightIRSSwitchPosition = false;
 
-auto CCS::update(double deltaTime) -> void {
-	this->updateERS(deltaTime);
-}
-
-auto CCS::reset() -> void {
-}
-
-auto CCS::updateLVars() -> void {
-	this->lvars.update();
-}
-
-auto CCS::updateERS(double deltaTime) -> void {
-	this->ers.setLeftIRSSwitchPosition(this->lvars.get(LVars::B78XH_IRS_L_SWITCH_STATE).isValue());
-	this->ers.setRightIRSSwitchPosition(this->lvars.get(LVars::B78XH_IRS_R_SWITCH_STATE).isValue());
-	this->ers.update(deltaTime);
-}
+};

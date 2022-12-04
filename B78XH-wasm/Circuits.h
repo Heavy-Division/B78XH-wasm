@@ -14,19 +14,14 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 #pragma once
-#include "Operable.h"
-#include "Alignable.h"
-#include "Updateable.h"
+#include "unordered_map"
 
-class AHRU final : public Operable, Alignable, Updateable {
-	public:
-		auto getAlignState()->AlignState & override;
-		auto getTimeToAlign() -> double override;
-		auto setTimeToAlign(double time) -> void override;
-		auto isAligned() -> bool override;
-		auto isAligning() -> bool override;
-		auto setAlignState(AlignState state) -> void override;
-		auto update(double deltaTime) -> void override;
-};
+//
+// class Circuits {
+//  public:
+//   Connections connections;
+//   Power power;
+//   CircuitName name;
+//
+// };

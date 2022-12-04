@@ -15,44 +15,45 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "AHRU.h"
+#include "InertialReferenceUnit.h"
 
-Alignable::AlignState& AHRU::getAlignState() {
+auto InertialReferenceUnit::getAlignState() -> Alignable::AlignState& {
 	return Alignable::getAlignState();
 }
 
-double AHRU::getTimeToAlign() {
+auto InertialReferenceUnit::getTimeToAlign() -> double {
 	return Alignable::getTimeToAlign();
 }
 
-void AHRU::setTimeToAlign(double time) {
+auto InertialReferenceUnit::setTimeToAlign(double time) -> void {
 	Alignable::setTimeToAlign(time);
 }
 
-bool AHRU::isAligned() {
+auto InertialReferenceUnit::isAligned() -> bool {
 	return Alignable::isAligned();
 }
 
-bool AHRU::isAligning() {
+auto InertialReferenceUnit::isAligning() -> bool {
 	return Alignable::isAligning();
 }
 
-void AHRU::setAlignState(AlignState state) {
-	if(state == OFF || state == ALIGNED) {
+auto InertialReferenceUnit::setAlignState(AlignState state) -> void {
+	if (state == OFF || state == ALIGNED) {
 		this->setTimeToAlign(-1);
 	}
 
 	Alignable::setAlignState(state);
 }
 
-void AHRU::update(double deltaTime) {
-	if(this->getAlignState() == ALIGNED || this->getAlignState() == OFF) {
+auto InertialReferenceUnit::update(double deltaTime) -> void {
+	if (this->getAlignState() == ALIGNED || this->getAlignState() == OFF) {
 		return;
 	}
 	const double timeToAlign = this->getTimeToAlign() - deltaTime;
-	if(timeToAlign > 0) {
-		this->setTimeToAlign(this->getTimeToAlign() - deltaTime);
-	} else {
+	if (timeToAlign > 0) {
+		this->setTimeToAlign(timeToAlign);
+	}
+	else {
 		this->setTimeToAlign(-1);
 		this->setAlignState(ALIGNED);
 	}

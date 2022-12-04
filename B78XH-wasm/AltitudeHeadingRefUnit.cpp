@@ -15,45 +15,44 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "IRU.h"
+#include "AltitudeHeadingRefUnit.h"
 
-auto IRU::getAlignState() -> Alignable::AlignState& {
+Alignable::AlignState& AltitudeHeadingRefUnit::getAlignState() {
 	return Alignable::getAlignState();
 }
 
-auto IRU::getTimeToAlign() -> double {
+double AltitudeHeadingRefUnit::getTimeToAlign() {
 	return Alignable::getTimeToAlign();
 }
 
-auto IRU::setTimeToAlign(double time) -> void {
+void AltitudeHeadingRefUnit::setTimeToAlign(double time) {
 	Alignable::setTimeToAlign(time);
 }
 
-auto IRU::isAligned() -> bool {
+bool AltitudeHeadingRefUnit::isAligned() {
 	return Alignable::isAligned();
 }
 
-auto IRU::isAligning() -> bool {
+bool AltitudeHeadingRefUnit::isAligning() {
 	return Alignable::isAligning();
 }
 
-auto IRU::setAlignState(AlignState state) -> void {
-	if (state == OFF || state == ALIGNED) {
+void AltitudeHeadingRefUnit::setAlignState(AlignState state) {
+	if(state == OFF || state == ALIGNED) {
 		this->setTimeToAlign(-1);
 	}
 
 	Alignable::setAlignState(state);
 }
 
-auto IRU::update(double deltaTime) -> void {
-	if (this->getAlignState() == ALIGNED || this->getAlignState() == OFF) {
+void AltitudeHeadingRefUnit::update(double deltaTime) {
+	if(this->getAlignState() == ALIGNED || this->getAlignState() == OFF) {
 		return;
 	}
 	const double timeToAlign = this->getTimeToAlign() - deltaTime;
-	if (timeToAlign > 0) {
-		this->setTimeToAlign(timeToAlign);
-	}
-	else {
+	if(timeToAlign > 0) {
+		this->setTimeToAlign(this->getTimeToAlign() - deltaTime);
+	} else {
 		this->setTimeToAlign(-1);
 		this->setAlignState(ALIGNED);
 	}

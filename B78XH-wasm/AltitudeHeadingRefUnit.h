@@ -16,22 +16,17 @@
 
 
 #pragma once
-#include "ERS.h"
-#include "LVars.h"
+#include "Operable.h"
+#include "Alignable.h"
+#include "Updateable.h"
 
-/*
- * Common Core System
- */
-
-class CCS {
+class AltitudeHeadingRefUnit final : public Operable, Alignable, Updateable {
 	public:
-		auto init() -> void;
-		auto prepare() -> void;
-		auto update(double deltaTime) -> void;
-		auto reset() -> void;
-	private:
-		ERS ers;
-		LVars lvars;
-		auto updateLVars() -> void;
-		auto updateERS(double deltaTime) -> void;
+		auto getAlignState()->AlignState & override;
+		auto getTimeToAlign() -> double override;
+		auto setTimeToAlign(double time) -> void override;
+		auto isAligned() -> bool override;
+		auto isAligning() -> bool override;
+		auto setAlignState(AlignState state) -> void override;
+		auto update(double deltaTime) -> void override;
 };

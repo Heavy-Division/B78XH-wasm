@@ -16,26 +16,18 @@
 
 
 #pragma once
-#include "IRS.h"
-#include "Updateable.h"
+#include "EarthReferenceSystem.h"
+#include "LVars.h"
 
-class ERS : public Updateable {
+class CommonCoreSystem {
 	public:
-		enum IRSPosition {
-			LEFT,
-			RIGHT
-		};
-
-		auto setLeftIRSSwitchPosition(bool position) -> void;
-		auto setRightIRSSwitchPosition(bool position) -> void;
-		auto getLeftIRS() -> IRS&;
-		auto getRightIRS() -> IRS&;
-		auto getIRS(IRSPosition position) -> IRS&;
-		auto update(double deltaTime) -> void override;
+		auto init() -> void;
+		auto prepare() -> void;
+		auto update(double deltaTime) -> void;
+		auto reset() -> void;
 	private:
-		IRS leftIRS;
-		IRS rightIRS;
-		bool leftIRSSwitchPosition = false;
-		bool rightIRSSwitchPosition = false;
-
+		EarthReferenceSystem ers;
+		LVars lvars;
+		auto updateLVars() -> void;
+		auto updateERS(double deltaTime) -> void;
 };

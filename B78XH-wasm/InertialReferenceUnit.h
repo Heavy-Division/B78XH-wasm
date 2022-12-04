@@ -16,23 +16,17 @@
 
 
 #pragma once
-#include "AltitudeHeadingRefUnit.h"
 #include "Alignable.h"
-#include "InertialReferenceUnit.h"
 #include "Operable.h"
 #include "Updateable.h"
 
-class IRS final : public Operable, Alignable, Updateable {
+class InertialReferenceUnit final : public Operable, Alignable, Updateable {
 	public:
+		auto getAlignState() -> AlignState& override;
+		auto getTimeToAlign() -> double override;
 		auto setTimeToAlign(double time) -> void override;
 		auto isAligned() -> bool override;
 		auto isAligning() -> bool override;
-		auto getTimeToAlign() -> double override;
-		auto update(double deltaTime) -> void override;
 		auto setAlignState(AlignState state) -> void override;
-	private:
-		AltitudeHeadingRefUnit ahru;
-		InertialReferenceUnit iru;
-
-		auto generateAlignTime() -> double;
+		auto update(double deltaTime) -> void override;
 };

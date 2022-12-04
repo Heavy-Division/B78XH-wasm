@@ -15,9 +15,9 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "ERS.h"
+#include "EarthReferenceSystem.h"
 
-auto ERS::setLeftIRSSwitchPosition(bool position) -> void {
+auto EarthReferenceSystem::setLeftIRSSwitchPosition(bool position) -> void {
 	if (this->leftIRSSwitchPosition == position) {
 		return;
 	}
@@ -34,7 +34,7 @@ auto ERS::setLeftIRSSwitchPosition(bool position) -> void {
 	this->leftIRSSwitchPosition = position;
 }
 
-auto ERS::setRightIRSSwitchPosition(bool position) -> void {
+auto EarthReferenceSystem::setRightIRSSwitchPosition(bool position) -> void {
 	if (this->rightIRSSwitchPosition == position) {
 		return;
 	}
@@ -50,15 +50,15 @@ auto ERS::setRightIRSSwitchPosition(bool position) -> void {
 	this->rightIRSSwitchPosition = position;
 }
 
-auto ERS::getLeftIRS() -> IRS& {
+auto EarthReferenceSystem::getLeftIRS() -> IRS& {
 	return this->getIRS(LEFT);
 }
 
-auto ERS::getRightIRS() -> IRS& {
+auto EarthReferenceSystem::getRightIRS() -> IRS& {
 	return this->getIRS(RIGHT);
 }
 
-auto ERS::getIRS(IRSPosition position) -> IRS& {
+auto EarthReferenceSystem::getIRS(IRSPosition position) -> IRS& {
 	switch (position) {
 		case LEFT: {
 			return this->leftIRS;
@@ -69,7 +69,7 @@ auto ERS::getIRS(IRSPosition position) -> IRS& {
 	}
 }
 
-auto ERS::update(double deltaTime) -> void {
+auto EarthReferenceSystem::update(double deltaTime) -> void {
 	if (!this->getLeftIRS().isAligned()) {
 		this->getLeftIRS().update(deltaTime);
 	}

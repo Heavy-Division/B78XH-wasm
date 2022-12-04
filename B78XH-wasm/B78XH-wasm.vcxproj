@@ -117,10 +117,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(MSFS_SDK)WASM\src\MSFS\render\nanovg.cpp" />
-    <ClCompile Include="AHRU.cpp" />
+    <ClCompile Include="AltitudeHeadingRefUnit.cpp" />
     <ClCompile Include="Alignable.cpp" />
     <ClCompile Include="B78XHConfiguration.cpp" />
-    <ClCompile Include="CCS.cpp" />
+    <ClCompile Include="CommonCoreSystem.cpp" />
     <ClCompile Include="CCSGaugeCallback.cpp" />
     <ClCompile Include="CDUButton.cpp" />
     <ClCompile Include="CDUCenterLine.cpp" />
@@ -150,10 +150,10 @@
     <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
     <ClCompile Include="Drawable.cpp" />
-    <ClCompile Include="ERS.cpp" />
+    <ClCompile Include="EarthReferenceSystem.cpp" />
     <ClCompile Include="FlapsSpeedMarker.cpp" />
     <ClCompile Include="IRS.cpp" />
-    <ClCompile Include="IRU.cpp" />
+    <ClCompile Include="InertialReferenceUnit.cpp" />
     <ClCompile Include="KEvents.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
@@ -217,7 +217,7 @@
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\nanovg.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_image.h" />
     <ClInclude Include="$(MSFS_SDK)WASM\include\MSFS\render\stb_truetype.h" />
-    <ClInclude Include="AHRU.h" />
+    <ClInclude Include="AltitudeHeadingRefUnit.h" />
     <ClInclude Include="AircraftSpeedLimit.h" />
     <ClInclude Include="AircraftUnitsType.h" />
     <ClInclude Include="AirportClass.h" />
@@ -228,7 +228,7 @@
     <ClInclude Include="B78XHConfiguration.h" />
     <ClInclude Include="BaseGauge.h" />
     <ClInclude Include="BaseScratchpad.h" />
-    <ClInclude Include="CCS.h" />
+    <ClInclude Include="CommonCoreSystem.h" />
     <ClInclude Include="CDUButton.h" />
     <ClInclude Include="CDUCenterLine.h" />
     <ClInclude Include="CDUCenterTitleLine.h" />
@@ -262,7 +262,7 @@
     <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
     <ClInclude Include="Drawable.h" />
-    <ClInclude Include="ERS.h" />
+    <ClInclude Include="EarthReferenceSystem.h" />
     <ClInclude Include="FacilitySearchType.h" />
     <ClInclude Include="FacilityType.h" />
     <ClInclude Include="FlapsSpeedLimit.h" />
@@ -280,7 +280,7 @@
     <ClInclude Include="IRSAlignTimeType.h" />
     <ClInclude Include="IRSState.h" />
     <ClInclude Include="IRSSwitchState.h" />
-    <ClInclude Include="IRU.h" />
+    <ClInclude Include="InertialReferenceUnit.h" />
     <ClInclude Include="KEvents.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
