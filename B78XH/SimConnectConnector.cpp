@@ -44,7 +44,7 @@ auto SimConnectConnector::prepareEvents() -> void {
 }
 
 auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId,
-                                   const char* eventName = "", const BOOL maskable = FALSE) -> void {
+	const char* eventName = "", const BOOL maskable = FALSE) -> void {
 	const auto clientEvent = static_cast<SIMCONNECT_CLIENT_EVENT_ID>(eventId);
 
 	SimConnect_MapClientEventToSimEvent(simConnectHandle, clientEvent, eventName);
@@ -54,7 +54,7 @@ auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupI
 }
 
 auto SimConnectConnector::mapEvent(const ClientEvents eventId, const char* eventName = "",
-                                   const BOOL maskable = FALSE) -> void {
+	const BOOL maskable = FALSE) -> void {
 	this->mapEvent(0, eventId, eventName, maskable);
 }
 
@@ -85,17 +85,17 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	 * VHF
 	 */
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM ACTIVE FREQUENCY:1",
-	                                                        "MHz");
+		"MHz");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM ACTIVE FREQUENCY:2",
-	                                                        "MHz");
+		"MHz");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM ACTIVE FREQUENCY:3",
-	                                                        "MHz");
+		"MHz");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM STANDBY FREQUENCY:1",
-	                                                        "MHz");
+		"MHz");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM STANDBY FREQUENCY:2",
-	                                                        "MHz");
+		"MHz");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM STANDBY FREQUENCY:3",
-	                                                        "MHz");
+		"MHz");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM TRANSMIT:1", "Bool");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM TRANSMIT:2", "Bool");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "COM TRANSMIT:3", "Bool");
@@ -104,85 +104,85 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	 * Transponder
 	 */
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TRANSPONDER_CODE,
-	                                                        "TRANSPONDER CODE:1", "number");
+		"TRANSPONDER CODE:1", "number");
 
 	/**
 	 * Aircraft -> Info
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_INFO, "ATC ID", "",
-	                                                        SIMCONNECT_DATATYPE_STRING256);
+		SIMCONNECT_DATATYPE_STRING256);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_INFO,
-	                                                        "ATC FLIGHT NUMBER", "", SIMCONNECT_DATATYPE_STRING256);
+		"ATC FLIGHT NUMBER", "", SIMCONNECT_DATATYPE_STRING256);
 
 	/**
 	 * Aircraft -> State
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "GEAR IS ON GROUND", "Boolean");
+		"GEAR IS ON GROUND", "Boolean");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "GEAR POSITION", "Percent");
+		"GEAR POSITION", "Percent");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "ATTITUDE INDICATOR BANK DEGREES", "Degree");
+		"ATTITUDE INDICATOR BANK DEGREES", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "ATTITUDE INDICATOR PITCH DEGREES", "Degree");
+		"ATTITUDE INDICATOR PITCH DEGREES", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "GPS GROUND SPEED", "knots");
+		"GPS GROUND SPEED", "knots");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "INDICATED ALTITUDE", "foot");
+		"INDICATED ALTITUDE", "foot");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "AIRSPEED INDICATED", "knots");
+		"AIRSPEED INDICATED", "knots");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "VERTICAL SPEED", "feet per minute");
+		"VERTICAL SPEED", "feet per minute");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "PLANE ALT ABOVE GROUND MINUS CG", "feet");
+		"PLANE ALT ABOVE GROUND MINUS CG", "feet");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "FLAPS HANDLE INDEX", "Number");
+		"FLAPS HANDLE INDEX", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "PLANE LATITUDE", "Degree");
+		"PLANE LATITUDE", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "PLANE LONGITUDE", "Degree");
+		"PLANE LONGITUDE", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "PLANE HEADING DEGREES TRUE", "Degree");
+		"PLANE HEADING DEGREES TRUE", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "PLANE HEADING DEGREES MAGNETIC", "Degree");
+		"PLANE HEADING DEGREES MAGNETIC", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "GPS GROUND MAGNETIC TRACK", "Degree");
+		"GPS GROUND MAGNETIC TRACK", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "TOTAL WEIGHT", "Pounds");
+		"TOTAL WEIGHT", "Pounds");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
-	                                                        "MAX GROSS WEIGHT", "Pounds");
+		"MAX GROSS WEIGHT", "Pounds");
 
 	/*
 	 * Autopilot - State
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
-	                                                        "AUTOPILOT MASTER", "Bool");
+		"AUTOPILOT MASTER", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
-	                                                        "AUTOPILOT FLIGHT LEVEL CHANGE", "bool");
+		"AUTOPILOT FLIGHT LEVEL CHANGE", "bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_STATE,
-	                                                        "GPS DRIVES NAV1", "bool");
+		"GPS DRIVES NAV1", "bool");
 
 
 	/*
@@ -190,98 +190,98 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                        "AUTOPILOT FLIGHT DIRECTOR ACTIVE", "Bool");
+		"AUTOPILOT FLIGHT DIRECTOR ACTIVE", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                        "AUTOPILOT FLIGHT DIRECTOR ACTIVE:1", "Bool");
+		"AUTOPILOT FLIGHT DIRECTOR ACTIVE:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                        "AUTOPILOT FLIGHT DIRECTOR ACTIVE:2", "Bool");
+		"AUTOPILOT FLIGHT DIRECTOR ACTIVE:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                        "AUTOPILOT FLIGHT DIRECTOR BANK", "Degree");
+		"AUTOPILOT FLIGHT DIRECTOR BANK", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                        "AUTOPILOT FLIGHT DIRECTOR PITCH", "Degree");
+		"AUTOPILOT FLIGHT DIRECTOR PITCH", "Degree");
 
 	/*
 	 * Autopilot - Approach
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "AUTOPILOT APPROACH HOLD", "Bool");
+		"AUTOPILOT APPROACH HOLD", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "AUTOPILOT APPROACH ACTIVE", "Bool");
+		"AUTOPILOT APPROACH ACTIVE", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "AUTOPILOT APPROACH CAPTURED", "Bool");
+		"AUTOPILOT APPROACH CAPTURED", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "AUTOPILOT APPROACH ARM", "Bool");
+		"AUTOPILOT APPROACH ARM", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "AUTOPILOT APPROACH IS LOCALIZER", "Bool");
+		"AUTOPILOT APPROACH IS LOCALIZER", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "GPS APPROACH APPROACH TYPE", "Number");
+		"GPS APPROACH APPROACH TYPE", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_APPROACH,
-	                                                        "GPS IS APPROACH LOADED", "Bool");
+		"GPS IS APPROACH LOADED", "Bool");
 
 	/*
 	 * Autopilot - GlideSlope
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
-	                                                        "AUTOPILOT GLIDESLOPE HOLD", "Bool");
+		"AUTOPILOT GLIDESLOPE HOLD", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
-	                                                        "AUTOPILOT GLIDESLOPE ACTIVE", "Bool");
+		"AUTOPILOT GLIDESLOPE ACTIVE", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_GLIDESLOPE,
-	                                                        "AUTOPILOT GLIDESLOPE ARM", "Bool");
+		"AUTOPILOT GLIDESLOPE ARM", "Bool");
 
 	/*
 	 * Autopilot - Navigation
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_NAVIGATION,
-	                                                        "AUTOPILOT BACKCOURSE HOLD", "Bool");
+		"AUTOPILOT BACKCOURSE HOLD", "Bool");
 
 	/*
 	 * Autopilot - Throttle
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "AUTOPILOT THROTTLE ARM", "Bool");
+		"AUTOPILOT THROTTLE ARM", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "AUTOPILOT THROTTLE ARM:1", "Bool");
+		"AUTOPILOT THROTTLE ARM:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "AUTOPILOT THROTTLE ARM:2", "Bool");
+		"AUTOPILOT THROTTLE ARM:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "AUTOPILOT MANAGED THROTTLE ACTIVE", "Bool");
+		"AUTOPILOT MANAGED THROTTLE ACTIVE", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "AUTOPILOT MANAGED THROTTLE ACTIVE:1", "Bool");
+		"AUTOPILOT MANAGED THROTTLE ACTIVE:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "AUTOPILOT MANAGED THROTTLE ACTIVE:2", "Bool");
+		"AUTOPILOT MANAGED THROTTLE ACTIVE:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "GENERAL ENG THROTTLE MANAGED MODE:1", "Number");
+		"GENERAL ENG THROTTLE MANAGED MODE:1", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "GENERAL ENG THROTTLE MANAGED MODE:2", "Number");
+		"GENERAL ENG THROTTLE MANAGED MODE:2", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "GENERAL ENG THROTTLE LEVER POSITION:1", "Percent");
+		"GENERAL ENG THROTTLE LEVER POSITION:1", "Percent");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_THROTTLE,
-	                                                        "GENERAL ENG THROTTLE LEVER POSITION:2", "Percent");
+		"GENERAL ENG THROTTLE LEVER POSITION:2", "Percent");
 
 	/*
 	 * 				struct Throttle {
@@ -297,318 +297,326 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 			FLOAT64 rightEngineThrottlePosition;
 		};
 	 */
-	/*
-	 * Autopilot - Altitude
-	 */
+	 /*
+	  * Autopilot - Altitude
+	  */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_ALTITUDE,
-	                                                        "AUTOPILOT ALTITUDE LOCK", "Bool");
+		"AUTOPILOT ALTITUDE LOCK", "Bool");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_ALTITUDE,
-	                                                        "AUTOPILOT ALTITUDE LOCK VAR", "foot",
-	                                                        SIMCONNECT_DATATYPE_FLOAT64);
+		"AUTOPILOT ALTITUDE LOCK VAR", "foot",
+		SIMCONNECT_DATATYPE_FLOAT64);
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_ALTITUDE,
-	                                                        "AUTOPILOT ALTITUDE LOCK VAR:1", "foot",
-	                                                        SIMCONNECT_DATATYPE_FLOAT64);
+		"AUTOPILOT ALTITUDE LOCK VAR:1", "foot",
+		SIMCONNECT_DATATYPE_FLOAT64);
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_ALTITUDE,
-	                                                        "AUTOPILOT ALTITUDE LOCK VAR:2", "foot",
-	                                                        SIMCONNECT_DATATYPE_FLOAT64);
+		"AUTOPILOT ALTITUDE LOCK VAR:2", "foot",
+		SIMCONNECT_DATATYPE_FLOAT64);
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_ALTITUDE,
-	                                                        "AUTOPILOT ALTITUDE LOCK VAR:3", "foot",
-	                                                        SIMCONNECT_DATATYPE_FLOAT64);
+		"AUTOPILOT ALTITUDE LOCK VAR:3", "foot",
+		SIMCONNECT_DATATYPE_FLOAT64);
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_ALTITUDE,
-	                                                        "AUTOPILOT ALTITUDE SLOT INDEX", "Number");
+		"AUTOPILOT ALTITUDE SLOT INDEX", "Number");
 
 	/*
 	 * Autopilot - Vertical Speed
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                        "AUTOPILOT VERTICAL HOLD", "Bool");
+		"AUTOPILOT VERTICAL HOLD", "Bool");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                        "AUTOPILOT VERTICAL HOLD VAR", "feet/minute");
+		"AUTOPILOT VERTICAL HOLD VAR", "feet/minute");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                        "AUTOPILOT VERTICAL HOLD VAR:1", "feet/minute");
+		"AUTOPILOT VERTICAL HOLD VAR:1", "feet/minute");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                        "AUTOPILOT VERTICAL HOLD VAR:2", "feet/minute");
+		"AUTOPILOT VERTICAL HOLD VAR:2", "feet/minute");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                        "AUTOPILOT VERTICAL HOLD VAR:3", "feet/minute");
+		"AUTOPILOT VERTICAL HOLD VAR:3", "feet/minute");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                        "AUTOPILOT VS SLOT INDEX", "Number");
+		"AUTOPILOT VS SLOT INDEX", "Number");
 
 	/*
 	 * Autopilot - Airspeed
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT AIRSPEED HOLD", "Bool");
+		"AUTOPILOT AIRSPEED HOLD", "Bool");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT AIRSPEED HOLD VAR", "Knots");
+		"AUTOPILOT AIRSPEED HOLD VAR", "Knots");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT AIRSPEED HOLD VAR:1", "Knots");
+		"AUTOPILOT AIRSPEED HOLD VAR:1", "Knots");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT AIRSPEED HOLD VAR:2", "Knots");
+		"AUTOPILOT AIRSPEED HOLD VAR:2", "Knots");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT AIRSPEED HOLD VAR:3", "Knots");
+		"AUTOPILOT AIRSPEED HOLD VAR:3", "Knots");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT SPEED SLOT INDEX", "Number");
+		"AUTOPILOT SPEED SLOT INDEX", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT MACH HOLD", "Boolean");
+		"AUTOPILOT MACH HOLD", "Boolean");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT MACH HOLD VAR", "Number");
+		"AUTOPILOT MACH HOLD VAR", "Number");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT MACH HOLD VAR:1", "Number");
+		"AUTOPILOT MACH HOLD VAR:1", "Number");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT MACH HOLD VAR:2", "Number");
+		"AUTOPILOT MACH HOLD VAR:2", "Number");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_AIRSPEED,
-	                                                        "AUTOPILOT MACH HOLD VAR:3", "Number");
+		"AUTOPILOT MACH HOLD VAR:3", "Number");
 
 	/*
 	 * Autopilot - Heading
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_HEADING,
-	                                                        "AUTOPILOT HEADING LOCK", "Bool");
+		"AUTOPILOT HEADING LOCK", "Bool");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_HEADING,
-	                                                        "AUTOPILOT HEADING LOCK DIR", "Degrees");
+		"AUTOPILOT HEADING LOCK DIR", "Degrees");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_HEADING,
-	                                                        "AUTOPILOT HEADING LOCK DIR:1", "Degrees");
+		"AUTOPILOT HEADING LOCK DIR:1", "Degrees");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_HEADING,
-	                                                        "AUTOPILOT HEADING LOCK DIR:2", "Degrees");
+		"AUTOPILOT HEADING LOCK DIR:2", "Degrees");
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AUTOPILOT_HEADING,
-	                                                        "AUTOPILOT HEADING LOCK DIR:3", "Degrees");
+		"AUTOPILOT HEADING LOCK DIR:3", "Degrees");
 
 	/*
 	 * Equipment - RadioNav - Unit1
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV GSI:1", "Number");
+		"NAV GSI:1", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV GLIDE SLOPE ERROR:1", "Degree");
+		"NAV GLIDE SLOPE ERROR:1", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV CDI:1", "Number");
+		"NAV CDI:1", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV HAS LOCALIZER:1", "Bool");
+		"NAV HAS LOCALIZER:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV HAS NAV:1", "Bool");
+		"NAV HAS NAV:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV HAS DME:1", "Bool");
+		"NAV HAS DME:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV DME:1", "Nautical miles");
+		"NAV DME:1", "Nautical miles");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV HAS GLIDE SLOPE:1", "Bool");
+		"NAV HAS GLIDE SLOPE:1", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV OBS:1", "Degree");
+		"NAV OBS:1", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV RADIAL:1", "Degree");
+		"NAV RADIAL:1", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV ACTIVE FREQUENCY:1", "Number");
+		"NAV ACTIVE FREQUENCY:1", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV STANDBY FREQUENCY:1", "Number");
+		"NAV STANDBY FREQUENCY:1", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV LOCALIZER:1", "Degree");
+		"NAV LOCALIZER:1", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV NAME:1", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV NAME:1", "", SIMCONNECT_DATATYPE_STRING256);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                        "NAV IDENT:1", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV IDENT:1", "", SIMCONNECT_DATATYPE_STRING256);
 
 	/*
 	 * Equipment - RadioNav - Unit2
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV GSI:2", "Number");
+		"NAV GSI:2", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV GLIDE SLOPE ERROR:2", "Degree");
+		"NAV GLIDE SLOPE ERROR:2", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV CDI:2", "Number");
+		"NAV CDI:2", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV HAS LOCALIZER:2", "Bool");
+		"NAV HAS LOCALIZER:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV HAS NAV:2", "Bool");
+		"NAV HAS NAV:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV HAS DME:2", "Bool");
+		"NAV HAS DME:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV DME:2", "Nautical miles");
+		"NAV DME:2", "Nautical miles");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV HAS GLIDE SLOPE:2", "Bool");
+		"NAV HAS GLIDE SLOPE:2", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV OBS:2", "Degree");
+		"NAV OBS:2", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV RADIAL:2", "Degree");
+		"NAV RADIAL:2", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV ACTIVE FREQUENCY:2", "Number");
+		"NAV ACTIVE FREQUENCY:2", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV STANDBY FREQUENCY:2", "Number");
+		"NAV STANDBY FREQUENCY:2", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV LOCALIZER:2", "Degree");
+		"NAV LOCALIZER:2", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV NAME:2", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV NAME:2", "", SIMCONNECT_DATATYPE_STRING256);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                        "NAV IDENT:2", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV IDENT:2", "", SIMCONNECT_DATATYPE_STRING256);
 
 	/*
 	 * Equipment - RadioNav - Unit3
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV GSI:3", "Number");
+		"NAV GSI:3", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV GLIDE SLOPE ERROR:3", "Degree");
+		"NAV GLIDE SLOPE ERROR:3", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV CDI:3", "Number");
+		"NAV CDI:3", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV HAS LOCALIZER:3", "Bool");
+		"NAV HAS LOCALIZER:3", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV HAS NAV:3", "Bool");
+		"NAV HAS NAV:3", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV HAS DME:3", "Bool");
+		"NAV HAS DME:3", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV DME:3", "Nautical miles");
+		"NAV DME:3", "Nautical miles");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV HAS GLIDE SLOPE:3", "Bool");
+		"NAV HAS GLIDE SLOPE:3", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV OBS:3", "Degree");
+		"NAV OBS:3", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV RADIAL:3", "Degree");
+		"NAV RADIAL:3", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV ACTIVE FREQUENCY:3", "Number");
+		"NAV ACTIVE FREQUENCY:3", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV STANDBY FREQUENCY:3", "Number");
+		"NAV STANDBY FREQUENCY:3", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV LOCALIZER:3", "Degree");
+		"NAV LOCALIZER:3", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV NAME:3", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV NAME:3", "", SIMCONNECT_DATATYPE_STRING256);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                        "NAV IDENT:3", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV IDENT:3", "", SIMCONNECT_DATATYPE_STRING256);
 
 	/*
 	 * Equipment - RadioNav - Unit3
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV GSI:4", "Number");
+		"NAV GSI:4", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV GLIDE SLOPE ERROR:4", "Degree");
+		"NAV GLIDE SLOPE ERROR:4", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV CDI:4", "Number");
+		"NAV CDI:4", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV HAS LOCALIZER:4", "Bool");
+		"NAV HAS LOCALIZER:4", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV HAS NAV:4", "Bool");
+		"NAV HAS NAV:4", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV HAS DME:4", "Bool");
+		"NAV HAS DME:4", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV DME:4", "Nautical miles");
+		"NAV DME:4", "Nautical miles");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV HAS GLIDE SLOPE:4", "Bool");
+		"NAV HAS GLIDE SLOPE:4", "Bool");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV OBS:4", "Degree");
+		"NAV OBS:4", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV RADIAL:4", "Degree");
+		"NAV RADIAL:4", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV ACTIVE FREQUENCY:4", "Number");
+		"NAV ACTIVE FREQUENCY:4", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV STANDBY FREQUENCY:4", "Number");
+		"NAV STANDBY FREQUENCY:4", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV LOCALIZER:4", "Degree");
+		"NAV LOCALIZER:4", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV NAME:4", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV NAME:4", "", SIMCONNECT_DATATYPE_STRING256);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                        "NAV IDENT:4", "", SIMCONNECT_DATATYPE_STRING256);
+		"NAV IDENT:4", "", SIMCONNECT_DATATYPE_STRING256);
 
 	/*
 	 * Barometer - Setting
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
-	                                                        "KOHLSMAN SETTING HG", "inHg");
+		"KOHLSMAN SETTING HG", "inHg");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
-	                                                        "KOHLSMAN SETTING MB", "Millibars");
+		"KOHLSMAN SETTING MB", "Millibars");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
-	                                                        "DECISION HEIGHT", "Feet");
+		"DECISION HEIGHT", "Feet");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_BAROMETER_SETTING,
-	                                                        "DECISION ALTITUDE MSL", "Feet");
+		"DECISION ALTITUDE MSL", "Feet");
 
 	/*
 	 * Misc
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME, "ABSOLUTE TIME",
-	                                                        "Seconds", SIMCONNECT_DATATYPE_FLOAT64, 1);
+		"Seconds", SIMCONNECT_DATATYPE_FLOAT64, 1);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME, "ZULU TIME",
-	                                                        "Seconds", SIMCONNECT_DATATYPE_FLOAT64, 1);
+		"Seconds", SIMCONNECT_DATATYPE_FLOAT64, 1);
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME,
-	                                                        "LOCAL MONTH OF YEAR", "Number");
+		"LOCAL MONTH OF YEAR", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME,
-	                                                        "LOCAL DAY OF MONTH", "Number");
+		"LOCAL DAY OF MONTH", "Number");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME, "LOCAL YEAR",
-	                                                        "Number");
+		"Number");
+
+	/*
+	 *  Systems - Electrical 
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ELECTRICAL_BATTERY_VOLTAGE, "ELECTRICAL BATTERY VOLTAGE",
+		"Volts");
+
 }
 
 auto SimConnectConnector::prepareClientDataDefinitions() -> void {
@@ -619,104 +627,109 @@ auto SimConnectConnector::prepareRequests() -> void {
 	//connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_VHF, "DROPPABLE OBJECTS TYPE:1", "", SIMCONNECT_DATATYPE_STRING256);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_VHF, DEFINITION_VHF,
-	                                                           SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_TRANSPONDER_CODE,
-	                                                           DEFINITION_TRANSPONDER_CODE, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_TRANSPONDER_CODE, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AIRCRAFT_INFO,
-	                                                           DEFINITION_AIRCRAFT_INFO, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AIRCRAFT_INFO, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AIRCRAFT_STATE,
-	                                                           DEFINITION_AIRCRAFT_STATE, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_SIM_FRAME);
+		DEFINITION_AIRCRAFT_STATE, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_SIM_FRAME);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_STATE,
-	                                                           DEFINITION_AUTOPILOT_STATE, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_STATE, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                           DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_FLIGHT_DIRECTOR,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_ALTITUDE,
-	                                                           DEFINITION_AUTOPILOT_ALTITUDE, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_ALTITUDE, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_VERTICAL_SPEED,
-	                                                           DEFINITION_AUTOPILOT_VERTICAL_SPEED,
-	                                                           SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_VERTICAL_SPEED,
+		SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_AIRSPEED,
-	                                                           DEFINITION_AUTOPILOT_AIRSPEED, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_AIRSPEED, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_HEADING,
-	                                                           DEFINITION_AUTOPILOT_HEADING, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_HEADING, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_BAROMETER_SETTING,
-	                                                           DEFINITION_BAROMETER_SETTING, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_BAROMETER_SETTING, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_MISC_TIME,
-	                                                           DEFINITION_MISC_TIME, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_MISC_TIME, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_APPROACH,
-	                                                           DEFINITION_AUTOPILOT_APPROACH, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_VISUAL_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_APPROACH, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_VISUAL_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_GLIDESLOPE,
-	                                                           DEFINITION_AUTOPILOT_GLIDESLOPE,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_GLIDESLOPE,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_NAVIGATION,
-	                                                           DEFINITION_AUTOPILOT_NAVIGATION,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_NAVIGATION,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT1,
-	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_EQUIPMENT_RADIONAV_UNIT1,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT2,
-	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_EQUIPMENT_RADIONAV_UNIT2,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT3,
-	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_EQUIPMENT_RADIONAV_UNIT3,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_EQUIPMENT_RADIONAV_UNIT4,
-	                                                           DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
-	                                                           SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_EQUIPMENT_RADIONAV_UNIT4,
+		SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_THROTTLE,
-	                                                           DEFINITION_AUTOPILOT_THROTTLE, SIMCONNECT_OBJECT_ID_USER,
-	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
-	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+		DEFINITION_AUTOPILOT_THROTTLE, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_ELECTRICAL_BATTERY_VOLTAGE,
+		DEFINITION_ELECTRICAL_BATTERY_VOLTAGE, SIMCONNECT_OBJECT_ID_USER,
+		SIMCONNECT_PERIOD_SIM_FRAME,
+		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
 
 
@@ -730,177 +743,182 @@ auto SimConnectConnector::requestDispatchMessages() -> void {
 
 auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cbData) -> void {
 	switch (pData->dwID) {
-		case SIMCONNECT_RECV_ID_SIMOBJECT_DATA: {
-			// process data
-			auto pObjData = static_cast<SIMCONNECT_RECV_SIMOBJECT_DATA*>(pData);
-			switch (pObjData->dwRequestID) {
-				case REQUEST_VHF: {
-					SimConnectData::comFrequencies = (*reinterpret_cast<SimConnectData::ComFrequencies*>(&pObjData->
-						dwData));
-					GaugesInvalidateFlags.PEDESTALTuningControlGauge[0] = true;
-					GaugesInvalidateFlags.PEDESTALTuningControlGauge[1] = true;
-					GaugesInvalidateFlags.PEDESTALTuningControlGauge[2] = true;
-					break;
-				}
-				case REQUEST_TRANSPONDER_CODE: {
-					SimConnectData::transponder = (*reinterpret_cast<SimConnectData::Transponder*>(&pObjData->dwData));
-					GaugesInvalidateFlags.PEDESTALTuningControlGauge[0] = true;
-					GaugesInvalidateFlags.PEDESTALTuningControlGauge[1] = true;
-					GaugesInvalidateFlags.PEDESTALTuningControlGauge[2] = true;
-					break;
-				}
-				case REQUEST_AIRCRAFT_INFO: {
-					SimConnectData::Aircraft::info = (*reinterpret_cast<SimConnectData::Aircraft::Info*>(&pObjData->
-						dwData));
-					break;
-				}
-				case REQUEST_AIRCRAFT_STATE: {
-					SimConnectData::Aircraft::state = (*reinterpret_cast<SimConnectData::Aircraft::State*>(&pObjData->
-						dwData));
-					GaugesInvalidateFlags.MCPHeadingGaugeTrack = true;
-					break;
-				}
-				case REQUEST_AUTOPILOT_STATE: {
-					SimConnectData::Autopilot::state = (*reinterpret_cast<SimConnectData::Autopilot::State*>(&pObjData->
-						dwData));
-					break;
-				}
-
-				case REQUEST_AUTOPILOT_FLIGHT_DIRECTOR: {
-					SimConnectData::Autopilot::flightDirector = (*reinterpret_cast<
-						SimConnectData::Autopilot::FlightDirector*>(&pObjData->dwData));
-					break;
-				}
-				case REQUEST_AUTOPILOT_APPROACH: {
-					SimConnectData::Autopilot::approach = (*reinterpret_cast<SimConnectData::Autopilot::Approach*>(&
-						pObjData->dwData));
-					break;
-				}
-				case REQUEST_AUTOPILOT_GLIDESLOPE: {
-					SimConnectData::Autopilot::glideSlope = (*reinterpret_cast<SimConnectData::Autopilot::GlideSlope*>(&
-						pObjData->dwData));
-					break;
-				}
-				case REQUEST_AUTOPILOT_NAVIGATION: {
-					SimConnectData::Autopilot::navigation = (*reinterpret_cast<SimConnectData::Autopilot::Navigation*>(&
-						pObjData->dwData));
-					break;
-				}
-				case REQUEST_AUTOPILOT_THROTTLE: {
-					SimConnectData::Autopilot::throttle = (*reinterpret_cast<SimConnectData::Autopilot::Throttle*>(&
-						pObjData->dwData));
-					break;
-				}
-				case REQUEST_AUTOPILOT_ALTITUDE: {
-					SimConnectData::Autopilot::altitude = (*reinterpret_cast<SimConnectData::Autopilot::Altitude*>(&
-						pObjData->dwData));
-					GaugesInvalidateFlags.MCPAltitudeGauge = true;
-					break;
-				}
-
-				case REQUEST_AUTOPILOT_VERTICAL_SPEED: {
-					SimConnectData::Autopilot::verticalSpeed = (*reinterpret_cast<
-						SimConnectData::Autopilot::VerticalSpeed*>(&pObjData->dwData));
-					GaugesInvalidateFlags.MCPVSpeedGauge = true;
-					break;
-				}
-
-				case REQUEST_AUTOPILOT_AIRSPEED: {
-					SimConnectData::Autopilot::airspeed = (*reinterpret_cast<SimConnectData::Autopilot::Airspeed*>(&
-						pObjData->dwData));
-					break;
-				}
-
-				case REQUEST_AUTOPILOT_HEADING: {
-					SimConnectData::Autopilot::heading = (*reinterpret_cast<SimConnectData::Autopilot::Heading*>(&
-						pObjData->dwData));
-					GaugesInvalidateFlags.MCPHeadingGaugeHeading = true;
-					break;
-				}
-
-				case REQUEST_EQUIPMENT_RADIONAV_UNIT1: {
-					SimConnectData::Equipment::RadioNav::unit1 = (*reinterpret_cast<
-						SimConnectData::Equipment::RadioNav::Unit1*>(&
-						pObjData->dwData));
-					break;
-				}
-
-				case REQUEST_EQUIPMENT_RADIONAV_UNIT2: {
-					SimConnectData::Equipment::RadioNav::unit2 = (*reinterpret_cast<
-						SimConnectData::Equipment::RadioNav::Unit2*>(&
-						pObjData->dwData));
-					break;
-				}
-
-				case REQUEST_EQUIPMENT_RADIONAV_UNIT3: {
-					SimConnectData::Equipment::RadioNav::unit3 = (*reinterpret_cast<
-						SimConnectData::Equipment::RadioNav::Unit3*>(&
-						pObjData->dwData));
-					break;
-				}
-
-				case REQUEST_EQUIPMENT_RADIONAV_UNIT4: {
-					SimConnectData::Equipment::RadioNav::unit4 = (*reinterpret_cast<
-						SimConnectData::Equipment::RadioNav::Unit4*>(&
-						pObjData->dwData));
-					break;
-				}
-
-				case REQUEST_BAROMETER_SETTING: {
-					SimConnectData::Barometer::setting = (*reinterpret_cast<SimConnectData::Barometer::Setting*>(&
-						pObjData->dwData));
-					break;
-				}
-
-				case REQUEST_MISC_TIME: {
-					SimConnectData::Misc::time = (*reinterpret_cast<SimConnectData::Misc::Time*>(&pObjData->dwData));
-					break;
-				}
-				default:
-					break;
-			}
+	case SIMCONNECT_RECV_ID_SIMOBJECT_DATA: {
+		// process data
+		auto pObjData = static_cast<SIMCONNECT_RECV_SIMOBJECT_DATA*>(pData);
+		switch (pObjData->dwRequestID) {
+		case REQUEST_VHF: {
+			SimConnectData::comFrequencies = (*reinterpret_cast<SimConnectData::ComFrequencies*>(&pObjData->
+				dwData));
+			GaugesInvalidateFlags.PEDESTALTuningControlGauge[0] = true;
+			GaugesInvalidateFlags.PEDESTALTuningControlGauge[1] = true;
+			GaugesInvalidateFlags.PEDESTALTuningControlGauge[2] = true;
 			break;
 		}
-		/*
-		case SIMCONNECT_RECV_ID_FACILITY_DATA: {
-			fmt::print(stderr, "FACILITY EVENT");
-			const auto data = static_cast<SIMCONNECT_RECV_FACILITY_DATA*>(pData);
-			switch (data->dwType) {
-				case SIMCONNECT_FACILITY_DATA_AIRPORT: {
-					auto airport = (TestAirport*)&data->Data;
-					fmt::print(stderr, "AIRPORT NAME: {}", airport->name);
-					fmt::print(stderr, "AIRPORT LATITUDE: {}", airport->latitude);
-					fmt::print(stderr, "AIRPORT LONGITUDE: {}", airport->longitude);
-					delete airport;
-				}
-				default: ;
-			}
-		}
-		break;
-		*/
-		case SIMCONNECT_RECV_ID_FACILITY_DATA_END: {
+		case REQUEST_TRANSPONDER_CODE: {
+			SimConnectData::transponder = (*reinterpret_cast<SimConnectData::Transponder*>(&pObjData->dwData));
+			GaugesInvalidateFlags.PEDESTALTuningControlGauge[0] = true;
+			GaugesInvalidateFlags.PEDESTALTuningControlGauge[1] = true;
+			GaugesInvalidateFlags.PEDESTALTuningControlGauge[2] = true;
 			break;
 		}
-		case SIMCONNECT_RECV_ID_OPEN:
-			Console::info("B78XH WASM: SimConnect connection established");
+		case REQUEST_AIRCRAFT_INFO: {
+			SimConnectData::Aircraft::info = (*reinterpret_cast<SimConnectData::Aircraft::Info*>(&pObjData->
+				dwData));
 			break;
-		case SIMCONNECT_RECV_ID_QUIT:
-			Console::info("B78XH WASM: Received SimConnect connection quit message");
-			disconnect();
-			break;
-		case SIMCONNECT_RECV_ID_EXCEPTION: {
-			auto except = static_cast<SIMCONNECT_RECV_EXCEPTION*>(pData);
-			Console::error("(SimConnectConnector::processDispatchMessage) EXCEPTION SIMCONNECT ID {}",
-			               except->dwException);
 		}
-		break;
-		case SIMCONNECT_RECV_ID_EVENT: {
-			this->handleCustomEvents(static_cast<SIMCONNECT_RECV_EVENT_EX1*>(pData));
+		case REQUEST_AIRCRAFT_STATE: {
+			SimConnectData::Aircraft::state = (*reinterpret_cast<SimConnectData::Aircraft::State*>(&pObjData->
+				dwData));
+			GaugesInvalidateFlags.MCPHeadingGaugeTrack = true;
+			break;
+		}
+		case REQUEST_AUTOPILOT_STATE: {
+			SimConnectData::Autopilot::state = (*reinterpret_cast<SimConnectData::Autopilot::State*>(&pObjData->
+				dwData));
+			break;
+		}
 
+		case REQUEST_AUTOPILOT_FLIGHT_DIRECTOR: {
+			SimConnectData::Autopilot::flightDirector = (*reinterpret_cast<
+				SimConnectData::Autopilot::FlightDirector*>(&pObjData->dwData));
+			break;
 		}
-		case SIMCONNECT_RECV_ID_CLIENT_DATA:
+		case REQUEST_AUTOPILOT_APPROACH: {
+			SimConnectData::Autopilot::approach = (*reinterpret_cast<SimConnectData::Autopilot::Approach*>(&
+				pObjData->dwData));
+			break;
+		}
+		case REQUEST_AUTOPILOT_GLIDESLOPE: {
+			SimConnectData::Autopilot::glideSlope = (*reinterpret_cast<SimConnectData::Autopilot::GlideSlope*>(&
+				pObjData->dwData));
+			break;
+		}
+		case REQUEST_AUTOPILOT_NAVIGATION: {
+			SimConnectData::Autopilot::navigation = (*reinterpret_cast<SimConnectData::Autopilot::Navigation*>(&
+				pObjData->dwData));
+			break;
+		}
+		case REQUEST_AUTOPILOT_THROTTLE: {
+			SimConnectData::Autopilot::throttle = (*reinterpret_cast<SimConnectData::Autopilot::Throttle*>(&
+				pObjData->dwData));
+			break;
+		}
+		case REQUEST_AUTOPILOT_ALTITUDE: {
+			SimConnectData::Autopilot::altitude = (*reinterpret_cast<SimConnectData::Autopilot::Altitude*>(&
+				pObjData->dwData));
+			GaugesInvalidateFlags.MCPAltitudeGauge = true;
+			break;
+		}
+
+		case REQUEST_AUTOPILOT_VERTICAL_SPEED: {
+			SimConnectData::Autopilot::verticalSpeed = (*reinterpret_cast<
+				SimConnectData::Autopilot::VerticalSpeed*>(&pObjData->dwData));
+			GaugesInvalidateFlags.MCPVSpeedGauge = true;
+			break;
+		}
+
+		case REQUEST_AUTOPILOT_AIRSPEED: {
+			SimConnectData::Autopilot::airspeed = (*reinterpret_cast<SimConnectData::Autopilot::Airspeed*>(&
+				pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_AUTOPILOT_HEADING: {
+			SimConnectData::Autopilot::heading = (*reinterpret_cast<SimConnectData::Autopilot::Heading*>(&
+				pObjData->dwData));
+			GaugesInvalidateFlags.MCPHeadingGaugeHeading = true;
+			break;
+		}
+
+		case REQUEST_EQUIPMENT_RADIONAV_UNIT1: {
+			SimConnectData::Equipment::RadioNav::unit1 = (*reinterpret_cast<
+				SimConnectData::Equipment::RadioNav::Unit1*>(&
+					pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_EQUIPMENT_RADIONAV_UNIT2: {
+			SimConnectData::Equipment::RadioNav::unit2 = (*reinterpret_cast<
+				SimConnectData::Equipment::RadioNav::Unit2*>(&
+					pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_EQUIPMENT_RADIONAV_UNIT3: {
+			SimConnectData::Equipment::RadioNav::unit3 = (*reinterpret_cast<
+				SimConnectData::Equipment::RadioNav::Unit3*>(&
+					pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_EQUIPMENT_RADIONAV_UNIT4: {
+			SimConnectData::Equipment::RadioNav::unit4 = (*reinterpret_cast<
+				SimConnectData::Equipment::RadioNav::Unit4*>(&
+					pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_BAROMETER_SETTING: {
+			SimConnectData::Barometer::setting = (*reinterpret_cast<SimConnectData::Barometer::Setting*>(&
+				pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_MISC_TIME: {
+			SimConnectData::Misc::time = (*reinterpret_cast<SimConnectData::Misc::Time*>(&pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_ELECTRICAL_BATTERY_VOLTAGE: {
+			SimConnectData::Systems::electrical::battery = (*reinterpret_cast<SimConnectData::Systems::electrical::Battery*>(&pObjData->dwData));
+			break;
+		}
 		default:
 			break;
+		}
+		break;
+	}
+										  /*
+										  case SIMCONNECT_RECV_ID_FACILITY_DATA: {
+											  fmt::print(stderr, "FACILITY EVENT");
+											  const auto data = static_cast<SIMCONNECT_RECV_FACILITY_DATA*>(pData);
+											  switch (data->dwType) {
+												  case SIMCONNECT_FACILITY_DATA_AIRPORT: {
+													  auto airport = (TestAirport*)&data->Data;
+													  fmt::print(stderr, "AIRPORT NAME: {}", airport->name);
+													  fmt::print(stderr, "AIRPORT LATITUDE: {}", airport->latitude);
+													  fmt::print(stderr, "AIRPORT LONGITUDE: {}", airport->longitude);
+													  delete airport;
+												  }
+												  default: ;
+											  }
+										  }
+										  break;
+										  */
+	case SIMCONNECT_RECV_ID_FACILITY_DATA_END: {
+		break;
+	}
+	case SIMCONNECT_RECV_ID_OPEN:
+		Console::info("B78XH WASM: SimConnect connection established");
+		break;
+	case SIMCONNECT_RECV_ID_QUIT:
+		Console::info("B78XH WASM: Received SimConnect connection quit message");
+		disconnect();
+		break;
+	case SIMCONNECT_RECV_ID_EXCEPTION: {
+		auto except = static_cast<SIMCONNECT_RECV_EXCEPTION*>(pData);
+		Console::error("(SimConnectConnector::processDispatchMessage) EXCEPTION SIMCONNECT ID {}",
+			except->dwException);
+	}
+									 break;
+	case SIMCONNECT_RECV_ID_EVENT: {
+		this->handleCustomEvents(static_cast<SIMCONNECT_RECV_EVENT_EX1*>(pData));
+
+	}
+	case SIMCONNECT_RECV_ID_CLIENT_DATA:
+	default:
+		break;
 	}
 }
 
@@ -908,35 +926,35 @@ auto SimConnectConnector::handleCustomEvents(SIMCONNECT_RECV_EVENT_EX1* data) ->
 	const auto eventId = static_cast<ClientEvents>(data->uEventID);
 	const auto data0 = data->dwData0;
 	switch (eventId) {
-		case ClientEvents::B78XH_CONTROL_IDS_TCP_1: {
-			EventDispatchers::tcpEventDispatcher[0].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
-			break;
-		};
+	case ClientEvents::B78XH_CONTROL_IDS_TCP_1: {
+		EventDispatchers::tcpEventDispatcher[0].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
+		break;
+	};
 
-		case ClientEvents::B78XH_CONTROL_IDS_TCP_2: {
-			EventDispatchers::tcpEventDispatcher[1].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
-			break;
-		};
+	case ClientEvents::B78XH_CONTROL_IDS_TCP_2: {
+		EventDispatchers::tcpEventDispatcher[1].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
+		break;
+	};
 
-		case ClientEvents::B78XH_CONTROL_IDS_TCP_3: {
-			EventDispatchers::tcpEventDispatcher[2].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
-			break;
-		};
+	case ClientEvents::B78XH_CONTROL_IDS_TCP_3: {
+		EventDispatchers::tcpEventDispatcher[2].push(static_cast<TCPEventDispatcher::EVENT_LIST>(data0));
+		break;
+	};
 
-		default: {
-			Console::error("(SimConnectConnector::handleCustomEvents) Unknown client event");
-			break;
-		}
+	default: {
+		Console::error("(SimConnectConnector::handleCustomEvents) Unknown client event");
+		break;
+	}
 	}
 }
 
 auto SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,
-                                             SIMCONNECT_OBJECT_ID ObjectID,
-                                             SIMCONNECT_DATA_SET_FLAG Flags,
-                                             DWORD ArrayCount,
-                                             DWORD cbUnitSize,
-                                             void* pDataSet
-		) -> HRESULT {
+	SIMCONNECT_OBJECT_ID ObjectID,
+	SIMCONNECT_DATA_SET_FLAG Flags,
+	DWORD ArrayCount,
+	DWORD cbUnitSize,
+	void* pDataSet
+) -> HRESULT {
 
 	return SimConnect_SetDataOnSimObject(simConnectHandle, DefineID, ObjectID, Flags, ArrayCount, cbUnitSize, pDataSet);
 }

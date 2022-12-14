@@ -1,0 +1,9 @@
+#pragma once
+
+enum PotentialType {
+	POTENTIAL_270V,
+	POTENTIAL_235V,
+	POTENTIAL_28V,
+	POTENTIAL_115V,
+
+};

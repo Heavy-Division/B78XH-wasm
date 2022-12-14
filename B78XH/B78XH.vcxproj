@@ -51,7 +51,9 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>..\..\..\..\AppData\Roaming\Microsoft Flight Simulator\Packages\Community\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <ExternalIncludePath>$(ProjectDir)..\Systems;C:\Users\dev\source\repos\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(ProjectDir)..\Systems;C:\Users\dev\source\repos\include;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -170,6 +172,7 @@
     <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
+    <ClCompile Include="MainBattery.cpp" />
     <ClCompile Include="MasterControl.cpp" />
     <ClCompile Include="MCPAltitudeApplication.cpp" />
     <ClCompile Include="McpAltitudeDisplay.cpp" />
@@ -281,6 +284,7 @@
     <ClInclude Include="BaseControl.h" />
     <ClInclude Include="BaseGauge.h" />
     <ClInclude Include="BaseScratchpad.h" />
+    <ClInclude Include="BatteryType.h" />
     <ClInclude Include="CCS.h" />
     <ClInclude Include="CDUButton.h" />
     <ClInclude Include="CDUCenterLine.h" />
@@ -348,6 +352,7 @@
     <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
+    <ClInclude Include="MainBattery.h" />
     <ClInclude Include="MasterControl.h" />
     <ClInclude Include="MCPAltitudeApplication.h" />
     <ClInclude Include="McpAltitudeDisplay.h" />
@@ -460,11 +465,14 @@
     <None Include="B78XH.licenseheader" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fmt\fmt.vcxproj">
-      <Project>{06dc21b8-0b00-413a-b6d2-58c8844f94a7}</Project>
+    <ProjectReference Include="..\NanoVG\NanoVG.vcxproj">
+      <Project>{9c025d65-9fd3-4c33-8bb4-82387922c9d3}</Project>
     </ProjectReference>
     <ProjectReference Include="..\SimpleIni\SimpleIni.vcxproj">
       <Project>{b0048d6f-2b70-4409-8b9b-2c4099f37770}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Systems\Systems.vcxproj">
+      <Project>{a7bb5304-850c-4daa-9271-69bf77197f50}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Tools\Tools.vcxproj">
       <Project>{7ec92233-171f-4cc6-8638-75a469c78d7c}</Project>

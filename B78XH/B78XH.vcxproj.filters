@@ -451,6 +451,9 @@
     <ClCompile Include="ThirdGenerationControl.cpp">
       <Filter>Source Files\Controls\WorkingImplementation\ThirdGenerationControl</Filter>
     </ClCompile>
+    <ClCompile Include="MainBattery.cpp">
+      <Filter>Source Files\Systems\Electrical</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1002,6 +1005,12 @@
     <ClInclude Include="ThirdGenerationControl.h">
       <Filter>Source Files\Controls\WorkingImplementation\ThirdGenerationControl</Filter>
     </ClInclude>
+    <ClInclude Include="MainBattery.h">
+      <Filter>Source Files\Systems\Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="BatteryType.h">
+      <Filter>Source Files\Systems\Electrical</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1294,6 +1303,9 @@
     </Filter>
     <Filter Include="Source Files\Controls\WorkingImplementation\ThirdGenerationControl">
       <UniqueIdentifier>{36a4a247-74da-440f-a20c-50d0adeb93e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems\Electrical">
+      <UniqueIdentifier>{114bf0fd-3adf-4532-a608-ea1c7928fddd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

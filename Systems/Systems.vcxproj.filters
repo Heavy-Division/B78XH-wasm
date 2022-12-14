@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Systems.cpp" />
+    <ClCompile Include="BatteryRepository.cpp">
+      <Filter>Electrical</Filter>
+    </ClCompile>
+    <ClCompile Include="PotentialOrigin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Systems.h" />
+    <ClInclude Include="Potential.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="BatteryRepository.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="PotentialCollection.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="Electricity.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="PotentialOrigin.h" />
+    <ClInclude Include="PotentialType.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="CurrentType.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Electrical">
+      <UniqueIdentifier>{b78fdd11-9415-4034-bca8-d70f3f8ab46c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

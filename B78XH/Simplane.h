@@ -369,6 +369,35 @@ namespace Simplane {
 
 		namespace fmc = cdu;
 	}
+
+	namespace systems {
+		namespace electrical {
+			namespace battery {
+				namespace main_battery {
+					auto getLoad() -> double;
+					bool isDischarging();
+					auto getCurrent() -> double;
+					bool isBreakerPulled();
+					auto getPotential() -> double;
+				}
+
+				namespace apu_battery {
+					auto getLoad() -> double;
+					bool isDischarging();
+					auto getCurrent() -> double;
+					bool isBreakerPulled();
+					auto getPotential() -> double;
+				}
+			
+			}
+				namespace bus {
+				bool isPotentialNormal();
+				auto potentialOf();
+				bool isPowered();
+				bool anyIsPowered();
+			}
+		}
+	}
 }
 
 inline auto Simplane::comFrequencies::activeFrequency1() -> double {
@@ -1407,3 +1436,9 @@ inline auto Simplane::equipment::radioNav::unit4::name() -> char* {
 inline auto Simplane::equipment::radioNav::unit4::ident() -> char* {
 	return SimConnectData::Equipment::RadioNav::unit4.ident;
 }
+
+
+inline auto Simplane::systems::electrical::battery::main_battery::getPotential() -> double {
+	return SimConnectData::Systems::electrical::battery.battery_voltage;
+}
+
