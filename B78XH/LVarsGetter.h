@@ -207,4 +207,8 @@ namespace LVarsGetter {
 		set_named_variable_value(register_named_variable("B78XH_IRS_R_STATE"), static_cast<double>(state));
 	};
 
+	inline auto apuStarterKnobState = []() -> double {
+		return get_named_variable_typed_value(register_named_variable("XMLVAR_APU_StarterKnob_Pos"), get_units_enum("Number"));
+	};
+
 }

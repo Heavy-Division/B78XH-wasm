@@ -614,8 +614,30 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	 *  Systems - Electrical 
 	 */
 
-	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ELECTRICAL_BATTERY_VOLTAGE, "ELECTRICAL BATTERY VOLTAGE",
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL BATTERY VOLTAGE:1",
 		"Volts");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL BATTERY LOAD:1",
+		"Amperes");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL MASTER BATTERY:1",
+		"Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL BATTERY ESTIMATED CAPACITY PCT:1",
+		"Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL BATTERY VOLTAGE:2",
+		"Volts");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL BATTERY LOAD:2",
+		"Amperes");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL MASTER BATTERY:2",
+		"Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MAIN_BATTERY, "ELECTRICAL BATTERY ESTIMATED CAPACITY PCT:2",
+		"Bool");
+
 
 }
 
@@ -726,8 +748,8 @@ auto SimConnectConnector::prepareRequests() -> void {
 		SIMCONNECT_PERIOD_SIM_FRAME,
 		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
-	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_ELECTRICAL_BATTERY_VOLTAGE,
-		DEFINITION_ELECTRICAL_BATTERY_VOLTAGE, SIMCONNECT_OBJECT_ID_USER,
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_MAIN_BATTERY,
+		DEFINITION_MAIN_BATTERY, SIMCONNECT_OBJECT_ID_USER,
 		SIMCONNECT_PERIOD_SIM_FRAME,
 		SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
@@ -870,8 +892,13 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 			break;
 		}
 
-		case REQUEST_ELECTRICAL_BATTERY_VOLTAGE: {
-			SimConnectData::Systems::electrical::battery = (*reinterpret_cast<SimConnectData::Systems::electrical::Battery*>(&pObjData->dwData));
+		case REQUEST_MAIN_BATTERY: {
+			SimConnectData::Systems::electrical::batteries::mainBattery = (*reinterpret_cast<SimConnectData::Systems::electrical::batteries::MainBattery*>(&pObjData->dwData));
+			break;
+		}
+
+		case REQUEST_APU_BATTERY: {
+			SimConnectData::Systems::electrical::batteries::apuBattery = (*reinterpret_cast<SimConnectData::Systems::electrical::batteries::APUBattery*>(&pObjData->dwData));
 			break;
 		}
 		default:

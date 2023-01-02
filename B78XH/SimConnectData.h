@@ -40,7 +40,8 @@ enum DATA_DEFINE_ID {
 	DEFINITION_BAROMETER_SETTING,
 	DEFINITION_MISC_TIME,
 	DEFINITION_CLOSE,
-	DEFINITION_ELECTRICAL_BATTERY_VOLTAGE,
+	DEFINITION_MAIN_BATTERY,
+	DEFINITION_APU_BATTERY,
 	// DEFINITION_BUS_LOOKUP_INDEX1,
 	// DEFINITION_BUS_LOOKUP_INDEX2,
 	// DEFINITION_BUS_LOOKUP_INDEX3,
@@ -83,7 +84,8 @@ enum DATA_REQUEST_ID {
 	REQUEST_BAROMETER_SETTING,
 	REQUEST_MISC_TIME,
 	REQUEST_CLOSE,
-	REQUEST_ELECTRICAL_BATTERY_VOLTAGE,
+	REQUEST_MAIN_BATTERY,
+	REQUEST_APU_BATTERY,
 	// REQUEST_BUS_LOOKUP_INDEX1,
 	// REQUEST_BUS_LOOKUP_INDEX2,
 	// REQUEST_BUS_LOOKUP_INDEX3,
@@ -403,13 +405,31 @@ namespace SimConnectData {
 	}
 
 	namespace Systems::electrical {
-		struct Battery {
-			double battery_voltage;
-		};
+		namespace batteries {
+			struct MainBattery {
+				double voltage;
+				double current;
+				double isOn;
+				double percentCapacityRemaining;
+			};
 
-		inline Battery battery;
+			inline MainBattery mainBattery;
+
+			struct APUBattery {
+				double voltage;
+				double current;
+				double isOn;
+				double percentCapacityRemaining;
+			};
+
+			inline APUBattery apuBattery;
+		}
+
+		
 	}
 }
+		
+
 
 struct TestAirport {
 	double latitude;

@@ -28,6 +28,9 @@
     <ClInclude Include="CurrentType.h">
       <Filter>Electrical</Filter>
     </ClInclude>
+    <ClInclude Include="RPDS.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Electrical">

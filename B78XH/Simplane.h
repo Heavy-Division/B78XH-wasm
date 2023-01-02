@@ -374,19 +374,18 @@ namespace Simplane {
 		namespace electrical {
 			namespace battery {
 				namespace main_battery {
-					auto getLoad() -> double;
-					bool isDischarging();
 					auto getCurrent() -> double;
 					bool isBreakerPulled();
 					auto getPotential() -> double;
+					bool isOn();
 				}
 
 				namespace apu_battery {
-					auto getLoad() -> double;
-					bool isDischarging();
 					auto getCurrent() -> double;
 					bool isBreakerPulled();
 					auto getPotential() -> double;
+					bool isOn();
+
 				}
 			
 			}
@@ -1437,8 +1436,26 @@ inline auto Simplane::equipment::radioNav::unit4::ident() -> char* {
 	return SimConnectData::Equipment::RadioNav::unit4.ident;
 }
 
-
 inline auto Simplane::systems::electrical::battery::main_battery::getPotential() -> double {
-	return SimConnectData::Systems::electrical::battery.battery_voltage;
+	return SimConnectData::Systems::electrical::batteries::mainBattery.voltage;
 }
 
+inline auto Simplane::systems::electrical::battery::main_battery::getCurrent() -> double {
+	return SimConnectData::Systems::electrical::batteries::mainBattery.current;
+}
+
+inline bool Simplane::systems::electrical::battery::main_battery::isOn() {
+	return SimConnectData::Systems::electrical::batteries::mainBattery.isOn;
+}
+
+inline auto Simplane::systems::electrical::battery::apu_battery::getCurrent() -> double {
+	return SimConnectData::Systems::electrical::batteries::apuBattery.current;
+}
+
+inline auto Simplane::systems::electrical::battery::apu_battery::getPotential() -> double {
+	return SimConnectData::Systems::electrical::batteries::apuBattery.voltage;
+}
+
+inline bool Simplane::systems::electrical::battery::apu_battery::isOn() {
+	return SimConnectData::Systems::electrical::batteries::mainBattery.isOn;
+}

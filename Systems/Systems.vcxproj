@@ -153,6 +153,7 @@
     <ClInclude Include="PotentialCollection.h" />
     <ClInclude Include="PotentialOrigin.h" />
     <ClInclude Include="PotentialType.h" />
+    <ClInclude Include="RPDS.h" />
     <ClInclude Include="Systems.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

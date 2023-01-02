@@ -22,6 +22,7 @@
 #include "SimConnectData.h"
 #include "MainBattery.h"
 #include "Simplane.h"
+#include "LVarsGetter.h"
 
 auto CCS::init() -> void {
 }
@@ -32,8 +33,8 @@ auto CCS::prepare() -> void {
 
 auto CCS::update(double deltaTime) -> void {
 	this->updateERS(deltaTime);
-	auto voltage = Simplane::systems::electrical::battery::main_battery::getPotential();
-	Console::log("Remaining Potential: {}", voltage);
+	Console::log("{}", LVarsGetter::apuStarterKnobState);
+
 }
 
 auto CCS::reset() -> void {

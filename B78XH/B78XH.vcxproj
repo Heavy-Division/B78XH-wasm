@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
-    <OutDir>..\..\..\..\AppData\Roaming\Microsoft Flight Simulator\Packages\Community\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>G:\MSFS\Community\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
     <ExternalIncludePath>$(ProjectDir)..\Systems;C:\Users\dev\source\repos\include;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(ProjectDir)..\Systems;C:\Users\dev\source\repos\include;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
