@@ -23,6 +23,7 @@
 #include "MainBattery.h"
 #include "Simplane.h"
 #include "LVarsGetter.h"
+#include "RPDS.h"
 
 auto CCS::init() -> void {
 }
@@ -33,8 +34,10 @@ auto CCS::prepare() -> void {
 
 auto CCS::update(double deltaTime) -> void {
 	this->updateERS(deltaTime);
-	Console::log("{}", LVarsGetter::apuStarterKnobState);
+	MainBattery battery;
 
+	Console::log("{}", static_cast<double>(battery.getCurrent()));
+	
 }
 
 auto CCS::reset() -> void {

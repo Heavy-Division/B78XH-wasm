@@ -454,6 +454,9 @@
     <ClCompile Include="MainBattery.cpp">
       <Filter>Source Files\Systems\Electrical</Filter>
     </ClCompile>
+    <ClCompile Include="RPDS.cpp">
+      <Filter>Source Files\Systems\Electrical</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1009,6 +1012,9 @@
       <Filter>Source Files\Systems\Electrical</Filter>
     </ClInclude>
     <ClInclude Include="BatteryType.h">
+      <Filter>Source Files\Systems\Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="RPDS.h">
       <Filter>Source Files\Systems\Electrical</Filter>
     </ClInclude>
   </ItemGroup>

@@ -23,7 +23,7 @@ public:
     auto half() -> double;
     auto empty() -> double;
 
-    units::voltage::volt_t input_potential = static_cast<units::voltage::volt_t>(0.);
-    units::voltage::volt_t output_potential = static_cast<units::voltage::volt_t>(0.);
-    units::current::ampere_t current = static_cast<units::current::ampere_t>(0.);
+    units::voltage::volt_t input_potential;
+    units::voltage::volt_t output_potential;
+    units::current::ampere_t current;
 };

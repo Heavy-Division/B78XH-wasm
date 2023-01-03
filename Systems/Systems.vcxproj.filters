@@ -6,6 +6,9 @@
       <Filter>Electrical</Filter>
     </ClCompile>
     <ClCompile Include="PotentialOrigin.cpp" />
+    <ClCompile Include="RPDSRepository.cpp">
+      <Filter>Electrical</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Systems.h" />
@@ -28,7 +31,10 @@
     <ClInclude Include="CurrentType.h">
       <Filter>Electrical</Filter>
     </ClInclude>
-    <ClInclude Include="RPDS.h">
+    <ClInclude Include="RPDSRepository.h">
+      <Filter>Electrical</Filter>
+    </ClInclude>
+    <ClInclude Include="RPDUs.h">
       <Filter>Electrical</Filter>
     </ClInclude>
   </ItemGroup>

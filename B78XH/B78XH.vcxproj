@@ -233,6 +233,7 @@
     <ClCompile Include="RightInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
+    <ClCompile Include="RPDS.cpp" />
     <ClCompile Include="SecondGenerationControl.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
@@ -390,6 +391,7 @@
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
+    <ClInclude Include="RPDS.h" />
     <ClInclude Include="SecondGenerationControl.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectClientEvents.h" />

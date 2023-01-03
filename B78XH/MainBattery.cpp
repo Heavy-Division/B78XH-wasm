@@ -16,12 +16,12 @@ auto MainBattery::getInputPotential() -> volt_t {
 }
 
 auto MainBattery::getCurrent() -> ampere_t {
-	this->current = static_cast<ampere_t>(0.);
+	this->current = ampere_t(0.);
 	return this->current;
 }
 
 auto MainBattery::getPower() -> watt_t {
-	return getOutputPotential() * this->current; 
+	return this->output_potential * this->current; 
 }
 
 bool MainBattery::isDischarging() {

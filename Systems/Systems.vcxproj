@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="BatteryRepository.cpp" />
     <ClCompile Include="PotentialOrigin.cpp" />
+    <ClCompile Include="RPDSRepository.cpp" />
     <ClCompile Include="Systems.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +154,8 @@
     <ClInclude Include="PotentialCollection.h" />
     <ClInclude Include="PotentialOrigin.h" />
     <ClInclude Include="PotentialType.h" />
-    <ClInclude Include="RPDS.h" />
+    <ClInclude Include="RPDSRepository.h" />
+    <ClInclude Include="RPDUs.h" />
     <ClInclude Include="Systems.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
