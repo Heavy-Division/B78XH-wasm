@@ -362,7 +362,7 @@
       <Filter>Source Files\Displays\RightInboardDisplay</Filter>
     </ClCompile>
     <ClCompile Include="McpSpeedDisplay.cpp">
-      <Filter>Source Files\Displays\McpSpeedDisplay</Filter>
+      <Filter>Source Files\Displays\McpVerticalSpeedDisplay\McpSpeedDisplay</Filter>
     </ClCompile>
     <ClCompile Include="McpHeadingDisplay.cpp">
       <Filter>Source Files\Displays\McpHeadingDisplay</Filter>
@@ -397,9 +397,6 @@
     <ClCompile Include="TcpCenterDisplay.cpp">
       <Filter>Source Files\Displays\TcpCenterDisplay</Filter>
     </ClCompile>
-    <ClCompile Include="TcpLeftDisplay.cpp">
-      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
-    </ClCompile>
     <ClCompile Include="IsfdDisplay.cpp">
       <Filter>Source Files\Displays\IsfdDisplay</Filter>
     </ClCompile>
@@ -421,35 +418,92 @@
     <ClCompile Include="MCPHeadingApplication.cpp">
       <Filter>Source Files\Applications\MCPHeading</Filter>
     </ClCompile>
-    <ClCompile Include="TCPLineDisplayApplication.cpp">
-      <Filter>Source Files\Applications\TCP</Filter>
-    </ClCompile>
     <ClCompile Include="LineDisplay.cpp">
       <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
     </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>Source Files\Applications\_Implementations\Lines</Filter>
     </ClCompile>
-    <ClCompile Include="TCPLeftLine.cpp">
-      <Filter>Source Files\Applications\_Implementations\Lines</Filter>
-    </ClCompile>
-    <ClCompile Include="TCPLineDisplay.cpp">
-      <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
-    </ClCompile>
-    <ClCompile Include="FirstGenerationControl.cpp">
-      <Filter>Source Files\Controls\WorkingImplementation\FirstGenerationControl</Filter>
-    </ClCompile>
-    <ClCompile Include="SecondGenerationControl.cpp">
-      <Filter>Source Files\Controls\WorkingImplementation\SecondGenerationControl</Filter>
-    </ClCompile>
     <ClCompile Include="BaseControl.cpp">
-      <Filter>Source Files\Controls\WorkingImplementation\BaseControl</Filter>
+      <Filter>Source Files\Controls\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Control.cpp">
+      <Filter>Source Files\Controls\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlCrop.cpp">
+      <Filter>Source Files\Controls\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlMask.cpp">
+      <Filter>Source Files\Controls\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlPosition.cpp">
+      <Filter>Source Files\Controls\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLogger.cpp">
+      <Filter>Source Files\Controls\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultLogger.cpp">
+      <Filter>Source Files\Controls\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="NullLogger.cpp">
+      <Filter>Source Files\Controls\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="LineControl.cpp">
+      <Filter>Source Files\Controls\Controls</Filter>
     </ClCompile>
     <ClCompile Include="MasterControl.cpp">
-      <Filter>Source Files\Controls\WorkingImplementation\MasterControl</Filter>
+      <Filter>Source Files\Controls\Base</Filter>
     </ClCompile>
-    <ClCompile Include="ThirdGenerationControl.cpp">
-      <Filter>Source Files\Controls\WorkingImplementation\ThirdGenerationControl</Filter>
+    <ClCompile Include="TCPMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPLeftLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPCenterLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPRightLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPVHFPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPHFPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPPageTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPLeftLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPRightLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPCenterLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPCABPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPSATPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPPagesLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPGPWSPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="SimConnectFacility.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -937,7 +991,7 @@
       <Filter>Source Files\Displays\RightInboardDisplay</Filter>
     </ClInclude>
     <ClInclude Include="McpSpeedDisplay.h">
-      <Filter>Source Files\Displays\McpSpeedDisplay</Filter>
+      <Filter>Source Files\Displays\McpVerticalSpeedDisplay\McpSpeedDisplay</Filter>
     </ClInclude>
     <ClInclude Include="McpHeadingDisplay.h">
       <Filter>Source Files\Displays\McpHeadingDisplay</Filter>
@@ -954,9 +1008,6 @@
     <ClInclude Include="TcpCenterDisplay.h">
       <Filter>Source Files\Displays\TcpCenterDisplay</Filter>
     </ClInclude>
-    <ClInclude Include="TcpLeftDisplay.h">
-      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
-    </ClInclude>
     <ClInclude Include="IsfdDisplay.h">
       <Filter>Source Files\Displays\IsfdDisplay</Filter>
     </ClInclude>
@@ -969,38 +1020,95 @@
     <ClInclude Include="MCPHeadingApplication.h">
       <Filter>Source Files\Applications\MCPHeading</Filter>
     </ClInclude>
-    <ClInclude Include="TCPLineDisplayApplication.h">
-      <Filter>Source Files\Applications\TCP</Filter>
-    </ClInclude>
     <ClInclude Include="LineDisplay.h">
       <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
       <Filter>Source Files\Applications\_Implementations\Lines</Filter>
     </ClInclude>
-    <ClInclude Include="TCPLeftLine.h">
-      <Filter>Source Files\Applications\_Implementations\Lines</Filter>
-    </ClInclude>
-    <ClInclude Include="TCPLineDisplay.h">
-      <Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
-    </ClInclude>
     <ClInclude Include="LifeCycle.h">
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="FirstGenerationControl.h">
-      <Filter>Source Files\Controls\WorkingImplementation\FirstGenerationControl</Filter>
-    </ClInclude>
-    <ClInclude Include="SecondGenerationControl.h">
-      <Filter>Source Files\Controls\WorkingImplementation\SecondGenerationControl</Filter>
-    </ClInclude>
     <ClInclude Include="BaseControl.h">
-      <Filter>Source Files\Controls\WorkingImplementation\BaseControl</Filter>
+      <Filter>Source Files\Controls\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Control.h">
+      <Filter>Source Files\Controls\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlCrop.h">
+      <Filter>Source Files\Controls\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlMask.h">
+      <Filter>Source Files\Controls\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlPosition.h">
+      <Filter>Source Files\Controls\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLogger.h">
+      <Filter>Source Files\Controls\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultLogger.h">
+      <Filter>Source Files\Controls\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="NullLogger.h">
+      <Filter>Source Files\Controls\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="LineControl.h">
+      <Filter>Source Files\Controls\Controls</Filter>
     </ClInclude>
     <ClInclude Include="MasterControl.h">
-      <Filter>Source Files\Controls\WorkingImplementation\MasterControl</Filter>
+      <Filter>Source Files\Controls\Base</Filter>
     </ClInclude>
-    <ClInclude Include="ThirdGenerationControl.h">
-      <Filter>Source Files\Controls\WorkingImplementation\ThirdGenerationControl</Filter>
+    <ClInclude Include="TCPMasterControl.h">
+      <Filter>Source Files\Controls\Controls\TCP</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLeftLineControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPCenterLineControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPRightLineControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLineControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPVHFPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPHFPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPPageTitleControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLeftLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPRightLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPCenterLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPCABPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPSATPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPPagesLineControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPGPWSPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectFacility.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1229,9 +1337,6 @@
     <Filter Include="Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay">
       <UniqueIdentifier>{ce9458ef-b74e-46cf-9602-02d7a1571439}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Displays\McpSpeedDisplay">
-      <UniqueIdentifier>{6e80babe-81c7-4e39-b2ee-5e0d8773177c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Displays\McpHeadingDisplay">
       <UniqueIdentifier>{96921291-a9dd-4894-b06e-9314a37ec959}</UniqueIdentifier>
     </Filter>
@@ -1240,9 +1345,6 @@
     </Filter>
     <Filter Include="Source Files\Displays\McpAltitudeDisplay">
       <UniqueIdentifier>{41594e11-8ab8-414d-8bf9-b23816aa3ee6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Displays\TcpLeftDisplay">
-      <UniqueIdentifier>{f0d4d421-05c1-4922-b96d-3713775a50b7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Displays\TcpCenterDisplay">
       <UniqueIdentifier>{dc695835-540c-4d4c-b6a0-e48736947c89}</UniqueIdentifier>
@@ -1262,9 +1364,6 @@
     <Filter Include="Source Files\Applications\MCPHeading">
       <UniqueIdentifier>{eb235f6f-3706-43e5-8da3-03f25ce69088}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Applications\TCP">
-      <UniqueIdentifier>{e4e41e4d-3221-401d-b7d1-833c2cd89fa8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Applications\_Implementations">
       <UniqueIdentifier>{3e95e1f0-d4e4-46d7-ab9b-5539ba154490}</UniqueIdentifier>
     </Filter>
@@ -1274,26 +1373,35 @@
     <Filter Include="Source Files\Applications\_Implementations\Lines">
       <UniqueIdentifier>{84d6c8a7-9e47-437b-8208-c8023cfc2d70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Displays\McpVerticalSpeedDisplay\McpSpeedDisplay">
+      <UniqueIdentifier>{6e80babe-81c7-4e39-b2ee-5e0d8773177c}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Controls">
-      <UniqueIdentifier>{99e6431d-376e-405c-8020-0807dd34e461}</UniqueIdentifier>
+      <UniqueIdentifier>{f4d6e61d-b280-48ae-9d5b-c5fc32e66d3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\WorkingImplementation">
-      <UniqueIdentifier>{f5badf0f-c9e6-4e66-bbc6-6e6bc4f071c8}</UniqueIdentifier>
+    <Filter Include="Source Files\Controls\Base">
+      <UniqueIdentifier>{a97b8254-0b97-47c2-9b70-c864e1d61597}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\WorkingImplementation\BaseControl">
-      <UniqueIdentifier>{c9d3fd6c-3f01-4fb4-9f07-07383f9931dc}</UniqueIdentifier>
+    <Filter Include="Source Files\Controls\Logger">
+      <UniqueIdentifier>{20987bdc-3b20-4f7b-a59a-26d10593ea5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\WorkingImplementation\FirstGenerationControl">
-      <UniqueIdentifier>{60703206-267b-49b3-9574-6b3ca393013b}</UniqueIdentifier>
+    <Filter Include="Source Files\Controls\Utils">
+      <UniqueIdentifier>{1a901aa4-766c-4e37-80a8-f65dffe590b4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\WorkingImplementation\SecondGenerationControl">
-      <UniqueIdentifier>{5665d1ca-abd5-4f44-abc3-3e61e080b403}</UniqueIdentifier>
+    <Filter Include="Source Files\Controls\Controls">
+      <UniqueIdentifier>{a3bc4e0b-3007-4676-8410-b42f07ef36d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\WorkingImplementation\MasterControl">
-      <UniqueIdentifier>{244dc62a-fd96-4c6e-ab91-396344789149}</UniqueIdentifier>
+    <Filter Include="Source Files\Controls\Controls\TCP">
+      <UniqueIdentifier>{727688d7-ab98-4c08-8d61-785704ddbcb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\WorkingImplementation\ThirdGenerationControl">
-      <UniqueIdentifier>{36a4a247-74da-440f-a20c-50d0adeb93e7}</UniqueIdentifier>
+    <Filter Include="Source Files\Controls\Controls\TCP\TCPLines">
+      <UniqueIdentifier>{c8b524d5-9f8b-426c-aa3a-24529a2e3fb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\TCP\TCPPages">
+      <UniqueIdentifier>{09b5cb0e-d959-4404-a672-ceb09965a30b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools\SimConnectFacility">
+      <UniqueIdentifier>{e0245576-9e7b-4b9f-a57f-80d2981f9c31}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -1,112 +1,297 @@
 ﻿#pragma once
-#include <MSFS/Legacy/gauges.h>
-#include "MSFS/Render/nanovg.h"
 
-#include <vector>
+#include <functional>
+#include <memory>
+#include <list>
 #include <string>
+#include <vector>
+#include <array>
+
+#include "ControlCrop.h"
+#include "ControlPosition.h"
+
+/*
+ * TODO: TEMPORARY HACK -> SHOULD BE REMOVED WHEN THE CLASSES WILL BE MOVED TO B78XH SOLUTION
+ */
+#include <map>
+#include <MSFS/Render/nanovg.h>
+
+#include "DefaultLogger.h"
+#include "NullLogger.h"
+
+using std::string;
+using std::list;
+using std::vector;
+using std::map;
+using std::array;
 
 class BaseControl {
-	public:
-		BaseControl() = default;
-		virtual ~BaseControl() = default;
-		BaseControl(const BaseControl& other) = delete;
 
-		BaseControl(BaseControl&& other) noexcept
-			: fsContext(other.fsContext),
-			  nvgContext(other.nvgContext),
-			  storedGaugeDrawData(other.storedGaugeDrawData),
-			  storedGaugeInstallData(other.storedGaugeInstallData),
-			  controls(std::move(other.controls)) {
-		}
-
-		auto operator=(const BaseControl& other) -> BaseControl& = delete;
-
-		auto operator=(BaseControl&& other) noexcept -> BaseControl& {
-			if (this == &other)
-				return *this;
-			fsContext = other.fsContext;
-			nvgContext = other.nvgContext;
-			storedGaugeDrawData = other.storedGaugeDrawData;
-			storedGaugeInstallData = other.storedGaugeInstallData;
-			controls = std::move(other.controls);
-			return *this;
-		}
-
-		/* Life cycle */
-		virtual auto startup(sGaugeInstallData* data) -> void;
-		virtual auto afterStartup(FsContext fsContext) -> void;
-		virtual auto beforeUpdate() -> void;
-		virtual auto afterUpdate() -> void;
-		virtual auto beforeRender() -> void;
-		virtual auto render(sGaugeDrawData* data) -> void;
-		virtual auto shutdown() -> void;
-
-		auto executeRendering() -> void;
-
-		auto setAutoCrop(bool autoCrop) -> void;
-		auto getAutoCrop() const -> bool;
-		void setMargin(double left, double top);
-		void setCropMargin(double left, double top);
-		void setSize(double width, double height);
-		void setWidth(double width);
-		void setHeight(double height);
-		auto getWidth() const -> double;
-		auto getHeight() const -> double;
-		auto getMarginLeft() const -> double;
-		auto getMarginTop() const -> double;
-		auto getCropMarginLeft() const -> double;
-		auto getCropMarginTop() const -> double;
-		auto isControlInvalid()-> bool;
-
-		std::vector<std::function<bool()>> onValidate;
+	using RenderingContext = NVGcontext*;
+	using Content = vector<array<string,2>>;
 
 	protected:
-		auto clearDisplay(double width, double height) const -> void;
-		auto setAutoClearing(bool autoClearing) -> void;
-		/* Controls handling */
-		virtual auto prepareControls() -> void;
-		virtual auto setupControls() -> void;
-		auto addControl(std::unique_ptr<BaseControl> pointer) -> void;
-		auto executeControlsStartup() const -> void;
-		auto executeControlsAfterStartup() const -> void;
-
-		auto prepareRenderingContext() -> void;
-		auto prepareRenderingContextDefaults() -> void;
-		auto prepareRenderingContextDefaultsFonts() -> void;
-		auto addFont(std::string alias, std::string filename, PSTRINGZ path = "./data/fonts/") -> void;
-		auto getContext() const -> NVGcontext*;
-
-		auto safeShutdown() const -> void;
-
-		auto getLevel() const -> int;
-		auto setLevel(int level) -> void;
-
-	private:
-		FsContext fsContext = 0;
-		NVGcontext* nvgContext = nullptr;
-		sGaugeDrawData* storedGaugeDrawData = nullptr;
-		sGaugeInstallData* storedGaugeInstallData = nullptr;
-		std::vector<int> defaultFonts{};
-		std::vector<int> fonts{};
-		std::vector<std::unique_ptr<BaseControl>> controls{};
-
-		bool autoClearing = true;
-		bool autoCrop = false;
-		double marginLeft = 0;
-		double marginTop = 0;
-		double width = 0;
-		double height = 0;
-		double cropMarginLeft = 0;
-		double cropMarginTop = 0;
-		int level = 0;
-
-		auto processRender(std::unique_ptr<BaseControl>& control) const -> void;
-
+		using ControlUniquePointer = std::unique_ptr<BaseControl>;
 		enum class FONT_TYPE {
-			DEFAULT_FONT,
-			FONT
+			DEFAULT,
+			ADDITIONAL
 		};
 
-		auto addFont(std::string alias, std::string filename, FONT_TYPE type, PSTRINGZ path = "./data/fonts/") -> void;
-		auto addDefaultFont(std::string alias, std::string filename, PSTRINGZ path = "./data/fonts/") -> void;
+		class ContentHolder {
+			public:
+				enum class ALIGN {
+					LEFT,
+					CENTER,
+					RIGHT
+				};
+
+				[[nodiscard]] auto getContent() const -> const Content&;
+				auto setContent(const Content& content) -> void;
+				__declspec(property(get = getContent, put = setContent)) Content content;
+				[[nodiscard]] auto isContentInvalid() const -> bool;
+				auto setContentInvalid(const bool contentInvalid) -> void;
+				__declspec(property(get = isContentInvalid, put = setContentInvalid)) bool contentInvalid;
+
+				[[nodiscard]] auto getAlign() const -> ALIGN;
+				auto setAlign(ALIGN align) -> void;
+				[[nodiscard]] auto getDefaultFontSize() const -> float;
+				auto setDefaultFontSize(float fontSize) -> void;
+
+				[[nodiscard]] auto getDefaultFontColor() -> NVGcolor&;
+				auto setDefaultFontColor(const NVGcolor& fontColor) -> void;
+
+				[[nodiscard]] auto getFontFace() const -> const string&;
+				auto setFontFace(const string& fontFace) -> void;
+				[[nodiscard]] auto getContentHorizontalAlign() const -> int;
+				auto setContentHorizontalAlign(int contentHorizontalAlign) -> void;
+				[[nodiscard]] auto getContentVerticalAlign() const -> int;
+				auto setContentVerticalAlign(int contentVerticalAlign) -> void;
+
+				auto addSize(string name, float size) -> void;
+				auto addColor(string name, NVGcolor color) -> void;
+				auto addContentVerticalOffset(string name, float offset) -> void;
+				[[nodiscard]] auto getFontSizes() const -> const std::map<string, float>&;
+				__declspec(property(get = getFontSizes)) std::map<string, float> fontSizes;
+				[[nodiscard]] auto getFontColors() const -> const std::map<string, NVGcolor>&;
+				__declspec(property(get = getFontColors)) std::map<string, NVGcolor> fontColors;
+				[[nodiscard]] auto getContentVerticalOffset() const -> const std::map<string, float>&;
+				__declspec(property(get = getContentVerticalOffset)) std::map<string, float> contentVerticalOffset;
+				auto getChunkFontSize(int chunkNumber) -> float;
+				auto getChunkFontColor(int chunkNumber) -> NVGcolor&;
+				auto getChunkContentVerticalOffset(int chunkNumber) -> float;
+
+			private:
+				Content content_{};
+				bool contentInvalid_ = false;
+				float defaultFontSize_ = 23;
+				NVGcolor defaultFontColor_ = nvgRGB(255, 255, 255);
+				ALIGN align_ = ALIGN::LEFT;
+				string fontFace_ = "heavy-fmc";
+				int contentHorizontalAlign_ = NVG_ALIGN_LEFT;
+				int contentVerticalAlign_ = NVG_ALIGN_MIDDLE;
+				std::map<string, float> fontSizes_;
+				std::map<string, NVGcolor> fontColors_;
+				std::map<string, float> contentVerticalOffset_;
+
+				auto checkContent(const Content& content) -> void;
+		};
+
+	public:
+		using GaugeInstallData = struct {
+			int iSizeX;
+			int iSizeY;
+			char* strParameters;
+		};
+
+		using GaugeDrawData = struct {
+			double mx;
+			double my;
+			double t;
+			double dt;
+			int winWidth;
+			int winHeight;
+			int fbWidth;
+			int fbHeight;
+		};
+		using EventInterface = std::function<bool(BaseControl& control)>;
+
+		inline static auto SKIP_VALIDATION_EVENT = []([[maybe_unused]] BaseControl& control) -> bool {
+			return true;
+		};
+
+		inline static auto EMPTY_EVENT = []([[maybe_unused]] BaseControl& control) -> bool {
+			return true;
+		};
+
+		virtual ~BaseControl();
+		BaseControl() = delete;
+		
+		[[nodiscard]] auto getName() const -> const string&;
+		auto setName(const string& name) -> void;
+		__declspec(property(get = getName, put = setName)) string& name;
+
+		[[nodiscard]] auto getContext() const -> RenderingContext;
+		auto setContext(RenderingContext const context) -> void;
+		__declspec(property(get = getContext, put = setContext)) const RenderingContext context;
+
+		[[nodiscard]] auto hasContext() const -> bool;
+
+		auto propagateContext(RenderingContext const context) -> void;
+
+		auto add(ControlUniquePointer control) -> void;
+		[[nodiscard]] auto getControls() -> list<ControlUniquePointer>&;
+		__declspec(property(get = getControls)) list<ControlUniquePointer>& controls;
+
+		[[nodiscard]] auto getControl(string name) -> ControlUniquePointer&;
+
+		[[nodiscard]] auto getSystemControls() -> list<ControlUniquePointer>&;
+		__declspec(property(get = getSystemControls)) const list<ControlUniquePointer>& systemControls;
+
+		[[nodiscard]] auto getPosition() -> ControlPosition&;
+		auto setPosition(const ControlPosition& position) -> void;
+		__declspec(property(get = getPosition, put = setPosition)) ControlPosition position;
+
+		[[nodiscard]] auto getCrop() -> ControlCrop&;
+		auto setCrop(const ControlCrop& crop) -> void;
+		__declspec(property(get = getCrop, put = setCrop)) ControlCrop crop;
+
+		/* Lifecycle */
+		auto preInstall(GaugeInstallData* data) -> void;
+		auto postInstall(RenderingContext context) -> void;
+		auto preUpdate() -> void;
+		auto postUpdate() -> void;
+		auto preDraw(GaugeDrawData* data) -> void;
+		virtual auto render() -> void;
+		auto postDraw() -> void;
+		auto preKill() const -> void;
+		auto postKill() -> void;
+		auto restart() -> void;
+
+		auto addOnValidate(EventInterface event) -> void;
+		auto addOnBeforeRender(EventInterface event) -> void;
+
+		[[nodiscard]] auto getContentHolder() -> ContentHolder&;
+		__declspec(property(get = getContentHolder)) ContentHolder contentHolder;
+
+		auto setLogger(std::unique_ptr<BaseLogger> logger) -> void;
+		[[nodiscard]] auto getLogger() const -> const std::unique_ptr<BaseLogger>&;
+
+	protected:
+		enum class ControlType {
+			MASTER,
+			NORMAL
+		};
+
+		explicit BaseControl(string name) : name_(std::move(name)), controlType_(ControlType::NORMAL) {
+		}
+
+
+		[[nodiscard]] auto getGaugeInstallData() const -> GaugeInstallData*;
+		auto setGaugeInstallData(GaugeInstallData* const gaugeInstallData) -> void;
+		__declspec(property(get = getGaugeInstallData, put = setGaugeInstallData)) const GaugeInstallData* gaugeInstallData;
+		[[nodiscard]] auto getGaugeDrawData() const -> GaugeDrawData*;
+		auto setGaugeDrawData(GaugeDrawData* gaugeDrawData) -> void;
+		__declspec(property(get = getGaugeDrawData, put = setGaugeDrawData)) const GaugeDrawData* gaugeDrawData;
+
+		[[nodiscard]] auto getControlType() const -> ControlType;
+		auto setControlType(const ControlType controlType) -> void;
+		__declspec(property(get = getControlType, put = setControlType)) const ControlType controlType;
+
+		auto isControlInvalid() -> bool;
+
+		virtual auto prepareControls() -> void;
+		virtual auto setupControls() -> void;
+		virtual auto setupControl() -> void;
+
+		auto executeControlsPreInstall() -> void;
+		auto executeControlsPostInstall() -> void;
+
+	private:
+		class ControlsHolder {
+			public:
+				auto add(ControlUniquePointer& control) -> void;
+				[[nodiscard]] auto getControls() -> list<ControlUniquePointer>&;
+				__declspec(property(get = getControls)) const list<ControlUniquePointer>& controls;
+				[[nodiscard]] auto getControl(string name) -> ControlUniquePointer&;
+
+			private:
+				/* Forward declaration of NullControl. See declaration below. */
+				class NullControl;
+				list<ControlUniquePointer> controls_{};
+				ControlUniquePointer nullControl_ = nullptr;
+		};
+
+		class ControlEvents {
+			public:
+				auto add(const EventInterface& event) -> void;
+				auto clear() -> void;
+				[[nodiscard]] auto size() const -> size_t;
+				[[nodiscard]] auto getEvents() const -> const std::vector<EventInterface>&;
+				__declspec(property(get = getEvents)) const std::vector<EventInterface>& events;
+
+			private:
+				std::vector<EventInterface> events_;
+		};
+
+		[[nodiscard]] auto isFirstRun() const -> bool;
+		auto setFirstRun(const bool firstRun) -> void;
+		__declspec(property(get = isFirstRun, put = setFirstRun)) bool firstRun;
+
+		string name_;
+		bool firstRun_ = true;
+		ControlType controlType_;
+		ControlsHolder controls_;
+		ControlsHolder systemControls_;
+		ContentHolder contentHolder_;
+
+
+		ControlPosition position_;
+		ControlCrop crop_;
+
+		ControlEvents onBeforeRender_;
+		ControlEvents onValidate_;
+
+		GaugeInstallData* gaugeInstallData_ = nullptr;
+		GaugeDrawData* gaugeDrawData_ = nullptr;
+
+		RenderingContext context_ = nullptr;
+		#ifdef NDEBUG
+		std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
+		#else
+		//std::unique_ptr<BaseLogger> logger_ = std::make_unique<DefaultLogger>();
+		std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
+		#endif
+
+		auto addSystemControl(ControlUniquePointer control) -> void;
+
+		auto renderScreen() -> void;
+		auto renderControls() -> void;
+
+		auto needRedraw(bool force = false) -> bool;
+		auto isControlInvalid(BaseControl& control) -> bool;
+
+		auto executeOnBeforeRenderEvents(BaseControl& control) -> void;
+
+		auto prepareRenderingContextDefaults() -> void;
+		auto prepareRenderingContextDefaultsFonts() -> void;
+		auto addFont(string alias, string filename, FONT_TYPE type = FONT_TYPE::ADDITIONAL, string path = "./data/fonts/") -> void;
+
+	public:
+		[[nodiscard]] auto getOnBeforeRender() -> ::BaseControl::ControlEvents&;
+		[[nodiscard]] auto getOnValidate() -> ::BaseControl::ControlEvents&;
+};
+
+
+/*
+ * Delayed declaration of NullControl
+ *
+ * NOTE: The class can not be declared in inner ControlHolder class because
+ *		the class inherits from BaseControl -> BaseControl is incomplete type
+ *		in ControlsHolder
+ */
+class BaseControl::ControlsHolder::NullControl : public BaseControl {
+	public:
+		explicit NullControl(const string& name)
+			: BaseControl(name) {
+		}
 };

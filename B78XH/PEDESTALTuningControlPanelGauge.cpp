@@ -29,7 +29,7 @@ bool PEDESTALTuningControlPanelGauge::preInstall() {
 
 bool PEDESTALTuningControlPanelGauge::postInstall(FsContext context) {
 	renderer.setContext(context);
-	EventDispatchers::tcpEventDispatcher[this->id].push(TCPEventDispatcher::EVENT_LIST::VFH);
+	EventDispatchers::tcpEventDispatcher[this->id].push(TCPEventDispatcher::EVENT_LIST::VHF);
 	return true;
 }
 

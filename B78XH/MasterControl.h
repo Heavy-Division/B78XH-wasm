@@ -3,7 +3,10 @@
 
 class MasterControl : public BaseControl {
 	public:
-		auto prepareControls() -> void override;
-		auto render(sGaugeDrawData* pData) -> void override;
-		std::string name = "[MASTERCONTROL]";
+		explicit MasterControl(const string& name)
+			: BaseControl(name) {
+			setControlType(ControlType::MASTER);
+		}
+	private:
+		using BaseControl::setControlType;
 };

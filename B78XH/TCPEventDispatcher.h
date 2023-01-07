@@ -23,7 +23,7 @@ class TCPEventDispatcher {
 	public:
 		enum class EVENT_LIST {
 			NONE,
-			VFH = 1,
+			VHF = 1,
 			HF = 2,
 			SAT = 3,
 			CAB = 4,

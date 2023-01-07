@@ -1,3 +1,7 @@
+TODO (GLOBAL SCOPE):
+	- It is problematic to have classes with nanovg dependency as static library (eg: Controls) because of INVALID_LLVM -> Try the linking on clean WASM module
+	- Controls are temporary inside B78XH project because of INVALID_LLVM -> Move the controls to separate project after figure the problem out
+
 TODO (PFD/AUX PRE RELEASE):
 	- MINIMA POSITION
 	- MINIMA Updating

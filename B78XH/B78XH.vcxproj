@@ -50,7 +50,7 @@
     <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
-    <IncludePath>$(MSFS_IncludePath)</IncludePath>
+    <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
     <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
@@ -76,6 +76,7 @@
       <ExternalWarningLevel>Level1</ExternalWarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions>-Winline %(AdditionalOptions)</AdditionalOptions>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -120,6 +121,7 @@
     <ClCompile Include="Alignable.cpp" />
     <ClCompile Include="B78XHConfiguration.cpp" />
     <ClCompile Include="BaseControl.cpp" />
+    <ClCompile Include="BaseLogger.cpp" />
     <ClCompile Include="CCS.cpp" />
     <ClCompile Include="CCSGaugeCallback.cpp" />
     <ClCompile Include="CDUButton.cpp" />
@@ -149,8 +151,12 @@
     <ClCompile Include="CDURightTitleLine.cpp" />
     <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
+    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="ControlCrop.cpp" />
+    <ClCompile Include="ControlMask.cpp" />
+    <ClCompile Include="ControlPosition.cpp" />
+    <ClCompile Include="DefaultLogger.cpp" />
     <ClCompile Include="Display.cpp" />
-    <ClCompile Include="FirstGenerationControl.cpp" />
     <ClCompile Include="HelloWorldDisplay.cpp" />
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
     <ClCompile Include="HelloWorldApplication.cpp" />
@@ -166,6 +172,7 @@
     <ClCompile Include="IRU.cpp" />
     <ClCompile Include="KEvents.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LineControl.cpp" />
     <ClCompile Include="LineDisplay.cpp" />
     <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
@@ -188,6 +195,7 @@
     <ClCompile Include="MFDNDGauge.cpp" />
     <ClCompile Include="MFDNDGaugeCallback.cpp" />
     <ClCompile Include="NavData.cpp" />
+    <ClCompile Include="NullLogger.cpp" />
     <ClCompile Include="Operable.cpp" />
     <ClCompile Include="PFDAirspeedIndicator.cpp" />
     <ClCompile Include="PFDAirspeedIndicatorApplication.cpp" />
@@ -230,24 +238,35 @@
     <ClCompile Include="RightInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
-    <ClCompile Include="SecondGenerationControl.cpp" />
+    <ClCompile Include="SimConnectFacility.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
     <ClCompile Include="SimulationVariables.cpp" />
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
     <ClCompile Include="SpeedMarker.cpp" />
+    <ClCompile Include="TCPCABPageControl.cpp" />
     <ClCompile Include="TcpCenterDisplay.cpp" />
     <ClCompile Include="TcpCenterDisplayGaugeCallback.cpp" />
+    <ClCompile Include="TCPCenterLineControl.cpp" />
+    <ClCompile Include="TCPCenterLineTitleControl.cpp" />
     <ClCompile Include="TCPEventDispatcher.cpp" />
-    <ClCompile Include="TcpLeftDisplay.cpp" />
+    <ClCompile Include="TCPGPWSPageControl.cpp" />
+    <ClCompile Include="TCPHFPageControl.cpp" />
     <ClCompile Include="TcpLeftDisplayGaugeCallback.cpp" />
-    <ClCompile Include="TCPLeftLine.cpp" />
-    <ClCompile Include="TCPLineDisplay.cpp" />
-    <ClCompile Include="TCPLineDisplayApplication.cpp" />
+    <ClCompile Include="TCPLeftLineControl.cpp" />
+    <ClCompile Include="TCPLeftLineTitleControl.cpp" />
+    <ClCompile Include="TCPLineControl.cpp" />
+    <ClCompile Include="TCPMasterControl.cpp" />
+    <ClCompile Include="TCPPageControl.cpp" />
+    <ClCompile Include="TCPPagesLineControl.cpp" />
+    <ClCompile Include="TCPPageTitleControl.cpp" />
     <ClCompile Include="TcpRightDisplay.cpp" />
     <ClCompile Include="TcpRightDisplayGaugeCallback.cpp" />
-    <ClCompile Include="ThirdGenerationControl.cpp" />
+    <ClCompile Include="TCPRightLineControl.cpp" />
+    <ClCompile Include="TCPRightLineTitleControl.cpp" />
+    <ClCompile Include="TCPSATPageControl.cpp" />
+    <ClCompile Include="TCPVHFPageControl.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
@@ -280,6 +299,7 @@
     <ClInclude Include="B78XHConfiguration.h" />
     <ClInclude Include="BaseControl.h" />
     <ClInclude Include="BaseGauge.h" />
+    <ClInclude Include="BaseLogger.h" />
     <ClInclude Include="BaseScratchpad.h" />
     <ClInclude Include="CCS.h" />
     <ClInclude Include="CDUButton.h" />
@@ -314,12 +334,16 @@
     <ClInclude Include="CDURightTitleLine.h" />
     <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
+    <ClInclude Include="Control.h" />
+    <ClInclude Include="ControlCrop.h" />
+    <ClInclude Include="ControlMask.h" />
+    <ClInclude Include="ControlPosition.h" />
+    <ClInclude Include="DefaultLogger.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Displays.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
-    <ClInclude Include="FirstGenerationControl.h" />
     <ClInclude Include="HelloWorldDisplay.h" />
     <ClInclude Include="ExampleDisplays.h" />
     <ClInclude Include="FacilitySearchType.h" />
@@ -344,6 +368,7 @@
     <ClInclude Include="LeftInboardDisplay.h" />
     <ClInclude Include="LifeCycle.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="LineControl.h" />
     <ClInclude Include="LineDisplay.h" />
     <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
@@ -359,6 +384,7 @@
     <ClInclude Include="NavBeacon.h" />
     <ClInclude Include="NavData.h" />
     <ClInclude Include="NavRadioEnums.h" />
+    <ClInclude Include="NullLogger.h" />
     <ClInclude Include="OnOffState.h" />
     <ClInclude Include="Operable.h" />
     <ClInclude Include="PFDAirspeedIndicatorApplication.h" />
@@ -385,9 +411,9 @@
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
-    <ClInclude Include="SecondGenerationControl.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
+    <ClInclude Include="SimConnectFacility.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
     <ClInclude Include="SimConnectFacilityTypes.h" />
     <ClInclude Include="SpeedMarker.h" />
@@ -416,14 +442,25 @@
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
     <ClInclude Include="Systems.h" />
+    <ClInclude Include="TCPCABPageControl.h" />
     <ClInclude Include="TcpCenterDisplay.h" />
+    <ClInclude Include="TCPCenterLineControl.h" />
+    <ClInclude Include="TCPCenterLineTitleControl.h" />
     <ClInclude Include="TCPEventDispatcher.h" />
-    <ClInclude Include="TcpLeftDisplay.h" />
-    <ClInclude Include="TCPLeftLine.h" />
-    <ClInclude Include="TCPLineDisplay.h" />
-    <ClInclude Include="TCPLineDisplayApplication.h" />
+    <ClInclude Include="TCPGPWSPageControl.h" />
+    <ClInclude Include="TCPHFPageControl.h" />
+    <ClInclude Include="TCPLeftLineControl.h" />
+    <ClInclude Include="TCPLeftLineTitleControl.h" />
+    <ClInclude Include="TCPLineControl.h" />
+    <ClInclude Include="TCPMasterControl.h" />
+    <ClInclude Include="TCPPageControl.h" />
+    <ClInclude Include="TCPPagesLineControl.h" />
+    <ClInclude Include="TCPPageTitleControl.h" />
     <ClInclude Include="TcpRightDisplay.h" />
-    <ClInclude Include="ThirdGenerationControl.h" />
+    <ClInclude Include="TCPRightLineControl.h" />
+    <ClInclude Include="TCPRightLineTitleControl.h" />
+    <ClInclude Include="TCPSATPageControl.h" />
+    <ClInclude Include="TCPVHFPageControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />
@@ -460,8 +497,8 @@
     <None Include="B78XH.licenseheader" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fmt\fmt.vcxproj">
-      <Project>{06dc21b8-0b00-413a-b6d2-58c8844f94a7}</Project>
+    <ProjectReference Include="..\NanoVG\NanoVG.vcxproj">
+      <Project>{9c025d65-9fd3-4c33-8bb4-82387922c9d3}</Project>
     </ProjectReference>
     <ProjectReference Include="..\SimpleIni\SimpleIni.vcxproj">
       <Project>{b0048d6f-2b70-4409-8b9b-2c4099f37770}</Project>

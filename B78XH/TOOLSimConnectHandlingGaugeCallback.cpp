@@ -18,6 +18,7 @@
 #include <MSFS/MSFS.h>
 
 #include "SimConnectConnector.h"
+#include "SimConnectFacility.h"
 #include "B78XHConfiguration.h"
 CSimpleIniA ini;
 
@@ -35,22 +36,33 @@ extern "C" {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
 				//NavData::prepareWaypoints();
+				facilityConnector.connect("FACILITY");
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
 				//register_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
 				B78XHConfiguration::data.load();
+				//facilityConnector.getAirport("LKPR");
+				//facilityConnector.getAirport("EDDF");
+
+				facilityConnector.getWaypoint("DONAD");
+
+				/* Not unique*/
+				//facilityConnector.getWaypoint("GUP");
+				//facilityConnector.getWaypoint("FLINT");
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
 				connector.requestDispatchMessages();
+				facilityConnector.requestDispatchMessages();
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
 				B78XHConfiguration::data.save();
+				facilityConnector.disconnect();
 				//unregister_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
 				return true;
 			}

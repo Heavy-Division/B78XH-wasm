@@ -20,7 +20,6 @@
 #include "LeftInboardDisplay.h"
 #include "LeftOutboardDisplay.h"
 #include "LowerCenterDisplay.h"
-#include "MasterControl.h"
 #include "McpAltitudeDisplay.h"
 #include "McpHeadingDisplay.h"
 #include "McpSpeedDisplay.h"
@@ -28,8 +27,8 @@
 #include "RightInboardDisplay.h"
 #include "RightOutboardDisplay.h"
 #include "TcpCenterDisplay.h"
-#include "TcpLeftDisplay.h"
 #include "TcpRightDisplay.h"
+#include "TCPMasterControl.h"
 
 namespace Displays {
 	inline LeftOutboardDisplay leftOutboardDisplay;
@@ -45,10 +44,12 @@ namespace Displays {
 
 	inline IsfdDisplay isfdDisplay;
 
-	inline TcpLeftDisplay tcpLeftDisplay;
 	inline TcpCenterDisplay tcpCenterDisplay;
 	inline TcpRightDisplay tcpRightDisplay;
 
-	inline MasterControl masterControl;
+	//inline OldMasterControl oldMasterControl;
+	//inline std::unique_ptr<MasterControl> masterControl = std::make_unique<MasterControl>("HAHA");
+
+	inline std::unique_ptr<MasterControl> masterControl = std::make_unique<TCPMasterControl>("TCPMasterControl");
 
 }
