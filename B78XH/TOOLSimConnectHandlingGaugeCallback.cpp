@@ -36,7 +36,7 @@ extern "C" {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
 				//NavData::prepareWaypoints();
-				facilityConnector.connect("FACILITY");
+				// facilityConnector.connect("FACILITY");
 				return true;
 			}
 			break;
@@ -46,7 +46,7 @@ extern "C" {
 				//facilityConnector.getAirport("LKPR");
 				//facilityConnector.getAirport("EDDF");
 
-				facilityConnector.getWaypoint("DONAD");
+				// facilityConnector.getWaypoint("DONAD");
 
 				/* Not unique*/
 				//facilityConnector.getWaypoint("GUP");
@@ -56,13 +56,13 @@ extern "C" {
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
 				connector.requestDispatchMessages();
-				facilityConnector.requestDispatchMessages();
+				// facilityConnector.requestDispatchMessages();
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
 				B78XHConfiguration::data.save();
-				facilityConnector.disconnect();
+				// facilityConnector.disconnect();
 				//unregister_key_event_handler_EX1((GAUGE_KEY_EVENT_HANDLER_EX1)EventHandler, NULL);
 				return true;
 			}

@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>G:\MSFS\Community\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -157,6 +157,10 @@
     <ClCompile Include="ControlPosition.cpp" />
     <ClCompile Include="DefaultLogger.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="ExampleLineControl.cpp" />
+    <ClCompile Include="ExampleMasterControl.cpp" />
+    <ClCompile Include="ExampleControlGaugeCallBack.cpp" />
+    <ClCompile Include="HelloWorldControl.cpp" />
     <ClCompile Include="HelloWorldDisplay.cpp" />
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
     <ClCompile Include="HelloWorldApplication.cpp" />
@@ -245,6 +249,7 @@
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
     <ClCompile Include="SpeedMarker.cpp" />
+    <ClCompile Include="SystemsMenuBarApplication.cpp" />
     <ClCompile Include="TCPCABPageControl.cpp" />
     <ClCompile Include="TcpCenterDisplay.cpp" />
     <ClCompile Include="TcpCenterDisplayGaugeCallback.cpp" />
@@ -344,6 +349,9 @@
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
+    <ClInclude Include="ExampleLineControl.h" />
+    <ClInclude Include="ExampleMasterControl.h" />
+    <ClInclude Include="HelloWorldControl.h" />
     <ClInclude Include="HelloWorldDisplay.h" />
     <ClInclude Include="ExampleDisplays.h" />
     <ClInclude Include="FacilitySearchType.h" />
@@ -441,6 +449,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
+    <ClInclude Include="SystemsMenuBarApplication.h" />
     <ClInclude Include="Systems.h" />
     <ClInclude Include="TCPCABPageControl.h" />
     <ClInclude Include="TcpCenterDisplay.h" />

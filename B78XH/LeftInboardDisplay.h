@@ -17,10 +17,12 @@
 
 #pragma once
 #include "Display.h"
+#include "SystemsMenuBarApplication.h"
 
 class LeftInboardDisplay : public Display {
 	protected:
 		auto prepareApplications() -> void override;
 		auto setupApplications() -> void override;
 	private:
+		SystemsMenuBarApplication systems_menu_bar_application;
 };

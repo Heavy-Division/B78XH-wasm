@@ -505,6 +505,21 @@
     <ClCompile Include="SimConnectFacility.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
+    <ClCompile Include="SystemsMenuBarApplication.cpp">
+      <Filter>Source Files\Applications\MFD\EFIS</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleControlGaugeCallBack.cpp">
+      <Filter>Source Files\MSFS Callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleMasterControl.cpp">
+      <Filter>Source Files\Controls\Examples</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloWorldControl.cpp">
+      <Filter>Source Files\Controls\Examples</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleLineControl.cpp">
+      <Filter>Source Files\Controls\Examples</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1110,6 +1125,18 @@
     <ClInclude Include="SimConnectFacility.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
+    <ClInclude Include="SystemsMenuBarApplication.h">
+      <Filter>Source Files\Applications\MFD\EFIS</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleMasterControl.h">
+      <Filter>Source Files\Controls\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="HelloWorldControl.h">
+      <Filter>Source Files\Controls\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleLineControl.h">
+      <Filter>Source Files\Controls\Examples</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1402,6 +1429,15 @@
     </Filter>
     <Filter Include="Source Files\Tools\SimConnectFacility">
       <UniqueIdentifier>{e0245576-9e7b-4b9f-a57f-80d2981f9c31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\MFD">
+      <UniqueIdentifier>{c4316f33-c3be-47c0-a2dd-9c7268143b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Applications\MFD\EFIS">
+      <UniqueIdentifier>{4d929743-110b-4b61-8189-65f94b2967dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Examples">
+      <UniqueIdentifier>{9e1ae223-2446-4cf3-9402-c2dca7744d36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

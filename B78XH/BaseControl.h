@@ -258,8 +258,8 @@ class BaseControl {
 		#ifdef NDEBUG
 		std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
 		#else
-		//std::unique_ptr<BaseLogger> logger_ = std::make_unique<DefaultLogger>();
-		std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
+		std::unique_ptr<BaseLogger> logger_ = std::make_unique<DefaultLogger>();
+		// std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
 		#endif
 
 		auto addSystemControl(ControlUniquePointer control) -> void;

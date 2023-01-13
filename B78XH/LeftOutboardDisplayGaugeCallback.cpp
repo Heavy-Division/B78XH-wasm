@@ -51,3 +51,4 @@ extern "C" {
 		return false;
 	}
 }
+

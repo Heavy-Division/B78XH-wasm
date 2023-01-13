@@ -18,7 +18,10 @@
 #include "LeftInboardDisplay.h"
 
 auto LeftInboardDisplay::prepareApplications() -> void {
+	this->addApplication(this->systems_menu_bar_application);
 }
 
 auto LeftInboardDisplay::setupApplications() -> void {
+	this->systems_menu_bar_application.setMargin(425, 0);
+	this->systems_menu_bar_application.setSize(855, 622);
 }

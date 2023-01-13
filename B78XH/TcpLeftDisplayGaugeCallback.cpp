@@ -39,6 +39,7 @@ extern "C" {
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
 				//Console::log("POST_INSTALL");
+
 				NVGparams params;
 				params.userPtr = ctx;
 				params.edgeAntiAlias = true;

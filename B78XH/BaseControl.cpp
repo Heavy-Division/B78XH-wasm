@@ -150,7 +150,7 @@ auto BaseControl::isControlInvalid() -> bool {
 
 	for (auto& event : onValidate_.getEvents()) {
 		if (!event(*this)) {
-			getLogger()->info("Events are empty (invalid): " + getName());
+			getLogger()->info("Invalid by Callback " + getName());
 			return true;
 		}
 	}
@@ -496,7 +496,7 @@ auto BaseControl::ContentHolder::addContentVerticalOffset(string name, float off
 	/*
 	 * This is not an error... This is some kind of MSFS SDK bullsh*t...
 	 */
-	contentVerticalOffset_.emplace(name, offset);
+	contentVerticalOffset_[name] = offset; 
 }
 
 auto BaseControl::ContentHolder::getFontSizes() const -> const std::map<string, float>& {
