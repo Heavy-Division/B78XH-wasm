@@ -238,8 +238,10 @@
     <ClCompile Include="RightInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
+    <ClCompile Include="RouteReference.cpp" />
     <ClCompile Include="SimConnectFacility.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
+    <ClCompile Include="SimConnectPreload.cpp" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
     <ClCompile Include="SimulationVariables.cpp" />
     <ClCompile Include="SimConnectConnector.cpp" />
@@ -344,6 +346,7 @@
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
+    <ClInclude Include="FacilityDataStructs.h" />
     <ClInclude Include="HelloWorldDisplay.h" />
     <ClInclude Include="ExampleDisplays.h" />
     <ClInclude Include="FacilitySearchType.h" />
@@ -383,6 +386,7 @@
     <ClInclude Include="McpVerticalSpeedDisplay.h" />
     <ClInclude Include="NavBeacon.h" />
     <ClInclude Include="NavData.h" />
+    <ClInclude Include="NavDataCache.h" />
     <ClInclude Include="NavRadioEnums.h" />
     <ClInclude Include="NullLogger.h" />
     <ClInclude Include="OnOffState.h" />
@@ -411,11 +415,13 @@
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
+    <ClInclude Include="RouteReference.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacility.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
     <ClInclude Include="SimConnectFacilityTypes.h" />
+    <ClInclude Include="SimConnectPreload.h" />
     <ClInclude Include="SpeedMarker.h" />
     <ClInclude Include="LegTurnDirection.h" />
     <ClInclude Include="LegType.h" />

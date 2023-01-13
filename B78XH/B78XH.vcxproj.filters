@@ -505,6 +505,12 @@
     <ClCompile Include="SimConnectFacility.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
+    <ClCompile Include="SimConnectPreload.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClCompile>
+    <ClCompile Include="RouteReference.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1108,6 +1114,18 @@
       <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
     </ClInclude>
     <ClInclude Include="SimConnectFacility.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectPreload.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="RouteReference.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="NavDataCache.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="FacilityDataStructs.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
   </ItemGroup>
