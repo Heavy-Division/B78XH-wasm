@@ -249,7 +249,6 @@
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
     <ClCompile Include="SpeedMarker.cpp" />
-    <ClCompile Include="SystemsMenuBarApplication.cpp" />
     <ClCompile Include="TCPCABPageControl.cpp" />
     <ClCompile Include="TcpCenterDisplay.cpp" />
     <ClCompile Include="TcpCenterDisplayGaugeCallback.cpp" />
@@ -449,7 +448,6 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
-    <ClInclude Include="SystemsMenuBarApplication.h" />
     <ClInclude Include="Systems.h" />
     <ClInclude Include="TCPCABPageControl.h" />
     <ClInclude Include="TcpCenterDisplay.h" />

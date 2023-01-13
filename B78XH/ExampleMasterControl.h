@@ -11,6 +11,4 @@ protected:
 	auto prepareControls() -> void override;
 	auto setupControls() -> void override;
 
-public:
-
 };

@@ -24,5 +24,4 @@ class LeftInboardDisplay : public Display {
 		auto prepareApplications() -> void override;
 		auto setupApplications() -> void override;
 	private:
-		SystemsMenuBarApplication systems_menu_bar_application;
 };
