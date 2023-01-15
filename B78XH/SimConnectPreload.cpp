@@ -210,25 +210,25 @@ auto SimConnectPreload::requestDispatchMessages() -> void {
 }
 
 auto SimConnectPreload::prepareDataDefinitions() -> void {
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "OPEN WAYPOINT");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "OPEN ROUTE");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "NAME");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "NEXT_ICAO");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "PREV_ICAO");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "NEXT_REGION");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "PREV_REGION");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "NEXT_TYPE");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "PREV_TYPE");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "CLOSE ROUTE");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "CLOSE WAYPOINT");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "OPEN WAYPOINT");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "OPEN ROUTE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "NAME");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "NEXT_ICAO");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "PREV_ICAO");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "NEXT_REGION");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "PREV_REGION");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "NEXT_TYPE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "PREV_TYPE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "CLOSE ROUTE");
+	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL), "CLOSE WAYPOINT");
 }
 
 auto SimConnectPreload::getAirport(char* icao) -> void {
-	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::AIRPORT,
-	                                                            (SIMCONNECT_DATA_REQUEST_ID)PRELOAD_FACILITY_DATA_REQUEST_ID::START, icao);
+	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::AIRPORT),
+	                                                            static_cast<SIMCONNECT_DATA_REQUEST_ID>(PRELOAD_FACILITY_DATA_REQUEST_ID::START), icao);
 }
 
 auto SimConnectPreload::getRoute(string route, string icao, string region, char type) -> void {
-	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL,
-	                                                            (SIMCONNECT_DATA_REQUEST_ID)PRELOAD_FACILITY_DATA_REQUEST_ID::START, icao.c_str(),region.c_str(), type);
+	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), static_cast<SIMCONNECT_DATA_DEFINITION_ID>(PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL),
+	                                                            static_cast<SIMCONNECT_DATA_REQUEST_ID>(PRELOAD_FACILITY_DATA_REQUEST_ID::START), icao.c_str(),region.c_str(), type);
 }
