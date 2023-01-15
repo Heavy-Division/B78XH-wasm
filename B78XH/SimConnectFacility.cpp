@@ -11,7 +11,6 @@
 
 using std::string;
 
-std::unordered_map<int, Waypoint> waypointsRequestsIds{};
 //std::unordered_map<string, string> waypointsRequests{};
 
 //std::unordered_map<string, std::list<string>> routes;
@@ -83,7 +82,6 @@ auto SimConnectFacility::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* c
 						Console::error("WAYPOINT ICAO: {}", waypoint->icao);
 						Console::error("NUMBER OF ROUTES: {}", waypoint->numberOFRoutes);
 						auto finalWaypoint = Waypoint(waypoint->icao, waypoint->region, waypoint->latitude, waypoint->longitude, waypoint->altitude);
-						waypointsRequestsIds.emplace(pFacilityData->UniqueRequestId, finalWaypoint);
 						NavDataCache::waypoints.emplace(waypoint->icao, finalWaypoint);
 					}
 					
@@ -100,30 +98,17 @@ auto SimConnectFacility::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* c
 					//Console::error("NEXT ICAO: {}", route->nextIcao);
 					//Console::error("NEXT REGION: {}", route->nextRegion);
 
+
+					/*
+					 * If the route is not already loaded -> add the route to preload queue
+					 */
 					if (pFacilityData->UserRequestId == WAYPOINT_REQUEST && NavDataCache::routes.find(route->name) == NavDataCache::routes.end()) {
 						if(static_cast<string>(route->previousIcao) != "") {
 							NavDataCache::routesPreloadQueue.emplace(std::pair<string, RouteReference>(route->name, RouteReference(route->previousIcao, route->previousRegion, route->previousType, route->name, false)));
 						} else {
 							NavDataCache::routesPreloadQueue.emplace(std::pair<string, RouteReference>(route->name, RouteReference(route->nextIcao, route->nextRegion, route->nextType, route->name, false)));
 						}
-						//routes.emplace(std::pair<string, std::list<string>>(route->name, { waypointsRequestsIds.find(pFacilityData->ParentUniqueRequestId)->second }));
 					}
-
-					/*
-					if(pFacilityData->UserRequestId == WAYPOINT_REQUEST) {
-						routes.emplace(std::pair<string, std::list<string>>(route->name, { waypointsRequestsIds.find(pFacilityData->ParentUniqueRequestId)->second }));
-					}
-
-					if(route->previousIcao != "") {
-						routes.find(route->name)->second.emplace_front(route->previousIcao);
-					}
-
-					if (route->nextIcao != "") {
-						routes.find(route->name)->second.emplace_back(route->previousIcao);
-					}
-
-					Console::error("SIZE OF ROUTE ({}): {}", route->name, routes.find(route->name)->second.size());
-					*/
 					break;
 				}
 			}
@@ -133,19 +118,6 @@ auto SimConnectFacility::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* c
 			Console::info("B78XH WASM: Facility data end...");
 
 			auto pFacilityData = reinterpret_cast<SIMCONNECT_RECV_FACILITY_DATA_END*>(pData);
-
-			if (pFacilityData->RequestId == WAYPOINT_REQUEST) {
-				waypointsRequestsIds.clear();
-				//Console::error("REQUESTING ROUTE");
-				//preload->getAirport("RKSI");
-				/*
-				for(auto x : routes.end()->second) {
-					Console::error("WAYPOINT IN ROUTE: {}", x);
-				}
-				*/
-
-				//getRoute(routes.end()->first, routes.end()->second.begin()->data());
-			}
 		}
 		break;
 
@@ -240,9 +212,4 @@ auto SimConnectFacility::getAirport(char* icao) -> void {
 
 auto SimConnectFacility::getWaypoint(char* icao) -> void {
 	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), WAYPOINT, WAYPOINT_REQUEST, icao);
-}
-
-auto SimConnectFacility::getRoute(string route, string icao) -> void {
-	Console::error("ICAO: {}", icao);
-	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), WAYPOINT, WAYPOINT_REQUEST, icao.c_str());
 }

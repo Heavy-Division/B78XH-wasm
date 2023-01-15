@@ -46,7 +46,6 @@ auto SimConnectPreload::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cb
 
 			switch (pFacilityData->Type) {
 				case SIMCONNECT_FACILITY_DATA_AIRPORT: {
-					//Console::error("!!!!!!!!!!!!!!!!HAVE THE AIRPORT!!!!!!!!!!!!!!!!!!");
 					break;
 				}
 
@@ -55,66 +54,93 @@ auto SimConnectPreload::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cb
 				}
 
 				case SIMCONNECT_FACILITY_DATA_WAYPOINT: {
-					Console::error("GETTING WAYPOINT MINIMAL");
+					/*
+					 * We do not need any waypoint information... We only need routes.
+					 */
+					//Console::error("GETTING WAYPOINT MINIMAL");
 					break;
 				}
 
 				case SIMCONNECT_FACILITY_DATA_ROUTE: {
+					/*
+					 * Waypoint route
+					 */
 					auto route = reinterpret_cast<RouteStruct*>(&pFacilityData->Data);
+					/*
+					 * Search the route name in route cache (Are we preloading route this name right now??)
+					 */
 					auto iterator = routeCache.find(route->name);
-
+					/*
 					for (std::pair<const string, std::list<RouteWaypoint>> route_cache : routeCache) {
 						Console::cerror("ROUTE CACHE: {};", route_cache.first);
 					}
 					Console::cerror("ROUTE: {}", route->name);
+					*/
 
+					/*
+					 * Is the route preloading now  -> the continue -> else skip
+					 */
 					if (iterator != routeCache.end()) {
-						Console::cerror("CONDITION1");
+						/*
+						 * if front waypoint icao is not |START| -> try to preload waypoints in route backwards
+						 * if front waypoint icao is |START| -> try to preload waypoints in route forward (we already loaded all waypoints from beginning of route to reference waypoint so we need to load waypoints from reference to end of route)
+						 */
 						if (iterator->second.front().icao != "|START|") {
-							Console::cerror("CONDITION2");
 							string previous = route->previousIcao;
+							/*
+							 * If the previous ICAO is empty -> insert |START| to front of route waypoints array and start preloading route forward from last preloaded waypoint in array
+							 * (we are at the beginning of route)
+							 *
+							 * If the previous ICAO is not empty -> insert the previous ICAO to the array and make request for previous waypoint (routes of previous)
+							 */
 							if (previous == "") {
-								Console::cerror("CONDITION3");
 								iterator->second.emplace_front(RouteWaypoint{ "|START|", "", 0 });
 								getRoute("", iterator->second.back().icao, iterator->second.back().region, iterator->second.back().type);
 							}
 							else {
-								Console::cerror("CONDITION4");
 								iterator->second.emplace_front(RouteWaypoint{ previous, route->previousRegion, (char)route->previousType });
 								getRoute("asd", iterator->second.front().icao, route->previousRegion, route->previousType);
 							}
 						}
 						else {
-							Console::cerror("CONDITION5");
+							/*
+							 * if back waypoint is |END| -> route is complete. Copy the preloaded route to NavDataCache, remove route from queue and clear routeCache (The code should never get to this condition)
+							 * if back waypoint is not |END| -> try to preload route forward (from reference waypoint to the end of route)
+							 */
 							if (iterator->second.back().icao != "|END|") {
-								Console::cerror("CONDITION6");
 								string next = route->nextIcao;
+								/*
+								 * if next ICAO is empty -> We are in the end of route (Route is complete) -> Copy the preloaded route to NavDataCache, remove route from queue and clear routeCache
+								 *
+								 * if next ICAO is not empty -> insert next ICAO to the array and make request to next waypoint (routes of next waypoint)
+								 */
 								if (next == "") {
-									Console::cerror("CONDITION7");
 									auto const icao = iterator->second.back();
-									iterator->second.emplace_back(RouteWaypoint{"|END|", "", 0});
-									Console::cerror("CONDITION9");
+									//iterator->second.emplace_back(RouteWaypoint{"|END|", "", 0});
+									/*
+									 * Pop front waypoint "|START|" helper
+									 */
+									iterator->second.pop_front();
 									NavDataCache::routes.emplace(std::pair<string, std::list<RouteWaypoint>>(iterator->first, iterator->second));
 									NavDataCache::routesPreloadQueue.erase(iterator->first);
 									routeCache.clear();
 								}
 								else {
-									Console::cerror("CONDITION8");
 									iterator->second.emplace_back(RouteWaypoint{ route->nextIcao, route->nextRegion, (char)route->nextType });
 									getRoute("", iterator->second.back().icao, route->nextRegion, route->nextType);
 								}
 							}
 							else {
-								Console::cerror("CONDITION9");
+								/*
+								 * This code should not be reachable because the route is closed inside the if branch.
+								 * (The route is closed automatically if next icao is empty so there should not be next iteration on the same route)
+								 */
 								NavDataCache::routes.emplace(std::pair<string, std::list<RouteWaypoint>>(iterator->first, iterator->second));
 								NavDataCache::routesPreloadQueue.erase(iterator->first);
 								routeCache.clear();
 							}
 						}
-					} else {
-						Console::cerror("CONDITION10");
 					}
-					Console::error("GETTING ROUTE");
 					break;
 				}
 			}
@@ -122,6 +148,7 @@ auto SimConnectPreload::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cb
 		break;
 		case SIMCONNECT_RECV_ID_FACILITY_DATA_END: {
 			Console::info("B78XH WASM: Facility data end...");
+			/*
 			Console::cerror("NUMBER OF PRELOADED ROUTES: {}", NavDataCache::routes.size());
 			for (std::pair<const string, std::list<RouteWaypoint>> route : NavDataCache::routes) {
 				Console::cerror("RouteName: {}", route.first);
@@ -133,13 +160,12 @@ auto SimConnectPreload::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cb
 				}
 				Console::cerror("----------------------------------- ");
 			}
-			auto pFacilityData = reinterpret_cast<SIMCONNECT_RECV_FACILITY_DATA_END*>(pData);
-
+			*/
+			//auto pFacilityData = reinterpret_cast<SIMCONNECT_RECV_FACILITY_DATA_END*>(pData);
 		}
 		break;
 
 		case SIMCONNECT_RECV_ID_FACILITY_MINIMAL_LIST: {
-			Console::error("NON UNIQUE");
 			auto msg = reinterpret_cast<SIMCONNECT_RECV_FACILITY_MINIMAL_LIST*>(pData);
 			for (unsigned i = 0; i < msg->dwArraySize; ++i) {
 				SIMCONNECT_FACILITY_MINIMAL& fm = msg->rgData[i];
@@ -159,21 +185,20 @@ auto SimConnectPreload::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* cb
 }
 
 auto SimConnectPreload::requestDispatchMessages() -> void {
+	/*
+	 * Do we have any route to preload?
+	 */
 	if (!NavDataCache::routesPreloadQueue.empty()) {
-		Console::cerror("NOT EMPTY");
 		const auto firstRoute = NavDataCache::routesPreloadQueue.begin();
 
-		if (routeCache.empty() && !NavDataCache::routesPreloadQueue.empty()) {
-			Console::cerror("C1");
+		/*
+		 * If routeCache is empty (we are not preloading any route at this time). Create new routeCache and make a request for reference waypoint (start preloading new route)
+		 * If routeCache is not empty (We already preloading some route) -> skip (only one route can be preloading)
+		 */
+		if (routeCache.empty() && NavDataCache::routes.find(firstRoute->first) == NavDataCache::routes.end()) {
 			routeCache.emplace(std::pair<string, std::list<RouteWaypoint>>(firstRoute->first, {}));
 			getRoute(firstRoute->first, firstRoute->second.getReferenceWaypoint(), firstRoute->second.getRegion(), firstRoute->second.getType());
 		}
-
-		//Console::cerror("SEARCHING: {}", firstRoute->first);
-		//if (routeCache.find(firstRoute->first) != routeCache.end()) {
-			//Console::cerror("C2");
-			//routeCache.clear();
-		//}
 	}
 
 
@@ -186,8 +211,6 @@ auto SimConnectPreload::requestDispatchMessages() -> void {
 
 auto SimConnectPreload::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "OPEN WAYPOINT");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "ICAO");
-	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "REGION");
 	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "OPEN ROUTE");
 	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "NAME");
 	this->connectionResult = SimConnect_AddToFacilityDefinition(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL, "NEXT_ICAO");
@@ -206,9 +229,6 @@ auto SimConnectPreload::getAirport(char* icao) -> void {
 }
 
 auto SimConnectPreload::getRoute(string route, string icao, string region, char type) -> void {
-	Console::cerror("getRoute: {}", route);
-	Console::cerror("getRoute ICAO: {}", icao);
-	Console::cerror("getRoute Region: {}", region);
 	this->connectionResult = SimConnect_RequestFacilityData_EX1(getHandle(), (SIMCONNECT_DATA_DEFINITION_ID)PRELOAD_FACILITY_DATA_DEFINE_ID::WAYPOINT_MINIMAL,
 	                                                            (SIMCONNECT_DATA_REQUEST_ID)PRELOAD_FACILITY_DATA_REQUEST_ID::START, icao.c_str(),region.c_str(), type);
 }

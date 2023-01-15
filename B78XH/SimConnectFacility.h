@@ -12,7 +12,6 @@ class SimConnectFacility {
 		auto requestDispatchMessages() -> void;
 		auto getAirport(char* icao) -> void;
 		auto getWaypoint(char* icao) -> void;
-		auto getRoute(std::string route, std::string icao) -> void;
 		auto connect(const char* name) -> bool;
 		auto disconnect() -> void;
 	protected:
@@ -25,7 +24,6 @@ class SimConnectFacility {
 	private:
 		unsigned long long simConnectHandle = 0;
 		long connectionResult = 0;
-		char* route = nullptr;
 		std::shared_ptr<SimConnectPreload> preload = std::make_shared<SimConnectPreload>();
 };
 
