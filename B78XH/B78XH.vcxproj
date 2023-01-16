@@ -157,6 +157,7 @@
     <ClCompile Include="ControlPosition.cpp" />
     <ClCompile Include="DefaultLogger.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="FacilityLoader.cpp" />
     <ClCompile Include="HelloWorldDisplay.cpp" />
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
     <ClCompile Include="HelloWorldApplication.cpp" />
@@ -239,9 +240,10 @@
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RouteReference.cpp" />
+    <ClCompile Include="SimConnectAirportPreloader.cpp" />
     <ClCompile Include="SimConnectFacility.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
-    <ClCompile Include="SimConnectPreload.cpp" />
+    <ClCompile Include="SimConnectRoutePreloader.cpp" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
     <ClCompile Include="SimulationVariables.cpp" />
     <ClCompile Include="SimConnectConnector.cpp" />
@@ -347,6 +349,7 @@
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
     <ClInclude Include="FacilityDataStructs.h" />
+    <ClInclude Include="FacilityLoader.h" />
     <ClInclude Include="HelloWorldDisplay.h" />
     <ClInclude Include="ExampleDisplays.h" />
     <ClInclude Include="FacilitySearchType.h" />
@@ -417,11 +420,12 @@
     <ClInclude Include="RightOutboardDisplay.h" />
     <ClInclude Include="RouteReference.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
+    <ClInclude Include="SimConnectAirportPreloader.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacility.h" />
     <ClInclude Include="SimConnectFacilityLoader.h" />
     <ClInclude Include="SimConnectFacilityTypes.h" />
-    <ClInclude Include="SimConnectPreload.h" />
+    <ClInclude Include="SimConnectRoutePreloader.h" />
     <ClInclude Include="SpeedMarker.h" />
     <ClInclude Include="LegTurnDirection.h" />
     <ClInclude Include="LegType.h" />

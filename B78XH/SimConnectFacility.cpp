@@ -64,7 +64,7 @@ auto SimConnectFacility::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* c
 					//const Airport b = Airport(airport->name, airport->latitude, airport->longitude, airport->altitude);
 					Console::error("{}", airport->name);
 					Console::error("Number Of Runways {}", airport->numberOfRunways);
-					NavDataCache::airports.emplace(airport->name, Airport(airport->name, airport->latitude, airport->longitude, airport->altitude));
+					//NavDataCache::airports.emplace(airport->name, Airport(airport->name, airport->latitude, airport->longitude, airport->altitude));
 					break;
 				}
 
@@ -124,10 +124,12 @@ auto SimConnectFacility::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* c
 		case SIMCONNECT_RECV_ID_FACILITY_MINIMAL_LIST: {
 			Console::error("NON UNIQUE");
 			auto msg = reinterpret_cast<SIMCONNECT_RECV_FACILITY_MINIMAL_LIST*>(pData);
-			for (unsigned i = 0; i < msg->dwArraySize; ++i)
+			Console::error("ARRAY SIZE: {}", msg->dwArraySize);
+			for (unsigned i = 0; i < msg->dwArraySize; i++)
 			{
+				Console::error("INSIDE");
 				SIMCONNECT_FACILITY_MINIMAL& fm = msg->rgData[i];
-
+				Console::error("IDENT: {}; REGION: {}; TYPE: {}", fm.icao.Ident, fm.icao.Region, fm.icao.Type);
 				fprintf(stdout, "ICAO => Type: %c, Ident: %s, Region: %s, Airport: %s => Lat: %lf, Lat: %lf, Alt: %lf\n", fm.icao.Type, fm.icao.Ident, fm.icao.Region, fm.icao.Airport, fm.lla.Latitude, fm.lla.Longitude, fm.lla.Altitude);
 			}
 			break;

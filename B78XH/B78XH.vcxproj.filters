@@ -505,10 +505,16 @@
     <ClCompile Include="SimConnectFacility.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
-    <ClCompile Include="SimConnectPreload.cpp">
+    <ClCompile Include="SimConnectRoutePreloader.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
     <ClCompile Include="RouteReference.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClCompile>
+    <ClCompile Include="FacilityLoader.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="SimConnectAirportPreloader.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1116,7 +1122,7 @@
     <ClInclude Include="SimConnectFacility.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
-    <ClInclude Include="SimConnectPreload.h">
+    <ClInclude Include="SimConnectRoutePreloader.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
     <ClInclude Include="RouteReference.h">
@@ -1126,6 +1132,12 @@
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="FacilityDataStructs.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="FacilityLoader.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectAirportPreloader.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
   </ItemGroup>

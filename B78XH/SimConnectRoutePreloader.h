@@ -9,10 +9,10 @@
 
 using std::string;
 
-class SimConnectPreload {
+class SimConnectRoutePreloader {
 	public:
-		SimConnectPreload() = default;
-		~SimConnectPreload() = default;
+		SimConnectRoutePreloader() = default;
+		~SimConnectRoutePreloader() = default;
 		auto requestDispatchMessages() -> void;
 		auto getAirport(char* icao) -> void;
 		auto getWaypoint(char* icao) -> void;
