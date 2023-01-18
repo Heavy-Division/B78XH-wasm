@@ -17,7 +17,6 @@
 
 #pragma once
 #include "Display.h"
-#include "SystemsMenuBarApplication.h"
 
 class LeftInboardDisplay : public Display {
 	protected:
