@@ -1,7 +1,9 @@
 #pragma once
 
 #include "MasterControl.h"
-#include "MFDControl.h"
+#include "TATControl.h"
+#include "WeightTempBoxControl.h"
+#include "LineSeparatorControl.h"
 
 class MFDMasterControl : public MasterControl {
 public:
@@ -12,6 +14,4 @@ protected:
 	auto prepareControls() -> void override;
 	auto setupControls() -> void override;
 
-public:
-	~MFDMasterControl() override;
 };

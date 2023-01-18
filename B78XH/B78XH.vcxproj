@@ -178,6 +178,7 @@
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineControl.cpp" />
     <ClCompile Include="LineDisplay.cpp" />
+    <ClCompile Include="LineSeparatorControl.cpp" />
     <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
@@ -196,6 +197,8 @@
     <ClCompile Include="MCPVSpeedGauge.cpp" />
     <ClCompile Include="MFDCduGauge.cpp" />
     <ClCompile Include="MFDCduGaugeCallback.cpp" />
+    <ClCompile Include="TATControl.cpp" />
+    <ClCompile Include="MFDMasterControl.cpp" />
     <ClCompile Include="MFDNDGauge.cpp" />
     <ClCompile Include="MFDNDGaugeCallback.cpp" />
     <ClCompile Include="NavData.cpp" />
@@ -289,6 +292,7 @@
     <ClCompile Include="V2SpeedMarker.cpp" />
     <ClCompile Include="VRefSpeedMarker.cpp" />
     <ClCompile Include="VRSpeedMarker.cpp" />
+    <ClCompile Include="WeightTempBoxControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHRU.h" />
@@ -377,6 +381,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineControl.h" />
     <ClInclude Include="LineDisplay.h" />
+    <ClInclude Include="LineSeparatorControl.h" />
     <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
@@ -388,6 +393,8 @@
     <ClInclude Include="McpSpeedDisplay.h" />
     <ClInclude Include="MCPVerticalSpeedApplication.h" />
     <ClInclude Include="McpVerticalSpeedDisplay.h" />
+    <ClInclude Include="TATControl.h" />
+    <ClInclude Include="MFDMasterControl.h" />
     <ClInclude Include="NavBeacon.h" />
     <ClInclude Include="NavData.h" />
     <ClInclude Include="NavRadioEnums.h" />
@@ -495,6 +502,7 @@
     <ClInclude Include="VorType.h" />
     <ClInclude Include="VRefSpeedMarker.h" />
     <ClInclude Include="VRSpeedMarker.h" />
+    <ClInclude Include="WeightTempBoxControl.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty_licenses.md" />

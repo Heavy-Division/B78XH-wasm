@@ -609,6 +609,15 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME, "LOCAL YEAR",
 	                                                        "Number");
+
+
+	/*
+	 * Environment
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TEMPERATURE, "TOTAL AIR TEMPERATURE",
+															"Celsius");
+	
 }
 
 auto SimConnectConnector::prepareClientDataDefinitions() -> void {
@@ -715,6 +724,11 @@ auto SimConnectConnector::prepareRequests() -> void {
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_THROTTLE,
 	                                                           DEFINITION_AUTOPILOT_THROTTLE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_TEMPERATURE,
+	                                                           DEFINITION_TEMPERATURE, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
@@ -854,6 +868,11 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 
 				case REQUEST_MISC_TIME: {
 					SimConnectData::Misc::time = (*reinterpret_cast<SimConnectData::Misc::Time*>(&pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_TEMPERATURE: {
+					SimConnectData::environment::temperature = (*reinterpret_cast<SimConnectData::environment::Temperature*>(&pObjData->dwData));
 					break;
 				}
 				default:

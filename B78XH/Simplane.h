@@ -369,6 +369,12 @@ namespace Simplane {
 
 		namespace fmc = cdu;
 	}
+
+	namespace environment {
+		namespace temperature {
+			auto trueAirTemp() -> double;
+		}
+	}
 }
 
 inline auto Simplane::comFrequencies::activeFrequency1() -> double {
@@ -1406,4 +1412,8 @@ inline auto Simplane::equipment::radioNav::unit4::name() -> char* {
 
 inline auto Simplane::equipment::radioNav::unit4::ident() -> char* {
 	return SimConnectData::Equipment::RadioNav::unit4.ident;
+}
+
+inline auto Simplane::environment::temperature::trueAirTemp() -> double {
+	return SimConnectData::environment::temperature.trueAirTemperature;
 }

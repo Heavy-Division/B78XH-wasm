@@ -1,15 +1,14 @@
 #include "MFDMasterControl.h"
-#include "MFDControl.h"
+
 
 void MFDMasterControl::prepareControls() {
 	MasterControl::prepareControls();
-	add(std::make_unique<MFDControl>("MFDMasterControl"));
+	add(std::make_unique<TATControl>("MFDMasterControl"));
+	add(std::make_unique<WeightTempBoxControl>("WeightTempBoxControl"));
+	add(std::make_unique<LineSeparatorControl>("LineSeparatorControl"));
 }
 
 void MFDMasterControl::setupControls() {
 	MasterControl::setupControls();
-	addOnValidate([](BaseControl& control) -> bool {
-		return false;
-		});
 }
 

@@ -30,6 +30,7 @@
 #include "TcpRightDisplay.h"
 #include "TCPMasterControl.h"
 #include "ExampleMasterControl.h"
+#include "MFDMasterControl.h"
 
 namespace Displays {
 	inline LeftOutboardDisplay leftOutboardDisplay;
@@ -53,5 +54,5 @@ namespace Displays {
 
 	inline std::unique_ptr<MasterControl> masterControl = std::make_unique<TCPMasterControl>("TCPMasterControl");
 	inline std::unique_ptr<MasterControl> exampleControl = std::make_unique<ExampleControl>("ExampleControl");
-
+	inline std::unique_ptr<MasterControl> mfdControl = std::make_unique<MFDMasterControl>("MFDMasterControl");
 }

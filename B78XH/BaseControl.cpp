@@ -1,6 +1,8 @@
 ﻿#include "BaseControl.h"
 #include <iostream>
 
+#include "Tools/Console.h"
+
 
 auto BaseControl::prepareRenderingContextDefaults() -> void {
 	prepareRenderingContextDefaultsFonts();
@@ -197,7 +199,7 @@ auto BaseControl::renderScreen() -> void {
 		return;
 	}
 
-	if (!needRedraw(isFirstRun())) {
+	if (!needRedraw(true)) {
 		return;
 	}
 
@@ -211,7 +213,7 @@ auto BaseControl::renderScreen() -> void {
 		{
 			nvgTranslate(getContext(), 0, 0);
 			{
-				nvgFillColor(getContext(), nvgRGB(0, 0, 0));
+				nvgFillColor(getContext(), nvgRGB((std::rand() % (255 + 1)), (std::rand() % (255 + 1)), (std::rand() % (255 + 1))));
 				nvgRect(getContext(), 0, 0, winWidth, winHeight);
 				nvgFill(getContext());
 				nvgSave(getContext());

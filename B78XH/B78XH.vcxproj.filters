@@ -517,6 +517,18 @@
     <ClCompile Include="ExampleLineControl.cpp">
       <Filter>Source Files\Controls\Examples</Filter>
     </ClCompile>
+    <ClCompile Include="TATControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="WeightTempBoxControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="LineSeparatorControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1131,6 +1143,18 @@
     <ClInclude Include="ExampleLineControl.h">
       <Filter>Source Files\Controls\Examples</Filter>
     </ClInclude>
+    <ClInclude Include="TATControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDMasterControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="WeightTempBoxControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="LineSeparatorControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1426,6 +1450,9 @@
     </Filter>
     <Filter Include="Source Files\Controls\Examples">
       <UniqueIdentifier>{9e1ae223-2446-4cf3-9402-c2dca7744d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD">
+      <UniqueIdentifier>{a05418ef-e94b-42f0-aaba-e642794bef90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

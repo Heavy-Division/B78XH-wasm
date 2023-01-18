@@ -40,6 +40,7 @@ enum DATA_DEFINE_ID {
 	DEFINITION_BAROMETER_SETTING,
 	DEFINITION_MISC_TIME,
 	DEFINITION_CLOSE,
+	DEFINITION_TEMPERATURE,
 };
 
 enum DATA_REQUEST_ID {
@@ -63,7 +64,8 @@ enum DATA_REQUEST_ID {
 	REQUEST_EQUIPMENT_RADIONAV_UNIT4,
 	REQUEST_BAROMETER_SETTING,
 	REQUEST_MISC_TIME,
-	REQUEST_CLOSE
+	REQUEST_CLOSE,
+	REQUEST_TEMPERATURE,
 };
 
 namespace SimConnectData {
@@ -362,6 +364,14 @@ namespace SimConnectData {
 		};
 
 		inline Time time;
+	}
+
+	namespace environment {
+		struct Temperature {
+			double trueAirTemperature;
+		};
+
+		inline Temperature temperature;
 	}
 
 }

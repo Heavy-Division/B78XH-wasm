@@ -33,7 +33,7 @@ extern "C" {
 		switch (service_id) {
 		case PANEL_SERVICE_PRE_INSTALL: {
 			//Console::log("PRE_INSTALL");
-			Displays::exampleControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			Displays::mfdControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
 			return true;
 		}
 									  break;
@@ -43,34 +43,34 @@ extern "C" {
 			NVGparams params;
 			params.userPtr = ctx;
 			params.edgeAntiAlias = true;
-			Displays::exampleControl->postInstall(nvgCreateInternal(&params));
+			Displays::mfdControl->postInstall(nvgCreateInternal(&params));
 
 			return true;
 		}
 									   break;
 		case PANEL_SERVICE_PRE_UPDATE: {
 			//Console::log("PRE_UPDATE");
-			Displays::exampleControl->preUpdate();
+			Displays::mfdControl->preUpdate();
 			return true;
 		}
 									 break;
 		case PANEL_SERVICE_POST_UPDATE: {
-			Displays::exampleControl->postUpdate();
+			Displays::mfdControl->postUpdate();
 			return true;
 		}
 									  break;
 		case PANEL_SERVICE_PRE_DRAW: {
 			//Console::log("RENDER");
-			Displays::exampleControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			Displays::mfdControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
 			return true;
 		}
 								   break;
 		case PANEL_SERVICE_PRE_KILL: {
-			Displays::exampleControl->preKill();
+			Displays::mfdControl->preKill();
 			return true;
 		}
 		case PANEL_SERVICE_POST_KILL: {
-			Displays::exampleControl->postKill();
+			Displays::mfdControl->postKill();
 		}
 									break;
 		}
