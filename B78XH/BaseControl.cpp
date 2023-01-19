@@ -213,8 +213,12 @@ auto BaseControl::renderScreen() -> void {
 		{
 			nvgTranslate(getContext(), 0, 0);
 			{
-				nvgFillColor(getContext(), nvgRGB((std::rand() % (255 + 1)), (std::rand() % (255 + 1)), (std::rand() % (255 + 1))));
-				nvgRect(getContext(), 0, 0, winWidth, winHeight);
+				nvgFillColor(getContext(), nvgRGB(0, 0, 0));
+				nvgBeginPath(getContext());
+				{
+					nvgRect(getContext(), 0, 0, winWidth, winHeight);
+				}
+				nvgClosePath(getContext());
 				nvgFill(getContext());
 				nvgSave(getContext());
 				{

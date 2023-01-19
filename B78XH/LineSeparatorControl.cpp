@@ -14,7 +14,7 @@ void LineSeparatorControl::render() {
         nvgStrokeWidth(this->getContext(), 4.0f);
         nvgBeginPath(this->getContext());
         {
-            nvgMoveTo(this->getContext(), 80, 0);
+            // nvgMoveTo(this->getContext(), 80, 0);
             nvgLineTo(this->getContext(), 84, 0);
             nvgLineTo(this->getContext(), 84, 465);
         }

@@ -19,7 +19,7 @@
 #include "LVars.h"
 #include "Tools/Console.h"
 #include "KEvents.h"
-
+#include "Simplane.h"
 
 auto CCS::init() -> void {
 }
@@ -30,6 +30,7 @@ auto CCS::prepare() -> void {
 
 auto CCS::update(double deltaTime) -> void {
 	this->updateERS(deltaTime);
+	Console::log("{}", Simplane::aircraft::systems::powerplant::engine_1::n1_rpm());
 }
 
 auto CCS::reset() -> void {

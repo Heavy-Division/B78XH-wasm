@@ -375,6 +375,20 @@ namespace Simplane {
 			auto trueAirTemp() -> double;
 		}
 	}
+
+	namespace aircraft::systems {
+		namespace powerplant {
+			namespace engine_1 {
+				auto n1_rpm() -> double;
+				auto n2_rpm() -> double;
+			};
+
+			namespace engine_2 {
+				auto n1_rpm() -> double;
+				auto n2_rpm() -> double;
+			}
+		}
+	}
 }
 
 inline auto Simplane::comFrequencies::activeFrequency1() -> double {
@@ -1416,4 +1430,19 @@ inline auto Simplane::equipment::radioNav::unit4::ident() -> char* {
 
 inline auto Simplane::environment::temperature::trueAirTemp() -> double {
 	return SimConnectData::environment::temperature.trueAirTemperature;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::n1_rpm() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_n1;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::n2_rpm() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_n2;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::n1_rpm() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_n1;
+}
+inline auto Simplane::aircraft::systems::powerplant::engine_2::n2_rpm() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_n2;
 }

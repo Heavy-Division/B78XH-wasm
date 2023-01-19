@@ -617,6 +617,23 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TEMPERATURE, "TOTAL AIR TEMPERATURE",
 															"Celsius");
+
+	/*
+	*  Systems - Powerplant
+	*/
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N1:1",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N2:1",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N1:2",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N2:2",
+		"Percent");
+
 	
 }
 
@@ -731,7 +748,13 @@ auto SimConnectConnector::prepareRequests() -> void {
 	                                                           DEFINITION_TEMPERATURE, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_ENGINE,
+	                                                           DEFINITION_ENGINE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
+
 
 
 auto SimConnectConnector::requestDispatchMessages() -> void {
@@ -875,6 +898,12 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 					SimConnectData::environment::temperature = (*reinterpret_cast<SimConnectData::environment::Temperature*>(&pObjData->dwData));
 					break;
 				}
+
+				case REQUEST_ENGINE: {
+					SimConnectData::systems::powerplant::engine = (*reinterpret_cast<SimConnectData::systems::powerplant::Engine*>(&pObjData->dwData));
+					break;
+				}
+
 				default:
 					break;
 			}

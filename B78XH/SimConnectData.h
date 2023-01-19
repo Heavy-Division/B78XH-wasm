@@ -41,6 +41,7 @@ enum DATA_DEFINE_ID {
 	DEFINITION_MISC_TIME,
 	DEFINITION_CLOSE,
 	DEFINITION_TEMPERATURE,
+	DEFINITION_ENGINE,
 };
 
 enum DATA_REQUEST_ID {
@@ -66,6 +67,7 @@ enum DATA_REQUEST_ID {
 	REQUEST_MISC_TIME,
 	REQUEST_CLOSE,
 	REQUEST_TEMPERATURE,
+	REQUEST_ENGINE,
 };
 
 namespace SimConnectData {
@@ -372,6 +374,19 @@ namespace SimConnectData {
 		};
 
 		inline Temperature temperature;
+	}
+
+	namespace systems {
+		namespace powerplant {
+			struct Engine {
+				double engine1_n1;
+				double engine1_n2;
+				double engine2_n1;
+				double engine2_n2;
+			};
+
+			inline Engine engine;
+		}
 	}
 
 }
