@@ -143,11 +143,6 @@ auto BaseControl::isControlInvalid() -> bool {
 		return true;
 	}
 
-	if (onValidate_.getEvents().empty()) {
-		getLogger()->info("Events are empty (invalid): " + getName());
-		return true;
-	}
-
 	for (auto& event : onValidate_.getEvents()) {
 		if (!event(*this)) {
 			getLogger()->info("Events are empty (invalid): " + getName());
@@ -289,7 +284,6 @@ auto BaseControl::isControlInvalid(BaseControl& control) -> bool {
 	if (control.isControlInvalid()) {
 		return true;
 	}
-
 
 	for (auto& con : control.getControls()) {
 		bool isInvalid = isControlInvalid(*con);
