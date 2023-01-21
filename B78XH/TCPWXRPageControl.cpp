@@ -1,16 +1,16 @@
-﻿#include "TCPHFPageControl.h"
+﻿#include "TCPWXRPageControl.h"
 
 #include "TCPCenterLineControl.h"
 #include "TCPPageTitleControl.h"
 
-auto TCPHFPageControl::prepareControls() -> void {
+auto TCPWXRPageControl::prepareControls() -> void {
 	TCPPageControl::prepareControls();
 	add(std::make_unique<TCPPageTitleControl>("PAGE_TITLE"));
 	add(std::make_unique<TCPCenterLineControl>("CenterLineOne"));
 	add(std::move(scratchPad_));
 }
 
-auto TCPHFPageControl::setupControls() -> void {
+auto TCPWXRPageControl::setupControls() -> void {
 	TCPPageControl::setupControls();
 
 	auto& scratchpad = getControl("SCRATCHPAD");
@@ -20,7 +20,7 @@ auto TCPHFPageControl::setupControls() -> void {
 	const auto& centerLineOne = getControl("CenterLineOne");
 
 	pageTitle->addOnBeforeRender([](BaseControl& control) -> bool {
-		control.getContentHolder().setContent({{"HF"}});
+		control.getContentHolder().setContent({{"WEATHER RADAR"}});
 		return true;
 	});
 

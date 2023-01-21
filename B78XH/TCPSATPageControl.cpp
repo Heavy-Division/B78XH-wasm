@@ -23,10 +23,14 @@ auto TCPSATPageControl::prepareControls() -> void {
 	add(std::make_unique<TCPRightLineTitleControl>("RIGHT_ONE_TITLE", TCPLineControl::LINE_NUMBER::ONE));
 	add(std::make_unique<TCPRightLineControl>("RIGHT_TWO", TCPLineControl::LINE_NUMBER::TWO));
 	add(std::make_unique<TCPRightLineControl>("RIGHT_THREE", TCPLineControl::LINE_NUMBER::THREE));
+	add(std::move(scratchPad_));
 }
 
 auto TCPSATPageControl::setupControls() -> void {
 	TCPPageControl::setupControls();
+
+	auto& scratchpad = getControl("SCRATCHPAD");
+	scratchpad->position.setPosition(5, 240, 0, 0);
 
 	auto& pageTitle = getControl("PAGE_TITLE");
 	auto& pages = getControl("PAGES");

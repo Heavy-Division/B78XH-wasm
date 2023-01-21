@@ -517,6 +517,15 @@
     <ClCompile Include="SimConnectAirportPreloader.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
+    <ClCompile Include="TCPWXRPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPXPDRPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPScratchpadControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1140,6 +1149,15 @@
     <ClInclude Include="SimConnectAirportPreloader.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
+    <ClInclude Include="TCPWXRPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPXPDRPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPScratchpadControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1432,6 +1450,9 @@
     </Filter>
     <Filter Include="Source Files\Tools\SimConnectFacility">
       <UniqueIdentifier>{e0245576-9e7b-4b9f-a57f-80d2981f9c31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\TCP\TCPUtils">
+      <UniqueIdentifier>{d7f6a2c4-1f1b-44ad-8919-c8c8c1689c17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

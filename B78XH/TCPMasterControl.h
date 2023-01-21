@@ -2,6 +2,7 @@
 #include "MasterControl.h"
 #include "TCPEventDispatcher.h"
 #include "TCPPageControl.h"
+#include "TCPScratchpadControl.h"
 #include "TCPVHFPageControl.h"
 
 class TCPMasterControl: public MasterControl {
@@ -13,9 +14,10 @@ class TCPMasterControl: public MasterControl {
 	protected:
 		auto prepareControls() -> void override;
 		auto setupControl() -> void override;
-		auto setCurrentPage(ControlUniquePointer currentPage) -> void;
+		auto setupControls() -> void override;
+		auto setCurrentPage(std::unique_ptr<TCPPageControl> currentPage) -> void;
 
 	private:
-		ControlUniquePointer currentPage_ = std::make_unique<TCPVHFPageControl>("VHFPage");
+		std::unique_ptr<TCPPageControl> currentPage_ = std::make_unique<TCPVHFPageControl>("CURRENT_PAGE");
 		auto processEvent(TCPEventDispatcher::EVENT_LIST event) -> void;
 };

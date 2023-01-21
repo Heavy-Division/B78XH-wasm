@@ -1,6 +1,5 @@
 ﻿#include "TCPCABPageControl.h"
 
-#include "TCPCenterLineControl.h"
 #include "TCPCenterLineTitleControl.h"
 #include "TCPLeftLineControl.h"
 #include "TCPLeftLineTitleControl.h"
@@ -24,10 +23,15 @@ auto TCPCABPageControl::prepareControls() -> void {
 	add(std::make_unique<TCPRightLineControl>("RIGHT_TWO", TCPLineControl::LINE_NUMBER::TWO));
 	add(std::make_unique<TCPRightLineControl>("RIGHT_THREE", TCPLineControl::LINE_NUMBER::THREE));
 	add(std::make_unique<TCPRightLineControl>("RIGHT_FOUR", TCPLineControl::LINE_NUMBER::FOUR));
+	add(std::move(scratchPad_));
 }
 
 auto TCPCABPageControl::setupControls() -> void {
 	TCPPageControl::setupControls();
+
+	auto& scratchpad = getControl("SCRATCHPAD");
+	scratchpad->position.setPosition(5, 240, 0, 0);
+
 	auto& pageTitle = getControl("PAGE_TITLE");
 	auto& leftOneTitle = getControl("LEFT_ONE_TITLE");
 	auto& leftOne = getControl("LEFT_ONE");

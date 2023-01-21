@@ -1,13 +1,13 @@
 ﻿#pragma once
 #include "TCPPageControl.h"
 
-class TCPGPWSPageControl: public TCPPageControl {
+class TCPWXRPageControl : public TCPPageControl {
 	public:
-		explicit TCPGPWSPageControl(const string& name)
+		explicit TCPWXRPageControl(const string& name)
 			: TCPPageControl(name, "") {
 		}
 
-		TCPGPWSPageControl(const string& name, const std::string& scratchpadBuffer)
+		TCPWXRPageControl(const string& name, const std::string& scratchpadBuffer)
 			: TCPPageControl(name, scratchpadBuffer) {
 		}
 

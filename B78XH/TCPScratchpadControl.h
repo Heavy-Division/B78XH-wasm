@@ -1,0 +1,47 @@
+﻿#pragma once
+#include "Control.h"
+#include "Tools/Console.h"
+
+class TCPScratchpadControl: public Control {
+	public:
+		enum class events {
+			NUM1,
+			NUM2,
+			NUM3,
+			NUM4,
+			NUM5,
+			NUM6,
+			NUM7,
+			NUM8,
+			NUM9,
+			NUM0,
+			CLR,
+			STAR,
+			FORCE_CLR
+		};
+
+		explicit TCPScratchpadControl(const string& name)
+			: Control(name) {
+		}
+
+		TCPScratchpadControl(const string& name, const std::string& buffer)
+			: Control(name), buffer_(buffer) {
+			getContentHolder().setContent({{buffer_}});
+		}
+
+		auto render() -> void override;
+
+		[[nodiscard]] auto getBuffer() const -> const std::string&;
+		auto setBuffer(const std::string& buffer) -> void;
+		auto clear() -> void;
+		auto processEvent(events event) -> void;
+
+	protected:
+		auto prepareColor(int chunkNumber) -> void;
+		auto prepareFontSize(int chunkNumber) -> void;
+		auto prepareAlign(int chunkNumber) -> void;
+		auto prepareDefaults() -> void;
+
+	private:
+		std::string buffer_ = "";
+};

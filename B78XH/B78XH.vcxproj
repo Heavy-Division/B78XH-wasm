@@ -270,7 +270,10 @@
     <ClCompile Include="TCPRightLineControl.cpp" />
     <ClCompile Include="TCPRightLineTitleControl.cpp" />
     <ClCompile Include="TCPSATPageControl.cpp" />
+    <ClCompile Include="TCPScratchpadControl.cpp" />
     <ClCompile Include="TCPVHFPageControl.cpp" />
+    <ClCompile Include="TCPWXRPageControl.cpp" />
+    <ClCompile Include="TCPXPDRPageControl.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
@@ -470,7 +473,10 @@
     <ClInclude Include="TCPRightLineControl.h" />
     <ClInclude Include="TCPRightLineTitleControl.h" />
     <ClInclude Include="TCPSATPageControl.h" />
+    <ClInclude Include="TCPScratchpadControl.h" />
     <ClInclude Include="TCPVHFPageControl.h" />
+    <ClInclude Include="TCPWXRPageControl.h" />
+    <ClInclude Include="TCPXPDRPageControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />

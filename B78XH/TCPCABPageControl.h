@@ -4,7 +4,11 @@
 class TCPCABPageControl: public TCPPageControl {
 	public:
 		explicit TCPCABPageControl(const string& name)
-			: TCPPageControl(name) {
+			: TCPPageControl(name, "") {
+		}
+
+		TCPCABPageControl(const string& name, const std::string& scratchpadBuffer)
+			: TCPPageControl(name, scratchpadBuffer) {
 		}
 
 	protected:

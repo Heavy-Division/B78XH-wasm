@@ -54,6 +54,7 @@ extern "C" {
 			}
 			break;
 			case PANEL_SERVICE_PRE_UPDATE: {
+				/*
 				char cch1 = 97 + rand() % 26;
 				char cch2 = 97 + rand() % 26;
 				char cch3 = 97 + rand() % 26;
@@ -66,7 +67,8 @@ extern "C" {
 				c.push_back(cch3);
 				string d;
 				d.push_back(cch4);
-				facilityConnector.getAirport(const_cast<char*>((a + b + c + d).c_str()));
+				*/
+				//facilityConnector.getAirport(const_cast<char*>((a + b + c + d).c_str()));
 				//facilityConnector.getAirport("LKPR");
 				return true;
 			}

@@ -18,15 +18,14 @@ auto TCPGPWSPageControl::prepareControls() -> void {
 	add(std::make_unique<TCPRightLineControl>("RIGHT_TWO", TCPLineControl::LINE_NUMBER::TWO));
 	add(std::make_unique<TCPRightLineTitleControl>("RIGHT_THREE_TITLE", TCPLineControl::LINE_NUMBER::THREE));
 	add(std::make_unique<TCPRightLineControl>("RIGHT_THREE", TCPLineControl::LINE_NUMBER::THREE));
+	add(std::move(scratchPad_));
 }
 
 auto TCPGPWSPageControl::setupControls() -> void {
 	TCPPageControl::setupControls();
 
-
-	std::vector<std::array<char*, 2>> x{};
-
-	x = { {"asdas"},{"asdas", "asdasd"}};
+	auto& scratchpad = getControl("SCRATCHPAD");
+	scratchpad->position.setPosition(5, 240, 0, 0);
 
 	auto& pageTitle = getControl("PAGE_TITLE");
 
