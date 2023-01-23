@@ -8,6 +8,9 @@ class Control : public BaseControl {
 			setControlType(ControlType::NORMAL);
 		}
 
+	public:
+		auto render() -> void override;
+
 	private:
 		using BaseControl::setControlType;
 };

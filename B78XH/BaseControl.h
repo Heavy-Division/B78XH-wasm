@@ -31,7 +31,7 @@ class BaseControl {
 	using Content = vector<array<string,2>>;
 
 	protected:
-		using ControlUniquePointer = std::unique_ptr<BaseControl>;
+		using ControlSharedPointer = std::shared_ptr<BaseControl>;
 		enum class FONT_TYPE {
 			DEFAULT,
 			ADDITIONAL
@@ -138,14 +138,14 @@ class BaseControl {
 
 		auto propagateContext(RenderingContext const context) -> void;
 
-		auto add(ControlUniquePointer control) -> void;
-		[[nodiscard]] auto getControls() -> list<ControlUniquePointer>&;
-		__declspec(property(get = getControls)) list<ControlUniquePointer>& controls;
+		auto add(ControlSharedPointer control) -> void;
+		[[nodiscard]] auto getControls() -> list<ControlSharedPointer>&;
+		__declspec(property(get = getControls)) list<ControlSharedPointer>& controls;
 
-		[[nodiscard]] auto getControl(string name) -> ControlUniquePointer&;
+		[[nodiscard]] auto getControl(string name) -> ControlSharedPointer&;
 
-		[[nodiscard]] auto getSystemControls() -> list<ControlUniquePointer>&;
-		__declspec(property(get = getSystemControls)) const list<ControlUniquePointer>& systemControls;
+		[[nodiscard]] auto getSystemControls() -> list<ControlSharedPointer>&;
+		__declspec(property(get = getSystemControls)) const list<ControlSharedPointer>& systemControls;
 
 		[[nodiscard]] auto getPosition() -> ControlPosition&;
 		auto setPosition(const ControlPosition& position) -> void;
@@ -209,16 +209,16 @@ class BaseControl {
 	private:
 		class ControlsHolder {
 			public:
-				auto add(ControlUniquePointer& control) -> void;
-				[[nodiscard]] auto getControls() -> list<ControlUniquePointer>&;
-				__declspec(property(get = getControls)) const list<ControlUniquePointer>& controls;
-				[[nodiscard]] auto getControl(string name) -> ControlUniquePointer&;
+				auto add(ControlSharedPointer& control) -> void;
+				[[nodiscard]] auto getControls() -> list<ControlSharedPointer>&;
+				__declspec(property(get = getControls)) const list<ControlSharedPointer>& controls;
+				[[nodiscard]] auto getControl(string name) -> ControlSharedPointer&;
 
 			private:
 				/* Forward declaration of NullControl. See declaration below. */
 				class NullControl;
-				list<ControlUniquePointer> controls_{};
-				ControlUniquePointer nullControl_ = nullptr;
+				list<ControlSharedPointer> controls_{};
+				ControlSharedPointer nullControl_ = nullptr;
 		};
 
 		class ControlEvents {
@@ -262,7 +262,7 @@ class BaseControl {
 		std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
 		#endif
 
-		auto addSystemControl(ControlUniquePointer control) -> void;
+		auto addSystemControl(ControlSharedPointer control) -> void;
 
 		auto renderScreen() -> void;
 		auto renderControls() -> void;

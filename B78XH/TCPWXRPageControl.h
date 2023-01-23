@@ -3,12 +3,8 @@
 
 class TCPWXRPageControl : public TCPPageControl {
 	public:
-		explicit TCPWXRPageControl(const string& name)
-			: TCPPageControl(name, "") {
-		}
-
-		TCPWXRPageControl(const string& name, const std::string& scratchpadBuffer)
-			: TCPPageControl(name, scratchpadBuffer) {
+		TCPWXRPageControl(const string& name, std::shared_ptr<TCPScratchpadControl>& scratchPad)
+			: TCPPageControl(name, scratchPad) {
 		}
 
 	protected:

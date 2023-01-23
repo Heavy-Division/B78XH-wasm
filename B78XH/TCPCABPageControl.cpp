@@ -9,28 +9,27 @@
 
 auto TCPCABPageControl::prepareControls() -> void {
 	TCPPageControl::prepareControls();
-	add(std::make_unique<TCPPageTitleControl>("PAGE_TITLE"));
-	add(std::make_unique<TCPLeftLineTitleControl>("LEFT_ONE_TITLE", TCPLineControl::LINE_NUMBER::ONE));
-	add(std::make_unique<TCPLeftLineControl>("LEFT_ONE", TCPLineControl::LINE_NUMBER::ONE));
-	add(std::make_unique<TCPLeftLineControl>("LEFT_TWO", TCPLineControl::LINE_NUMBER::TWO));
-	add(std::make_unique<TCPLeftLineControl>("LEFT_THREE", TCPLineControl::LINE_NUMBER::THREE));
-	add(std::make_unique<TCPLeftLineControl>("LEFT_FOUR", TCPLineControl::LINE_NUMBER::FOUR));
+	add(std::make_shared<TCPPageTitleControl>("PAGE_TITLE"));
+	add(std::make_shared<TCPLeftLineTitleControl>("LEFT_ONE_TITLE", TCPLineControl::LINE_NUMBER::ONE));
+	add(std::make_shared<TCPLeftLineControl>("LEFT_ONE", TCPLineControl::LINE_NUMBER::ONE));
+	add(std::make_shared<TCPLeftLineControl>("LEFT_TWO", TCPLineControl::LINE_NUMBER::TWO));
+	add(std::make_shared<TCPLeftLineControl>("LEFT_THREE", TCPLineControl::LINE_NUMBER::THREE));
+	add(std::make_shared<TCPLeftLineControl>("LEFT_FOUR", TCPLineControl::LINE_NUMBER::FOUR));
 
-	add(std::make_unique<TCPCenterLineTitleControl>("CENTER_FOUR_TITLE", TCPLineControl::LINE_NUMBER::FOUR));
+	add(std::make_shared<TCPCenterLineTitleControl>("CENTER_FOUR_TITLE", TCPLineControl::LINE_NUMBER::FOUR));
 
-	add(std::make_unique<TCPRightLineControl>("RIGHT_ONE", TCPLineControl::LINE_NUMBER::ONE));
-	add(std::make_unique<TCPRightLineTitleControl>("RIGHT_ONE_TITLE", TCPLineControl::LINE_NUMBER::ONE));
-	add(std::make_unique<TCPRightLineControl>("RIGHT_TWO", TCPLineControl::LINE_NUMBER::TWO));
-	add(std::make_unique<TCPRightLineControl>("RIGHT_THREE", TCPLineControl::LINE_NUMBER::THREE));
-	add(std::make_unique<TCPRightLineControl>("RIGHT_FOUR", TCPLineControl::LINE_NUMBER::FOUR));
-	add(std::move(scratchPad_));
+	add(std::make_shared<TCPRightLineControl>("RIGHT_ONE", TCPLineControl::LINE_NUMBER::ONE));
+	add(std::make_shared<TCPRightLineTitleControl>("RIGHT_ONE_TITLE", TCPLineControl::LINE_NUMBER::ONE));
+	add(std::make_shared<TCPRightLineControl>("RIGHT_TWO", TCPLineControl::LINE_NUMBER::TWO));
+	add(std::make_shared<TCPRightLineControl>("RIGHT_THREE", TCPLineControl::LINE_NUMBER::THREE));
+	add(std::make_shared<TCPRightLineControl>("RIGHT_FOUR", TCPLineControl::LINE_NUMBER::FOUR));
+	add(scratchPad_);
 }
 
 auto TCPCABPageControl::setupControls() -> void {
 	TCPPageControl::setupControls();
 
-	auto& scratchpad = getControl("SCRATCHPAD");
-	scratchpad->position.setPosition(5, 240, 0, 0);
+	scratchPad_->position.setPosition(5, 240, 0, 0);
 
 	auto& pageTitle = getControl("PAGE_TITLE");
 	auto& leftOneTitle = getControl("LEFT_ONE_TITLE");

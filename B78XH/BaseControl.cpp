@@ -1,6 +1,8 @@
 ﻿#include "BaseControl.h"
 #include <iostream>
 
+#include "Tools/Console.h"
+
 
 auto BaseControl::prepareRenderingContextDefaults() -> void {
 	prepareRenderingContextDefaultsFonts();
@@ -38,21 +40,21 @@ auto BaseControl::propagateContext(RenderingContext const context) -> void {
 	}
 }
 
-auto BaseControl::add(ControlUniquePointer control) -> void {
+auto BaseControl::add(ControlSharedPointer control) -> void {
 	controls_.add(control);
 }
 
 
-auto BaseControl::getControls() -> list<ControlUniquePointer>& {
+auto BaseControl::getControls() -> list<ControlSharedPointer>& {
 	return controls_.getControls();
 }
 
-auto BaseControl::getControl(string name) -> ControlUniquePointer& {
+auto BaseControl::getControl(string name) -> ControlSharedPointer& {
 	return controls_.getControl(name);
 }
 
 
-auto BaseControl::getSystemControls() -> list<ControlUniquePointer>& {
+auto BaseControl::getSystemControls() -> list<ControlSharedPointer>& {
 	return systemControls_.getControls();
 }
 
@@ -133,7 +135,7 @@ auto BaseControl::setLogger(std::unique_ptr<BaseLogger> logger) -> void {
 	#endif
 }
 
-auto BaseControl::addSystemControl(ControlUniquePointer control) -> void {
+auto BaseControl::addSystemControl(ControlSharedPointer control) -> void {
 	systemControls_.add(control);
 }
 
@@ -354,15 +356,15 @@ auto BaseControl::setGaugeDrawData(GaugeDrawData* const gaugeDrawData) -> void {
 	gaugeDrawData_ = gaugeDrawData;
 }
 
-auto BaseControl::ControlsHolder::add(ControlUniquePointer& control) -> void {
-	controls_.emplace_back(std::move(control));
+auto BaseControl::ControlsHolder::add(ControlSharedPointer& control) -> void {
+	controls_.emplace_back(control);
 }
 
-auto BaseControl::ControlsHolder::getControls() -> list<ControlUniquePointer>& {
+auto BaseControl::ControlsHolder::getControls() -> list<ControlSharedPointer>& {
 	return controls_;
 }
 
-auto BaseControl::ControlsHolder::getControl(string name) -> ControlUniquePointer& {
+auto BaseControl::ControlsHolder::getControl(string name) -> ControlSharedPointer& {
 	for (auto& control : getControls()) {
 		if (control->getName() == name) {
 			return control;
@@ -414,9 +416,6 @@ auto BaseControl::ContentHolder::checkContent(const Content& content) -> void {
 	if (content_ != content) {
 		setContentInvalid(true);
 		content_ = content;
-	}
-	else {
-		setContentInvalid(false);
 	}
 }
 

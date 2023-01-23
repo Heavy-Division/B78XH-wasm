@@ -14,7 +14,7 @@
 auto TCPMasterControl::prepareControls() -> void {
 	MasterControl::prepareControls();
 	currentPage_->setName("CURRENT_PAGE");
-	add(std::move(currentPage_));
+	add(currentPage_);
 }
 
 auto TCPMasterControl::setupControl() -> void {
@@ -28,109 +28,89 @@ auto TCPMasterControl::setupControl() -> void {
 
 auto TCPMasterControl::setupControls() -> void {
 	MasterControl::setupControls();
-
-	auto& page = getControl("CURRENT_PAGE");
-	page->addOnValidate(SKIP_VALIDATION_EVENT);
+	currentPage_->addOnValidate(SKIP_VALIDATION_EVENT);
 }
 
-auto TCPMasterControl::setCurrentPage(std::unique_ptr<TCPPageControl> currentPage) -> void {
-	currentPage_ = std::move(currentPage);
+auto TCPMasterControl::setCurrentPage(std::shared_ptr<TCPPageControl> currentPage) -> void {
+	currentPage_ = currentPage;
 	restart();
 }
 
 auto TCPMasterControl::processEvent(TCPEventDispatcher::EVENT_LIST event) -> void {
-	TCPPageControl* page = static_cast<TCPPageControl*>(getControl("CURRENT_PAGE").get());
-
 	switch (event) {
 		case TCPEventDispatcher::EVENT_LIST::NONE: break;
 		case TCPEventDispatcher::EVENT_LIST::VHF: {
-			setCurrentPage(std::make_unique<TCPVHFPageControl>("TCPVHFPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPVHFPageControl>("TCPVHFPageControl", scratchpad_));
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::HF: {
-			setCurrentPage(std::make_unique<TCPHFPageControl>("TCPHFPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPHFPageControl>("TCPHFPageControl", scratchpad_));
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::SAT: {
-			setCurrentPage(std::make_unique<TCPSATPageControl>("TCPSATPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPSATPageControl>("TCPSATPageControl", scratchpad_));
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::CAB: {
-			setCurrentPage(std::make_unique<TCPCABPageControl>("TCPCABPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPCABPageControl>("TCPCABPageControl", scratchpad_));
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::GPWS: {
-			setCurrentPage(std::make_unique<TCPGPWSPageControl>("TCPGPWSPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPGPWSPageControl>("TCPGPWSPageControl", scratchpad_));
 			break;
 		};
 		case TCPEventDispatcher::EVENT_LIST::WXR: {
-			setCurrentPage(std::make_unique<TCPWXRPageControl>("TCPWXRPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPWXRPageControl>("TCPWXRPageControl", scratchpad_));
 			break;
 		};
 		case TCPEventDispatcher::EVENT_LIST::XPDR: {
-			setCurrentPage(std::make_unique<TCPXPDRPageControl>("TCPXPDRPageControl", page->getScratchpadBuffer()));
+			setCurrentPage(std::make_shared<TCPXPDRPageControl>("TCPXPDRPageControl", scratchpad_));
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::LSK1: {
-			if (page != nullptr) {
-				page->onL1Pressed();
-			}
+			currentPage_->onL1Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::LSK2: {
-			if (page != nullptr) {
-				page->onL2Pressed();
-			}
+			currentPage_->onL2Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::LSK3: {
-			if (page != nullptr) {
-				page->onL3Pressed();
-			}
+			currentPage_->onL3Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::LSK4: {
-			if (page != nullptr) {
-				page->onL4Pressed();
-			}
+			currentPage_->onL4Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::RSK1: {
-			if (page != nullptr) {
-				page->onR1Pressed();
-			}
+			currentPage_->onR1Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::RSK2: {
-			if (page != nullptr) {
-				page->onR2Pressed();
-			}
+			currentPage_->onR2Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::RSK3: {
-			if (page != nullptr) {
-				page->onR3Pressed();
-			}
+			currentPage_->onR3Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::RSK4: {
-			if (page != nullptr) {
-				page->onR4Pressed();
-			}
+			currentPage_->onR4Pressed();
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::PREV: {
-			if (page->getPages() != nullptr) {
-				if (page->getPages()->currentPageNumber > 1) {
-					page->getPages()->currentPageNumber--;
+			if (currentPage_->getPages() != nullptr) {
+				if (currentPage_->getPages()->currentPageNumber > 1) {
+					currentPage_->getPages()->currentPageNumber--;
 				}
 			}
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::NEXT: {
-			if (page->getPages() != nullptr) {
-				if (page->getPages()->currentPageNumber < page->getPages()->numberOfPages) {
-					page->getPages()->currentPageNumber++;
+			if (currentPage_->getPages() != nullptr) {
+				if (currentPage_->getPages()->currentPageNumber < currentPage_->getPages()->numberOfPages) {
+					currentPage_->getPages()->currentPageNumber++;
 				}
 			}
 			break;
@@ -142,51 +122,51 @@ auto TCPMasterControl::processEvent(TCPEventDispatcher::EVENT_LIST event) -> voi
 		case TCPEventDispatcher::EVENT_LIST::STBY_DOWN: break;
 		case TCPEventDispatcher::EVENT_LIST::XFR: break;
 		case TCPEventDispatcher::EVENT_LIST::CLR: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::CLR);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::CLR);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::DOT: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::STAR);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::STAR);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::ONE: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM1);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM1);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::TWO: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM2);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM2);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::THREE: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM3);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM3);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::FOUR: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM4);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM4);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::FIVE: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM5);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM5);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::SIX: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM6);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM6);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::SEVEN: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM7);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM7);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::EIGHT: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM8);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM8);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::NINE: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM9);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM9);
 			break;
 		}
 		case TCPEventDispatcher::EVENT_LIST::ZERO: {
-			page->processScratchpadEvent(TCPScratchpadControl::events::NUM0);
+			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::NUM0);
 			break;
 		}
 		default: {

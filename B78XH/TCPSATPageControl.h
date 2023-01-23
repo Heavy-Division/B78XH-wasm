@@ -3,12 +3,8 @@
 
 class TCPSATPageControl: public TCPPageControl {
 	public:
-		explicit TCPSATPageControl(const string& name)
-			: TCPPageControl(name, "") {
-		}
-
-		TCPSATPageControl(const string& name, const std::string& scratchpadBuffer)
-			: TCPPageControl(name, scratchpadBuffer) {
+		TCPSATPageControl(const string& name, std::shared_ptr<TCPScratchpadControl>& scratchPad)
+			: TCPPageControl(name, scratchPad) {
 		}
 
 	protected:

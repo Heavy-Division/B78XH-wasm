@@ -15,9 +15,10 @@ class TCPMasterControl: public MasterControl {
 		auto prepareControls() -> void override;
 		auto setupControl() -> void override;
 		auto setupControls() -> void override;
-		auto setCurrentPage(std::unique_ptr<TCPPageControl> currentPage) -> void;
+		auto setCurrentPage(std::shared_ptr<TCPPageControl> currentPage) -> void;
 
 	private:
-		std::unique_ptr<TCPPageControl> currentPage_ = std::make_unique<TCPVHFPageControl>("CURRENT_PAGE");
+		std::shared_ptr<TCPScratchpadControl> scratchpad_ = std::make_shared<TCPScratchpadControl>("SCRATCHPAD");
+		std::shared_ptr<TCPPageControl> currentPage_ = std::make_shared<TCPVHFPageControl>("CURRENT_PAGE", scratchpad_);
 		auto processEvent(TCPEventDispatcher::EVENT_LIST event) -> void;
 };

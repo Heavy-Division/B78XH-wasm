@@ -3,13 +3,8 @@
 
 class TCPVHFPageControl : public TCPPageControl {
 	public:
-		explicit TCPVHFPageControl(const string& name)
-			: TCPPageControl(name, "") {
-			pages = std::make_unique<Pages>();
-		}
-
-		TCPVHFPageControl(const string& name, const std::string& scratchpadBuffer)
-			: TCPPageControl(name, scratchpadBuffer) {
+		TCPVHFPageControl(const string& name, std::shared_ptr<TCPScratchpadControl>& scratchPad)
+			: TCPPageControl(name, scratchPad) {
 			pages = std::make_unique<Pages>();
 		}
 

@@ -1,5 +1,12 @@
 ﻿#include "TCPScratchpadControl.h"
 
+TCPScratchpadControl::TCPScratchpadControl(const string& name): Control(name) {
+	addOnBeforeRender([this](BaseControl& control) -> bool {
+		control.getContentHolder().setContent({{getBuffer()}});
+		return true;
+	});
+}
+
 auto TCPScratchpadControl::render() -> void {
 	Control::render();
 	prepareDefaults();
@@ -23,11 +30,6 @@ auto TCPScratchpadControl::render() -> void {
 
 auto TCPScratchpadControl::getBuffer() const -> const std::string& {
 	return buffer_;
-}
-
-auto TCPScratchpadControl::setBuffer(const std::string& buffer) -> void {
-	buffer_ = buffer;
-	getContentHolder().setContent({{buffer_}});
 }
 
 auto TCPScratchpadControl::clear() -> void {
@@ -95,7 +97,6 @@ auto TCPScratchpadControl::processEvent(events event) -> void {
 		}
 		default: ;
 	}
-	getContentHolder().setContent({{buffer_}});
 }
 
 auto TCPScratchpadControl::prepareColor(int chunkNumber) -> void {

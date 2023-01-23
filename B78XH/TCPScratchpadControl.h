@@ -2,7 +2,7 @@
 #include "Control.h"
 #include "Tools/Console.h"
 
-class TCPScratchpadControl: public Control {
+class TCPScratchpadControl : public Control {
 	public:
 		enum class events {
 			NUM1,
@@ -20,19 +20,11 @@ class TCPScratchpadControl: public Control {
 			FORCE_CLR
 		};
 
-		explicit TCPScratchpadControl(const string& name)
-			: Control(name) {
-		}
-
-		TCPScratchpadControl(const string& name, const std::string& buffer)
-			: Control(name), buffer_(buffer) {
-			getContentHolder().setContent({{buffer_}});
-		}
+		explicit TCPScratchpadControl(const string& name);
 
 		auto render() -> void override;
 
 		[[nodiscard]] auto getBuffer() const -> const std::string&;
-		auto setBuffer(const std::string& buffer) -> void;
 		auto clear() -> void;
 		auto processEvent(events event) -> void;
 

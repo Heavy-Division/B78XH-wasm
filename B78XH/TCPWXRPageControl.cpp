@@ -5,16 +5,15 @@
 
 auto TCPWXRPageControl::prepareControls() -> void {
 	TCPPageControl::prepareControls();
-	add(std::make_unique<TCPPageTitleControl>("PAGE_TITLE"));
-	add(std::make_unique<TCPCenterLineControl>("CenterLineOne"));
-	add(std::move(scratchPad_));
+	add(std::make_shared<TCPPageTitleControl>("PAGE_TITLE"));
+	add(std::make_shared<TCPCenterLineControl>("CenterLineOne"));
+	add(scratchPad_);
 }
 
 auto TCPWXRPageControl::setupControls() -> void {
 	TCPPageControl::setupControls();
 
-	auto& scratchpad = getControl("SCRATCHPAD");
-	scratchpad->position.setPosition(5, 240, 0, 0);
+	scratchPad_->position.setPosition(5, 240, 0, 0);
 
 	const auto& pageTitle = getControl("PAGE_TITLE");
 	const auto& centerLineOne = getControl("CenterLineOne");

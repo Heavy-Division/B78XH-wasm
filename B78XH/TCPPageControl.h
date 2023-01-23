@@ -2,12 +2,13 @@
 #include "Control.h"
 #include "TCPScratchpadControl.h"
 #include "Tools/Console.h"
+#include <memory>
 
 class TCPPageControl : public Control {
 	public:
-		explicit TCPPageControl(const string& name, std::string scratchpadBuffer)
-			: Control(name) {
-			scratchPad_->setBuffer(scratchpadBuffer);
+		explicit TCPPageControl(const string& name, std::shared_ptr<TCPScratchpadControl>& scratchPad)
+			: Control(name),
+			  scratchPad_(scratchPad) {
 		}
 
 		/*
@@ -31,18 +32,7 @@ class TCPPageControl : public Control {
 		std::function<void()> onR4Pressed = [](void)-> void {
 		};
 
-		/*
-		 * Scratchpad
-		 */
-
-		std::unique_ptr<TCPScratchpadControl> scratchPad_ = std::make_unique<TCPScratchpadControl>("SCRATCHPAD", "");
-
-		/*
-		 * Scratchpad handling
-		 */
-
-		auto getScratchpadBuffer() -> std::string;
-		auto processScratchpadEvent(TCPScratchpadControl::events event) -> void;
+		std::shared_ptr<TCPScratchpadControl>& scratchPad_;
 
 		/*
 		 * Pages
