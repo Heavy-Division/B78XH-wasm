@@ -4,11 +4,13 @@
 #include "TATControl.h"
 #include "WeightTempBoxControl.h"
 #include "LineSeparatorControl.h"
+#include "EngineN1GaugeControl.h"
+#include "Control.h"
 
-class MFDMasterControl : public MasterControl {
+class EICASControl : public Control {
 public:
-	explicit MFDMasterControl(const string& name)
-		: MasterControl(name) {}
+	explicit EICASControl(const string& name)
+		: Control(name) {}
 
 protected:
 	auto prepareControls() -> void override;

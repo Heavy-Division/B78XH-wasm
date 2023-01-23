@@ -517,17 +517,47 @@
     <ClCompile Include="ExampleLineControl.cpp">
       <Filter>Source Files\Controls\Examples</Filter>
     </ClCompile>
-    <ClCompile Include="TATControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineEGTGaugeControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
-    <ClCompile Include="MFDMasterControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineN1GaugeControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
-    <ClCompile Include="WeightTempBoxControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineN2GaugeControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
-    <ClCompile Include="LineSeparatorControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\LineSeparatorControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EICASControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\TATControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\WeightTempBoxControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="FFControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="OilPressControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDCenterMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDLeftInboardMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDRightInboardMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftOutboardMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="RightOutboardMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1143,17 +1173,47 @@
     <ClInclude Include="ExampleLineControl.h">
       <Filter>Source Files\Controls\Examples</Filter>
     </ClInclude>
-    <ClInclude Include="TATControl.h">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineEGTGaugeControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="MFDMasterControl.h">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineN1GaugeControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="WeightTempBoxControl.h">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineN2GaugeControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="LineSeparatorControl.h">
-      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\LineSeparatorControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EICASControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\TATControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\WeightTempBoxControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="FFControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="OilPressControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDCenterMasterControl.h">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDLeftInboardMasterControl.h">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDRightInboardMasterControl.h">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftOutboardMasterControl.h">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="RightOutboardMasterControl.h">
+      <Filter>Source Files\Controls\Controls\Panels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1453,6 +1513,15 @@
     </Filter>
     <Filter Include="Source Files\Controls\Controls\MFD">
       <UniqueIdentifier>{a05418ef-e94b-42f0-aaba-e642794bef90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS">
+      <UniqueIdentifier>{df437e2f-d51c-4ebf-b5bf-faded403e909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\PFD">
+      <UniqueIdentifier>{15bfd197-dfd1-4a09-93e7-da6542463ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\Panels">
+      <UniqueIdentifier>{04b07e6e-fae0-4046-a503-68988075f506}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

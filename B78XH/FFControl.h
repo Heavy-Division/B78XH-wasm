@@ -1,9 +1,10 @@
 #pragma once
+
 #include "Control.h"
 
-class WeightTempBoxControl : public Control {
+class FFControl : public Control {
 public:
-	explicit WeightTempBoxControl(const string& name)
+	explicit FFControl(const string& name)
 		: Control(name) {}
 
 	auto render() -> void override;

@@ -7,21 +7,18 @@
 void LineSeparatorControl::render() {
 	Control::render();
 
-    // nvgSave(this->getContext());
+    nvgSave(this->getContext());
     {
-        Console::log("test");
         nvgStrokeColor(this->getContext(), Tools::Colors::white);
         nvgStrokeWidth(this->getContext(), 4.0f);
         nvgBeginPath(this->getContext());
         {
-            // nvgMoveTo(this->getContext(), 80, 0);
-            nvgLineTo(this->getContext(), 84, 0);
-            nvgLineTo(this->getContext(), 84, 465);
+            nvgMoveTo(this->getContext(), 640, 0);
+            nvgLineTo(this->getContext(), 640, 950);
         }
         nvgClosePath(this->getContext());
         nvgStroke(this->getContext());
     }
-    // nvgRestore(this->getContext());
     nvgResetTransform(this->getContext());
 }
 

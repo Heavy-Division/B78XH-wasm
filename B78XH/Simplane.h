@@ -381,11 +381,28 @@ namespace Simplane {
 			namespace engine_1 {
 				auto n1_rpm() -> double;
 				auto n2_rpm() -> double;
+				auto n1_commanded() -> double;
+				auto egt() -> double;
+				auto fuelFlowPPH() -> double;
+				auto hasCombustion() -> bool;
+				auto oilPressure() -> double;
 			};
 
 			namespace engine_2 {
 				auto n1_rpm() -> double;
 				auto n2_rpm() -> double;
+				auto n1_commanded() -> double;
+				auto egt() -> double;
+				auto fuelFlowPPH() -> double;
+				auto hasCombustion() -> bool;
+				auto oilPressure() -> double;
+			}
+		}
+
+		namespace fuel {
+			namespace switches {
+				auto eng1_cutoff() -> bool;
+				auto eng2_cutoff() -> bool;
 			}
 		}
 	}
@@ -1445,4 +1462,53 @@ inline auto Simplane::aircraft::systems::powerplant::engine_2::n1_rpm() -> doubl
 }
 inline auto Simplane::aircraft::systems::powerplant::engine_2::n2_rpm() -> double {
 	return SimConnectData::systems::powerplant::engine.engine2_n2;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::n1_commanded() -> double {
+
+	return SimConnectData::systems::powerplant::engine.engine1_commandedn1;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::n1_commanded() -> double {
+	return 	SimConnectData::systems::powerplant::engine.engine2_commandedn1;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::egt() -> double {
+	return  SimConnectData::systems::powerplant::engine.engine1_egt;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::egt() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_egt;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::fuelFlowPPH() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_fuel_flow_pph;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::fuelFlowPPH() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_fuel_flow_pph;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::hasCombustion() -> bool {
+	return static_cast<bool>(SimConnectData::systems::powerplant::engine.engine1_combustion);
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::hasCombustion() -> bool {
+	return static_cast<bool>(SimConnectData::systems::powerplant::engine.engine2_combustion);
+}
+
+inline auto Simplane::aircraft::systems::fuel::switches::eng1_cutoff() -> bool {
+	return static_cast<bool>(SimConnectData::systems::fuel::switches.cutoff_eng1);
+}
+
+inline auto Simplane::aircraft::systems::fuel::switches::eng2_cutoff() -> bool {
+	return static_cast<bool>(SimConnectData::systems::fuel::switches.cutoff_eng2);
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::oilPressure() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_oil_pressure;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::oilPressure() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_oil_pressure;
 }

@@ -42,6 +42,7 @@ enum DATA_DEFINE_ID {
 	DEFINITION_CLOSE,
 	DEFINITION_TEMPERATURE,
 	DEFINITION_ENGINE,
+	DEFINITION_FUEL,
 };
 
 enum DATA_REQUEST_ID {
@@ -68,6 +69,7 @@ enum DATA_REQUEST_ID {
 	REQUEST_CLOSE,
 	REQUEST_TEMPERATURE,
 	REQUEST_ENGINE,
+	REQUEST_FUEL,
 };
 
 namespace SimConnectData {
@@ -383,13 +385,34 @@ namespace SimConnectData {
 				double engine1_n2;
 				double engine2_n1;
 				double engine2_n2;
+				double engine1_commandedn1;
+				double engine2_commandedn1;
+				double engine1_egt;
+				double engine2_egt;
+				double engine1_fuel_flow_pph;
+				double engine2_fuel_flow_pph;
+				double engine1_combustion;
+				double engine2_combustion;
+				double engine1_oil_pressure;
+				double engine2_oil_pressure;
 			};
 
 			inline Engine engine;
 		}
-	}
 
+		namespace fuel {
+			struct Switches {
+				double cutoff_eng1;
+				double cutoff_eng2;
+			};
+
+			inline Switches switches;
+		}
+	}
+		
 }
+
+
 
 struct TestAirport {
 	double latitude;

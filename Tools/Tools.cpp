@@ -130,4 +130,17 @@ namespace Tools {
 	auto clamp(double value, double lo, double hi) -> double {
 		return std::min<double>(hi, std::max<double>(value, lo));
 	};
+
+	auto advisoryColorHandler(double data, double warnThreshold, double dangerThreshold, NVGcolor defaultColor) -> NVGcolor {
+		if (data > warnThreshold && data < dangerThreshold) {
+			return Colors::advisoryAmber;
+		}
+
+		if (data > dangerThreshold) {
+			return Colors::warningRed;
+		}
+
+		return defaultColor;
+	};
+
 }

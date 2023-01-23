@@ -1,9 +1,10 @@
 #pragma once
 #include "Control.h"
 
-class WeightTempBoxControl : public Control {
+
+class OilPressControl : public Control {
 public:
-	explicit WeightTempBoxControl(const string& name)
+	explicit OilPressControl(const string& name)
 		: Control(name) {}
 
 	auto render() -> void override;

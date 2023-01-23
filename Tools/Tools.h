@@ -13,8 +13,10 @@ namespace Tools {
 		inline static const NVGcolor black = nvgRGB(0, 0, 0);
 		inline static const NVGcolor white = nvgRGB(255, 255, 255);
 		inline static const NVGcolor red = nvgRGB(255, 0, 0);
+		inline static const NVGcolor warningRed = nvgRGB(255, 63, 63);
 		inline static const NVGcolor cyan = nvgRGB(54, 201, 210);
 		inline static const NVGcolor amber = nvgRGB(255, 192, 0);
+		inline static const NVGcolor advisoryAmber = nvgRGB(190, 140, 0);
 		inline static const NVGcolor blue = nvgRGB(0, 0, 255);
 		inline static const NVGcolor greenBoeing = nvgRGB(131, 246, 4);
 		inline static const NVGcolor greenPure = nvgRGB(0, 255, 0);
@@ -75,4 +77,5 @@ namespace Tools {
 
 	auto smoothPow(double start, double end, double factor, double deltaTime) -> double;
 	auto clamp(double value, double lo, double hi) -> double;
+	auto advisoryColorHandler(double data, double warnThreshold, double dangerThreshold, NVGcolor defaultColor) -> NVGcolor;
 }

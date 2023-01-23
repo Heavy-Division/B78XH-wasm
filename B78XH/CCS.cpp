@@ -30,7 +30,6 @@ auto CCS::prepare() -> void {
 
 auto CCS::update(double deltaTime) -> void {
 	this->updateERS(deltaTime);
-	Console::log("{}", Simplane::aircraft::systems::powerplant::engine_1::n1_rpm());
 }
 
 auto CCS::reset() -> void {

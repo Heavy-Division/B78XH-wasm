@@ -15,38 +15,71 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include <MSFS\MSFS.h>
+//#include <MSFS\MSFS.h>
+#include <MSFS/MSFS_Render.h>
+#include <MSFS/Legacy/gauges.h>
 
 #include "Displays.h"
-
 
 #ifdef _MSC_VER
 #define snprintf _snprintf_s
 #elif !defined(__MINGW32__)
 #include <iconv.h>
 #endif
-
 // ------------------------
 // Callbacks
 extern "C" {
-	MSFS_CALLBACK bool right_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
+	__attribute__((visibility("default"))) bool right_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
-			case PANEL_SERVICE_PRE_INSTALL: {
-				return Displays::rightInboardDisplay.preInstall();
-			}
-			break;
-			case PANEL_SERVICE_POST_INSTALL: {
-				return Displays::rightInboardDisplay.postInstall(ctx);
-			}
-			break;
-			case PANEL_SERVICE_PRE_DRAW: {
-				return Displays::rightInboardDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
-			}
-			break;
-			case PANEL_SERVICE_PRE_KILL: {
-				return Displays::rightInboardDisplay.preKill();
-			}
-			break;
+		case PANEL_SERVICE_PRE_INSTALL: {
+			//Console::log("PRE_INSTALL");
+			// Displays::eicasControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			Displays::rightInboardControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			return true;
+		}
+									  break;
+		case PANEL_SERVICE_POST_INSTALL: {
+			//Console::log("POST_INSTALL");
+
+			NVGparams params;
+			params.userPtr = ctx;
+			params.edgeAntiAlias = true;
+			// Displays::eicasControl->postInstall(nvgCreateInternal(&params));
+			Displays::rightInboardControl->postInstall(nvgCreateInternal(&params));
+
+			return true;
+		}
+									   break;
+		case PANEL_SERVICE_PRE_UPDATE: {
+			//Console::log("PRE_UPDATE");
+			// Displays::eicasControl->preUpdate();
+			Displays::rightInboardControl->preUpdate();
+			return true;
+		}
+									 break;
+		case PANEL_SERVICE_POST_UPDATE: {
+			// Displays::eicasControl->postUpdate();
+			Displays::rightInboardControl->postUpdate();
+			return true;
+		}
+									  break;
+		case PANEL_SERVICE_PRE_DRAW: {
+			//Console::log("RENDER");
+			// Displays::eicasControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			Displays::rightInboardControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			return true;
+		}
+								   break;
+		case PANEL_SERVICE_PRE_KILL: {
+			// Displays::eicasControl->preKill();
+			Displays::rightInboardControl->preKill();
+			return true;
+		}
+		case PANEL_SERVICE_POST_KILL: {
+			// Displays::eicasControl->postKill();
+			Displays::rightInboardControl->postKill();
+		}
+									break;
 		}
 		return false;
 	}

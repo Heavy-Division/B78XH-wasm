@@ -15,81 +15,72 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include <MSFS\MSFS.h>
-#include "MSFS\MSFS_Render.h"
-#include <MSFS\Legacy\gauges.h>
+//#include <MSFS\MSFS.h>
+#include <MSFS/MSFS_Render.h>
+#include <MSFS/Legacy/gauges.h>
 
-#include "CDUMouseMoveResolver.h"
-#include "MFDCduGauge.h"
-#include "fmt/color.h"
-
+#include "Displays.h"
 
 #ifdef _MSC_VER
 #define snprintf _snprintf_s
 #elif !defined(__MINGW32__)
 #include <iconv.h>
 #endif
-
-MFDCduGauge g_CDUGauge;
-
 // ------------------------
 // Callbacks
 extern "C" {
-	MSFS_CALLBACK bool mfd_cdu_gauge_callback(FsContext ctx, int service_id, void* pData) {
+	__attribute__((visibility("default"))) bool mfd_cdu_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
-			case PANEL_SERVICE_PRE_INSTALL: {
-				return g_CDUGauge.preInstall();
-			}
-			break;
-			case PANEL_SERVICE_POST_INSTALL: {
-				return g_CDUGauge.postInstall(ctx);
-			}
-			break;
-			case PANEL_SERVICE_PRE_UPDATE: {
-				return g_CDUGauge.preUpdate();
-			}
-										 break;
-			case PANEL_SERVICE_PRE_DRAW: {
-				return g_CDUGauge.preDraw(static_cast<sGaugeDrawData*>(pData));
-			}
-			break;
-			case PANEL_SERVICE_PRE_KILL: {
-				return g_CDUGauge.preKill();
-			}
-			break;
+		case PANEL_SERVICE_PRE_INSTALL: {
+			//Console::log("PRE_INSTALL");
+			// Displays::eicasControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			Displays::centerMFDControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			return true;
+		}
+									  break;
+		case PANEL_SERVICE_POST_INSTALL: {
+			//Console::log("POST_INSTALL");
+
+			NVGparams params;
+			params.userPtr = ctx;
+			params.edgeAntiAlias = true;
+			// Displays::eicasControl->postInstall(nvgCreateInternal(&params));
+			Displays::centerMFDControl->postInstall(nvgCreateInternal(&params));
+
+			return true;
+		}
+									   break;
+		case PANEL_SERVICE_PRE_UPDATE: {
+			//Console::log("PRE_UPDATE");
+			// Displays::eicasControl->preUpdate();
+			Displays::centerMFDControl->preUpdate();
+			return true;
+		}
+									 break;
+		case PANEL_SERVICE_POST_UPDATE: {
+			// Displays::eicasControl->postUpdate();
+			Displays::centerMFDControl->postUpdate();
+			return true;
+		}
+									  break;
+		case PANEL_SERVICE_PRE_DRAW: {
+			//Console::log("RENDER");
+			// Displays::eicasControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			Displays::centerMFDControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			return true;
+		}
+								   break;
+		case PANEL_SERVICE_PRE_KILL: {
+			// Displays::eicasControl->preKill();
+			Displays::centerMFDControl->preKill();
+			return true;
+		}
+		case PANEL_SERVICE_POST_KILL: {
+			// Displays::eicasControl->postKill();
+			Displays::centerMFDControl->postKill();
+		}
+									break;
 		}
 		return false;
-	}
-
-	MSFS_CALLBACK void mfd_cdu_mouse_callback(float fX, float fY, unsigned int iFlags) {
-		switch (iFlags) {
-			case MOUSE_MOVE: {
-				g_CDUGauge.getMouseMoveResolver().setPosition(fX, fY);
-			}
-			break;
-			case MOUSE_LEFTRELEASE: {
-				g_CDUGauge.getMouseClickResolver().setPosition(fX, fY);
-			}
-			break;
-			default:
-				break;
-		}
-		/*
-		 *
-		 *  MOUSE_MOVE: the mouse cursor has moved.
-			MOUSE_LEFTDRAG: left button down.
-			MOUSE_RIGHTDRAG: right button down.
-			MOUSE_MIDDLEDRAG: middle button down.
-			MOUSE_LEFTRELEASE: left button up.
-			MOUSE_RIGHTRELEASE: right button up.
-			MOUSE_MIDDLERELEASE: middle button up.
-			MOUSE_LEFTSINGLE: left button click (sent after a down/up sequence).
-			MOUSE_RIGHTSINGLE: right button click (sent after a down/up sequence).
-			MOUSE_MIDDLESINGLE: middle button click (sent after a down/up sequence).
-			MOUSE_LEFTDOUBLE: left button click (sent after two consecutive clicks).
-			MOUSE_MIDDLEDOUBLE: middle button click (sent after two consecutive clicks).
-			MOUSE_WHEEL_UP: wheel moved up.
-			MOUSE_WHEEL_DOWN: wheel moved down.
-		 */
 	}
 }

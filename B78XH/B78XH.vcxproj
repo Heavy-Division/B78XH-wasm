@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
-    <OutDir>G:\MSFS\Community\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>..\..\..\..\Desktop\msfs_addons\Aircraft\787-10_Heavy_Division\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -65,7 +65,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_MSFS_WASM;_STRING_H_CPLUSPLUS_98_CONFORMANCE_;_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_;_LIBCPP_NO_EXCEPTIONS;_LIBCPP_HAS_NO_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir);$(ProjectDir)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -117,6 +117,13 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineEGTGaugeControl.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineN1GaugeControl.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineN2GaugeControl.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\LineSeparatorControl.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\EICASControl.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\TATControl.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\save_prog\WeightTempBoxControl.cpp" />
     <ClCompile Include="AHRU.cpp" />
     <ClCompile Include="Alignable.cpp" />
     <ClCompile Include="B78XHConfiguration.cpp" />
@@ -160,6 +167,7 @@
     <ClCompile Include="ExampleLineControl.cpp" />
     <ClCompile Include="ExampleMasterControl.cpp" />
     <ClCompile Include="ExampleControlGaugeCallBack.cpp" />
+    <ClCompile Include="FFControl.cpp" />
     <ClCompile Include="HelloWorldControl.cpp" />
     <ClCompile Include="HelloWorldDisplay.cpp" />
     <ClCompile Include="ExampleDisplayGaugeCallback.cpp" />
@@ -175,10 +183,10 @@
     <ClCompile Include="IRS.cpp" />
     <ClCompile Include="IRU.cpp" />
     <ClCompile Include="KEvents.cpp" />
+    <ClCompile Include="LeftOutboardMasterControl.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineControl.cpp" />
     <ClCompile Include="LineDisplay.cpp" />
-    <ClCompile Include="LineSeparatorControl.cpp" />
     <ClCompile Include="LowerCenterDisplay.cpp" />
     <ClCompile Include="LVar.cpp" />
     <ClCompile Include="LVars.cpp" />
@@ -197,12 +205,14 @@
     <ClCompile Include="MCPVSpeedGauge.cpp" />
     <ClCompile Include="MFDCduGauge.cpp" />
     <ClCompile Include="MFDCduGaugeCallback.cpp" />
-    <ClCompile Include="TATControl.cpp" />
-    <ClCompile Include="MFDMasterControl.cpp" />
+    <ClCompile Include="MFDCenterMasterControl.cpp" />
+    <ClCompile Include="MFDLeftInboardMasterControl.cpp" />
     <ClCompile Include="MFDNDGauge.cpp" />
     <ClCompile Include="MFDNDGaugeCallback.cpp" />
+    <ClCompile Include="MFDRightInboardMasterControl.cpp" />
     <ClCompile Include="NavData.cpp" />
     <ClCompile Include="NullLogger.cpp" />
+    <ClCompile Include="OilPressControl.cpp" />
     <ClCompile Include="Operable.cpp" />
     <ClCompile Include="PFDAirspeedIndicator.cpp" />
     <ClCompile Include="PFDAirspeedIndicatorApplication.cpp" />
@@ -245,6 +255,7 @@
     <ClCompile Include="RightInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
+    <ClCompile Include="RightOutboardMasterControl.cpp" />
     <ClCompile Include="SimConnectFacility.cpp" />
     <ClCompile Include="SimConnectFacilityLoader.cpp" />
     <ClCompile Include="SimulationVariableUnits.cpp" />
@@ -292,9 +303,15 @@
     <ClCompile Include="V2SpeedMarker.cpp" />
     <ClCompile Include="VRefSpeedMarker.cpp" />
     <ClCompile Include="VRSpeedMarker.cpp" />
-    <ClCompile Include="WeightTempBoxControl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineEGTGaugeControl.h" />
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineN1GaugeControl.h" />
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineN2GaugeControl.h" />
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\LineSeparatorControl.h" />
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\EICASControl.h" />
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\TATControl.h" />
+    <ClInclude Include="..\..\..\..\Desktop\save_prog\WeightTempBoxControl.h" />
     <ClInclude Include="AHRU.h" />
     <ClInclude Include="AircraftSpeedLimit.h" />
     <ClInclude Include="AircraftUnitsType.h" />
@@ -354,6 +371,7 @@
     <ClInclude Include="EventDispatchers.h" />
     <ClInclude Include="ExampleLineControl.h" />
     <ClInclude Include="ExampleMasterControl.h" />
+    <ClInclude Include="FFControl.h" />
     <ClInclude Include="HelloWorldControl.h" />
     <ClInclude Include="HelloWorldDisplay.h" />
     <ClInclude Include="ExampleDisplays.h" />
@@ -377,11 +395,11 @@
     <ClInclude Include="IsfdDisplay.h" />
     <ClInclude Include="KEvents.h" />
     <ClInclude Include="LeftInboardDisplay.h" />
+    <ClInclude Include="LeftOutboardMasterControl.h" />
     <ClInclude Include="LifeCycle.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineControl.h" />
     <ClInclude Include="LineDisplay.h" />
-    <ClInclude Include="LineSeparatorControl.h" />
     <ClInclude Include="LowerCenterDisplay.h" />
     <ClInclude Include="LVar.h" />
     <ClInclude Include="LVars.h" />
@@ -393,12 +411,14 @@
     <ClInclude Include="McpSpeedDisplay.h" />
     <ClInclude Include="MCPVerticalSpeedApplication.h" />
     <ClInclude Include="McpVerticalSpeedDisplay.h" />
-    <ClInclude Include="TATControl.h" />
-    <ClInclude Include="MFDMasterControl.h" />
+    <ClInclude Include="MFDCenterMasterControl.h" />
+    <ClInclude Include="MFDLeftInboardMasterControl.h" />
+    <ClInclude Include="MFDRightInboardMasterControl.h" />
     <ClInclude Include="NavBeacon.h" />
     <ClInclude Include="NavData.h" />
     <ClInclude Include="NavRadioEnums.h" />
     <ClInclude Include="NullLogger.h" />
+    <ClInclude Include="OilPressControl.h" />
     <ClInclude Include="OnOffState.h" />
     <ClInclude Include="Operable.h" />
     <ClInclude Include="PFDAirspeedIndicatorApplication.h" />
@@ -425,6 +445,7 @@
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
+    <ClInclude Include="RightOutboardMasterControl.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
     <ClInclude Include="SimConnectFacility.h" />
@@ -502,7 +523,6 @@
     <ClInclude Include="VorType.h" />
     <ClInclude Include="VRefSpeedMarker.h" />
     <ClInclude Include="VRSpeedMarker.h" />
-    <ClInclude Include="WeightTempBoxControl.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty_licenses.md" />
