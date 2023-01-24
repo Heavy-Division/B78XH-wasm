@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "TCPLineControl.h"
+#include "Tools/Tools.h"
 
 class TCPLeftLineTitleControl: public TCPLineControl {
 	public:

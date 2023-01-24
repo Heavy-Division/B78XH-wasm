@@ -6,4 +6,5 @@ auto TCPLeftLineTitleControl::setupControl() -> void {
 	getContentHolder().setAlign(ContentHolder::ALIGN::LEFT);
 	getContentHolder().setContentVerticalAlign(NVG_ALIGN_BOTTOM);
 	getContentHolder().setDefaultFontSize(17);
+	getContentHolder().addColor("cyan", Tools::Colors::cyan);
 }

@@ -526,6 +526,15 @@
     <ClCompile Include="TCPScratchpadControl.cpp">
       <Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
     </ClCompile>
+    <ClCompile Include="TCPNAVPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPMENUPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPOFFPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1157,6 +1166,15 @@
     </ClInclude>
     <ClInclude Include="TCPScratchpadControl.h">
       <Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPNAVPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPMENUPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPOFFPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -36,4 +36,10 @@ class TCPScratchpadControl : public Control {
 
 	private:
 		std::string buffer_ = "";
+		bool eventsDisabled = false;
+
+	public:
+		[[nodiscard]] auto isEventsDisabled() const -> bool;
+
+		auto setEventsDisabled(const bool eventsDisabled) -> void;
 };

@@ -6,6 +6,9 @@
 #include "TCPCABPageControl.h"
 #include "TCPGPWSPageControl.h"
 #include "TCPHFPageControl.h"
+#include "TCPMENUPageControl.h"
+#include "TCPNAVPageControl.h"
+#include "TCPOFFPageControl.h"
 #include "TCPSATPageControl.h"
 #include "TCPWXRPageControl.h"
 #include "TCPXPDRPageControl.h"
@@ -115,12 +118,30 @@ auto TCPMasterControl::processEvent(TCPEventDispatcher::EVENT_LIST event) -> voi
 			}
 			break;
 		}
-		case TCPEventDispatcher::EVENT_LIST::OFF: break;
-		case TCPEventDispatcher::EVENT_LIST::NAV: break;
-		case TCPEventDispatcher::EVENT_LIST::MENU: break;
-		case TCPEventDispatcher::EVENT_LIST::STBY_UP: break;
-		case TCPEventDispatcher::EVENT_LIST::STBY_DOWN: break;
-		case TCPEventDispatcher::EVENT_LIST::XFR: break;
+		case TCPEventDispatcher::EVENT_LIST::OFF: {
+			setCurrentPage(std::make_shared<TCPOFFPageControl>("TCPOFFPageControl", scratchpad_));
+			break;
+		}
+		case TCPEventDispatcher::EVENT_LIST::NAV: {
+			setCurrentPage(std::make_shared<TCPNAVPageControl>("TCPNAVPageControl", scratchpad_));
+			break;
+		}
+		case TCPEventDispatcher::EVENT_LIST::MENU: {
+			setCurrentPage(std::make_shared<TCPMENUPageControl>("TCPMANUPageControl", scratchpad_));
+			break;
+		}
+		case TCPEventDispatcher::EVENT_LIST::STBY_UP: {
+			currentPage_->onStbyUpPressed();
+			break;
+		}
+		case TCPEventDispatcher::EVENT_LIST::STBY_DOWN: {
+			currentPage_->onStbyDownPressed();
+			break;
+		}
+		case TCPEventDispatcher::EVENT_LIST::XFR: {
+			currentPage_->onXfrPressed();
+			break;
+		}
 		case TCPEventDispatcher::EVENT_LIST::CLR: {
 			currentPage_->scratchPad_->processEvent(TCPScratchpadControl::events::CLR);
 			break;

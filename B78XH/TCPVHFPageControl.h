@@ -11,10 +11,14 @@ class TCPVHFPageControl : public TCPPageControl {
 	protected:
 		auto prepareControls() -> void override;
 		auto setupControls() -> void override;
+		auto createSTDYTitle() -> string;
 
 		auto prepareLines() -> void;
 		auto calculateNumberOfPages() -> void;
 		auto setupControl() -> void override;
+
+	public:
+		auto render() -> void override;
 
 	private:
 		enum class Lines {
@@ -61,4 +65,5 @@ class TCPVHFPageControl : public TCPPageControl {
 
 		std::array<Line, 12> lines;
 		std::array<LineTitle, 12> lineTitles;
+		int selectedStandbyFrequency = 0;
 };

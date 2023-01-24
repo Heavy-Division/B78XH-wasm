@@ -136,4 +136,8 @@ auto TCPXPDRPageControl::setupControls() -> void {
 		Tools::Transponder::setCode(scratchPad_->getBuffer());
 		scratchPad_->processEvent(TCPScratchpadControl::events::FORCE_CLR);
 	};
+
+	onL2Pressed = []() -> void {
+		Tools::Transponder::ident();
+	};
 }

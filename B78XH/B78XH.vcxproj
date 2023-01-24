@@ -262,6 +262,9 @@
     <ClCompile Include="TCPLeftLineTitleControl.cpp" />
     <ClCompile Include="TCPLineControl.cpp" />
     <ClCompile Include="TCPMasterControl.cpp" />
+    <ClCompile Include="TCPMENUPageControl.cpp" />
+    <ClCompile Include="TCPNAVPageControl.cpp" />
+    <ClCompile Include="TCPOFFPageControl.cpp" />
     <ClCompile Include="TCPPageControl.cpp" />
     <ClCompile Include="TCPPagesLineControl.cpp" />
     <ClCompile Include="TCPPageTitleControl.cpp" />
@@ -466,6 +469,9 @@
     <ClInclude Include="TCPLeftLineTitleControl.h" />
     <ClInclude Include="TCPLineControl.h" />
     <ClInclude Include="TCPMasterControl.h" />
+    <ClInclude Include="TCPMENUPageControl.h" />
+    <ClInclude Include="TCPNAVPageControl.h" />
+    <ClInclude Include="TCPOFFPageControl.h" />
     <ClInclude Include="TCPPageControl.h" />
     <ClInclude Include="TCPPagesLineControl.h" />
     <ClInclude Include="TCPPageTitleControl.h" />

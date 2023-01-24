@@ -37,6 +37,9 @@ auto TCPScratchpadControl::clear() -> void {
 }
 
 auto TCPScratchpadControl::processEvent(events event) -> void {
+	if(eventsDisabled) {
+		return;
+	}
 	switch (event) {
 		case events::NUM1: {
 			buffer_.push_back(49);
@@ -127,4 +130,12 @@ auto TCPScratchpadControl::prepareAlign(int chunkNumber) -> void {
 
 auto TCPScratchpadControl::prepareDefaults() -> void {
 	nvgFontFace(getContext(), getContentHolder().getFontFace().c_str());
+}
+
+auto TCPScratchpadControl::isEventsDisabled() const -> bool {
+	return eventsDisabled;
+}
+
+auto TCPScratchpadControl::setEventsDisabled(const bool eventsDisabled) -> void {
+	this->eventsDisabled = eventsDisabled;
 }
