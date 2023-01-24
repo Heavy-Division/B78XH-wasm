@@ -535,6 +535,9 @@
     <ClCompile Include="TCPOFFPageControl.cpp">
       <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
     </ClCompile>
+    <ClCompile Include="TcpLeftDisplay.cpp">
+      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1176,6 +1179,9 @@
     <ClInclude Include="TCPOFFPageControl.h">
       <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
     </ClInclude>
+    <ClInclude Include="TcpLeftDisplay.h">
+      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1471,6 +1477,9 @@
     </Filter>
     <Filter Include="Source Files\Controls\Controls\TCP\TCPUtils">
       <UniqueIdentifier>{d7f6a2c4-1f1b-44ad-8919-c8c8c1689c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\TcpLeftDisplay">
+      <UniqueIdentifier>{93442f16-2270-4538-8b8d-b6a92c2eb665}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

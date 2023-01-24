@@ -44,12 +44,14 @@ namespace Displays {
 
 	inline IsfdDisplay isfdDisplay;
 
-	inline TcpCenterDisplay tcpCenterDisplay;
-	inline TcpRightDisplay tcpRightDisplay;
+	//inline TcpCenterDisplay tcpCenterDisplay;
+	//inline TcpRightDisplay tcpRightDisplay;
 
 	//inline OldMasterControl oldMasterControl;
 	//inline std::unique_ptr<MasterControl> masterControl = std::make_unique<MasterControl>("HAHA");
 
-	inline std::unique_ptr<MasterControl> masterControl = std::make_unique<TCPMasterControl>("TCPMasterControl");
+	inline std::unique_ptr<MasterControl> tcpLeftDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 0);
+	inline std::unique_ptr<MasterControl> tcpCenterDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 2);
+	inline std::unique_ptr<MasterControl> tcpRightDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 1);
 
 }

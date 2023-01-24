@@ -257,6 +257,7 @@
     <ClCompile Include="TCPEventDispatcher.cpp" />
     <ClCompile Include="TCPGPWSPageControl.cpp" />
     <ClCompile Include="TCPHFPageControl.cpp" />
+    <ClCompile Include="TcpLeftDisplay.cpp" />
     <ClCompile Include="TcpLeftDisplayGaugeCallback.cpp" />
     <ClCompile Include="TCPLeftLineControl.cpp" />
     <ClCompile Include="TCPLeftLineTitleControl.cpp" />
@@ -465,6 +466,7 @@
     <ClInclude Include="TCPEventDispatcher.h" />
     <ClInclude Include="TCPGPWSPageControl.h" />
     <ClInclude Include="TCPHFPageControl.h" />
+    <ClInclude Include="TcpLeftDisplay.h" />
     <ClInclude Include="TCPLeftLineControl.h" />
     <ClInclude Include="TCPLeftLineTitleControl.h" />
     <ClInclude Include="TCPLineControl.h" />

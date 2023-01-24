@@ -32,44 +32,40 @@ extern "C" {
 	__attribute__((visibility("default"))) bool tcp_left_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				//Console::log("PRE_INSTALL");
-				Displays::masterControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+				Displays::tcpLeftDisplay->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				//Console::log("POST_INSTALL");
 				NVGparams params;
 				params.userPtr = ctx;
 				params.edgeAntiAlias = true;
-				Displays::masterControl->postInstall(nvgCreateInternal(&params));
+				Displays::tcpLeftDisplay->postInstall(nvgCreateInternal(&params));
 
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_UPDATE: {
-				//Console::log("PRE_UPDATE");
-				Displays::masterControl->preUpdate();
+				Displays::tcpLeftDisplay->preUpdate();
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_UPDATE: {
-				Displays::masterControl->postUpdate();
+				Displays::tcpLeftDisplay->postUpdate();
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				//Console::log("RENDER");
-				Displays::masterControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+				Displays::tcpLeftDisplay->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
 				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				Displays::masterControl->preKill();
+				Displays::tcpLeftDisplay->preKill();
 				return true;
 			}
 			case PANEL_SERVICE_POST_KILL: {
-				Displays::masterControl->postKill();
+				Displays::tcpLeftDisplay->postKill();
 			}
 			break;
 		}

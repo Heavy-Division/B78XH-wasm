@@ -24,7 +24,7 @@ auto TCPMasterControl::setupControl() -> void {
 	MasterControl::setupControl();
 	addOnValidate(SKIP_VALIDATION_EVENT);
 	addOnBeforeRender([this](BaseControl& control)-> bool {
-		this->processEvent(EventDispatchers::tcpEventDispatcher[0].get());
+		this->processEvent(EventDispatchers::tcpEventDispatcher[panelIndex_].get());
 		return true;
 	});
 }
