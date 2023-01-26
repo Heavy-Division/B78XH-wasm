@@ -157,6 +157,9 @@ auto BaseControl::isControlInvalid() -> bool {
 }
 
 auto BaseControl::prepareControls() -> void {
+	getOnBeforeRender().clear();
+	getOnValidate().clear();
+	getControls().clear();
 }
 
 auto BaseControl::setupControls() -> void {
@@ -190,6 +193,16 @@ auto BaseControl::addOnBeforeRender(EventInterface event) -> void {
 }
 
 auto BaseControl::renderScreen() -> void {
+	/*
+	 * If position is not set for master control (init run) -> set position and skip rendering
+	 */
+	if (!getPosition().isPositionSet() && getControlType() == ControlType::MASTER) {
+		position_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+		crop_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+		restart();
+		return;
+	}
+
 	if (!hasContext()) {
 		return;
 	}
@@ -199,10 +212,8 @@ auto BaseControl::renderScreen() -> void {
 	}
 
 	const float pxRatio = static_cast<float>(getGaugeDrawData()->fbWidth) / static_cast<float>(getGaugeDrawData()->winWidth);
-	const auto winWidth = static_cast<float>(getGaugeDrawData()->winWidth);
-	const auto winHeight = static_cast<float>(getGaugeDrawData()->winHeight);
 
-	nvgBeginFrame(getContext(), winWidth, winHeight, pxRatio);
+	nvgBeginFrame(getContext(), position.getWidth(), position.getHeight(), pxRatio);
 	{
 		nvgSave(getContext());
 		{
@@ -211,7 +222,7 @@ auto BaseControl::renderScreen() -> void {
 				nvgFillColor(getContext(), nvgRGB(0, 0, 0));
 				nvgBeginPath(getContext());
 				{
-					nvgRect(getContext(), 0, 0, winWidth, winHeight);
+					nvgRect(getContext(), 0, 0, position.getWidth(), position.getHeight());
 				}
 				nvgClosePath(getContext());
 				nvgFill(getContext());
@@ -220,12 +231,12 @@ auto BaseControl::renderScreen() -> void {
 					if (getCrop().isPositionSet()) {
 						nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
 						{
-							renderControls();
+							renderControls(true);
 						}
 						nvgResetScissor(getContext());
 					}
 					else {
-						renderControls();
+						renderControls(true);
 					}
 				}
 				nvgRestore(getContext());
@@ -240,37 +251,63 @@ auto BaseControl::renderScreen() -> void {
 /*
  * TODO: Add support for master crop
  */
-auto BaseControl::renderControls() -> void {
+auto BaseControl::renderControls(bool translate) -> void {
 	if (getControlType() == ControlType::NORMAL) {
 		nvgSave(getContext());
 		{
-			nvgTranslate(getContext(), getPosition().getLeft(), getPosition().getTop());
-			{
-				nvgSave(getContext());
+			if (translate) {
+				nvgTranslate(getContext(), getPosition().getLeft(), getPosition().getTop());
 				{
-					if (getCrop().isPositionSet()) {
-						nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
-						{
+					nvgSave(getContext());
+					{
+						if (getCrop().isPositionSet()) {
+							nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
+							{
+								render();
+							}
+							nvgResetScissor(getContext());
+						}
+						else {
 							render();
 						}
-						nvgResetScissor(getContext());
 					}
-					else {
+					nvgRestore(getContext());
+				}
+				nvgResetTransform(getContext());
+			}
+			else {
+				if (getCrop().isPositionSet()) {
+					nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
+					{
 						render();
 					}
+					nvgResetScissor(getContext());
 				}
-				nvgRestore(getContext());
+				else {
+					render();
+				}
 			}
-			nvgResetTransform(getContext());
 		}
 		nvgRestore(getContext());
 	}
 
-	if (!getControls().empty()) {
-		for (const auto& control : getControls()) {
-			control->renderControls();
+	nvgSave(getContext());
+	{
+		nvgTranslate(getContext(), getPosition().getLeft(), getPosition().getTop());
+		{
+			if (!getControls().empty()) {
+				nvgSave(getContext());
+				{
+					for (const auto& control : getControls()) {
+						control->renderControls(getControlType() == ControlType::MASTER ? true : false);
+					}
+				}
+				nvgRestore(getContext());
+			}
 		}
+		nvgResetTransform(getContext());
 	}
+	nvgRestore(getContext());
 }
 
 auto BaseControl::needRedraw(bool force) -> bool {
@@ -351,8 +388,6 @@ auto BaseControl::getGaugeDrawData() const -> GaugeDrawData* {
 }
 
 auto BaseControl::setGaugeDrawData(GaugeDrawData* const gaugeDrawData) -> void {
-	position_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
-	crop_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
 	gaugeDrawData_ = gaugeDrawData;
 }
 
@@ -407,7 +442,8 @@ auto BaseControl::ContentHolder::setContent(const Content& content) -> void {
 		Content copy = content;
 		std::reverse(copy.begin(), copy.end());
 		checkContent(copy);
-	} else {
+	}
+	else {
 		checkContent(content);
 	}
 }
