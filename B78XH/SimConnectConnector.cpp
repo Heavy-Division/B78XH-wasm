@@ -21,6 +21,7 @@
 #include "GaugesInvalidateFlags.h"
 #include "SimConnectClientEvents.h"
 #include "EventDispatchers.h"
+#include "MFDPanelResolver.h"
 
 auto SimConnectConnector::connect(const char* name) -> bool {
 	Console::info("B78XH WASM: SimConnect connecting...");
@@ -41,6 +42,13 @@ auto SimConnectConnector::prepareEvents() -> void {
 	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_TCP_3, "B78XH.CONTROL_IDS_TCP_3", FALSE);
 
 	this->mapEvent(ClientEvents::B78XH_BUTTON_CLOCK_PUSH, "B78XH.BUTTON_CLOCK_PUSH", FALSE);
+
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_1, "B78XH.CONTROL_IDS_MFD_1", FALSE);
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_2, "B78XH.CONTROL_IDS_MFD_2", FALSE);
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_3, "B78XH.CONTROL_IDS_MFD_3", FALSE);
+
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_1, "B78XH.CONTROL_IDS_MFD_SIDE_1", FALSE);
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_2, "B78XH.CONTROL_IDS_MFD_SIDE_2", FALSE);
 }
 
 auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId,
@@ -612,7 +620,6 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 }
 
 auto SimConnectConnector::prepareClientDataDefinitions() -> void {
-
 }
 
 auto SimConnectConnector::prepareRequests() -> void {
@@ -896,7 +903,6 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 		break;
 		case SIMCONNECT_RECV_ID_EVENT: {
 			this->handleCustomEvents(static_cast<SIMCONNECT_RECV_EVENT_EX1*>(pData));
-
 		}
 		case SIMCONNECT_RECV_ID_CLIENT_DATA:
 		default:
@@ -923,6 +929,26 @@ auto SimConnectConnector::handleCustomEvents(SIMCONNECT_RECV_EVENT_EX1* data) ->
 			break;
 		};
 
+		case ClientEvents::B78XH_BUTTON_CLOCK_PUSH: break;
+		case ClientEvents::B78XH_BUTTON_MTRS_PUSH: break;
+		case ClientEvents::B78XH_BUTTON_FPV_PUSH: break;
+		case ClientEvents::B78XH_CONTROL_IDS_MFD_1: {
+			Console::error("SIM: {}", static_cast<int>(static_cast<MFDPanelResolver::PANEL_EVENT_ID>(data0)));
+			MFD::resolver.processSwitchEvent(MFDPanelResolver::MFD::ONE, static_cast<MFDPanelResolver::PANEL_EVENT_ID>(data0));
+			break;
+		}
+		case ClientEvents::B78XH_CONTROL_IDS_MFD_2: {
+			MFD::resolver.processSwitchEvent(MFDPanelResolver::MFD::TWO, static_cast<MFDPanelResolver::PANEL_EVENT_ID>(data0));
+			Console::error("MFD EVENT");
+			break;
+		}
+		case ClientEvents::B78XH_CONTROL_IDS_MFD_3: {
+			MFD::resolver.processSwitchEvent(MFDPanelResolver::MFD::THREE, static_cast<MFDPanelResolver::PANEL_EVENT_ID>(data0));
+			Console::error("MFD EVENT");
+			break;
+		}
+		case ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_1: break;
+		case ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_2: break;
 		default: {
 			Console::error("(SimConnectConnector::handleCustomEvents) Unknown client event");
 			break;
@@ -937,7 +963,6 @@ auto SimConnectConnector::setDataOnSimObject(DATA_DEFINE_ID DefineID,
                                              DWORD cbUnitSize,
                                              void* pDataSet
 		) -> HRESULT {
-
 	return SimConnect_SetDataOnSimObject(simConnectHandle, DefineID, ObjectID, Flags, ArrayCount, cbUnitSize, pDataSet);
 }
 

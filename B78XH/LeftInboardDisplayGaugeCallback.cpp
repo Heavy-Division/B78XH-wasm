@@ -32,19 +32,40 @@ extern "C" {
 	MSFS_CALLBACK bool left_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				return Displays::leftInboardDisplay.preInstall();
+				Displays::leftInboardDisplay->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				return Displays::leftInboardDisplay.postInstall(ctx);
+				NVGparams params;
+				params.userPtr = ctx;
+				params.edgeAntiAlias = true;
+				Displays::leftInboardDisplay->postInstall(nvgCreateInternal(&params));
+
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_PRE_UPDATE: {
+				Displays::leftInboardDisplay->preUpdate();
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_POST_UPDATE: {
+				Displays::leftInboardDisplay->postUpdate();
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				return Displays::leftInboardDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
+				Displays::leftInboardDisplay->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				return Displays::leftInboardDisplay.preKill();
+				Displays::leftInboardDisplay->preKill();
+				return true;
+			}
+			case PANEL_SERVICE_POST_KILL: {
+				Displays::leftInboardDisplay->postKill();
 			}
 			break;
 		}

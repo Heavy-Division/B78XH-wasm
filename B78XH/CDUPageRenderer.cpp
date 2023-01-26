@@ -192,6 +192,7 @@ auto CDUPageRenderer::render() -> void {
 }
 
 auto CDUPageRenderer::drawBackground() -> void {
+
 	nvgFillColor(this->context, nvgRGB(0, 0, 0));
 	nvgBeginPath(this->context);
 	{

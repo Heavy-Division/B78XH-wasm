@@ -538,6 +538,39 @@
     <ClCompile Include="TcpLeftDisplay.cpp">
       <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
     </ClCompile>
+    <ClCompile Include="MFDMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDBaseControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDSYSControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDPanelResolver.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDEmptyControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDDisplayContainer.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDCDUControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUBackgroundControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUIdentPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1182,6 +1215,39 @@
     <ClInclude Include="TcpLeftDisplay.h">
       <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
     </ClInclude>
+    <ClInclude Include="MFDMasterControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDBaseControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDSYSControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDPanelResolver.h">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDEmptyControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDDisplayContainer.h">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDCDUControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUBackgroundControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUIdentPageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1480,6 +1546,24 @@
     </Filter>
     <Filter Include="Source Files\Displays\TcpLeftDisplay">
       <UniqueIdentifier>{93442f16-2270-4538-8b8d-b6a92c2eb665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD">
+      <UniqueIdentifier>{02a48c32-954c-424d-afb4-05d478db9fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\Utils">
+      <UniqueIdentifier>{65ac4756-3c39-4e9b-874a-6a659c38b914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU">
+      <UniqueIdentifier>{84f5a704-7816-4e16-bdea-2c7cceb6a63a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDUPages">
+      <UniqueIdentifier>{5a444dc1-fa24-4167-a92b-02da5777e3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDUUtils">
+      <UniqueIdentifier>{74795d7b-daf6-41a6-8bc9-a6805132254e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDULines">
+      <UniqueIdentifier>{6e64abfa-479e-47b1-b801-ec7e6374d666}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
