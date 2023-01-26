@@ -231,12 +231,12 @@ auto BaseControl::renderScreen() -> void {
 					if (getCrop().isPositionSet()) {
 						nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
 						{
-							renderControls(true);
+							renderControls(0, 0);
 						}
 						nvgResetScissor(getContext());
 					}
 					else {
-						renderControls(true);
+						renderControls(0, 0);
 					}
 				}
 				nvgRestore(getContext());
@@ -251,63 +251,35 @@ auto BaseControl::renderScreen() -> void {
 /*
  * TODO: Add support for master crop
  */
-auto BaseControl::renderControls(bool translate) -> void {
+auto BaseControl::renderControls(float parentLeft, float parentTop) -> void {
 	if (getControlType() == ControlType::NORMAL) {
 		nvgSave(getContext());
 		{
-			if (translate) {
-				nvgTranslate(getContext(), getPosition().getLeft(), getPosition().getTop());
-				{
-					nvgSave(getContext());
-					{
-						if (getCrop().isPositionSet()) {
-							nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
-							{
-								render();
-							}
-							nvgResetScissor(getContext());
-						}
-						else {
-							render();
-						}
-					}
-					nvgRestore(getContext());
-				}
-				nvgResetTransform(getContext());
-			}
-			else {
-				if (getCrop().isPositionSet()) {
-					nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
-					{
-						render();
-					}
-					nvgResetScissor(getContext());
-				}
-				else {
-					render();
-				}
-			}
-		}
-		nvgRestore(getContext());
-	}
-
-	nvgSave(getContext());
-	{
-		nvgTranslate(getContext(), getPosition().getLeft(), getPosition().getTop());
-		{
-			if (!getControls().empty()) {
+			nvgTranslate(getContext(), parentLeft + getPosition().getLeft(), parentTop + getPosition().getTop());
+			{
 				nvgSave(getContext());
 				{
-					for (const auto& control : getControls()) {
-						control->renderControls(getControlType() == ControlType::MASTER ? true : false);
+					if (getCrop().isPositionSet()) {
+						nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
+						{
+							render();
+						}
+						nvgResetScissor(getContext());
+					}
+					else {
+						render();
 					}
 				}
 				nvgRestore(getContext());
 			}
+			nvgResetTransform(getContext());
 		}
-		nvgResetTransform(getContext());
+		nvgRestore(getContext());
 	}
-	nvgRestore(getContext());
+
+	for (const auto& control : getControls()) {
+		control->renderControls(getPosition().getLeft() + parentLeft, getPosition().getTop() + parentTop);
+	}
 }
 
 auto BaseControl::needRedraw(bool force) -> bool {

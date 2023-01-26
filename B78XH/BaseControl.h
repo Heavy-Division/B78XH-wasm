@@ -265,7 +265,7 @@ class BaseControl {
 		auto addSystemControl(ControlSharedPointer control) -> void;
 
 		auto renderScreen() -> void;
-		auto renderControls(bool translate) -> void;
+		auto renderControls(float parentLeft, float parentTop) -> void;
 
 		auto needRedraw(bool force = false) -> bool;
 		auto isControlInvalid(BaseControl& control) -> bool;
