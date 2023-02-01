@@ -395,6 +395,12 @@ namespace SimConnectData {
 				double engine2_combustion;
 				double engine1_oil_pressure;
 				double engine2_oil_pressure;
+				double engine1_oil_temp;
+				double engine2_oil_temp;
+				double engine1_oil_qty;
+				double engine2_oil_qty;
+				double engine1_vibration;
+				double engine2_vibration;
 			};
 
 			inline Engine engine;

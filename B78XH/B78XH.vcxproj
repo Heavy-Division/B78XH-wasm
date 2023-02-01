@@ -56,7 +56,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
-    <IncludePath>$(MSFS_IncludePath)</IncludePath>
+    <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'">
     <ClCompile>
@@ -96,7 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_MSFS_WASM;_STRING_H_CPLUSPLUS_98_CONFORMANCE_;_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_;_LIBCPP_NO_EXCEPTIONS;_LIBCPP_HAS_NO_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir);$(ProjectDir)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <DebugInformationFormat />
@@ -158,12 +158,14 @@
     <ClCompile Include="CDURightTitleLine.cpp" />
     <ClCompile Include="CDURoutePage.cpp" />
     <ClCompile Include="CDUSelectKeyButton.cpp" />
+    <ClCompile Include="EICASGauge.cpp" />
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="ControlCrop.cpp" />
     <ClCompile Include="ControlMask.cpp" />
     <ClCompile Include="ControlPosition.cpp" />
     <ClCompile Include="DefaultLogger.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="EngineVibrationControl.cpp" />
     <ClCompile Include="ExampleLineControl.cpp" />
     <ClCompile Include="ExampleMasterControl.cpp" />
     <ClCompile Include="ExampleControlGaugeCallBack.cpp" />
@@ -213,6 +215,8 @@
     <ClCompile Include="NavData.cpp" />
     <ClCompile Include="NullLogger.cpp" />
     <ClCompile Include="OilPressControl.cpp" />
+    <ClCompile Include="OilQuantityControl.cpp" />
+    <ClCompile Include="OilTempControl.cpp" />
     <ClCompile Include="Operable.cpp" />
     <ClCompile Include="PFDAirspeedIndicator.cpp" />
     <ClCompile Include="PFDAirspeedIndicatorApplication.cpp" />
@@ -359,6 +363,7 @@
     <ClInclude Include="CDURightTitleLine.h" />
     <ClInclude Include="CDURoutePage.h" />
     <ClInclude Include="CDUSelectKeyButton.h" />
+    <ClInclude Include="EICASGauge.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="ControlCrop.h" />
     <ClInclude Include="ControlMask.h" />
@@ -367,6 +372,9 @@
     <ClInclude Include="Display.h" />
     <ClInclude Include="Displays.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="EICASAdvisoryDispatch.h" />
+    <ClInclude Include="EicasMessages.h" />
+    <ClInclude Include="EngineVibrationControl.h" />
     <ClInclude Include="ERS.h" />
     <ClInclude Include="EventDispatchers.h" />
     <ClInclude Include="ExampleLineControl.h" />
@@ -419,6 +427,8 @@
     <ClInclude Include="NavRadioEnums.h" />
     <ClInclude Include="NullLogger.h" />
     <ClInclude Include="OilPressControl.h" />
+    <ClInclude Include="OilQuantityControl.h" />
+    <ClInclude Include="OilTempControl.h" />
     <ClInclude Include="OnOffState.h" />
     <ClInclude Include="Operable.h" />
     <ClInclude Include="PFDAirspeedIndicatorApplication.h" />
@@ -496,6 +506,7 @@
     <ClInclude Include="TCPRightLineTitleControl.h" />
     <ClInclude Include="TCPSATPageControl.h" />
     <ClInclude Include="TCPVHFPageControl.h" />
+    <ClInclude Include="Testgauge.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />

@@ -664,6 +664,24 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL PRESSURE:2",
 		"Psi");
 
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL TEMPERATURE:1",
+		"Celsius");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL TEMPERATURE:2",
+		"Celsius");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL QUANTITY:1",
+		"Percent scaler 16k");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL QUANTITY:2",
+		"Percent scaler 16k");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG VIBRATION:2",
+		"Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG VIBRATION:2",
+		"Number");
+
 	/*
 	 *  Systems - Fuel
 	 */

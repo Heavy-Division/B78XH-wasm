@@ -518,31 +518,31 @@
       <Filter>Source Files\Controls\Examples</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineEGTGaugeControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineN1GaugeControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\EngineN2GaugeControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\LineSeparatorControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\EICASControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\TATControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\save_prog\WeightTempBoxControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="FFControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="OilPressControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
     <ClCompile Include="MFDCenterMasterControl.cpp">
       <Filter>Source Files\Controls\Controls\Panels</Filter>
@@ -558,6 +558,18 @@
     </ClCompile>
     <ClCompile Include="RightOutboardMasterControl.cpp">
       <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClCompile>
+    <ClCompile Include="EICASGauge.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29\Templates</Filter>
+    </ClCompile>
+    <ClCompile Include="OilTempControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+    </ClCompile>
+    <ClCompile Include="OilQuantityControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVibrationControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1174,31 +1186,31 @@
       <Filter>Source Files\Controls\Examples</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineEGTGaugeControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineN1GaugeControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\EngineN2GaugeControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\LineSeparatorControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\EICASControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\TATControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\save_prog\WeightTempBoxControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="FFControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="OilPressControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
     <ClInclude Include="MFDCenterMasterControl.h">
       <Filter>Source Files\Controls\Controls\Panels</Filter>
@@ -1214,6 +1226,27 @@
     </ClInclude>
     <ClInclude Include="RightOutboardMasterControl.h">
       <Filter>Source Files\Controls\Controls\Panels</Filter>
+    </ClInclude>
+    <ClInclude Include="EICASGauge.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="OilTempControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+    </ClInclude>
+    <ClInclude Include="OilQuantityControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+    </ClInclude>
+    <ClInclude Include="EicasMessages.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVibrationControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="EICASAdvisoryDispatch.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Testgauge.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1514,14 +1547,17 @@
     <Filter Include="Source Files\Controls\Controls\MFD">
       <UniqueIdentifier>{a05418ef-e94b-42f0-aaba-e642794bef90}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS">
-      <UniqueIdentifier>{df437e2f-d51c-4ebf-b5bf-faded403e909}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Controls\Controls\PFD">
       <UniqueIdentifier>{15bfd197-dfd1-4a09-93e7-da6542463ad7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Controls\Controls\Panels">
       <UniqueIdentifier>{04b07e6e-fae0-4046-a503-68988075f506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS%28GEnx%29">
+      <UniqueIdentifier>{df437e2f-d51c-4ebf-b5bf-faded403e909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS%28GEnx%29\Templates">
+      <UniqueIdentifier>{65645618-ac53-4888-a364-a6d16f1d85c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

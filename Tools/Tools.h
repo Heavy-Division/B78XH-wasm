@@ -6,6 +6,7 @@
 #include "MSFS/Render/nanovg.h"
 #include <MSFS/Legacy/gauges.h>
 #include <string>
+#include "fmt/core.h"
 
 namespace Tools {
 	class Colors {
@@ -77,5 +78,9 @@ namespace Tools {
 
 	auto smoothPow(double start, double end, double factor, double deltaTime) -> double;
 	auto clamp(double value, double lo, double hi) -> double;
-	auto advisoryColorHandler(double data, double warnThreshold, double dangerThreshold, NVGcolor defaultColor) -> NVGcolor;
+	auto fwsColorHandler(double data, double advisoryThreshold, double warningThreshold, NVGcolor defaultColor) -> NVGcolor;
+
+	auto formatToFixed(int data, int decimals) -> std::string;
+	auto formatToFixed(double data, int decimals) -> std::string;
+	auto formatToFixed(float data, int decimals) -> std::string;
 }

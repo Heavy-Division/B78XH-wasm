@@ -386,6 +386,9 @@ namespace Simplane {
 				auto fuelFlowPPH() -> double;
 				auto hasCombustion() -> bool;
 				auto oilPressure() -> double;
+				auto oilTemperature() -> double;
+				auto oilQty() -> double;
+				auto vibration() -> double;
 			};
 
 			namespace engine_2 {
@@ -396,6 +399,9 @@ namespace Simplane {
 				auto fuelFlowPPH() -> double;
 				auto hasCombustion() -> bool;
 				auto oilPressure() -> double;
+				auto oilTemperature() -> double;
+				auto oilQty() -> double;
+				auto vibration() -> double;
 			}
 		}
 
@@ -1511,4 +1517,29 @@ inline auto Simplane::aircraft::systems::powerplant::engine_1::oilPressure() -> 
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::oilPressure() -> double {
 	return SimConnectData::systems::powerplant::engine.engine2_oil_pressure;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::oilTemperature() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_oil_temp;
+}
+
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::oilTemperature() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_oil_temp;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::oilQty() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_oil_qty * 0.001;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::oilQty() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_oil_qty * 0.001;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_1::vibration() -> double {
+	return SimConnectData::systems::powerplant::engine.engine1_vibration;
+}
+
+inline auto Simplane::aircraft::systems::powerplant::engine_2::vibration() -> double {
+	return SimConnectData::systems::powerplant::engine.engine2_vibration;
 }

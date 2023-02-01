@@ -131,16 +131,33 @@ namespace Tools {
 		return std::min<double>(hi, std::max<double>(value, lo));
 	};
 
-	auto advisoryColorHandler(double data, double warnThreshold, double dangerThreshold, NVGcolor defaultColor) -> NVGcolor {
-		if (data > warnThreshold && data < dangerThreshold) {
+	auto fwsColorHandler(double data, double advisoryThreshold, double warningThreshold, NVGcolor defaultColor) -> NVGcolor {
+		if (data > advisoryThreshold && data < warningThreshold) {
 			return Colors::advisoryAmber;
 		}
 
-		if (data > dangerThreshold) {
+		if (data > warningThreshold) {
 			return Colors::warningRed;
 		}
 
 		return defaultColor;
 	};
 
+	auto formatToFixed(int data, int decimals) -> std::string {
+
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+			
+	}
+
+	auto formatToFixed(double data, int decimals) -> std::string {
+	
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+	
+	}
+
+	auto formatToFixed(float data, int decimals) -> std::string {
+	
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+	
+	}
 }
