@@ -45,7 +45,15 @@ extern "C" {
 				B78XHConfiguration::data.load();
 				//facilityConnector.getAirport("EDDF");
 
+<<<<<<< HEAD
 				//facilityConnector.getWaypoint("DONAD");
+=======
+<<<<<<< HEAD
+				// facilityConnector.getWaypoint("DONAD");
+=======
+				//facilityConnector.getWaypoint("DONAD");
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 
 				/* Not unique*/
 				//facilityConnector.getWaypoint("GUP");

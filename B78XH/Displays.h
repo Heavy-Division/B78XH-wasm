@@ -59,6 +59,10 @@ namespace Displays {
 	//inline OldMasterControl oldMasterControl;
 	//inline std::unique_ptr<MasterControl> masterControl = std::make_unique<MasterControl>("HAHA");
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 	inline std::unique_ptr<MasterControl> masterControl = std::make_unique<TCPMasterControl>("TCPMasterControl");
 	inline std::unique_ptr<MasterControl> exampleControl = std::make_unique<ExampleControl>("ExampleControl");
 	inline std::unique_ptr<MasterControl> leftOutBoardControl = std::make_unique<LeftOutBoardMasterControl>("LeftOutboardControl");
@@ -66,10 +70,18 @@ namespace Displays {
 	inline std::unique_ptr<MasterControl> centerMFDControl = std::make_unique<MFDCenterMasterControl>("CenterMFDControl");
 	inline std::unique_ptr<MasterControl> rightInboardControl = std::make_unique<MFDRightInboardMasterControl>("RightInboardControl");
 	inline std::unique_ptr<MasterControl> rightOutBoardControl = std::make_unique<RightOutboardMasterControl>("RightOutboardControl");
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 	inline std::unique_ptr<MasterControl> tcpLeftDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 0);
 	inline std::unique_ptr<MasterControl> tcpCenterDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 2);
 	inline std::unique_ptr<MasterControl> tcpRightDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 1);
 
 	inline std::unique_ptr<MasterControl> leftInboardDisplay = std::make_unique<MFDMasterControl>("MFDMasterControl", MFDPanelResolver::MFD::ONE);
 
+<<<<<<< HEAD
+=======
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 }

@@ -281,7 +281,6 @@
     <ClCompile Include="RightInboardDisplayGaugeCallback.cpp" />
     <ClCompile Include="RightOutboardDisplay.cpp" />
     <ClCompile Include="RightOutboardDisplayGaugeCallback.cpp" />
-    <ClCompile Include="RightOutboardMasterControl.cpp" />
     <ClCompile Include="RouteReference.cpp" />
     <ClCompile Include="SimConnectAirportPreloader.cpp" />
     <ClCompile Include="SimConnectFacility.cpp" />
@@ -470,9 +469,6 @@
     <ClInclude Include="McpSpeedDisplay.h" />
     <ClInclude Include="MCPVerticalSpeedApplication.h" />
     <ClInclude Include="McpVerticalSpeedDisplay.h" />
-    <ClInclude Include="MFDCenterMasterControl.h" />
-    <ClInclude Include="MFDLeftInboardMasterControl.h" />
-    <ClInclude Include="MFDRightInboardMasterControl.h" />
     <ClInclude Include="MFDBaseControl.h" />
     <ClInclude Include="MFDCDUControl.h" />
     <ClInclude Include="MFDDisplayContainer.h" />
@@ -515,7 +511,6 @@
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
-    <ClInclude Include="RightOutboardMasterControl.h" />
     <ClInclude Include="RouteReference.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectAirportPreloader.h" />
@@ -574,7 +569,6 @@
     <ClInclude Include="TCPSATPageControl.h" />
     <ClInclude Include="TCPScratchpadControl.h" />
     <ClInclude Include="TCPVHFPageControl.h" />
-    <ClInclude Include="Testgauge.h" />
     <ClInclude Include="TCPWXRPageControl.h" />
     <ClInclude Include="TCPXPDRPageControl.h" />
     <ClInclude Include="Timer.h" />

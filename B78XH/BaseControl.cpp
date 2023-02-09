@@ -3,6 +3,11 @@
 
 #include "Tools/Console.h"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 
 auto BaseControl::propagateMouseClick(float x, float y) -> void {
 	mouseClick_.x = x;
@@ -28,6 +33,10 @@ auto BaseControl::queueMouseMove(float x, float y) -> void {
 	mouseMove_.x = x;
 	mouseMove_.y = y;
 }
+<<<<<<< HEAD
+=======
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 
 auto BaseControl::prepareRenderingContextDefaults() -> void {
 	prepareRenderingContextDefaultsFonts();
@@ -266,7 +275,15 @@ auto BaseControl::renderScreen() -> void {
 				nvgFillColor(getContext(), nvgRGB(0, 0, 0));
 				nvgBeginPath(getContext());
 				{
+<<<<<<< HEAD
 					nvgRect(getContext(), 0, 0, position.getWidth(), position.getHeight());
+=======
+<<<<<<< HEAD
+					nvgRect(getContext(), 0, 0, winWidth, winHeight);
+=======
+					nvgRect(getContext(), 0, 0, position.getWidth(), position.getHeight());
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 				}
 				nvgClosePath(getContext());
 				nvgFill(getContext());

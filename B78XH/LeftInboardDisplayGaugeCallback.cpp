@@ -31,6 +31,59 @@
 extern "C" {
 	__attribute__((visibility("default"))) bool left_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		case PANEL_SERVICE_PRE_INSTALL: {
+			//Console::log("PRE_INSTALL");
+			// Displays::eicasControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			Displays::leftInboardControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+			return true;
+		}
+									  break;
+		case PANEL_SERVICE_POST_INSTALL: {
+			//Console::log("POST_INSTALL");
+
+			NVGparams params;
+			params.userPtr = ctx;
+			params.edgeAntiAlias = true;
+			// Displays::eicasControl->postInstall(nvgCreateInternal(&params));
+			Displays::leftInboardControl->postInstall(nvgCreateInternal(&params));
+			return true;
+		}
+									   break;
+		case PANEL_SERVICE_PRE_UPDATE: {
+			//Console::log("PRE_UPDATE");
+			// Displays::eicasControl->preUpdate();
+			Displays::leftInboardControl->preUpdate();
+			return true;
+		}
+									 break;
+		case PANEL_SERVICE_POST_UPDATE: {
+			// Displays::eicasControl->postUpdate();
+			Displays::leftInboardControl->postUpdate();
+			return true;
+		}
+									  break;
+		case PANEL_SERVICE_PRE_DRAW: {
+			//Console::log("RENDER");
+			// Displays::eicasControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			Displays::leftInboardControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+			return true;
+		}
+								   break;
+		case PANEL_SERVICE_PRE_KILL: {
+			// Displays::eicasControl->preKill();
+			Displays::leftInboardControl->preKill();
+			return true;
+		}
+		case PANEL_SERVICE_POST_KILL: {
+			// Displays::eicasControl->postKill();
+			Displays::leftInboardControl->postKill();
+		}
+									break;
+=======
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 			case PANEL_SERVICE_PRE_INSTALL: {
 				Displays::leftInboardDisplay->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
 				return true;
@@ -68,6 +121,10 @@ extern "C" {
 				Displays::leftInboardDisplay->postKill();
 			}
 			break;
+<<<<<<< HEAD
+=======
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
+>>>>>>> 37fe6e4358adac20aad0d5873362994310fe7fe4
 		}
 		return false;
 	}

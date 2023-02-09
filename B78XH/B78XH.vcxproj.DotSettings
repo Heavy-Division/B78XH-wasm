@@ -1,2 +1,1665 @@
-﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/CppProjectProperties/LanguageStandard/@EntryValue">Cpp17</s:String></wpf:ResourceDictionary>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<ClCompile Include="MCPAltitudeGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="MCPVSpeedGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="MCPAltitudeGauge.cpp">
+			<Filter>Source Files\Gauges</Filter>
+		</ClCompile>
+		<ClCompile Include="SimulationVariableUnits.cpp">
+			<Filter>Source Files\Tools</Filter>
+		</ClCompile>
+		<ClCompile Include="SimulationVariables.cpp">
+			<Filter>Source Files\Tools</Filter>
+		</ClCompile>
+		<ClCompile Include="SimConnectConnector.cpp">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClCompile>
+		<ClCompile Include="PEDESTALTuningControlPanelGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="PEDESTALTuningControlPanelGauge.cpp">
+			<Filter>Source Files\Gauges</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelRenderer.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelVHFPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelMENUPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelINOPPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="main.cpp">
+			<Filter>Source Files</Filter>
+		</ClCompile>
+		<ClCompile Include="TOOLSimConnectHandlingGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelScratchpad.cpp">
+			<Filter>Source Files\Renderers\Scratchpad</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelVHFStorage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Storages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelSATCOMPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelALTNNAVPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelGPWSPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelCABPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="TuningControlPanelXPDRPage.cpp">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAuxGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAuxGauge.cpp">
+			<Filter>Source Files\Gauges</Filter>
+		</ClCompile>
+		<ClCompile Include="MCPVSpeedGauge.cpp">
+			<Filter>Source Files\Gauges</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDPfdGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDPfdGauge.cpp">
+			<Filter>Source Files\Gauges</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDFMA.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAirspeedIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAltitudeIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDTargetAirspeed.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDTargetAltitude.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDVerticalSpeedIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDCduGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURenderer.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDCduGauge.cpp">
+			<Filter>Source Files\Gauges\CDU</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUButton.cpp">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUSelectKeyButton.cpp">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUMouseClickResolver.cpp">
+			<Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUMouseCursor.cpp">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Cursors</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUMouseMoveResolver.cpp">
+			<Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUMouseResolver.cpp">
+			<Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUPageRenderer.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUIdentPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="Drawable.cpp">
+			<Filter>Source Files\Abstract</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULeftLine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUCenterLine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURightLine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULeftTitleLine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURightTitleLine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUCenterTitleLine.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDNDGauge.cpp">
+			<Filter>Source Files\Gauges\ND</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDNDGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="V1SpeedMarker.cpp">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClCompile>
+		<ClCompile Include="V2SpeedMarker.cpp">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClCompile>
+		<ClCompile Include="VRefSpeedMarker.cpp">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClCompile>
+		<ClCompile Include="SpeedMarker.cpp">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClCompile>
+		<ClCompile Include="VRSpeedMarker.cpp">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClCompile>
+		<ClCompile Include="FlapsSpeedMarker.cpp">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDRadioAltitudeIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="Timer.cpp">
+			<Filter>Source Files\Tools\Timers</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDBaroIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDFlightDirector.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDILSIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="RadioNav.cpp">
+			<Filter>Source Files\Systems\RadioNav</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDMinimumIndicator.cpp">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="SimConnectFacilityLoader.cpp">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClCompile>
+		<ClCompile Include="NavData.cpp">
+			<Filter>Source Files\Tools</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUInopPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUMainKeyButton.cpp">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUHeavyPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURoutePage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULineRenderer.cpp">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUHeavyPayloadManagerPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUHeavyIRSPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUHeavyConfigurationPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="B78XHConfiguration.cpp">
+			<Filter>Source Files\Tools</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUHeavySimbriefConfigurationPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUNavRadioPage.cpp">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClCompile>
+		<ClCompile Include="KEvents.cpp">
+			<Filter>Source Files\Tools</Filter>
+		</ClCompile>
+		<ClCompile Include="IRU.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRU</Filter>
+		</ClCompile>
+		<ClCompile Include="AHRU.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\AHRU</Filter>
+		</ClCompile>
+		<ClCompile Include="IRS.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRS</Filter>
+		</ClCompile>
+		<ClCompile Include="ERS.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\ERS</Filter>
+		</ClCompile>
+		<ClCompile Include="Alignable.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+		</ClCompile>
+		<ClCompile Include="Operable.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+		</ClCompile>
+		<ClCompile Include="CCS.cpp">
+			<Filter>Source Files\Systems\CCS</Filter>
+		</ClCompile>
+		<ClCompile Include="CCSGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="LVar.cpp">
+			<Filter>Source Files\Tools\LVars</Filter>
+		</ClCompile>
+		<ClCompile Include="LVars.cpp">
+			<Filter>Source Files\Tools\LVars</Filter>
+		</ClCompile>
+		<ClCompile Include="Updateable.cpp">
+			<Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPEventDispatcher.cpp">
+			<Filter>Source Files\Tools\Events\Dispatchers</Filter>
+		</ClCompile>
+		<ClCompile Include="LeftOutboardDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDEventDispatcher.cpp">
+			<Filter>Source Files\Tools\Events\Dispatchers</Filter>
+		</ClCompile>
+		<ClCompile Include="Display.cpp">
+			<Filter>Source Files\Displays</Filter>
+		</ClCompile>
+		<ClCompile Include="LeftOutboardDisplay.cpp">
+			<Filter>Source Files\Displays\LeftOutboardDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAirspeedIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAltitudeIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAttitudeApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDAuxApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDBaroIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDFlightDirectorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDFMAApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDILSIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDMinimumIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDRadioAltitudeIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDTargetAirspeedApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDTargetAltitudeApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="PFDVerticalSpeedIndicatorApplication.cpp">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClCompile>
+		<ClCompile Include="LeftInboardDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="LeftInboardDisplay.cpp">
+			<Filter>Source Files\Displays\LeftInboardDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="HelloWorldDisplay.cpp">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="GreenApplication.cpp">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+		</ClCompile>
+		<ClCompile Include="HelloWorldApplication.cpp">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+		</ClCompile>
+		<ClCompile Include="RedApplication.cpp">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+		</ClCompile>
+		<ClCompile Include="ExampleDisplayGaugeCallback.cpp">
+			<Filter>Source Files\Examples\HelloWorldDisplay\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="LowerCenterDisplay.cpp">
+			<Filter>Source Files\Displays\LowerCenterDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="RightOutboardDisplay.cpp">
+			<Filter>Source Files\Displays\RightOutboardDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="RightInboardDisplay.cpp">
+			<Filter>Source Files\Displays\RightInboardDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="McpSpeedDisplay.cpp">
+			<Filter>Source Files\Displays\McpVerticalSpeedDisplay\McpSpeedDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="McpHeadingDisplay.cpp">
+			<Filter>Source Files\Displays\McpHeadingDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="McpVerticalSpeedDisplay.cpp">
+			<Filter>Source Files\Displays\McpVerticalSpeedDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="McpAltitudeDisplay.cpp">
+			<Filter>Source Files\Displays\McpAltitudeDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="RightInboardDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="RightOutboardDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="McpSpeedDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="McpVerticalSpeedDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="McpAltitudeDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="McpHeadingDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="TcpRightDisplay.cpp">
+			<Filter>Source Files\Displays\TcpRightDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="TcpCenterDisplay.cpp">
+			<Filter>Source Files\Displays\TcpCenterDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="IsfdDisplay.cpp">
+			<Filter>Source Files\Displays\IsfdDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="TcpLeftDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="TcpCenterDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="TcpRightDisplayGaugeCallback.cpp">
+			<Filter>Source Files\MSFS Callbacks</Filter>
+		</ClCompile>
+		<ClCompile Include="MCPAltitudeApplication.cpp">
+			<Filter>Source Files\Applications\MCPAltitude</Filter>
+		</ClCompile>
+		<ClCompile Include="MCPVerticalSpeedApplication.cpp">
+			<Filter>Source Files\Applications\MCPVerticalSpeed</Filter>
+		</ClCompile>
+		<ClCompile Include="MCPHeadingApplication.cpp">
+			<Filter>Source Files\Applications\MCPHeading</Filter>
+		</ClCompile>
+		<ClCompile Include="LineDisplay.cpp">
+			<Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
+		</ClCompile>
+		<ClCompile Include="Line.cpp">
+			<Filter>Source Files\Applications\_Implementations\Lines</Filter>
+		</ClCompile>
+		<ClCompile Include="BaseControl.cpp">
+			<Filter>Source Files\Controls\Base</Filter>
+		</ClCompile>
+		<ClCompile Include="Control.cpp">
+			<Filter>Source Files\Controls\Base</Filter>
+		</ClCompile>
+		<ClCompile Include="ControlCrop.cpp">
+			<Filter>Source Files\Controls\Utils</Filter>
+		</ClCompile>
+		<ClCompile Include="ControlMask.cpp">
+			<Filter>Source Files\Controls\Utils</Filter>
+		</ClCompile>
+		<ClCompile Include="ControlPosition.cpp">
+			<Filter>Source Files\Controls\Utils</Filter>
+		</ClCompile>
+		<ClCompile Include="BaseLogger.cpp">
+			<Filter>Source Files\Controls\Logger</Filter>
+		</ClCompile>
+		<ClCompile Include="DefaultLogger.cpp">
+			<Filter>Source Files\Controls\Logger</Filter>
+		</ClCompile>
+		<ClCompile Include="NullLogger.cpp">
+			<Filter>Source Files\Controls\Logger</Filter>
+		</ClCompile>
+		<ClCompile Include="LineControl.cpp">
+			<Filter>Source Files\Controls\Controls</Filter>
+		</ClCompile>
+		<ClCompile Include="MasterControl.cpp">
+			<Filter>Source Files\Controls\Base</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPMasterControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPLeftLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPCenterLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPRightLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPVHFPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPHFPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPPageTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPLeftLineTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPRightLineTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPCenterLineTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPCABPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPSATPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPPagesLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPGPWSPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="SimConnectFacility.cpp">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClCompile>
+		<ClCompile Include="SimConnectRoutePreloader.cpp">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClCompile>
+		<ClCompile Include="RouteReference.cpp">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClCompile>
+		<ClCompile Include="FacilityLoader.cpp">
+			<Filter>Source Files\Tools</Filter>
+		</ClCompile>
+		<ClCompile Include="SimConnectAirportPreloader.cpp">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPWXRPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPXPDRPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPScratchpadControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPNAVPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPMENUPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TCPOFFPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClCompile>
+		<ClCompile Include="TcpLeftDisplay.cpp">
+			<Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDMasterControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDBaseControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDSYSControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDPanelResolver.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDEmptyControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDDisplayContainer.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDCDUControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUBackgroundControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUIdentPageControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULineControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULeftLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURightLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUCenterLineControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULeftLineTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDULineTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURightLineTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUPageTitleControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDMouseCursorControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUButtonControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUMainKeyButtonControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClCompile>
+		<ClCompile Include="CDURoutePageControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUScratchpadControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClCompile>
+		<ClCompile Include="CDUSelectKeyButtonControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClCompile>
+		<ClCompile Include="MFDNDControl.cpp">
+			<Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="MCPAltitudeGauge.h">
+			<Filter>Source Files\Gauges</Filter>
+		</ClInclude>
+		<ClInclude Include="BaseGauge.h">
+			<Filter>Source Files\Gauges</Filter>
+		</ClInclude>
+		<ClInclude Include="SimulationVariableUnits.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="SimulationVariables.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectConnector.h">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClInclude>
+		<ClInclude Include="PEDESTALTuningControlPanelGauge.h">
+			<Filter>Source Files\Gauges</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelRenderer.h">
+			<Filter>Source Files\Renderers\TuningControlPanel</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelBasePage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelVHFPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelMENUPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelINOPPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="GaugesInvalidateFlags.h">
+			<Filter>Source Files\model\flags</Filter>
+		</ClInclude>
+		<ClInclude Include="main.h">
+			<Filter>Source Files</Filter>
+		</ClInclude>
+		<ClInclude Include="BaseScratchpad.h">
+			<Filter>Source Files\Renderers\Scratchpad</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelScratpad.h">
+			<Filter>Source Files\Renderers\Scratchpad</Filter>
+		</ClInclude>
+		<ClInclude Include="ScratchpadEvents.h">
+			<Filter>Source Files\Renderers\Scratchpad</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelVHFStorage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Storages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelSATCOMPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelALTNNAVPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelGPWSPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelCABPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="TuningControlPanelXPDRPage.h">
+			<Filter>Source Files\Renderers\TuningControlPanel\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAuxGauge.h">
+			<Filter>Source Files\Gauges</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectData.h">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClInclude>
+		<ClInclude Include="MCPVSpeedGauge.h">
+			<Filter>Source Files\Gauges</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDPfdGauge.h">
+			<Filter>Source Files\Gauges</Filter>
+		</ClInclude>
+		<ClInclude Include="Simplane.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDFMA.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="LVarsGetter.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="SimEnums.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAirspeedIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAltitudeIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDTargetAirspeed.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDTargetAltitude.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDVerticalSpeedIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUMainKeyButton.h">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURenderer.h">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDCduGauge.h">
+			<Filter>Source Files\Gauges\CDU</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUButton.h">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUSelectKeyButton.h">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Buttons</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUMouseClickResolver.h">
+			<Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUMouseResolver.h">
+			<Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUMouseMoveResolver.h">
+			<Filter>Source Files\Gauges\CDU\Resolvers</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUMouseCursor.h">
+			<Filter>Source Files\Gauges\CDU\Prototypes\Cursors</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUPageRenderer.h">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULineRenderingType.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULineAlign.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULeftLine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURightLine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUCenterLine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUIdentPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="Drawable.h">
+			<Filter>Source Files\Abstract</Filter>
+		</ClInclude>
+		<ClInclude Include="MouseResolver.h">
+			<Filter>Source Files\Abstract</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULineType.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULeftTitleLine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURightTitleLine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUCenterTitleLine.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDNDGauge.h">
+			<Filter>Source Files\Gauges\ND</Filter>
+		</ClInclude>
+		<ClInclude Include="AltitudeRestrictionType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="LegType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="RunwayLightingType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="RunwaySurfaceType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="VorType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="NdbType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="AirwayType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="LegTurnDirection.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="AirportPrivateType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="GpsBoolean.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="VorClass.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="FacilityType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="FacilitySearchType.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="AirportClass.h">
+			<Filter>Source Files\Tools\FlightPlan\enums</Filter>
+		</ClInclude>
+		<ClInclude Include="AircraftSpeedLimit.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="FlapsSpeedLimit.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="GearsSpeedLimit.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="SpeedMarker.h">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClInclude>
+		<ClInclude Include="V1SpeedMarker.h">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClInclude>
+		<ClInclude Include="V2SpeedMarker.h">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClInclude>
+		<ClInclude Include="VRSpeedMarker.h">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClInclude>
+		<ClInclude Include="VRefSpeedMarker.h">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClInclude>
+		<ClInclude Include="FlapsSpeedMarker.h">
+			<Filter>Source Files\Gauges\PFD\Markers</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDRadioAltitudeIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="Timer.h">
+			<Filter>Source Files\Tools\Timers</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDBaroIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDFlightDirector.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDILSIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="TokenVars.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="RadioNav.h">
+			<Filter>Source Files\Systems\RadioNav</Filter>
+		</ClInclude>
+		<ClInclude Include="NavRadioEnums.h">
+			<Filter>Source Files\Systems\RadioNav</Filter>
+		</ClInclude>
+		<ClInclude Include="Systems.h">
+			<Filter>Source Files\Systems</Filter>
+		</ClInclude>
+		<ClInclude Include="NavBeacon.h">
+			<Filter>Source Files\Equipment\WorldEquipment\Beacons</Filter>
+		</ClInclude>
+		<ClInclude Include="VORBeacon.h">
+			<Filter>Source Files\Equipment\WorldEquipment\Beacons</Filter>
+		</ClInclude>
+		<ClInclude Include="ILSBeacon.h">
+			<Filter>Source Files\Equipment\WorldEquipment\Beacons</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDMinimumIndicator.h">
+			<Filter>Source Files\Gauges\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="GPSTools.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectFacilityLoader.h">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectFacilityTypes.h">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClInclude>
+		<ClInclude Include="NavData.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUInopPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUPageType.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUHeavyPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURoutePage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULineRenderer.h">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULinePerformance.h">
+			<Filter>Source Files\Gauges\CDU\Renderers</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUEvent.h">
+			<Filter>Source Files\Gauges\CDU\Renderers\Enums</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUHeavyPayloadManagerPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUHeavyIRSPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUHeavyConfigurationPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="IRSState.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="IRSSwitchState.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="IRSAlignTimeType.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="B78XHConfiguration.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="AircraftUnitsType.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="FPSyncStrategyType.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="SimbriefImportStrategyType.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="OnOffState.h">
+			<Filter>Source Files\Tools\staticdata</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUHeavySimbriefConfigurationPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUNavRadioPage.h">
+			<Filter>Source Files\Gauges\CDU\Pages</Filter>
+		</ClInclude>
+		<ClInclude Include="KEvents.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="IRU.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRU</Filter>
+		</ClInclude>
+		<ClInclude Include="AHRU.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\AHRU</Filter>
+		</ClInclude>
+		<ClInclude Include="IRS.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\IRS</Filter>
+		</ClInclude>
+		<ClInclude Include="ERS.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Navigation\ERS</Filter>
+		</ClInclude>
+		<ClInclude Include="Alignable.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+		</ClInclude>
+		<ClInclude Include="Operable.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+		</ClInclude>
+		<ClInclude Include="CCS.h">
+			<Filter>Source Files\Systems\CCS</Filter>
+		</ClInclude>
+		<ClInclude Include="LVar.h">
+			<Filter>Source Files\Tools\LVars</Filter>
+		</ClInclude>
+		<ClInclude Include="LVars.h">
+			<Filter>Source Files\Tools\LVars</Filter>
+		</ClInclude>
+		<ClInclude Include="Updateable.h">
+			<Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectClientEvents.h">
+			<Filter>Source Files\Tools\SimConnect</Filter>
+		</ClInclude>
+		<ClInclude Include="EventDispatchers.h">
+			<Filter>Source Files\Tools\Events</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPEventDispatcher.h">
+			<Filter>Source Files\Tools\Events\Dispatchers</Filter>
+		</ClInclude>
+		<ClInclude Include="Application.h">
+			<Filter>Source Files\Applications</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDEventDispatcher.h">
+			<Filter>Source Files\Tools\Events\Dispatchers</Filter>
+		</ClInclude>
+		<ClInclude Include="Displays.h">
+			<Filter>Source Files\Displays</Filter>
+		</ClInclude>
+		<ClInclude Include="Display.h">
+			<Filter>Source Files\Displays</Filter>
+		</ClInclude>
+		<ClInclude Include="LeftOutboardDisplay.h">
+			<Filter>Source Files\Displays\LeftOutboardDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAirspeedIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAltitudeIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAttitudeApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDAuxApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDBaroIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDFlightDirectorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDFMAApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDILSIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDMinimumIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDRadioAltitudeIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDTargetAirspeedApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDTargetAltitudeApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="PFDVerticalSpeedIndicatorApplication.h">
+			<Filter>Source Files\Applications\PFD</Filter>
+		</ClInclude>
+		<ClInclude Include="LeftInboardDisplay.h">
+			<Filter>Source Files\Displays\LeftInboardDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="HelloWorldDisplay.h">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="ExampleDisplays.h">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Displays</Filter>
+		</ClInclude>
+		<ClInclude Include="GreenApplication.h">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+		</ClInclude>
+		<ClInclude Include="HelloWorldApplication.h">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+		</ClInclude>
+		<ClInclude Include="RedApplication.h">
+			<Filter>Source Files\Examples\HelloWorldDisplay\Applications</Filter>
+		</ClInclude>
+		<ClInclude Include="LowerCenterDisplay.h">
+			<Filter>Source Files\Displays\LowerCenterDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="RightOutboardDisplay.h">
+			<Filter>Source Files\Displays\RightOutboardDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="RightInboardDisplay.h">
+			<Filter>Source Files\Displays\RightInboardDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="McpSpeedDisplay.h">
+			<Filter>Source Files\Displays\McpVerticalSpeedDisplay\McpSpeedDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="McpHeadingDisplay.h">
+			<Filter>Source Files\Displays\McpHeadingDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="McpVerticalSpeedDisplay.h">
+			<Filter>Source Files\Displays\McpVerticalSpeedDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="McpAltitudeDisplay.h">
+			<Filter>Source Files\Displays\McpAltitudeDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="TcpRightDisplay.h">
+			<Filter>Source Files\Displays\TcpRightDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="TcpCenterDisplay.h">
+			<Filter>Source Files\Displays\TcpCenterDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="IsfdDisplay.h">
+			<Filter>Source Files\Displays\IsfdDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="MCPAltitudeApplication.h">
+			<Filter>Source Files\Applications\MCPAltitude</Filter>
+		</ClInclude>
+		<ClInclude Include="MCPVerticalSpeedApplication.h">
+			<Filter>Source Files\Applications\MCPVerticalSpeed</Filter>
+		</ClInclude>
+		<ClInclude Include="MCPHeadingApplication.h">
+			<Filter>Source Files\Applications\MCPHeading</Filter>
+		</ClInclude>
+		<ClInclude Include="LineDisplay.h">
+			<Filter>Source Files\Applications\_Implementations\SoftwareDisplays</Filter>
+		</ClInclude>
+		<ClInclude Include="Line.h">
+			<Filter>Source Files\Applications\_Implementations\Lines</Filter>
+		</ClInclude>
+		<ClInclude Include="LifeCycle.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="BaseControl.h">
+			<Filter>Source Files\Controls\Base</Filter>
+		</ClInclude>
+		<ClInclude Include="Control.h">
+			<Filter>Source Files\Controls\Base</Filter>
+		</ClInclude>
+		<ClInclude Include="ControlCrop.h">
+			<Filter>Source Files\Controls\Utils</Filter>
+		</ClInclude>
+		<ClInclude Include="ControlMask.h">
+			<Filter>Source Files\Controls\Utils</Filter>
+		</ClInclude>
+		<ClInclude Include="ControlPosition.h">
+			<Filter>Source Files\Controls\Utils</Filter>
+		</ClInclude>
+		<ClInclude Include="BaseLogger.h">
+			<Filter>Source Files\Controls\Logger</Filter>
+		</ClInclude>
+		<ClInclude Include="DefaultLogger.h">
+			<Filter>Source Files\Controls\Logger</Filter>
+		</ClInclude>
+		<ClInclude Include="NullLogger.h">
+			<Filter>Source Files\Controls\Logger</Filter>
+		</ClInclude>
+		<ClInclude Include="LineControl.h">
+			<Filter>Source Files\Controls\Controls</Filter>
+		</ClInclude>
+		<ClInclude Include="MasterControl.h">
+			<Filter>Source Files\Controls\Base</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPMasterControl.h">
+			<Filter>Source Files\Controls\Controls\TCP</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPLeftLineControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPCenterLineControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPRightLineControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPLineControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPVHFPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPHFPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPPageTitleControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPLeftLineTitleControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPRightLineTitleControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPCenterLineTitleControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPCABPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPSATPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPPagesLineControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPLines</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPGPWSPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectFacility.h">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectRoutePreloader.h">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClInclude>
+		<ClInclude Include="RouteReference.h">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClInclude>
+		<ClInclude Include="NavDataCache.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="FacilityDataStructs.h">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClInclude>
+		<ClInclude Include="FacilityLoader.h">
+			<Filter>Source Files\Tools</Filter>
+		</ClInclude>
+		<ClInclude Include="SimConnectAirportPreloader.h">
+			<Filter>Source Files\Tools\SimConnectFacility</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPWXRPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPXPDRPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPScratchpadControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPNAVPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPMENUPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TCPOFFPageControl.h">
+			<Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+		</ClInclude>
+		<ClInclude Include="TcpLeftDisplay.h">
+			<Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDMasterControl.h">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDBaseControl.h">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDSYSControl.h">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDPanelResolver.h">
+			<Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDEmptyControl.h">
+			<Filter>Source Files\Controls\Controls\MFD</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDDisplayContainer.h">
+			<Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDCDUControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUPageControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUBackgroundControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUIdentPageControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULineControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULeftLineControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURightLineControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUCenterLineControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULeftLineTitleControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDULineTitleControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURightLineTitleControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUPageTitleControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDMouseCursorControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUButtonControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUMainKeyButtonControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClInclude>
+		<ClInclude Include="CDURoutePageControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUScratchpadControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClInclude>
+		<ClInclude Include="CDUSelectKeyButtonControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+		</ClInclude>
+		<ClInclude Include="MFDNDControl.h">
+			<Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="Header Files">
+			<UniqueIdentifier>{30d008fa-1c08-4ee6-b847-711f5c27fad6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files">
+			<UniqueIdentifier>{c2386513-4dc2-4a12-a556-2f07000f05ae}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\MSFS Callbacks">
+			<UniqueIdentifier>{44fb3c18-4712-45c7-98da-075ca948e2ac}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges">
+			<UniqueIdentifier>{86cc17e6-0bfc-434b-a205-5689d85dd471}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools">
+			<UniqueIdentifier>{feaa0ab5-40f2-4a18-a9df-e54b6da107f2}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\SimConnect">
+			<UniqueIdentifier>{2b7665f3-b85c-4ece-a754-6132a1e3c68c}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Renderers">
+			<UniqueIdentifier>{a2829061-d458-46e8-9104-f70390950812}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Renderers\TuningControlPanel">
+			<UniqueIdentifier>{f090a8f8-58ec-4bb3-8b4a-3dd0157f6137}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Renderers\TuningControlPanel\Pages">
+			<UniqueIdentifier>{8b951889-60d1-41d4-8c57-d1aaeb1fb094}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\model">
+			<UniqueIdentifier>{4122939c-8e44-414f-a902-8426b5798602}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\model\flags">
+			<UniqueIdentifier>{9991960b-9d8b-49a4-8d0e-09885830d0de}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Renderers\Scratchpad">
+			<UniqueIdentifier>{5d1dc1d2-587b-4cac-a314-ee3b5f7033f7}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Renderers\TuningControlPanel\Storages">
+			<UniqueIdentifier>{df3e32ef-2aeb-4d11-90f4-bdc0388075ec}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\PFD">
+			<UniqueIdentifier>{c8514c8c-1a29-439f-9270-f0d4e444a462}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU">
+			<UniqueIdentifier>{4935e233-bbfa-492d-9541-a295100c2b06}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Prototypes">
+			<UniqueIdentifier>{687e0a74-2527-4a36-9a6b-6a8f678d6b56}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Prototypes\Buttons">
+			<UniqueIdentifier>{b2aee9b3-f81f-4a85-bbff-ccdfd2bb74c4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Renderers">
+			<UniqueIdentifier>{4e1cc909-3551-4569-a50e-4f46bae7c372}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Resolvers">
+			<UniqueIdentifier>{3d2fd1bc-d777-41b6-b859-327357184bae}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Prototypes\Cursors">
+			<UniqueIdentifier>{955cb3cc-bc6a-4627-ae73-a757dbd767c2}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Renderers\Enums">
+			<UniqueIdentifier>{5fac9a19-ce1a-4b0d-b24d-3bec52993c11}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\CDU\Pages">
+			<UniqueIdentifier>{cc186c7e-a4d0-4af3-bdc8-a6e716b4758f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Abstract">
+			<UniqueIdentifier>{d1823fc9-8db6-4f89-b48d-1a2dd5f64e69}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\ND">
+			<UniqueIdentifier>{ecf73bdb-71b9-44ac-ab86-c8b1131618a2}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\FlightPlan">
+			<UniqueIdentifier>{bc6fc5b9-f087-46b4-a1e4-76120ee32b7e}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\FlightPlan\enums">
+			<UniqueIdentifier>{b798bc6c-ffcb-4456-b29d-298313b8d823}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\staticdata">
+			<UniqueIdentifier>{0f16d3ea-0845-4186-b4ea-8f45742da68f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Gauges\PFD\Markers">
+			<UniqueIdentifier>{2957feaa-0f3a-467a-bf82-764adf8132a6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\Timers">
+			<UniqueIdentifier>{ef11e9f9-21a8-4c9e-b043-41662aefcfdf}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Systems">
+			<UniqueIdentifier>{a5c70a5f-d2e1-40c0-882a-87129cbc0c12}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Systems\RadioNav">
+			<UniqueIdentifier>{c75093f1-2811-40da-87d9-0e19a1b555fe}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment">
+			<UniqueIdentifier>{e30b3990-a6ff-462c-bbfb-5078ab173509}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment">
+			<UniqueIdentifier>{556103ba-c0a5-4e30-89a1-ee8f6792e352}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Navigation">
+			<UniqueIdentifier>{90ddadba-754d-461c-b32b-47fef278f862}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\IRS">
+			<UniqueIdentifier>{16a6394a-5077-44d0-8400-7f944500e5f9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\ERS">
+			<UniqueIdentifier>{2ebf7485-1b23-41e3-b3ee-f655ad6416a6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\IRU">
+			<UniqueIdentifier>{442ae78e-9937-4f0d-bdcd-757b64ee094d}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Navigation\AHRU">
+			<UniqueIdentifier>{dbd78091-90ff-4d34-90d8-dfe54cb67237}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Miscellaneous">
+			<UniqueIdentifier>{9642f6f9-c77a-4f7c-8838-361f40f501c0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Electrical Power">
+			<UniqueIdentifier>{4eebea1e-8426-4fe4-88b9-df74c32abd0f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Communication">
+			<UniqueIdentifier>{772a7d8b-019c-4b34-90af-2656dd1a7156}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Autoflight">
+			<UniqueIdentifier>{4a63ef68-47fb-4120-8a5c-a5070a6a236f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Fuel">
+			<UniqueIdentifier>{38c7a01c-41d1-4ec7-8dbf-69a899bdab1b}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Auxiliary Power Unit">
+			<UniqueIdentifier>{b95759a1-b8eb-4460-8c40-fcfbad800163}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Hydraulic">
+			<UniqueIdentifier>{7324ed3a-514b-4b16-b96d-b6640311afe6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Landing Gear">
+			<UniqueIdentifier>{92d60b86-be35-41bc-9355-baf92b825825}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Flight Controls">
+			<UniqueIdentifier>{4f5d2f4f-f257-42cd-976c-317e5051d967}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Environmental">
+			<UniqueIdentifier>{2b2178ef-4206-4f04-97ed-3fdea2720d02}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Fire Protection">
+			<UniqueIdentifier>{284dd6d3-b46e-4c29-8214-de34dff570c2}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Ice and Rain Protection">
+			<UniqueIdentifier>{6a1a9748-5b0b-4762-a5d5-ba15952b2195}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Cabin">
+			<UniqueIdentifier>{daf109d3-ec66-4b61-a647-115d89c608ac}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Lights">
+			<UniqueIdentifier>{76d3eb34-4751-4c17-a0fd-99fd14a20e55}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Doors and Windows">
+			<UniqueIdentifier>{8eacc33d-f9de-43e3-b8f2-3bf035fd4b68}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Cargo Handling">
+			<UniqueIdentifier>{5f60ee55-5d54-421e-b391-3fdf4a96c577}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\AircraftEquipment\Bases">
+			<UniqueIdentifier>{dbbcb0e3-f712-4952-a02d-1ba5f108f146}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\WorldEquipment">
+			<UniqueIdentifier>{d820347f-bfb1-4a7a-b8a8-56e249abdb55}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Equipment\WorldEquipment\Beacons">
+			<UniqueIdentifier>{e7cc4f96-488d-4dbf-9f0b-a92a343ea7b0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Systems\CCS">
+			<UniqueIdentifier>{d2b85f2f-f353-416a-9763-8db2ef6b5d1d}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\LVars">
+			<UniqueIdentifier>{a4046750-4ccb-4bf9-9402-6f841a78c254}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\Events">
+			<UniqueIdentifier>{e4047d2b-94f9-4788-81df-c40eabaff2ef}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\Events\Dispatchers">
+			<UniqueIdentifier>{0e1e3799-591b-4c0d-a805-4424e63303a8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications">
+			<UniqueIdentifier>{201d6b8a-3c59-4c33-b98e-7a1068b792a8}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\PFD">
+			<UniqueIdentifier>{ee1fcfbe-81ba-4bbe-92c4-427a7ab94bb7}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays">
+			<UniqueIdentifier>{19bf43bc-3afb-426e-ae49-30b93b02f7af}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\LeftOutboardDisplay">
+			<UniqueIdentifier>{5682a554-92d0-4c24-897d-7240458629f5}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\RightOutboardDisplay">
+			<UniqueIdentifier>{ac296416-b01b-4b51-9c42-afabe8652f7f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\LeftInboardDisplay">
+			<UniqueIdentifier>{3435c8a5-a31b-4350-ad4d-1a6ab26e3e54}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\RightInboardDisplay">
+			<UniqueIdentifier>{8ba596df-8525-4e5a-9dc9-376bb3870e66}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\LowerCenterDisplay">
+			<UniqueIdentifier>{c6ff05d4-2d24-4ad6-ab92-a9a010e6a422}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Examples">
+			<UniqueIdentifier>{17be480a-6ae9-4533-b7d1-9f33e21f65c6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Examples\HelloWorldDisplay">
+			<UniqueIdentifier>{d4acb82b-3c53-4a2b-930f-b930c7548ca9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Examples\HelloWorldDisplay\Displays">
+			<UniqueIdentifier>{779f4dcf-8cb4-4d5c-9a7b-55107a523121}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Examples\HelloWorldDisplay\Applications">
+			<UniqueIdentifier>{1ccb68a8-8485-428b-8442-6b8452f53af1}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Examples\HelloWorldDisplay\MSFS Callbacks">
+			<UniqueIdentifier>{a78d1626-4fc2-4bc1-9b07-2113bfb4025a}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Examples\HelloWorldDisplay\Displays\HelloWorldDisplay">
+			<UniqueIdentifier>{ce9458ef-b74e-46cf-9602-02d7a1571439}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\McpHeadingDisplay">
+			<UniqueIdentifier>{96921291-a9dd-4894-b06e-9314a37ec959}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\McpVerticalSpeedDisplay">
+			<UniqueIdentifier>{715c5197-b454-477d-b382-dc9cf34bfe34}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\McpAltitudeDisplay">
+			<UniqueIdentifier>{41594e11-8ab8-414d-8bf9-b23816aa3ee6}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\TcpCenterDisplay">
+			<UniqueIdentifier>{dc695835-540c-4d4c-b6a0-e48736947c89}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\TcpRightDisplay">
+			<UniqueIdentifier>{8da22926-f867-4e15-8caa-3f7c7cb907b5}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\IsfdDisplay">
+			<UniqueIdentifier>{70f5ffd2-2573-49d1-8258-54133b02a438}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\MCPAltitude">
+			<UniqueIdentifier>{4f85911a-18a2-494d-89db-a272635b0974}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\MCPVerticalSpeed">
+			<UniqueIdentifier>{452ccdce-dde5-431f-86a5-57fddedef382}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\MCPHeading">
+			<UniqueIdentifier>{eb235f6f-3706-43e5-8da3-03f25ce69088}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\_Implementations">
+			<UniqueIdentifier>{3e95e1f0-d4e4-46d7-ab9b-5539ba154490}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\_Implementations\SoftwareDisplays">
+			<UniqueIdentifier>{2b8ef0e0-4865-40a5-ade8-1f00eb9947ad}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Applications\_Implementations\Lines">
+			<UniqueIdentifier>{84d6c8a7-9e47-437b-8208-c8023cfc2d70}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\McpVerticalSpeedDisplay\McpSpeedDisplay">
+			<UniqueIdentifier>{6e80babe-81c7-4e39-b2ee-5e0d8773177c}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls">
+			<UniqueIdentifier>{f4d6e61d-b280-48ae-9d5b-c5fc32e66d3a}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Base">
+			<UniqueIdentifier>{a97b8254-0b97-47c2-9b70-c864e1d61597}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Logger">
+			<UniqueIdentifier>{20987bdc-3b20-4f7b-a59a-26d10593ea5f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Utils">
+			<UniqueIdentifier>{1a901aa4-766c-4e37-80a8-f65dffe590b4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls">
+			<UniqueIdentifier>{a3bc4e0b-3007-4676-8410-b42f07ef36d7}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\TCP">
+			<UniqueIdentifier>{727688d7-ab98-4c08-8d61-785704ddbcb3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\TCP\TCPLines">
+			<UniqueIdentifier>{c8b524d5-9f8b-426c-aa3a-24529a2e3fb0}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\TCP\TCPPages">
+			<UniqueIdentifier>{09b5cb0e-d959-4404-a672-ceb09965a30b}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Tools\SimConnectFacility">
+			<UniqueIdentifier>{e0245576-9e7b-4b9f-a57f-80d2981f9c31}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\TCP\TCPUtils">
+			<UniqueIdentifier>{d7f6a2c4-1f1b-44ad-8919-c8c8c1689c17}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Displays\TcpLeftDisplay">
+			<UniqueIdentifier>{93442f16-2270-4538-8b8d-b6a92c2eb665}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD">
+			<UniqueIdentifier>{02a48c32-954c-424d-afb4-05d478db9fb9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD\Utils">
+			<UniqueIdentifier>{65ac4756-3c39-4e9b-874a-6a659c38b914}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD\CDU">
+			<UniqueIdentifier>{84f5a704-7816-4e16-bdea-2c7cceb6a63a}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD\CDU\CDUPages">
+			<UniqueIdentifier>{5a444dc1-fa24-4167-a92b-02da5777e3be}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD\CDU\CDUUtils">
+			<UniqueIdentifier>{74795d7b-daf6-41a6-8bc9-a6805132254e}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD\CDU\CDULines">
+			<UniqueIdentifier>{6e64abfa-479e-47b1-b801-ec7e6374d666}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source Files\Controls\Controls\MFD\ND">
+			<UniqueIdentifier>{983f63d5-9b41-4db6-a45a-80ca39311e9c}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<Text Include="TODO.txt">
+			<Filter>Source Files</Filter>
+		</Text>
+		<Text Include="..\thirdparty_licenses.md" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="B78XH.licenseheader" />
+	</ItemGroup>
+</Project>
