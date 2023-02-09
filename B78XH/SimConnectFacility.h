@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include <MSFS/MSFS_WindowsTypes.h>
 #include <SimConnect.h>
+#include <string>
+
+#include "SimConnectRoutePreloader.h"
 
 class SimConnectFacility {
 	public:
@@ -21,6 +24,7 @@ class SimConnectFacility {
 	private:
 		unsigned long long simConnectHandle = 0;
 		long connectionResult = 0;
+		std::shared_ptr<SimConnectRoutePreloader> preload = std::make_shared<SimConnectRoutePreloader>();
 };
 
 inline SimConnectFacility facilityConnector;

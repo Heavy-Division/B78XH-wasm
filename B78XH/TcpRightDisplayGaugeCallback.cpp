@@ -32,19 +32,40 @@ extern "C" {
 	MSFS_CALLBACK bool tcp_right_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
 			case PANEL_SERVICE_PRE_INSTALL: {
-				return Displays::tcpRightDisplay.preInstall();
+				Displays::tcpRightDisplay->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_POST_INSTALL: {
-				return Displays::tcpRightDisplay.postInstall(ctx);
+				NVGparams params;
+				params.userPtr = ctx;
+				params.edgeAntiAlias = true;
+				Displays::tcpRightDisplay->postInstall(nvgCreateInternal(&params));
+
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_PRE_UPDATE: {
+				Displays::tcpRightDisplay->preUpdate();
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_POST_UPDATE: {
+				Displays::tcpRightDisplay->postUpdate();
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_DRAW: {
-				return Displays::tcpRightDisplay.preDraw(static_cast<sGaugeDrawData*>(pData));
+				Displays::tcpRightDisplay->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+				return true;
 			}
 			break;
 			case PANEL_SERVICE_PRE_KILL: {
-				return Displays::tcpRightDisplay.preKill();
+				Displays::tcpRightDisplay->preKill();
+				return true;
+			}
+			case PANEL_SERVICE_POST_KILL: {
+				Displays::tcpRightDisplay->postKill();
 			}
 			break;
 		}

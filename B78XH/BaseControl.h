@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <queue>
 
 #include "ControlCrop.h"
 #include "ControlPosition.h"
@@ -31,7 +32,7 @@ class BaseControl {
 	using Content = vector<array<string,2>>;
 
 	protected:
-		using ControlUniquePointer = std::unique_ptr<BaseControl>;
+		using ControlSharedPointer = std::shared_ptr<BaseControl>;
 		enum class FONT_TYPE {
 			DEFAULT,
 			ADDITIONAL
@@ -138,18 +139,22 @@ class BaseControl {
 
 		auto propagateContext(RenderingContext const context) -> void;
 
-		auto add(ControlUniquePointer control) -> void;
-		[[nodiscard]] auto getControls() -> list<ControlUniquePointer>&;
-		__declspec(property(get = getControls)) list<ControlUniquePointer>& controls;
+		auto add(ControlSharedPointer control) -> void;
+		[[nodiscard]] auto getControls() -> list<ControlSharedPointer>&;
+		__declspec(property(get = getControls)) list<ControlSharedPointer>& controls;
 
-		[[nodiscard]] auto getControl(string name) -> ControlUniquePointer&;
+		[[nodiscard]] auto getControl(string name) -> ControlSharedPointer&;
 
-		[[nodiscard]] auto getSystemControls() -> list<ControlUniquePointer>&;
-		__declspec(property(get = getSystemControls)) const list<ControlUniquePointer>& systemControls;
+		[[nodiscard]] auto getSystemControls() -> list<ControlSharedPointer>&;
+		__declspec(property(get = getSystemControls)) const list<ControlSharedPointer>& systemControls;
 
-		[[nodiscard]] auto getPosition() -> ControlPosition&;
-		auto setPosition(const ControlPosition& position) -> void;
-		__declspec(property(get = getPosition, put = setPosition)) ControlPosition position;
+		[[nodiscard]] auto getRelativePosition() -> ControlPosition&;
+		auto setRelativePosition(const ControlPosition& position) -> void;
+		__declspec(property(get = getRelativePosition, put = setRelativePosition)) ControlPosition position;
+
+		[[nodiscard]] auto getAbsolutePosition() -> ControlPosition&;
+		auto setAbsolutePosition(const ControlPosition& position) -> void;
+		__declspec(property(get = getAbsolutePosition, put = setAbsolutePosition)) ControlPosition absolutePosition;
 
 		[[nodiscard]] auto getCrop() -> ControlCrop&;
 		auto setCrop(const ControlCrop& crop) -> void;
@@ -176,11 +181,25 @@ class BaseControl {
 		auto setLogger(std::unique_ptr<BaseLogger> logger) -> void;
 		[[nodiscard]] auto getLogger() const -> const std::unique_ptr<BaseLogger>&;
 
+		auto propagateMouseMove(float x, float y) -> void;
+		auto propagateMouseClick(float x, float y) -> void;
+		auto queueMouseClick(float x, float y) -> void;
+		auto queueMouseMove(float x, float y) -> void;
 	protected:
 		enum class ControlType {
 			MASTER,
 			NORMAL
 		};
+
+		using MouseEvent = struct {
+			float x = -10000;
+			float y = -10000;
+		};
+
+		MouseEvent mouseMove_;
+		MouseEvent mouseClick_{};
+
+		std::queue<MouseEvent> mouseClickQueue_{};
 
 		explicit BaseControl(string name) : name_(std::move(name)), controlType_(ControlType::NORMAL) {
 		}
@@ -209,16 +228,16 @@ class BaseControl {
 	private:
 		class ControlsHolder {
 			public:
-				auto add(ControlUniquePointer& control) -> void;
-				[[nodiscard]] auto getControls() -> list<ControlUniquePointer>&;
-				__declspec(property(get = getControls)) const list<ControlUniquePointer>& controls;
-				[[nodiscard]] auto getControl(string name) -> ControlUniquePointer&;
+				auto add(ControlSharedPointer& control) -> void;
+				[[nodiscard]] auto getControls() -> list<ControlSharedPointer>&;
+				__declspec(property(get = getControls)) const list<ControlSharedPointer>& controls;
+				[[nodiscard]] auto getControl(string name) -> ControlSharedPointer&;
 
 			private:
 				/* Forward declaration of NullControl. See declaration below. */
 				class NullControl;
-				list<ControlUniquePointer> controls_{};
-				ControlUniquePointer nullControl_ = nullptr;
+				list<ControlSharedPointer> controls_{};
+				ControlSharedPointer nullControl_ = nullptr;
 		};
 
 		class ControlEvents {
@@ -245,7 +264,8 @@ class BaseControl {
 		ContentHolder contentHolder_;
 
 
-		ControlPosition position_;
+		ControlPosition relativePosition_;
+		ControlPosition absolutePosition_;
 		ControlCrop crop_;
 
 		ControlEvents onBeforeRender_;
@@ -262,10 +282,10 @@ class BaseControl {
 		// std::unique_ptr<BaseLogger> logger_ = std::make_unique<NullLogger>();
 		#endif
 
-		auto addSystemControl(ControlUniquePointer control) -> void;
+		auto addSystemControl(ControlSharedPointer control) -> void;
 
 		auto renderScreen() -> void;
-		auto renderControls() -> void;
+		auto renderControls(float parentLeft, float parentTop) -> void;
 
 		auto needRedraw(bool force = false) -> bool;
 		auto isControlInvalid(BaseControl& control) -> bool;

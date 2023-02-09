@@ -11,9 +11,9 @@ class LineControl: public Control {
 
 	protected:
 		auto renderContent() -> void;
-		auto renderContentAlignLeft() -> void;
-		auto renderContentAlignCenter() -> void;
-		auto renderContentAlignRight() -> void;
+		virtual auto renderContentAlignLeft() -> void;
+		virtual auto renderContentAlignCenter() -> void;
+		virtual auto renderContentAlignRight() -> void;
 
 		auto prepareColor(int chunkNumber) -> void;
 		auto prepareFontSize(int chunkNumber) -> void;

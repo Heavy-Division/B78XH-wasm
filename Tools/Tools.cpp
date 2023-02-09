@@ -68,11 +68,23 @@ namespace Tools {
 
 	auto Frequencies::isHz833Compliant(FLOAT64 MHz) -> bool {
 		const int spacing[16] = { 0, 5, 10, 15, 25, 30, 35, 40, 50, 55, 60, 65, 75, 80, 85, 90 };
-		const FLOAT64 frequency = round(MHz * 1000) / 1000;
-		const FLOAT64 modulo = fmod(frequency * 10, 1);
-		const FLOAT64 fixedModulo = floor(modulo * 100);
+		/*
+		 * Make frequency 6 long integer
+		 */
+		const int frequency = round(MHz * 1000);
+		/*
+		 * Base of 4 long character (the base is only 4 long because we check only last two numbers)
+		 */
+		const int base = std::floor(MHz * 10) * 100;
 		for (const auto& value : spacing) {
-			if (fabs(value - fixedModulo) < REAL_EPSILON) {
+			/*
+			 * Difference between spacing and frequency (Absolute)
+			 */
+			const int diff = std::abs(frequency - value);
+			/*
+			 * if DIFF and BASE are same then the frequency is 8.33 compliant
+			 */
+			if (diff == base) {
 				return true;
 			}
 		}

@@ -1,6 +1,8 @@
 ﻿#include "ControlPosition.h"
 #include <cmath>
 
+#include "Tools/Console.h"
+
 auto ControlPosition::getLeft() const -> float {
 	return position_[0];
 }

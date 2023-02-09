@@ -505,6 +505,7 @@
     <ClCompile Include="SimConnectFacility.cpp">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ExampleControlGaugeCallBack.cpp">
       <Filter>Source Files\MSFS Callbacks</Filter>
     </ClCompile>
@@ -570,6 +571,115 @@
     </ClCompile>
     <ClCompile Include="EngineVibrationControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+=======
+    <ClCompile Include="SimConnectRoutePreloader.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClCompile>
+    <ClCompile Include="RouteReference.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClCompile>
+    <ClCompile Include="FacilityLoader.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="SimConnectAirportPreloader.cpp">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPWXRPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPXPDRPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPScratchpadControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPNAVPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPMENUPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPOFFPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpLeftDisplay.cpp">
+      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDBaseControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDSYSControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDPanelResolver.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDEmptyControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDDisplayContainer.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDCDUControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUBackgroundControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUIdentPageControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULeftLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURightLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUCenterLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULeftLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURightLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUPageTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDMouseCursorControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUButtonControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMainKeyButtonControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURoutePageControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUScratchpadControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUSelectKeyButtonControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDNDControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1176,6 +1286,7 @@
     <ClInclude Include="SimConnectFacility.h">
       <Filter>Source Files\Tools\SimConnectFacility</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ExampleMasterControl.h">
       <Filter>Source Files\Controls\Examples</Filter>
     </ClInclude>
@@ -1247,6 +1358,121 @@
     </ClInclude>
     <ClInclude Include="Testgauge.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS%28GEnx%29</Filter>
+=======
+    <ClInclude Include="SimConnectRoutePreloader.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="RouteReference.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="NavDataCache.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="FacilityDataStructs.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="FacilityLoader.h">
+      <Filter>Source Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SimConnectAirportPreloader.h">
+      <Filter>Source Files\Tools\SimConnectFacility</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPWXRPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPXPDRPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPScratchpadControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPNAVPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPMENUPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPOFFPageControl.h">
+      <Filter>Source Files\Controls\Controls\TCP\TCPPages</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpLeftDisplay.h">
+      <Filter>Source Files\Displays\TcpLeftDisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDMasterControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDBaseControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDSYSControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDPanelResolver.h">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDEmptyControl.h">
+      <Filter>Source Files\Controls\Controls\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDDisplayContainer.h">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDCDUControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUBackgroundControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUIdentPageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULeftLineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURightLineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUCenterLineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULeftLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURightLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPageTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDMouseCursorControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUButtonControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUMainKeyButtonControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURoutePageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUScratchpadControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUSelectKeyButtonControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDNDControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1541,6 +1767,7 @@
     <Filter Include="Source Files\Tools\SimConnectFacility">
       <UniqueIdentifier>{e0245576-9e7b-4b9f-a57f-80d2981f9c31}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Source Files\Controls\Examples">
       <UniqueIdentifier>{9e1ae223-2446-4cf3-9402-c2dca7744d36}</UniqueIdentifier>
     </Filter>
@@ -1558,6 +1785,34 @@
     </Filter>
     <Filter Include="Source Files\Controls\Controls\MFD\EICAS%28GEnx%29\Templates">
       <UniqueIdentifier>{65645618-ac53-4888-a364-a6d16f1d85c8}</UniqueIdentifier>
+=======
+    <Filter Include="Source Files\Controls\Controls\TCP\TCPUtils">
+      <UniqueIdentifier>{d7f6a2c4-1f1b-44ad-8919-c8c8c1689c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Displays\TcpLeftDisplay">
+      <UniqueIdentifier>{93442f16-2270-4538-8b8d-b6a92c2eb665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD">
+      <UniqueIdentifier>{02a48c32-954c-424d-afb4-05d478db9fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\Utils">
+      <UniqueIdentifier>{65ac4756-3c39-4e9b-874a-6a659c38b914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU">
+      <UniqueIdentifier>{84f5a704-7816-4e16-bdea-2c7cceb6a63a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDUPages">
+      <UniqueIdentifier>{5a444dc1-fa24-4167-a92b-02da5777e3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDUUtils">
+      <UniqueIdentifier>{74795d7b-daf6-41a6-8bc9-a6805132254e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDULines">
+      <UniqueIdentifier>{6e64abfa-479e-47b1-b801-ec7e6374d666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\ND">
+      <UniqueIdentifier>{983f63d5-9b41-4db6-a45a-80ca39311e9c}</UniqueIdentifier>
+>>>>>>> 676f8f55237bfa904b213521f19a258ae6977e7d
     </Filter>
   </ItemGroup>
   <ItemGroup>
