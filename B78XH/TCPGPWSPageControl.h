@@ -3,8 +3,8 @@
 
 class TCPGPWSPageControl: public TCPPageControl {
 	public:
-		explicit TCPGPWSPageControl(const string& name)
-			: TCPPageControl(name) {
+		TCPGPWSPageControl(const string& name, std::shared_ptr<TCPScratchpadControl>& scratchPad)
+			: TCPPageControl(name, scratchPad) {
 		}
 
 	protected:

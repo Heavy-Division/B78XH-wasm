@@ -31,55 +31,62 @@
 extern "C" {
 	__attribute__((visibility("default"))) bool left_inboard_display_gauge_callback(FsContext ctx, int service_id, void* pData) {
 		switch (service_id) {
-		case PANEL_SERVICE_PRE_INSTALL: {
-			//Console::log("PRE_INSTALL");
-			// Displays::eicasControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
-			Displays::leftInboardControl->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
-			return true;
-		}
-									  break;
-		case PANEL_SERVICE_POST_INSTALL: {
-			//Console::log("POST_INSTALL");
+			case PANEL_SERVICE_PRE_INSTALL: {
+				Displays::leftInboardDisplay->preInstall(static_cast<BaseControl::GaugeInstallData*>(pData));
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_POST_INSTALL: {
+				NVGparams params;
+				params.userPtr = ctx;
+				params.edgeAntiAlias = true;
+				Displays::leftInboardDisplay->postInstall(nvgCreateInternal(&params));
 
-			NVGparams params;
-			params.userPtr = ctx;
-			params.edgeAntiAlias = true;
-			// Displays::eicasControl->postInstall(nvgCreateInternal(&params));
-			Displays::leftInboardControl->postInstall(nvgCreateInternal(&params));
-			return true;
-		}
-									   break;
-		case PANEL_SERVICE_PRE_UPDATE: {
-			//Console::log("PRE_UPDATE");
-			// Displays::eicasControl->preUpdate();
-			Displays::leftInboardControl->preUpdate();
-			return true;
-		}
-									 break;
-		case PANEL_SERVICE_POST_UPDATE: {
-			// Displays::eicasControl->postUpdate();
-			Displays::leftInboardControl->postUpdate();
-			return true;
-		}
-									  break;
-		case PANEL_SERVICE_PRE_DRAW: {
-			//Console::log("RENDER");
-			// Displays::eicasControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
-			Displays::leftInboardControl->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
-			return true;
-		}
-								   break;
-		case PANEL_SERVICE_PRE_KILL: {
-			// Displays::eicasControl->preKill();
-			Displays::leftInboardControl->preKill();
-			return true;
-		}
-		case PANEL_SERVICE_POST_KILL: {
-			// Displays::eicasControl->postKill();
-			Displays::leftInboardControl->postKill();
-		}
-									break;
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_PRE_UPDATE: {
+				Displays::leftInboardDisplay->preUpdate();
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_POST_UPDATE: {
+				Displays::leftInboardDisplay->postUpdate();
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_PRE_DRAW: {
+				Displays::leftInboardDisplay->preDraw(static_cast<BaseControl::GaugeDrawData*>(pData));
+				return true;
+			}
+			break;
+			case PANEL_SERVICE_PRE_KILL: {
+				Displays::leftInboardDisplay->preKill();
+				return true;
+			}
+			case PANEL_SERVICE_POST_KILL: {
+				Displays::leftInboardDisplay->postKill();
+			}
+			break;
 		}
 		return false;
+	}
+
+	MSFS_CALLBACK void left_inboard_display_mouse_callback(float fX, float fY, unsigned int iFlags) {
+		switch (iFlags) {
+			case MOUSE_MOVE: {
+				//Displays::leftInboardDisplay->getMouseMoveResolver().setRelativePosition(fX, fY);
+				Displays::leftInboardDisplay->queueMouseMove(fX, fY);
+
+				break;
+			}
+			case MOUSE_LEFTRELEASE: {
+				Displays::leftInboardDisplay->queueMouseClick(fX, fY);
+				break;
+			}
+			default: {
+				break;
+			}
+		}
 	}
 }

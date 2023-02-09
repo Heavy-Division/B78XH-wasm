@@ -4,6 +4,31 @@
 #include "Tools/Console.h"
 
 
+auto BaseControl::propagateMouseClick(float x, float y) -> void {
+	mouseClick_.x = x;
+	mouseClick_.y = y;
+	for (auto& control : getControls()) {
+		control->propagateMouseClick(x,y);
+	}
+}
+
+auto BaseControl::propagateMouseMove(float x, float y) -> void {
+	mouseMove_.x = x;
+	mouseMove_.y = y;
+	for (auto& control : getControls()) {
+		control->propagateMouseMove(x, y);
+	}
+}
+
+auto BaseControl::queueMouseClick(float x, float y) -> void {
+	mouseClickQueue_.emplace(MouseEvent{ x,y });
+}
+
+auto BaseControl::queueMouseMove(float x, float y) -> void {
+	mouseMove_.x = x;
+	mouseMove_.y = y;
+}
+
 auto BaseControl::prepareRenderingContextDefaults() -> void {
 	prepareRenderingContextDefaultsFonts();
 }
@@ -40,30 +65,38 @@ auto BaseControl::propagateContext(RenderingContext const context) -> void {
 	}
 }
 
-auto BaseControl::add(ControlUniquePointer control) -> void {
+auto BaseControl::add(ControlSharedPointer control) -> void {
 	controls_.add(control);
 }
 
 
-auto BaseControl::getControls() -> list<ControlUniquePointer>& {
+auto BaseControl::getControls() -> list<ControlSharedPointer>& {
 	return controls_.getControls();
 }
 
-auto BaseControl::getControl(string name) -> ControlUniquePointer& {
+auto BaseControl::getControl(string name) -> ControlSharedPointer& {
 	return controls_.getControl(name);
 }
 
 
-auto BaseControl::getSystemControls() -> list<ControlUniquePointer>& {
+auto BaseControl::getSystemControls() -> list<ControlSharedPointer>& {
 	return systemControls_.getControls();
 }
 
-auto BaseControl::getPosition() -> ControlPosition& {
-	return position_;
+auto BaseControl::getRelativePosition() -> ControlPosition& {
+	return relativePosition_;
 }
 
-auto BaseControl::setPosition(const ControlPosition& position) -> void {
-	position_ = position;
+auto BaseControl::setRelativePosition(const ControlPosition& position) -> void {
+	relativePosition_ = position;
+}
+
+auto BaseControl::getAbsolutePosition() -> ControlPosition& {
+	return absolutePosition_;
+}
+
+auto BaseControl::setAbsolutePosition(const ControlPosition& position) -> void {
+	absolutePosition_ = position;
 }
 
 auto BaseControl::getCrop() -> ControlCrop& {
@@ -135,18 +168,13 @@ auto BaseControl::setLogger(std::unique_ptr<BaseLogger> logger) -> void {
 	#endif
 }
 
-auto BaseControl::addSystemControl(ControlUniquePointer control) -> void {
+auto BaseControl::addSystemControl(ControlSharedPointer control) -> void {
 	systemControls_.add(control);
 }
 
 auto BaseControl::isControlInvalid() -> bool {
 	if (getContentHolder().isContentInvalid()) {
 		getLogger()->info("Invalid by content (invalid): " + getName());
-		return true;
-	}
-
-	if (onValidate_.getEvents().empty()) {
-		getLogger()->info("Events are empty (invalid): " + getName());
 		return true;
 	}
 
@@ -162,6 +190,10 @@ auto BaseControl::isControlInvalid() -> bool {
 }
 
 auto BaseControl::prepareControls() -> void {
+	getOnBeforeRender().clear();
+	getOnValidate().clear();
+	getControls().clear();
+
 }
 
 auto BaseControl::setupControls() -> void {
@@ -195,6 +227,17 @@ auto BaseControl::addOnBeforeRender(EventInterface event) -> void {
 }
 
 auto BaseControl::renderScreen() -> void {
+	/*
+	 * If position is not set for master control (init run) -> set position and skip rendering
+	 */
+	if (!getRelativePosition().isPositionSet() && getControlType() == ControlType::MASTER) {
+		relativePosition_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+		absolutePosition_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+		crop_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+		restart();
+		return;
+	}
+
 	if (!hasContext()) {
 		return;
 	}
@@ -203,11 +246,18 @@ auto BaseControl::renderScreen() -> void {
 		return;
 	}
 
-	const float pxRatio = static_cast<float>(getGaugeDrawData()->fbWidth) / static_cast<float>(getGaugeDrawData()->winWidth);
-	const auto winWidth = static_cast<float>(getGaugeDrawData()->winWidth);
-	const auto winHeight = static_cast<float>(getGaugeDrawData()->winHeight);
+	propagateMouseMove(mouseMove_.x, mouseMove_.y);
+	if (!mouseClickQueue_.empty()) {
+		auto lastMouseClick = mouseClickQueue_.front();
+		mouseClickQueue_.pop();
+		propagateMouseClick(lastMouseClick.x, lastMouseClick.y);
+	} else {
+		propagateMouseClick(-10000, -10000);
+	}
 
-	nvgBeginFrame(getContext(), winWidth, winHeight, pxRatio);
+	const float pxRatio = static_cast<float>(getGaugeDrawData()->fbWidth) / static_cast<float>(getGaugeDrawData()->winWidth);
+
+	nvgBeginFrame(getContext(), position.getWidth(), position.getHeight(), pxRatio);
 	{
 		nvgSave(getContext());
 		{
@@ -216,7 +266,7 @@ auto BaseControl::renderScreen() -> void {
 				nvgFillColor(getContext(), nvgRGB(0, 0, 0));
 				nvgBeginPath(getContext());
 				{
-					nvgRect(getContext(), 0, 0, winWidth, winHeight);
+					nvgRect(getContext(), 0, 0, position.getWidth(), position.getHeight());
 				}
 				nvgClosePath(getContext());
 				nvgFill(getContext());
@@ -225,12 +275,12 @@ auto BaseControl::renderScreen() -> void {
 					if (getCrop().isPositionSet()) {
 						nvgScissor(getContext(), getCrop().getLeft(), getCrop().getTop(), getCrop().getWidth(), getCrop().getHeight());
 						{
-							renderControls();
+							renderControls(0, 0);
 						}
 						nvgResetScissor(getContext());
 					}
 					else {
-						renderControls();
+						renderControls(0, 0);
 					}
 				}
 				nvgRestore(getContext());
@@ -245,11 +295,12 @@ auto BaseControl::renderScreen() -> void {
 /*
  * TODO: Add support for master crop
  */
-auto BaseControl::renderControls() -> void {
+auto BaseControl::renderControls(float parentLeft, float parentTop) -> void {
+	absolutePosition.setPosition(getRelativePosition().getLeft() + parentLeft, getRelativePosition().getTop() + parentTop, 0, 0);
 	if (getControlType() == ControlType::NORMAL) {
 		nvgSave(getContext());
 		{
-			nvgTranslate(getContext(), getPosition().getLeft(), getPosition().getTop());
+			nvgTranslate(getContext(), parentLeft + getRelativePosition().getLeft(), parentTop + getRelativePosition().getTop());
 			{
 				nvgSave(getContext());
 				{
@@ -271,10 +322,8 @@ auto BaseControl::renderControls() -> void {
 		nvgRestore(getContext());
 	}
 
-	if (!getControls().empty()) {
-		for (const auto& control : getControls()) {
-			control->renderControls();
-		}
+	for (const auto& control : getControls()) {
+		control->renderControls(getRelativePosition().getLeft() + parentLeft, getRelativePosition().getTop() + parentTop);
 	}
 }
 
@@ -291,7 +340,6 @@ auto BaseControl::isControlInvalid(BaseControl& control) -> bool {
 	if (control.isControlInvalid()) {
 		return true;
 	}
-
 
 	for (auto& con : control.getControls()) {
 		bool isInvalid = isControlInvalid(*con);
@@ -357,20 +405,18 @@ auto BaseControl::getGaugeDrawData() const -> GaugeDrawData* {
 }
 
 auto BaseControl::setGaugeDrawData(GaugeDrawData* const gaugeDrawData) -> void {
-	position_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
-	crop_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
 	gaugeDrawData_ = gaugeDrawData;
 }
 
-auto BaseControl::ControlsHolder::add(ControlUniquePointer& control) -> void {
-	controls_.emplace_back(std::move(control));
+auto BaseControl::ControlsHolder::add(ControlSharedPointer& control) -> void {
+	controls_.emplace_back(control);
 }
 
-auto BaseControl::ControlsHolder::getControls() -> list<ControlUniquePointer>& {
+auto BaseControl::ControlsHolder::getControls() -> list<ControlSharedPointer>& {
 	return controls_;
 }
 
-auto BaseControl::ControlsHolder::getControl(string name) -> ControlUniquePointer& {
+auto BaseControl::ControlsHolder::getControl(string name) -> ControlSharedPointer& {
 	for (auto& control : getControls()) {
 		if (control->getName() == name) {
 			return control;
@@ -413,7 +459,8 @@ auto BaseControl::ContentHolder::setContent(const Content& content) -> void {
 		Content copy = content;
 		std::reverse(copy.begin(), copy.end());
 		checkContent(copy);
-	} else {
+	}
+	else {
 		checkContent(content);
 	}
 }
@@ -422,9 +469,6 @@ auto BaseControl::ContentHolder::checkContent(const Content& content) -> void {
 	if (content_ != content) {
 		setContentInvalid(true);
 		content_ = content;
-	}
-	else {
-		setContentInvalid(false);
 	}
 }
 

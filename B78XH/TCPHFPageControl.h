@@ -3,8 +3,8 @@
 
 class TCPHFPageControl: public TCPPageControl {
 	public:
-		explicit TCPHFPageControl(const string& name)
-			: TCPPageControl(name) {
+		TCPHFPageControl(const string& name, std::shared_ptr<TCPScratchpadControl>& scratchPad)
+			: TCPPageControl(name, scratchPad) {
 		}
 
 	protected:

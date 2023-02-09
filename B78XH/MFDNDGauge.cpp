@@ -96,24 +96,7 @@ void MFDNDGauge::testRender(sGaugeDrawData* data) {
 		nvgResetTransform(this->nvgContext);
 	}
 
-	/*
-	 * This is center point
-	 */
-
-	nvgFillColor(this->nvgContext, nvgRGB(255, 0, 0));
-	nvgSave(this->nvgContext);
-	{
-		nvgTranslate(this->nvgContext, ndTranslateX, ndTranslateY);
-		{
-			nvgBeginPath(this->nvgContext);
-			{
-				nvgRect(this->nvgContext, 495, 495, 10, 10);
-			}
-			nvgFill(this->nvgContext);
-		}
-		nvgResetTransform(this->nvgContext);
-	}
-	nvgRestore(this->nvgContext);
+;
 
 	std::vector<double> pr = this->latLongToXY(this->pr402Lat, this->pr402Long);
 
