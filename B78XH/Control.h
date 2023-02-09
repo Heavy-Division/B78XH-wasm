@@ -13,4 +13,5 @@ class Control : public BaseControl {
 
 	private:
 		using BaseControl::setControlType;
+
 };

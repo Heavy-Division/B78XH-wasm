@@ -249,3 +249,9 @@ auto MFDPanelResolver::processSwitchEvent(MFD index, PANEL_EVENT_ID panelId) -> 
 		}
 	}
 }
+
+auto MFDPanelResolver::processScratchpadEvent(int index, CDUScratchpadControl::events event) -> void {
+	if(index == 0 || index == 1) {
+		static_pointer_cast<MFDCDUControl>(mfdCDUs[index])->getScratchpad()->processEvent(event);
+	}
+}

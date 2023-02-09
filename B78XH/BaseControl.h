@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <queue>
 
 #include "ControlCrop.h"
 #include "ControlPosition.h"
@@ -147,9 +148,13 @@ class BaseControl {
 		[[nodiscard]] auto getSystemControls() -> list<ControlSharedPointer>&;
 		__declspec(property(get = getSystemControls)) const list<ControlSharedPointer>& systemControls;
 
-		[[nodiscard]] auto getPosition() -> ControlPosition&;
-		auto setPosition(const ControlPosition& position) -> void;
-		__declspec(property(get = getPosition, put = setPosition)) ControlPosition position;
+		[[nodiscard]] auto getRelativePosition() -> ControlPosition&;
+		auto setRelativePosition(const ControlPosition& position) -> void;
+		__declspec(property(get = getRelativePosition, put = setRelativePosition)) ControlPosition position;
+
+		[[nodiscard]] auto getAbsolutePosition() -> ControlPosition&;
+		auto setAbsolutePosition(const ControlPosition& position) -> void;
+		__declspec(property(get = getAbsolutePosition, put = setAbsolutePosition)) ControlPosition absolutePosition;
 
 		[[nodiscard]] auto getCrop() -> ControlCrop&;
 		auto setCrop(const ControlCrop& crop) -> void;
@@ -176,11 +181,25 @@ class BaseControl {
 		auto setLogger(std::unique_ptr<BaseLogger> logger) -> void;
 		[[nodiscard]] auto getLogger() const -> const std::unique_ptr<BaseLogger>&;
 
+		auto propagateMouseMove(float x, float y) -> void;
+		auto propagateMouseClick(float x, float y) -> void;
+		auto queueMouseClick(float x, float y) -> void;
+		auto queueMouseMove(float x, float y) -> void;
 	protected:
 		enum class ControlType {
 			MASTER,
 			NORMAL
 		};
+
+		using MouseEvent = struct {
+			float x = -10000;
+			float y = -10000;
+		};
+
+		MouseEvent mouseMove_;
+		MouseEvent mouseClick_{};
+
+		std::queue<MouseEvent> mouseClickQueue_{};
 
 		explicit BaseControl(string name) : name_(std::move(name)), controlType_(ControlType::NORMAL) {
 		}
@@ -245,7 +264,8 @@ class BaseControl {
 		ContentHolder contentHolder_;
 
 
-		ControlPosition position_;
+		ControlPosition relativePosition_;
+		ControlPosition absolutePosition_;
 		ControlCrop crop_;
 
 		ControlEvents onBeforeRender_;

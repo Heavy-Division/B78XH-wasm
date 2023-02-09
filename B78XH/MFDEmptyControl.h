@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "MFDBaseControl.h"
+#include "Tools/Tools.h"
 
 class MFDEmptyControl : public MFDBaseControl {
 	public:

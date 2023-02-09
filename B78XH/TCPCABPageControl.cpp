@@ -57,7 +57,7 @@ auto TCPCABPageControl::setupControls() -> void {
 	});
 
 	int x = 10;
-	leftOneTitle->getPosition().setPosition(x, x, x, x);
+	leftOneTitle->getRelativePosition().setPosition(x, x, x, x);
 
 	leftOne->addOnBeforeRender([](BaseControl& control)-> bool {
 		control.getContentHolder().setContent({{"<DOOR 1L"}});

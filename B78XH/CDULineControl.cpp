@@ -14,7 +14,6 @@ auto CDULineControl::renderContentAlignLeft() -> void {
 	nvgBeginPath(getContext());
 	{
 		for (int i = 0; i < getContentHolder().getContent().size(); i++) {
-			prepareColor(i);
 			prepareFontSize(i);
 			prepareAlign(i);
 			float verticalOffset = getContentHolder().getChunkContentVerticalOffset(i);
@@ -27,6 +26,7 @@ auto CDULineControl::renderContentAlignLeft() -> void {
 			if (isSettable(i)) {
 				renderSelectable(prevBounds[0], nextBounds[2], false);
 			}
+			prepareColor(i);
 			nvgText(getContext(), bounds[2], verticalOffset, textToRender, nullptr);
 			nvgTextBounds(getContext(), bounds[2], verticalOffset, textToRender, nullptr, bounds);
 		}
@@ -47,15 +47,12 @@ auto CDULineControl::renderContentAlignRight() -> void {
 	float bounds[4] = { 0, 0, 0, 0 };
 	float prevBounds[4] = { 0, 0, 0, 0 };
 	float nextBounds[4] = { 0, 0, 0, 0 };
-	float fixedNextBounds[4] = { 0, 0, 0, 0 };
-	float fixedPrevBounds[4] = { 0, 0, 0, 0 };
 
 	float width = 0;
 
 	nvgBeginPath(getContext());
 	{
 		for (int i = 0; i < getContentHolder().getContent().size(); i++) {
-			prepareColor(i);
 			prepareFontSize(i);
 			prepareAlign(i);
 			float verticalOffset = getContentHolder().getChunkContentVerticalOffset(i);
@@ -66,17 +63,10 @@ auto CDULineControl::renderContentAlignRight() -> void {
 			prevBounds[3] = bounds[3];
 			nvgTextBounds(getContext(), 0, verticalOffset, textToRender, nullptr, nextBounds);
 			width = width + (nextBounds[2] - nextBounds[0]);
-			fixedNextBounds[0] = nextBounds[0];
-			fixedNextBounds[1] = nextBounds[1];
-			fixedNextBounds[2] = prevBounds[2];
-			fixedNextBounds[3] = nextBounds[3];
-			fixedPrevBounds[0] = nextBounds[2];
-			fixedPrevBounds[1] = prevBounds[1];
-			fixedPrevBounds[2] = prevBounds[2];
-			fixedPrevBounds[0] = prevBounds[0];
 			if (isSettable(i)) {
 				renderSelectable(-nextBounds[2], nextBounds[0], true);
 			}
+			prepareColor(i);
 			nvgText(getContext(), -width, verticalOffset, textToRender, nullptr);
 		}
 	}
@@ -84,14 +74,20 @@ auto CDULineControl::renderContentAlignRight() -> void {
 	nvgFill(getContext());
 }
 
+auto CDULineControl::getLineVerticalPosition() const -> float {
+	constexpr auto initialOffset = 84.0f;
+	constexpr auto offset = 68.0f;
+	return initialOffset + (static_cast<float>(lineNumber_) * offset);
+}
+
 auto CDULineControl::renderSelectable(float x1, float x2, bool backward) -> void {
-	constexpr float borderWidth = 3.0f;
+	constexpr float borderWidth = 5.0f;
 	//const float rightXPosition = nextBounds[2] + 5.0f;
 	const float rightXPosition = x2 + 5.0f;
 	//const float leftXPosition = -(prevBounds[2] -prevBounds[0]) - 5.0f;
 	const float leftXPosition = x1 - 5.0f;
-	constexpr float topYPosition = -16.0f;
-	constexpr float bottomYPosition = 12.0f;
+	constexpr float topYPosition = -19.0f;
+	constexpr float bottomYPosition = 17.0f;
 
 	nvgBeginPath(this->context);
 	{
@@ -245,7 +241,7 @@ auto CDULineControl::renderSelectable(float x1, float x2, bool backward) -> void
 	}
 }
 
-void CDULineControl::renderContentAlignCenter() {
+auto CDULineControl::renderContentAlignCenter() -> void {
 	prepareDefaults();
 
 	float boundsPreCalculated[4] = { 0, 0, 0, 0 };

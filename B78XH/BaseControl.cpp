@@ -4,6 +4,31 @@
 #include "Tools/Console.h"
 
 
+auto BaseControl::propagateMouseClick(float x, float y) -> void {
+	mouseClick_.x = x;
+	mouseClick_.y = y;
+	for (auto& control : getControls()) {
+		control->propagateMouseClick(x,y);
+	}
+}
+
+auto BaseControl::propagateMouseMove(float x, float y) -> void {
+	mouseMove_.x = x;
+	mouseMove_.y = y;
+	for (auto& control : getControls()) {
+		control->propagateMouseMove(x, y);
+	}
+}
+
+auto BaseControl::queueMouseClick(float x, float y) -> void {
+	mouseClickQueue_.emplace(MouseEvent{ x,y });
+}
+
+auto BaseControl::queueMouseMove(float x, float y) -> void {
+	mouseMove_.x = x;
+	mouseMove_.y = y;
+}
+
 auto BaseControl::prepareRenderingContextDefaults() -> void {
 	prepareRenderingContextDefaultsFonts();
 }
@@ -58,12 +83,20 @@ auto BaseControl::getSystemControls() -> list<ControlSharedPointer>& {
 	return systemControls_.getControls();
 }
 
-auto BaseControl::getPosition() -> ControlPosition& {
-	return position_;
+auto BaseControl::getRelativePosition() -> ControlPosition& {
+	return relativePosition_;
 }
 
-auto BaseControl::setPosition(const ControlPosition& position) -> void {
-	position_ = position;
+auto BaseControl::setRelativePosition(const ControlPosition& position) -> void {
+	relativePosition_ = position;
+}
+
+auto BaseControl::getAbsolutePosition() -> ControlPosition& {
+	return absolutePosition_;
+}
+
+auto BaseControl::setAbsolutePosition(const ControlPosition& position) -> void {
+	absolutePosition_ = position;
 }
 
 auto BaseControl::getCrop() -> ControlCrop& {
@@ -160,6 +193,7 @@ auto BaseControl::prepareControls() -> void {
 	getOnBeforeRender().clear();
 	getOnValidate().clear();
 	getControls().clear();
+
 }
 
 auto BaseControl::setupControls() -> void {
@@ -196,8 +230,9 @@ auto BaseControl::renderScreen() -> void {
 	/*
 	 * If position is not set for master control (init run) -> set position and skip rendering
 	 */
-	if (!getPosition().isPositionSet() && getControlType() == ControlType::MASTER) {
-		position_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+	if (!getRelativePosition().isPositionSet() && getControlType() == ControlType::MASTER) {
+		relativePosition_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
+		absolutePosition_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
 		crop_.setPosition(0, 0, gaugeDrawData->winWidth, gaugeDrawData->winHeight);
 		restart();
 		return;
@@ -209,6 +244,15 @@ auto BaseControl::renderScreen() -> void {
 
 	if (!needRedraw(isFirstRun())) {
 		return;
+	}
+
+	propagateMouseMove(mouseMove_.x, mouseMove_.y);
+	if (!mouseClickQueue_.empty()) {
+		auto lastMouseClick = mouseClickQueue_.front();
+		mouseClickQueue_.pop();
+		propagateMouseClick(lastMouseClick.x, lastMouseClick.y);
+	} else {
+		propagateMouseClick(-10000, -10000);
 	}
 
 	const float pxRatio = static_cast<float>(getGaugeDrawData()->fbWidth) / static_cast<float>(getGaugeDrawData()->winWidth);
@@ -252,10 +296,11 @@ auto BaseControl::renderScreen() -> void {
  * TODO: Add support for master crop
  */
 auto BaseControl::renderControls(float parentLeft, float parentTop) -> void {
+	absolutePosition.setPosition(getRelativePosition().getLeft() + parentLeft, getRelativePosition().getTop() + parentTop, 0, 0);
 	if (getControlType() == ControlType::NORMAL) {
 		nvgSave(getContext());
 		{
-			nvgTranslate(getContext(), parentLeft + getPosition().getLeft(), parentTop + getPosition().getTop());
+			nvgTranslate(getContext(), parentLeft + getRelativePosition().getLeft(), parentTop + getRelativePosition().getTop());
 			{
 				nvgSave(getContext());
 				{
@@ -278,7 +323,7 @@ auto BaseControl::renderControls(float parentLeft, float parentTop) -> void {
 	}
 
 	for (const auto& control : getControls()) {
-		control->renderControls(getPosition().getLeft() + parentLeft, getPosition().getTop() + parentTop);
+		control->renderControls(getRelativePosition().getLeft() + parentLeft, getRelativePosition().getTop() + parentTop);
 	}
 }
 

@@ -46,17 +46,6 @@ auto MFDCOMMControl::render() -> void {
 	nvgClosePath(getContext());
 }
 
-auto MFDNDControl::render() -> void {
-	MFDBaseControl::render();
-	nvgBeginPath(getContext());
-	{
-		nvgFillColor(getContext(), nvgRGB(255, 0, 255));
-		nvgRect(getContext(), 0, 0, 200, 200);
-		nvgFill(getContext());
-	}
-	nvgClosePath(getContext());
-}
-
 auto MFDTest6Control::render() -> void {
 	MFDBaseControl::render();
 	nvgBeginPath(getContext());

@@ -571,6 +571,48 @@
     <ClCompile Include="CDULineControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
     </ClCompile>
+    <ClCompile Include="CDULeftLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURightLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUCenterLineControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULeftLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDULineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURightLineTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUPageTitleControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDMouseCursorControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUButtonControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUMainKeyButtonControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDURoutePageControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUScratchpadControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="CDUSelectKeyButtonControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDNDControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1248,6 +1290,48 @@
     <ClInclude Include="CDULineControl.h">
       <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
     </ClInclude>
+    <ClInclude Include="CDULeftLineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURightLineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUCenterLineControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULeftLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDULineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURightLineTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUPageTitleControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDULines</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDMouseCursorControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUButtonControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUMainKeyButtonControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDURoutePageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUPages</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUScratchpadControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="CDUSelectKeyButtonControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CDU\CDUUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDNDControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1564,6 +1648,9 @@
     </Filter>
     <Filter Include="Source Files\Controls\Controls\MFD\CDU\CDULines">
       <UniqueIdentifier>{6e64abfa-479e-47b1-b801-ec7e6374d666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\ND">
+      <UniqueIdentifier>{983f63d5-9b41-4db6-a45a-80ca39311e9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

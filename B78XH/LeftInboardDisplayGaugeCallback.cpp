@@ -71,4 +71,22 @@ extern "C" {
 		}
 		return false;
 	}
+
+	MSFS_CALLBACK void left_inboard_display_mouse_callback(float fX, float fY, unsigned int iFlags) {
+		switch (iFlags) {
+			case MOUSE_MOVE: {
+				//Displays::leftInboardDisplay->getMouseMoveResolver().setRelativePosition(fX, fY);
+				Displays::leftInboardDisplay->queueMouseMove(fX, fY);
+
+				break;
+			}
+			case MOUSE_LEFTRELEASE: {
+				Displays::leftInboardDisplay->queueMouseClick(fX, fY);
+				break;
+			}
+			default: {
+				break;
+			}
+		}
+	}
 }

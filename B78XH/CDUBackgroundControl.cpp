@@ -6,7 +6,7 @@ auto CDUBackgroundControl::render() -> void {
 	nvgBeginPath(getContext());
 	{
 		nvgFillColor(getContext(), nvgRGB(97, 100, 127));
-		nvgRect(getContext(), 0, 0, getPosition().getWidth(), getPosition().getHeight());
+		nvgRect(getContext(), 0, 0, getRelativePosition().getWidth(), getRelativePosition().getHeight());
 		nvgFill(getContext());
 	}
 	nvgClosePath(getContext());

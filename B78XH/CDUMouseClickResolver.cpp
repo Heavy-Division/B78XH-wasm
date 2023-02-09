@@ -17,6 +17,6 @@
 
 #include "CDUMouseClickResolver.h"
 
-void CDUMouseClickResolver::reset() {
-	CDUMouseResolver::setPosition(0, 0);
+auto CDUMouseClickResolver::reset() -> void {
+	CDUMouseResolver::setPosition(-10000, -10000);
 }

@@ -4,6 +4,7 @@
 #include "MFDCDUControl.h"
 #include "MFDDisplayContainer.h"
 #include "MFDEmptyControl.h"
+#include "MFDNDControl.h"
 #include "MFDSYSControl.h"
 
 class MFDPanelResolver {
@@ -63,6 +64,7 @@ class MFDPanelResolver {
 		auto isRequestedPanelOnSameSide(MFDBaseControl::CONTROL_IDENT leftIdent, MFDBaseControl::CONTROL_IDENT rightIdent, MFDBaseControl::CONTROL_IDENT requstedIdent,
 		                                int requestedSide) -> bool;
 		auto processSwitchEvent(MFD index, PANEL_EVENT_ID panelId) -> void;
+		auto processScratchpadEvent(int index, CDUScratchpadControl::events event) -> void;
 
 	private:
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdOnePanels{

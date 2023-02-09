@@ -49,6 +49,9 @@ auto SimConnectConnector::prepareEvents() -> void {
 
 	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_1, "B78XH.CONTROL_IDS_MFD_SIDE_1", FALSE);
 	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_2, "B78XH.CONTROL_IDS_MFD_SIDE_2", FALSE);
+
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_CDU_1, "B78XH.CONTROL_IDS_CDU_1", FALSE);
+	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_CDU_2, "B78XH.CONTROL_IDS_CDU_2", FALSE);
 }
 
 auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId,
@@ -949,6 +952,16 @@ auto SimConnectConnector::handleCustomEvents(SIMCONNECT_RECV_EVENT_EX1* data) ->
 		}
 		case ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_1: break;
 		case ClientEvents::B78XH_CONTROL_IDS_MFD_SIDE_2: break;
+		case ClientEvents::B78XH_CONTROL_IDS_CDU_1: {
+			MFD::resolver.processScratchpadEvent(0, static_cast<CDUScratchpadControl::events>(data0));
+			Console::error("CDU EVENT");
+			break;
+		}
+		case ClientEvents::B78XH_CONTROL_IDS_CDU_2: {
+			MFD::resolver.processScratchpadEvent(1, static_cast<CDUScratchpadControl::events>(data0));
+			Console::error("CDU EVENT");
+			break;
+		}
 		default: {
 			Console::error("(SimConnectConnector::handleCustomEvents) Unknown client event");
 			break;
