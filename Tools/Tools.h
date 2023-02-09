@@ -75,4 +75,8 @@ namespace Tools {
 
 	auto smoothPow(double start, double end, double factor, double deltaTime) -> double;
 	auto clamp(double value, double lo, double hi) -> double;
+	auto fwsColorHandler(double data, double advisoryThreshold, double warningThreshold, NVGcolor defaultColor) -> NVGcolor;
+	auto formatToFixed(int data, int decimals) -> std::string;
+	auto formatToFixed(double data, int decimals) -> std::string;
+	auto formatToFixed(float data, int decimals) -> std::string;
 }

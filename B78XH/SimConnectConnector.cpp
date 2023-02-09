@@ -620,6 +620,88 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_MISC_TIME, "LOCAL YEAR",
 	                                                        "Number");
+
+
+	/*
+	 * Environment
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TEMPERATURE, "TOTAL AIR TEMPERATURE",
+		"Celsius");
+
+	/*
+	 *  Systems - Powerplant
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N1:1",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N2:1",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N1:2",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG N2:2",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG THROTTLE COMMANDED N1:1",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG THROTTLE COMMANDED N1:2",
+		"Percent");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG EXHAUST GAS TEMPERATURE:1",
+		"Celsius");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG EXHAUST GAS TEMPERATURE:2",
+		"Celsius");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG FUEL FLOW PPH:1",
+		"Pounds per hour");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG FUEL FLOW PPH:2",
+		"Pounds per hour");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "GENERAL ENG COMBUSTION:1",
+		"Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "GENERAL ENG COMBUSTION:2",
+		"Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL PRESSURE:1",
+		"Psi");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL PRESSURE:2",
+		"Psi");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL TEMPERATURE:1",
+		"Celsius");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL TEMPERATURE:2",
+		"Celsius");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL QUANTITY:1",
+		"Percent scaler 16k");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL QUANTITY:2",
+		"Percent scaler 16k");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG VIBRATION:2",
+		"Number");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "TURB ENG VIBRATION:2",
+		"Number");
+
+	/*
+	 *  Systems - Fuel
+	 */
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FUEL, "FUELSYSTEM VALVE SWITCH:1",
+		"Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FUEL, "FUELSYSTEM VALVE SWITCH:2",
+		"Bool");
 }
 
 auto SimConnectConnector::prepareClientDataDefinitions() -> void {
@@ -725,6 +807,22 @@ auto SimConnectConnector::prepareRequests() -> void {
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_AUTOPILOT_THROTTLE,
 	                                                           DEFINITION_AUTOPILOT_THROTTLE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_TEMPERATURE,
+	                                                           DEFINITION_TEMPERATURE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_ENGINE,
+	                                                           DEFINITION_ENGINE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_FUEL,
+	                                                           DEFINITION_FUEL, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
@@ -864,6 +962,21 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 
 				case REQUEST_MISC_TIME: {
 					SimConnectData::Misc::time = (*reinterpret_cast<SimConnectData::Misc::Time*>(&pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_TEMPERATURE: {
+					SimConnectData::environment::temperature = (*reinterpret_cast<SimConnectData::environment::Temperature*>(&pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_ENGINE: {
+					SimConnectData::systems::powerplant::engine = (*reinterpret_cast<SimConnectData::systems::powerplant::Engine*>(&pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_FUEL: {
+					SimConnectData::systems::fuel::switches = (*reinterpret_cast<SimConnectData::systems::fuel::Switches*>(&pObjData->dwData));
 					break;
 				}
 				default:

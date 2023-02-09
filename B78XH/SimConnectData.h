@@ -40,6 +40,9 @@ enum DATA_DEFINE_ID {
 	DEFINITION_BAROMETER_SETTING,
 	DEFINITION_MISC_TIME,
 	DEFINITION_CLOSE,
+	DEFINITION_TEMPERATURE,
+	DEFINITION_ENGINE,
+	DEFINITION_FUEL,
 };
 
 enum DATA_REQUEST_ID {
@@ -63,7 +66,10 @@ enum DATA_REQUEST_ID {
 	REQUEST_EQUIPMENT_RADIONAV_UNIT4,
 	REQUEST_BAROMETER_SETTING,
 	REQUEST_MISC_TIME,
-	REQUEST_CLOSE
+	REQUEST_CLOSE,
+	REQUEST_TEMPERATURE,
+	REQUEST_ENGINE,
+	REQUEST_FUEL,
 };
 
 namespace SimConnectData {
@@ -362,6 +368,52 @@ namespace SimConnectData {
 		};
 
 		inline Time time;
+	}
+
+	namespace environment {
+		struct Temperature {
+			double trueAirTemperature;
+		};
+
+		inline Temperature temperature;
+	}
+
+	namespace systems {
+		namespace powerplant {
+			struct Engine {
+				double engine1_n1;
+				double engine1_n2;
+				double engine2_n1;
+				double engine2_n2;
+				double engine1_commandedn1;
+				double engine2_commandedn1;
+				double engine1_egt;
+				double engine2_egt;
+				double engine1_fuel_flow_pph;
+				double engine2_fuel_flow_pph;
+				double engine1_combustion;
+				double engine2_combustion;
+				double engine1_oil_pressure;
+				double engine2_oil_pressure;
+				double engine1_oil_temp;
+				double engine2_oil_temp;
+				double engine1_oil_qty;
+				double engine2_oil_qty;
+				double engine1_vibration;
+				double engine2_vibration;
+			};
+
+			inline Engine engine;
+		}
+
+		namespace fuel {
+			struct Switches {
+				double cutoff_eng1;
+				double cutoff_eng2;
+			};
+
+			inline Switches switches;
+		}
 	}
 
 }
