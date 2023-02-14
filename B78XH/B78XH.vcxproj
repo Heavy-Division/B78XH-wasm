@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>..\..\B78XH\SimObjects\Airplanes\Heavy-Division-B78XH-mod\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -153,6 +153,10 @@
     <ClCompile Include="CDURoutePageControl.cpp" />
     <ClCompile Include="CDUScratchpadControl.cpp" />
     <ClCompile Include="CDUSelectKeyButtonControl.cpp" />
+    <ClCompile Include="CheckListItem.cpp" />
+    <ClCompile Include="CheckListLine.cpp" />
+    <ClCompile Include="CheckListLineStateIndicator.cpp" />
+    <ClCompile Include="MFDCHKLControl.cpp" />
     <ClCompile Include="MFDMouseCursorControl.cpp" />
     <ClCompile Include="CDUMouseMoveResolver.cpp" />
     <ClCompile Include="CDUMouseResolver.cpp" />
@@ -371,6 +375,11 @@
     <ClInclude Include="CDURoutePageControl.h" />
     <ClInclude Include="CDUScratchpadControl.h" />
     <ClInclude Include="CDUSelectKeyButtonControl.h" />
+    <ClInclude Include="CheckListDimensions.h" />
+    <ClInclude Include="CheckListItem.h" />
+    <ClInclude Include="CheckListLine.h" />
+    <ClInclude Include="CheckListLineStateIndicator.h" />
+    <ClInclude Include="MFDCHKLControl.h" />
     <ClInclude Include="MFDMouseCursorControl.h" />
     <ClInclude Include="CDUMouseMoveResolver.h" />
     <ClInclude Include="CDUMouseResolver.h" />

@@ -613,6 +613,18 @@
     <ClCompile Include="MFDNDControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
     </ClCompile>
+    <ClCompile Include="MFDCHKLControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckListItem.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckListLineStateIndicator.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckListLine.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1332,6 +1344,21 @@
     <ClInclude Include="MFDNDControl.h">
       <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
     </ClInclude>
+    <ClInclude Include="MFDCHKLControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckListItem.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckListLineStateIndicator.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckListLine.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckListDimensions.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1651,6 +1678,12 @@
     </Filter>
     <Filter Include="Source Files\Controls\Controls\MFD\ND">
       <UniqueIdentifier>{983f63d5-9b41-4db6-a45a-80ca39311e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CheckList">
+      <UniqueIdentifier>{41a37572-c463-484a-bf96-160e9f8155a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\CheckList\CheckListBasics">
+      <UniqueIdentifier>{1b4f3874-894c-4757-b210-c6ef873b9b07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
