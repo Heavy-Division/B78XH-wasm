@@ -6,6 +6,18 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     constexpr auto top = 0;
     const auto width = getRelativePosition().getWidth();
     const auto height = getRelativePosition().getHeight();
+    const auto topGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
+                             ? Tools::Colors::cduButtonBorderBottomGray
+                             : Tools::Colors::cduButtonBorderTopGray;
+    const auto bottomGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
+                                ? Tools::Colors::cduButtonBorderTopGray
+                                : Tools::Colors::cduButtonBorderBottomGray;
+    const auto leftGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
+                              ? Tools::Colors::cduButtonBorderRightGray
+                              : Tools::Colors::cduButtonBorderLeftGray;
+    const auto rightGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
+                               ? Tools::Colors::cduButtonBorderLeftGray
+                               : Tools::Colors::cduButtonBorderRightGray;
     // open loop indicator
     nvgFillColor(getContext(), Tools::Colors::cduButtonGray);
     nvgBeginPath(getContext());
@@ -14,9 +26,9 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
         nvgFill(getContext());
     }
     nvgClosePath(getContext());
-    
+
     // top
-    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderTopGray);
+    nvgFillColor(getContext(), topGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left, top);
@@ -30,7 +42,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgFill(getContext());
 
     // right
-    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderRightGray);
+    nvgFillColor(getContext(), rightGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), (left + width), top);
@@ -45,7 +57,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgFill(getContext());
 
     // bottom
-    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderBottomGray);
+    nvgFillColor(getContext(), bottomGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left, (top + height));
@@ -60,7 +72,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgFill(getContext());
 
     // left
-    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderLeftGray);
+    nvgFillColor(getContext(), leftGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left, top);
@@ -76,24 +88,26 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
 
 void CheckListLineStateIndicator::drawCheckMark() {
     nvgStrokeColor(getContext(), Tools::Colors::green);
-    nvgStrokeWidth(getContext(), 3);
+    nvgStrokeWidth(getContext(), 4);
     nvgBeginPath(getContext());
     {
-        nvgMoveTo(getContext(), CheckListDimensions::BORDER_WIDTH, 25);
-        nvgLineTo(getContext(), CheckListDimensions::BORDER_WIDTH + 15,
-                  position.height - CheckListDimensions::BORDER_WIDTH);
-        nvgLineTo(getContext(), position.width - CheckListDimensions::BORDER_WIDTH, CheckListDimensions::BORDER_WIDTH);
+        constexpr float sideOffset = 10;
+        nvgMoveTo(getContext(), sideOffset, 30);
+        nvgLineTo(getContext(), sideOffset+ 12,
+                  position.height - sideOffset);
+        nvgLineTo(getContext(), position.width - sideOffset, sideOffset);
         nvgStroke(getContext());
     }
     nvgClosePath(getContext());
 }
 
 void CheckListLineStateIndicator::render() {
-    CheckListItem::render();
+    Control::render();
 
     if (line_->line_type == CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP) {
         drawOpenLoopIndicator();
     }
-    // green check, testing
-    drawCheckMark();
+    if (line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED) {
+        drawCheckMark();
+    }
 }

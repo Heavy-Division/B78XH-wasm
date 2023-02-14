@@ -7,10 +7,10 @@ class CheckListLine;
 /**
  * \brief The main state indicator of a "line" in a checklist. This is typically the "checkbox"/"checkmark". Internal, Owned by "CheckListLine"
  */
-class CheckListLineStateIndicator : public CheckListItem {
+class CheckListLineStateIndicator : public Control {
     public:
         CheckListLineStateIndicator(const string& name, const CheckListLine* parentLine)
-            : CheckListItem(name),
+            : Control(name),
                 line_(parentLine){
         }
 
