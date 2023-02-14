@@ -616,13 +616,13 @@
     <ClCompile Include="MFDCHKLControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\CheckList</Filter>
     </ClCompile>
-    <ClCompile Include="CheckListItem.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
-    </ClCompile>
     <ClCompile Include="CheckListLineStateIndicator.cpp">
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
     </ClCompile>
     <ClCompile Include="CheckListLine.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckListItem.cpp">
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
     </ClCompile>
   </ItemGroup>

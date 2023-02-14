@@ -12,5 +12,5 @@ void MFDCHKLControl::prepareControls() {
 
 void MFDCHKLControl::setupControls() {
 	MFDBaseControl::setupControls();
-	getControl("TEST_LINE")->position.setPosition(0, 0, CheckListDimensions::TOTAL_LINE_WIDTH, CheckListDimensions::TOTAL_LINE_HEIGHT);
+	getControl("TEST_LINE")->position.setPosition(0, 0, CheckListDimensions::TOTAL_WIDTH, CheckListDimensions::TOTAL_HEIGHT);
 }

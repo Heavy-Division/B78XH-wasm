@@ -9,5 +9,5 @@ void CheckListLine::prepareControls() {
 void CheckListLine::setupControls() {
     CheckListItem::setupControls();
 
-    getControl("STATE_INDICATOR")->position.setPosition(CheckListDimensions::LINE_MARGIN, CheckListDimensions::LINE_MARGIN, CheckListDimensions::INNER_LINE_END_Y, CheckListDimensions::INNER_LINE_END_Y);
+    getControl("STATE_INDICATOR")->position.setPosition(CheckListDimensions::MARGIN, CheckListDimensions::MARGIN, CheckListDimensions::INNER_Y_END, CheckListDimensions::INNER_Y_END);
 }
