@@ -18,4 +18,7 @@ class CheckListLineStateIndicator : public CheckListItem {
 
     private:
         const CheckListLine* line_;     // weak_ptr here?
+
+        auto drawOpenLoopIndicator() -> void;
+        auto drawCheckMark() -> void;
 };

@@ -1,5 +1,12 @@
 #include "CheckListLine.h"
 
+void CheckListLine::render() {
+    CheckListItem::render();
+    if(isInFocus()) {
+        drawBorder();
+    }
+}
+
 void CheckListLine::prepareControls() {
     CheckListItem::prepareControls();
 

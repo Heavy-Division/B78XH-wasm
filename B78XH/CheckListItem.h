@@ -1,6 +1,7 @@
 #pragma once
 #include "Control.h"
 #include "Tools/Tools.h"
+#include "CheckListDimensions.h"
 
 /**
 * \brief  An abstract representation of an "item" on the checklist. An Item simply has a "CHECKLIST_ITEM_STATE"

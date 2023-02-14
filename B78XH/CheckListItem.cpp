@@ -30,13 +30,17 @@ auto CheckListItem::getItemStateColor() const -> NVGcolor {
 
 auto CheckListItem::drawBorder() -> void {
     nvgStrokeColor(getContext(), Tools::Colors::magenta);
-    nvgStrokeWidth(getContext(), 5.0f);
+    nvgStrokeWidth(getContext(), CheckListDimensions::BORDER_WIDTH);
     nvgBeginPath(getContext());
     {
-        nvgMoveTo(getContext(), 0, 0);
-        nvgLineTo(getContext(), position.width, 0);
-        nvgLineTo(getContext(),  position.width,  position.height);
-        nvgLineTo(getContext(), 0, position.height);
+        nvgMoveTo(getContext(), CheckListDimensions::BORDER_WIDTH / 2, CheckListDimensions::BORDER_WIDTH / 2);
+        nvgLineTo(getContext(), position.width - CheckListDimensions::BORDER_WIDTH / 2,
+                  CheckListDimensions::BORDER_WIDTH / 2);
+        nvgLineTo(getContext(), position.width - CheckListDimensions::BORDER_WIDTH / 2,
+                  position.height - CheckListDimensions::BORDER_WIDTH / 2);
+        nvgLineTo(getContext(), CheckListDimensions::BORDER_WIDTH / 2,
+                  position.height - CheckListDimensions::BORDER_WIDTH / 2);
+        nvgLineTo(getContext(), CheckListDimensions::BORDER_WIDTH / 2, CheckListDimensions::BORDER_WIDTH / 2);
         nvgStroke(getContext());
     }
     nvgClosePath(getContext());

@@ -19,7 +19,8 @@ class CheckListLine : public CheckListItem {
         }
 
         const CHECKLIST_LINE_TYPE line_type;
-    
+
+        auto render() -> void override;
         auto prepareControls() -> void override;
         auto setupControls() -> void override;
 };
