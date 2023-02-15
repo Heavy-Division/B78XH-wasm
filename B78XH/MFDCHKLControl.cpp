@@ -10,6 +10,7 @@ void MFDCHKLControl::prepareControls() {
     add(std::make_shared<CheckListLine>("TEST_LINE", CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP));
     const auto l2 = std::make_shared<CheckListLine>("TEST_LINE_2", CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP);
     l2->setCurrentState(CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED);
+    l2->setIsCurrent(true);
     add(l2);
 }
 

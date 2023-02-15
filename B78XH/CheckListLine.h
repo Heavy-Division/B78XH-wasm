@@ -15,12 +15,20 @@ class CheckListLine : public CheckListItem {
 
         CheckListLine(const string& name, const CHECKLIST_LINE_TYPE line_type)
             : CheckListItem(name),
-              line_type(line_type) {
+              line_type(line_type), isCurrent_(false) {
         }
 
         const CHECKLIST_LINE_TYPE line_type;
 
+        auto setIsCurrent(bool current) -> void;
+        auto getIsCurrent() const -> bool;
         auto render() -> void override;
         auto prepareControls() -> void override;
         auto setupControls() -> void override;
+
+    private:
+        std::shared_ptr<CheckListLineStateIndicator> stateIndicator_;
+        bool isCurrent_;
+
+        auto drawIsCurrentBorder() -> void;
 };
