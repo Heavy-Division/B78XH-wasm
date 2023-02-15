@@ -35,6 +35,11 @@ class CheckListItem : public Control {
          */
         auto isInFocus() -> bool;
         /**
+         * \brief Checks if mouse is clicking on this item
+         * \return true if mouse is clicking, false otherwise
+         */
+        auto shouldTriggerEvent() -> bool;
+        /**
          * \brief Gets the color corresponding to the current state.
          * \return Desired color.
          */

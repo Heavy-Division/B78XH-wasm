@@ -1,23 +1,33 @@
-#include "CheckListLineStateIndicator.h"
-#include "CheckListLine.h"
+#include "CheckListButton.h"
 
-void CheckListLineStateIndicator::drawOpenLoopIndicator() {
+void CheckListButton::render() {
+    Control::render();
+    drawButtonBorder();
+
+    nvgFontFace(getContext(), "heavy-fmc");
+    nvgFontSize(getContext(), 24.0f);
+    nvgFillColor(getContext(), Tools::Colors::white);
+    nvgTextAlign(getContext(), NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
+    nvgBeginPath(getContext());
+    {
+        nvgText(getContext(), position.width / 2, position.height / 2, displayText_.c_str(), nullptr);
+        nvgFill(getContext());
+    }
+    nvgClosePath(getContext());
+    
+    if (shouldTriggerEvent()) {
+        Console::log("Checklist button triggered {}", displayText_.c_str());
+        if(invoke_ != nullptr) {
+            invoke_();
+        }
+    }
+}
+
+auto CheckListButton::drawButtonBorder() -> void {
     constexpr auto left = 0;
     constexpr auto top = 0;
     const auto width = getRelativePosition().getWidth();
     const auto height = getRelativePosition().getHeight();
-    const auto topGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
-                             ? Tools::Colors::cduButtonBorderBottomGray
-                             : Tools::Colors::cduButtonBorderTopGray;
-    const auto bottomGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
-                                ? Tools::Colors::cduButtonBorderTopGray
-                                : Tools::Colors::cduButtonBorderBottomGray;
-    const auto leftGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
-                              ? Tools::Colors::cduButtonBorderRightGray
-                              : Tools::Colors::cduButtonBorderLeftGray;
-    const auto rightGray = line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED
-                               ? Tools::Colors::cduButtonBorderLeftGray
-                               : Tools::Colors::cduButtonBorderRightGray;
     // open loop indicator
     nvgFillColor(getContext(), Tools::Colors::cduButtonGray);
     nvgBeginPath(getContext());
@@ -28,7 +38,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgClosePath(getContext());
 
     // top
-    nvgFillColor(getContext(), topGray);
+    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderTopGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left, top);
@@ -42,7 +52,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgFill(getContext());
 
     // right
-    nvgFillColor(getContext(), rightGray);
+    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderRightGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left + width, top);
@@ -57,7 +67,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgFill(getContext());
 
     // bottom
-    nvgFillColor(getContext(), bottomGray);
+    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderBottomGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left, top + height);
@@ -72,7 +82,7 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     nvgFill(getContext());
 
     // left
-    nvgFillColor(getContext(), leftGray);
+    nvgFillColor(getContext(), Tools::Colors::cduButtonBorderLeftGray);
     nvgBeginPath(getContext());
     {
         nvgMoveTo(getContext(), left, top);
@@ -84,30 +94,4 @@ void CheckListLineStateIndicator::drawOpenLoopIndicator() {
     }
     nvgClosePath(getContext());
     nvgFill(getContext());
-}
-
-void CheckListLineStateIndicator::drawCheckMark() {
-    nvgStrokeColor(getContext(), Tools::Colors::green);
-    nvgStrokeWidth(getContext(), 4);
-    nvgBeginPath(getContext());
-    {
-        constexpr float sideOffset = 10;
-        nvgMoveTo(getContext(), sideOffset, 30);
-        nvgLineTo(getContext(), sideOffset+ 12,
-                  position.height - sideOffset);
-        nvgLineTo(getContext(), position.width - sideOffset, sideOffset);
-        nvgStroke(getContext());
-    }
-    nvgClosePath(getContext());
-}
-
-void CheckListLineStateIndicator::render() {
-    Control::render();
-
-    if (line_->line_type == CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP) {
-        drawOpenLoopIndicator();
-    }
-    if (line_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED) {
-        drawCheckMark();
-    }
 }

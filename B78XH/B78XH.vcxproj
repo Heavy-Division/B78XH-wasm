@@ -153,6 +153,7 @@
     <ClCompile Include="CDURoutePageControl.cpp" />
     <ClCompile Include="CDUScratchpadControl.cpp" />
     <ClCompile Include="CDUSelectKeyButtonControl.cpp" />
+    <ClCompile Include="CheckListButton.cpp" />
     <ClCompile Include="CheckListItem.cpp" />
     <ClCompile Include="CheckListLine.cpp" />
     <ClCompile Include="CheckListLineStateIndicator.cpp" />
@@ -375,6 +376,7 @@
     <ClInclude Include="CDURoutePageControl.h" />
     <ClInclude Include="CDUScratchpadControl.h" />
     <ClInclude Include="CDUSelectKeyButtonControl.h" />
+    <ClInclude Include="CheckListButton.h" />
     <ClInclude Include="CheckListDimensions.h" />
     <ClInclude Include="CheckListItem.h" />
     <ClInclude Include="CheckListLine.h" />

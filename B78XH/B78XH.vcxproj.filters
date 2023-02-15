@@ -625,6 +625,9 @@
     <ClCompile Include="CheckListItem.cpp">
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
     </ClCompile>
+    <ClCompile Include="CheckListButton.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1357,6 +1360,9 @@
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
     </ClInclude>
     <ClInclude Include="CheckListDimensions.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckListButton.h">
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
     </ClInclude>
   </ItemGroup>

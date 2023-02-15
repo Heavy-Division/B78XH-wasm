@@ -19,6 +19,17 @@ auto CheckListItem::isInFocus() -> bool {
     return false;
 }
 
+auto CheckListItem::shouldTriggerEvent() -> bool {
+    calculateBounds();
+    if (mouseClick_.x >= bounds_[0] &&
+        mouseClick_.x <= bounds_[1] &&
+        mouseClick_.y >= bounds_[2] &&
+        mouseClick_.y <= bounds_[3]) {
+        return true;
+    }
+    return false;
+}
+
 auto CheckListItem::getItemStateColor() const -> NVGcolor {
     switch (currentState_) {
     case CHECKLIST_ITEM_STATE::OPEN: return Tools::Colors::white;
