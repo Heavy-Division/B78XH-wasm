@@ -20,6 +20,5 @@ class MFDMasterControl: public MasterControl {
 		MFDPanelResolver::MFD mfdIndex_;
 		const std::shared_ptr<MFDBaseControl>& leftControl = MFD::resolver.getMFD(mfdIndex_)->getLeftSide();
 		const std::shared_ptr<MFDBaseControl>& rightControl = MFD::resolver.getMFD(mfdIndex_)->getRightSide();
-
 		const std::shared_ptr<MFDMouseCursorControl> mouseCursor_ = std::make_shared<MFDMouseCursorControl>("MOUSE_CURSOR");
 };

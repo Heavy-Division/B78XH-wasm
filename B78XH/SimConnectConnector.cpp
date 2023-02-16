@@ -52,6 +52,8 @@ auto SimConnectConnector::prepareEvents() -> void {
 
 	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_CDU_1, "B78XH.CONTROL_IDS_CDU_1", FALSE);
 	this->mapEvent(ClientEvents::B78XH_CONTROL_IDS_CDU_2, "B78XH.CONTROL_IDS_CDU_2", FALSE);
+
+
 }
 
 auto SimConnectConnector::mapEvent(const SIMCONNECT_NOTIFICATION_GROUP_ID groupId, const ClientEvents eventId,
@@ -627,7 +629,7 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	 */
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TEMPERATURE, "TOTAL AIR TEMPERATURE",
-		"Celsius");
+															"Celsius");
 
 	/*
 	 *  Systems - Powerplant
@@ -702,6 +704,12 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FUEL, "FUELSYSTEM VALVE SWITCH:2",
 		"Bool");
+
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ALTITUDE, "INDICATED ALTITUDE:1",
+		"Feet");
+
+	
 }
 
 auto SimConnectConnector::prepareClientDataDefinitions() -> void {
@@ -820,12 +828,18 @@ auto SimConnectConnector::prepareRequests() -> void {
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 
-
+	
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_FUEL,
 	                                                           DEFINITION_FUEL, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_ALTITUDE,
+	                                                           DEFINITION_ALTITUDE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
+
 
 
 auto SimConnectConnector::requestDispatchMessages() -> void {
@@ -979,6 +993,12 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 					SimConnectData::systems::fuel::switches = (*reinterpret_cast<SimConnectData::systems::fuel::Switches*>(&pObjData->dwData));
 					break;
 				}
+
+				case REQUEST_ALTITUDE: {
+					SimConnectData::Aircraft::position::altitude = (*reinterpret_cast<SimConnectData::Aircraft::position::Altitude*>(&pObjData->dwData));
+					break;
+				}
+
 				default:
 					break;
 			}

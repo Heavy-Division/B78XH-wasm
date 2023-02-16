@@ -146,18 +146,18 @@ namespace Tools {
 	auto formatToFixed(int data, int decimals) -> std::string {
 
 		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
-
+			
 	}
 
 	auto formatToFixed(double data, int decimals) -> std::string {
-
+	
 		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
-
+	
 	}
 
 	auto formatToFixed(float data, int decimals) -> std::string {
-
+	
 		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
-
+	
 	}
 }

@@ -209,6 +209,10 @@ namespace Simplane {
 			auto headingLockVar2() -> double;
 			auto headingLockVar3() -> double;
 		}
+
+		namespace altitude {
+			auto indicated() -> double;
+		}
 	}
 
 	namespace equipment::irs {
@@ -1543,3 +1547,5 @@ inline auto Simplane::aircraft::systems::powerplant::engine_1::vibration() -> do
 inline auto Simplane::aircraft::systems::powerplant::engine_2::vibration() -> double {
 	return SimConnectData::systems::powerplant::engine.engine2_vibration;
 }
+
+

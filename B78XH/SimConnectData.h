@@ -43,6 +43,8 @@ enum DATA_DEFINE_ID {
 	DEFINITION_TEMPERATURE,
 	DEFINITION_ENGINE,
 	DEFINITION_FUEL,
+	DEFINITION_ALTITUDE,
+
 };
 
 enum DATA_REQUEST_ID {
@@ -70,6 +72,7 @@ enum DATA_REQUEST_ID {
 	REQUEST_TEMPERATURE,
 	REQUEST_ENGINE,
 	REQUEST_FUEL,
+	REQUEST_ALTITUDE
 };
 
 namespace SimConnectData {
@@ -131,16 +134,16 @@ namespace SimConnectData {
 			/*
 			 * Calculated
 			 */
-			//double maxSpeed;
-			/*
-			 * L:Vars
-			 */
-			//double flightPhase;
-			//double v1Airspeed;
-			//double vRAirspeed;
-			//double v2Airspeed;
-			//double vREFAirspeed;
-			//double vXAirspeed;
+			 //double maxSpeed;
+			 /*
+			  * L:Vars
+			  */
+			  //double flightPhase;
+			  //double v1Airspeed;
+			  //double vRAirspeed;
+			  //double v2Airspeed;
+			  //double vREFAirspeed;
+			  //double vXAirspeed;
 		};
 
 		inline State state;
@@ -416,7 +419,17 @@ namespace SimConnectData {
 		}
 	}
 
+	namespace Aircraft::position {
+		struct Altitude {
+			double indicated_altitude;
+		};
+
+		inline Altitude altitude;
+	}
+
 }
+
+
 
 struct TestAirport {
 	double latitude;

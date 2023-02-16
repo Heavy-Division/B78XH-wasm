@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
-    <OutDir>..\..\..\..\Desktop\msfs_addons\Aircraft\787-10_Heavy_Division\B78XH-experimental\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>G:\MSFS\Community\B78XH-experimental\SimObjects\Airplanes\Heavy-Division-B78XH-mod\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -153,6 +153,17 @@
     <ClCompile Include="CDURoutePageControl.cpp" />
     <ClCompile Include="CDUScratchpadControl.cpp" />
     <ClCompile Include="CDUSelectKeyButtonControl.cpp" />
+    <ClCompile Include="EICASControl.cpp" />
+    <ClCompile Include="EICASGauge.cpp" />
+    <ClCompile Include="EngineEGTGaugeControlLeft.cpp" />
+    <ClCompile Include="EngineEGTGaugeControlRight.cpp" />
+    <ClCompile Include="EngineN1GaugeControlLeft.cpp" />
+    <ClCompile Include="EngineN1GaugeControlRight.cpp" />
+    <ClCompile Include="EngineN2GaugeControlLeft.cpp" />
+    <ClCompile Include="EngineN2GaugeControlRight.cpp" />
+    <ClCompile Include="EngineVibrationControl.cpp" />
+    <ClCompile Include="FFControl.cpp" />
+    <ClCompile Include="LineSeparatorControl.cpp" />
     <ClCompile Include="MFDMouseCursorControl.cpp" />
     <ClCompile Include="CDUMouseMoveResolver.cpp" />
     <ClCompile Include="CDUMouseResolver.cpp" />
@@ -222,6 +233,9 @@
     <ClCompile Include="MFDSYSControl.cpp" />
     <ClCompile Include="NavData.cpp" />
     <ClCompile Include="NullLogger.cpp" />
+    <ClCompile Include="OilPressControl.cpp" />
+    <ClCompile Include="OilQuantityControl.cpp" />
+    <ClCompile Include="OilTempControl.cpp" />
     <ClCompile Include="Operable.cpp" />
     <ClCompile Include="PFDAirspeedIndicator.cpp" />
     <ClCompile Include="PFDAirspeedIndicatorApplication.cpp" />
@@ -274,6 +288,7 @@
     <ClCompile Include="SimConnectConnector.cpp" />
     <ClCompile Include="PEDESTALTuningControlPanelGauge.cpp" />
     <ClCompile Include="SpeedMarker.cpp" />
+    <ClCompile Include="TATControl.cpp" />
     <ClCompile Include="TCPCABPageControl.cpp" />
     <ClCompile Include="TcpCenterDisplay.cpp" />
     <ClCompile Include="TcpCenterDisplayGaugeCallback.cpp" />
@@ -321,6 +336,7 @@
     <ClCompile Include="V2SpeedMarker.cpp" />
     <ClCompile Include="VRefSpeedMarker.cpp" />
     <ClCompile Include="VRSpeedMarker.cpp" />
+    <ClCompile Include="WeightTempBoxControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHRU.h" />
@@ -371,6 +387,19 @@
     <ClInclude Include="CDURoutePageControl.h" />
     <ClInclude Include="CDUScratchpadControl.h" />
     <ClInclude Include="CDUSelectKeyButtonControl.h" />
+    <ClInclude Include="EICASAdvisoryDispatch.h" />
+    <ClInclude Include="EICASControl.h" />
+    <ClInclude Include="EICASGauge.h" />
+    <ClInclude Include="EicasMessages.h" />
+    <ClInclude Include="EngineEGTGaugeControlLeft.h" />
+    <ClInclude Include="EngineEGTGaugeControlRight.h" />
+    <ClInclude Include="EngineN1GaugeControlLeft.h" />
+    <ClInclude Include="EngineN1GaugeControlRight.h" />
+    <ClInclude Include="EngineN2GaugeControlLeft.h" />
+    <ClInclude Include="EngineN2GaugeControlRight.h" />
+    <ClInclude Include="EngineVibrationControl.h" />
+    <ClInclude Include="FFControl.h" />
+    <ClInclude Include="LineSeparatorControl.h" />
     <ClInclude Include="MFDMouseCursorControl.h" />
     <ClInclude Include="CDUMouseMoveResolver.h" />
     <ClInclude Include="CDUMouseResolver.h" />
@@ -449,6 +478,9 @@
     <ClInclude Include="NavDataCache.h" />
     <ClInclude Include="NavRadioEnums.h" />
     <ClInclude Include="NullLogger.h" />
+    <ClInclude Include="OilPressControl.h" />
+    <ClInclude Include="OilQuantityControl.h" />
+    <ClInclude Include="OilTempControl.h" />
     <ClInclude Include="OnOffState.h" />
     <ClInclude Include="Operable.h" />
     <ClInclude Include="PFDAirspeedIndicatorApplication.h" />
@@ -509,6 +541,7 @@
     <ClInclude Include="PFDAuxGauge.h" />
     <ClInclude Include="ScratchpadEvents.h" />
     <ClInclude Include="Systems.h" />
+    <ClInclude Include="TATControl.h" />
     <ClInclude Include="TCPCABPageControl.h" />
     <ClInclude Include="TcpCenterDisplay.h" />
     <ClInclude Include="TCPCenterLineControl.h" />
@@ -562,6 +595,7 @@
     <ClInclude Include="VorType.h" />
     <ClInclude Include="VRefSpeedMarker.h" />
     <ClInclude Include="VRSpeedMarker.h" />
+    <ClInclude Include="WeightTempBoxControl.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty_licenses.md" />
