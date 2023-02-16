@@ -1,6 +1,7 @@
 #pragma once
 #include "MFDBaseControl.h"
 #include "CheckListLine.h"
+#include "CheckListTitle.h"
 #include "CheckListButton.h"
 #include "CheckListDimensions.h"
 

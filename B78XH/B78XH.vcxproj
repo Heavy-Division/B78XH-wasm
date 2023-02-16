@@ -156,7 +156,9 @@
     <ClCompile Include="CheckListButton.cpp" />
     <ClCompile Include="CheckListItem.cpp" />
     <ClCompile Include="CheckListLine.cpp" />
+    <ClCompile Include="CheckListLineSingle.cpp" />
     <ClCompile Include="CheckListLineStateIndicator.cpp" />
+    <ClCompile Include="CheckListTitle.cpp" />
     <ClCompile Include="MFDCHKLControl.cpp" />
     <ClCompile Include="MFDMouseCursorControl.cpp" />
     <ClCompile Include="CDUMouseMoveResolver.cpp" />
@@ -380,7 +382,9 @@
     <ClInclude Include="CheckListDimensions.h" />
     <ClInclude Include="CheckListItem.h" />
     <ClInclude Include="CheckListLine.h" />
+    <ClInclude Include="CheckListLineSingle.h" />
     <ClInclude Include="CheckListLineStateIndicator.h" />
+    <ClInclude Include="CheckListTitle.h" />
     <ClInclude Include="MFDCHKLControl.h" />
     <ClInclude Include="MFDMouseCursorControl.h" />
     <ClInclude Include="CDUMouseMoveResolver.h" />
