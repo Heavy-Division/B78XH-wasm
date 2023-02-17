@@ -9,15 +9,15 @@ auto MFDCHKLControl::render() -> void {
 void MFDCHKLControl::prepareControls() {
     MFDBaseControl::prepareControls();
 
-    normalMenuButton_ = std::make_shared<CheckListButton>("NORMAL_MENU", nullptr, "NORMAL MENU");
     add(normalMenuButton_);
-    resetsButton_ = std::make_shared<CheckListButton>("RESETS", nullptr, "RESETS");
     add(resetsButton_);
-    nonNormalMenuButton_ = std::make_shared<CheckListButton>("NON_NORMAL_MENU", nullptr, "NON-NORMAL MENU");
     add(nonNormalMenuButton_);
+    add(normalButton_);
 
+    // TODO: Remove
     add(std::make_shared<CheckListTitle>("TEST_TITLE", CheckListTitle::TITLE_TYPE::NORMAL_CHECKLIST, "PREFLIGHT"));
-    const auto l1 = std::make_shared<CheckListLineSingle>("TEST_LINE", CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP, "Oxygen . . . . . . . . . . . . . . . . . . . . . . Tested,100%");
+    const auto l1 = std::make_shared<CheckListLineSingle>("TEST_LINE", CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP,
+                                                          "Oxygen . . . . . . . . . . . . . . . . . . . . . . Tested,100%");
     l1->setCurrentState(CheckListItem::CHECKLIST_ITEM_STATE::COMPLETED);
     l1->setIsCurrent(true);
     add(l1);
@@ -32,6 +32,9 @@ void MFDCHKLControl::setupControls() {
     resetsButton_->position.setPosition(225, 0, 385, CheckListDimensions::TOTAL_LINE_HEIGHT);
     nonNormalMenuButton_->position.setPosition(395, 0, CheckListDimensions::TOTAL_WIDTH,
                                                CheckListDimensions::TOTAL_LINE_HEIGHT);
+    normalButton_->position.setPosition(0, position.height - CheckListDimensions::TOTAL_LINE_HEIGHT, 150,
+                                        position.height);
+    // TODO: Remove
     getControl("TEST_TITLE")->position.setPosition(200, CheckListDimensions::TOTAL_LINE_HEIGHT, 500,
                                                    CheckListDimensions::TOTAL_LINE_HEIGHT * 2);
     getControl("TEST_LINE")->position.setPosition(0, CheckListDimensions::TOTAL_LINE_HEIGHT * 2,
