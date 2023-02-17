@@ -16,7 +16,7 @@ void EngineEGTGaugeControlRight::render() {
 
 	drawCircle(data);
 	drawArc(data, 1000);
-	drawDataBox(65, 29, data, RIGHT);
+	drawDataBox(CircularDataBox::width, CircularDataBox::height, data, 0, RIGHT);
 
 }
 

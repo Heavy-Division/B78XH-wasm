@@ -661,6 +661,9 @@
     <ClCompile Include="EngineN2GaugeControlRight.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N2</Filter>
     </ClCompile>
+    <ClCompile Include="ThrustReferenceModeControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1433,6 +1436,9 @@
     </ClInclude>
     <ClInclude Include="EngineN2GaugeControlRight.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N2</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrestReferenceModeControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

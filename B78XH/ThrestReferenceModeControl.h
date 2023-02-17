@@ -1,13 +1,11 @@
 #pragma once
-
 #include "LineControl.h"
 
-class TATControl : public LineControl {
+class ThrustReferenceModeControl : public LineControl {
 public:
-	explicit TATControl(const string& name)
+	explicit ThrustReferenceModeControl(const string& name)
 		: LineControl(name) {}
 
 protected:
 	auto setupControl() -> void override;
-
 };

@@ -20,13 +20,13 @@ auto EICASGauge::drawCircle(double data) -> void {
 	}
 
 	// red line
-	double x_distance_to_edge = radius * cos(max_angle);
-	double y_distance_to_edge = radius * sin(max_angle);
+	double x_distance_to_edge = radius * std::cos(max_angle);
+	double y_distance_to_edge = radius * std::sin(max_angle);
 
 	double const line_length = 14;
 
-	double line_x_end = x_distance_to_edge + line_length * cos(max_angle);
-	double line_y_end = y_distance_to_edge + line_length * sin(max_angle);
+	double line_x_end = x_distance_to_edge + line_length * std::cos(max_angle);
+	double line_y_end = y_distance_to_edge + line_length * std::sin(max_angle);
 
 
 	nvgStrokeWidth(getContext(), 2.5f);
@@ -57,7 +57,7 @@ auto EICASGauge::drawArc(double data, double max) -> void {
 	nvgBeginPath(getContext());
 	{
 		nvgMoveTo(getContext(), x, y);
-		nvgLineTo(getContext(), x + 60 * cos(angle), y + 60 * sin(angle));
+		nvgLineTo(getContext(), x + 60 * std::cos(angle), y + 60 * std::sin(angle));
 		nvgStroke(getContext());
 	}
 
@@ -88,7 +88,7 @@ auto EICASGauge::drawHeader(std::string header) -> void {
 		nvgText(getContext(), 0, 27, header.c_str(), nullptr);
 	}
 }
-auto EICASGauge::drawDataBox(double width, double height, double data, Side side) -> void {
+auto EICASGauge::drawDataBox(double width, double height, double data, int decimals, Side side) -> void {
 
 	bool eng_cutoff = Simplane::aircraft::systems::fuel::switches::eng1_cutoff();;
 
@@ -109,13 +109,12 @@ auto EICASGauge::drawDataBox(double width, double height, double data, Side side
 	nvgBeginPath(getContext());
 	{
 		if (eng_cutoff == true || data > this->render_cutoff) {
-			nvgText(getContext(), box_x+6, box_y+6, Tools::formatToFixed(data, 1).c_str(), nullptr);
+			nvgText(getContext(), box_x+6, box_y+6, Tools::formatToFixed(data, decimals).c_str(), nullptr);
 		}
 		nvgRect(getContext(), box_x, box_y, width, height);
 		nvgStroke(getContext());
 	}
 }
-
 
 auto EICASGauge::fwsColorHandler(double data, NVGcolor defaultColor) -> NVGcolor {
 

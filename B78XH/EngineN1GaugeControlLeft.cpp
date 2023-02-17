@@ -8,7 +8,7 @@ void EngineN1GaugeControlLeft::render() {
 	EICASGauge::render();
 	drawCircle(data);
 	drawArc(data, 105);
-	drawDataBox(65, 29, data, LEFT);
+	drawDataBox(CircularDataBox::width, CircularDataBox::height, data, 1, LEFT);
 
 }
 
@@ -23,4 +23,6 @@ void EngineN1GaugeControlLeft::setupControl() {
 
 		return true;
 	});
+
+	
 }

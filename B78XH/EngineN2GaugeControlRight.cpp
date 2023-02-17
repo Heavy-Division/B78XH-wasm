@@ -6,7 +6,7 @@ void EngineN2GaugeControlRight::render() {
 
 	drawCircle(data);
 	drawArc(data, 105);
-	drawDataBox(65, 29, data, RIGHT);
+	drawDataBox(CircularDataBox::width, CircularDataBox::height, data, 1, RIGHT);
 }
 
 void EngineN2GaugeControlRight::setupControl() {

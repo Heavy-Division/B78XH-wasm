@@ -318,6 +318,7 @@
     <ClCompile Include="TCPVHFPageControl.cpp" />
     <ClCompile Include="TCPWXRPageControl.cpp" />
     <ClCompile Include="TCPXPDRPageControl.cpp" />
+    <ClCompile Include="ThrustReferenceModeControl.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
@@ -568,6 +569,7 @@
     <ClInclude Include="TCPVHFPageControl.h" />
     <ClInclude Include="TCPWXRPageControl.h" />
     <ClInclude Include="TCPXPDRPageControl.h" />
+    <ClInclude Include="ThrestReferenceModeControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />
