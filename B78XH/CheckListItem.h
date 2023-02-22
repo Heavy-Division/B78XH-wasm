@@ -4,7 +4,7 @@
 #include "CheckListDimensions.h"
 
 /**
-* \brief  An abstract representation of an "item" on the checklist. An Item simply has a "CHECKLIST_ITEM_STATE"
+* \brief  An abstract representation of an "item" on the checklist. An Item simply has a "CHECKLIST_ITEM_STATE" and utility UI functions.
  */
 class CheckListItem : public Control {
     public:
@@ -41,13 +41,22 @@ class CheckListItem : public Control {
         auto shouldTriggerEvent() -> bool;
         /**
          * \brief Gets the color corresponding to the current state.
-         * \return Desired color.
          */
         auto getItemStateColor() const -> NVGcolor;
         /**
-         * \brief Draws a magenta border around the item
+         * \brief Draws a magenta border around the item.
          */
         auto drawBorder() -> void;
+
+        /**
+         * \brief Draws a button-like boarder around the item.
+         * \param background Background fill color.
+         * \param top Top boarder color.
+         * \param right Right boarder color.
+         * \param bottom Bottom boarder color.
+         * \param left Left boarder color.
+         */
+        auto drawButtonBorder(NVGcolor background, NVGcolor top, NVGcolor right, NVGcolor bottom, NVGcolor left) -> void;
 
     private:
         /**

@@ -19,6 +19,4 @@ class CheckListButton : public CheckListItem {
     private:
         const std::function<void()> invoke_;
         const string displayText_;
-
-        auto drawButtonBorder() -> void;
 };

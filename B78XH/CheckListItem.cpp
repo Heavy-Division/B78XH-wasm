@@ -1,6 +1,6 @@
 #include "CheckListItem.h"
 
-auto CheckListItem::setCurrentState(CHECKLIST_ITEM_STATE state) -> void {
+auto CheckListItem::setCurrentState(const CHECKLIST_ITEM_STATE state) -> void {
     currentState_ = state;
 }
 
@@ -55,6 +55,80 @@ auto CheckListItem::drawBorder() -> void {
         nvgStroke(getContext());
     }
     nvgClosePath(getContext());
+}
+
+auto CheckListItem::drawButtonBorder(const NVGcolor background, const NVGcolor top, const NVGcolor right, const NVGcolor bottom,
+                                     const NVGcolor left) -> void {
+    constexpr auto leftPos = 0;
+    constexpr auto topPos = 0;
+    const auto width = getRelativePosition().getWidth();
+    const auto height = getRelativePosition().getHeight();
+
+    nvgFillColor(getContext(), background);
+    nvgBeginPath(getContext());
+    {
+        nvgRect(getContext(), 0, 0, width, height);
+        nvgFill(getContext());
+    }
+    nvgClosePath(getContext());
+
+    // top
+    nvgFillColor(getContext(), top);
+    nvgBeginPath(getContext());
+    {
+        nvgMoveTo(getContext(), leftPos, topPos);
+        nvgLineTo(getContext(), leftPos + width, topPos);
+        nvgLineTo(getContext(), leftPos + width - CheckListDimensions::BORDER_WIDTH,
+                  topPos + CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos + CheckListDimensions::BORDER_WIDTH, topPos + CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos, topPos);
+    }
+    nvgClosePath(getContext());
+    nvgFill(getContext());
+
+    // right
+    nvgFillColor(getContext(), right);
+    nvgBeginPath(getContext());
+    {
+        nvgMoveTo(getContext(), leftPos + width, topPos);
+        nvgLineTo(getContext(), leftPos + width, topPos + height + 1);
+        nvgLineTo(getContext(), leftPos + width - CheckListDimensions::BORDER_WIDTH,
+                  topPos + height - CheckListDimensions::BORDER_WIDTH + 1);
+        nvgLineTo(getContext(), leftPos + width - CheckListDimensions::BORDER_WIDTH,
+                  topPos + CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos + width, topPos);
+    }
+    nvgClosePath(getContext());
+    nvgFill(getContext());
+
+    // bottom
+    nvgFillColor(getContext(), bottom);
+    nvgBeginPath(getContext());
+    {
+        nvgMoveTo(getContext(), leftPos, topPos + height);
+        nvgLineTo(getContext(), leftPos + width, topPos + height);
+        nvgLineTo(getContext(), leftPos + width - CheckListDimensions::BORDER_WIDTH,
+                  topPos + height - CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos + CheckListDimensions::BORDER_WIDTH,
+                  topPos + height - CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos, topPos + height);
+    }
+    nvgClosePath(getContext());
+    nvgFill(getContext());
+
+    // left
+    nvgFillColor(getContext(), left);
+    nvgBeginPath(getContext());
+    {
+        nvgMoveTo(getContext(), leftPos, topPos);
+        nvgLineTo(getContext(), leftPos + CheckListDimensions::BORDER_WIDTH, topPos + CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos + CheckListDimensions::BORDER_WIDTH,
+                  topPos + height - CheckListDimensions::BORDER_WIDTH);
+        nvgLineTo(getContext(), leftPos, topPos + height);
+        nvgLineTo(getContext(), leftPos, topPos);
+    }
+    nvgClosePath(getContext());
+    nvgFill(getContext());
 }
 
 auto CheckListItem::calculateBounds() -> void {

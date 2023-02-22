@@ -26,7 +26,7 @@ auto CheckList::advanceCurrentLine() -> void {
     }
     const std::shared_ptr<CheckListLine> currentLine = lines_.at(currentLine_);
     currentLine->setIsCurrent(false);
-    currentLine++;
+    currentLine_++;
     if (currentLine_ >= lines_.size()) {
         return;
     }
