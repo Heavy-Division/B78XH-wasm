@@ -20,8 +20,6 @@ void CheckListLine::render() {
 
 void CheckListLine::prepareControls() {
     CheckListItem::prepareControls();
-
-    stateIndicator_ = std::make_shared<CheckListLineStateIndicator>("STATE_INDICATOR", this);
     add(stateIndicator_);
 }
 

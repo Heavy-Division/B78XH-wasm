@@ -27,7 +27,7 @@ class CheckListLine : public CheckListItem {
         auto setupControls() -> void override;
 
     private:
-        std::shared_ptr<CheckListLineStateIndicator> stateIndicator_;
+        std::shared_ptr<CheckListLineStateIndicator> stateIndicator_ = std::make_shared<CheckListLineStateIndicator>("STATE_INDICATOR", this);
         bool isCurrent_;
 
         auto drawIsCurrentBorder() -> void;

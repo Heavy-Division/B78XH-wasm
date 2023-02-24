@@ -266,6 +266,7 @@
     <ClCompile Include="PFDTargetAltitudeApplication.cpp" />
     <ClCompile Include="PFDVerticalSpeedIndicator.cpp" />
     <ClCompile Include="PFDVerticalSpeedIndicatorApplication.cpp" />
+    <ClCompile Include="PreFlightCheckList.cpp" />
     <ClCompile Include="RadioNav.cpp" />
     <ClCompile Include="RedApplication.cpp" />
     <ClCompile Include="RightInboardDisplay.cpp" />
@@ -488,6 +489,7 @@
     <ClInclude Include="PFDTargetAirspeedApplication.h" />
     <ClInclude Include="PFDTargetAltitudeApplication.h" />
     <ClInclude Include="PFDVerticalSpeedIndicatorApplication.h" />
+    <ClInclude Include="PreFlightCheckList.h" />
     <ClInclude Include="RadioNav.h" />
     <ClInclude Include="RedApplication.h" />
     <ClInclude Include="RightInboardDisplay.h" />

@@ -6,6 +6,18 @@ void CheckList::setupControls() {
         serviceChecklistUpdateLoop();
         return true;
     });
+    setupChecklistLayout();
+}
+
+auto CheckList::setupChecklistLayout() -> void {
+    title_->position.setPosition(200, CheckListDimensions::TOTAL_LINE_HEIGHT, 500,
+                                 CheckListDimensions::TOTAL_LINE_HEIGHT * 2);
+    for (auto i = 0; i < lines_.size(); i++) {
+        const std::shared_ptr<CheckListLine> line = lines_.at(i);
+        line->position.setPosition(0, CheckListDimensions::TOTAL_LINE_HEIGHT * i + 2,
+                                   CheckListDimensions::TOTAL_WIDTH,
+                                   CheckListDimensions::TOTAL_LINE_HEIGHT * i + 3);
+    }
 }
 
 auto CheckList::checkChecklistCompleted() -> void {
@@ -46,7 +58,7 @@ auto CheckList::checkClosedLoopItems() -> void {
 
 auto CheckList::serviceChecklistUpdateLoop() -> void {
     checkClosedLoopItems();
-    if(currentLine_ >= lines_.size()) {
+    if (currentLine_ >= lines_.size()) {
         return;
     }
     const std::shared_ptr<CheckListLine> currentLine = lines_.at(currentLine_);
