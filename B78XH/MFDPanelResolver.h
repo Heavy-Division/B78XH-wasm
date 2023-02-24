@@ -6,7 +6,7 @@
 #include "MFDEmptyControl.h"
 #include "MFDNDControl.h"
 #include "MFDSYSControl.h"
-#include "EICASControl.h"
+#include "EICASMasterControl.h"
 
 class MFDPanelResolver {
 	public:
@@ -69,7 +69,7 @@ class MFDPanelResolver {
 
 	private:
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdOnePanels{
-			std::make_shared<EICASControl>("EICASControl"),
+			std::make_shared<EICASMasterControl>("EICASMasterControl"),
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
 			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
@@ -78,7 +78,7 @@ class MFDPanelResolver {
 		};
 
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdTwoPanels{
-			std::make_shared<EICASControl>("EICASControl"),
+			std::make_shared<EICASMasterControl>("EICASMasterControl"),
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
 			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
@@ -87,7 +87,7 @@ class MFDPanelResolver {
 		};
 
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdThreePanels{
-			std::make_shared<EICASControl>("EICASControl"),
+			std::make_shared<EICASMasterControl>("EICASMasterControl"),
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
 			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),

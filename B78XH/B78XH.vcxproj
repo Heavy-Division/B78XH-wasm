@@ -153,17 +153,21 @@
     <ClCompile Include="CDURoutePageControl.cpp" />
     <ClCompile Include="CDUScratchpadControl.cpp" />
     <ClCompile Include="CDUSelectKeyButtonControl.cpp" />
-    <ClCompile Include="EICASControl.cpp" />
-    <ClCompile Include="EICASGauge.cpp" />
+    <ClCompile Include="EICASBaseControl.cpp" />
+    <ClCompile Include="EICASCircularControl.cpp" />
+    <ClCompile Include="EICASMasterControl.cpp" />
     <ClCompile Include="EngineEGTGaugeControlLeft.cpp" />
     <ClCompile Include="EngineEGTGaugeControlRight.cpp" />
     <ClCompile Include="EngineN1GaugeControlLeft.cpp" />
     <ClCompile Include="EngineN1GaugeControlRight.cpp" />
     <ClCompile Include="EngineN2GaugeControlLeft.cpp" />
     <ClCompile Include="EngineN2GaugeControlRight.cpp" />
-    <ClCompile Include="EngineVibrationControl.cpp" />
-    <ClCompile Include="FFControl.cpp" />
+    <ClCompile Include="EngineVibrationControlLeft.cpp" />
+    <ClCompile Include="EngineVibrationControlRight.cpp" />
+    <ClCompile Include="FFControlLeft.cpp" />
+    <ClCompile Include="FFControlRight.cpp" />
     <ClCompile Include="LineSeparatorControl.cpp" />
+    <ClCompile Include="LowerEICASControl.cpp" />
     <ClCompile Include="MFDMouseCursorControl.cpp" />
     <ClCompile Include="CDUMouseMoveResolver.cpp" />
     <ClCompile Include="CDUMouseResolver.cpp" />
@@ -233,9 +237,12 @@
     <ClCompile Include="MFDSYSControl.cpp" />
     <ClCompile Include="NavData.cpp" />
     <ClCompile Include="NullLogger.cpp" />
-    <ClCompile Include="OilPressControl.cpp" />
-    <ClCompile Include="OilQuantityControl.cpp" />
-    <ClCompile Include="OilTempControl.cpp" />
+    <ClCompile Include="OilPressControlLeft.cpp" />
+    <ClCompile Include="OilPressControlRight.cpp" />
+    <ClCompile Include="OilQuantityControlLeft.cpp" />
+    <ClCompile Include="OilQuantityControlRight.cpp" />
+    <ClCompile Include="OilTempControlLeft.cpp" />
+    <ClCompile Include="OilTempControlRight.cpp" />
     <ClCompile Include="Operable.cpp" />
     <ClCompile Include="PFDAirspeedIndicator.cpp" />
     <ClCompile Include="PFDAirspeedIndicatorApplication.cpp" />
@@ -337,7 +344,7 @@
     <ClCompile Include="V2SpeedMarker.cpp" />
     <ClCompile Include="VRefSpeedMarker.cpp" />
     <ClCompile Include="VRSpeedMarker.cpp" />
-    <ClCompile Include="WeightTempBoxControl.cpp" />
+    <ClCompile Include="FuelIndicationsControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHRU.h" />
@@ -389,8 +396,9 @@
     <ClInclude Include="CDUScratchpadControl.h" />
     <ClInclude Include="CDUSelectKeyButtonControl.h" />
     <ClInclude Include="EICASAdvisoryDispatch.h" />
-    <ClInclude Include="EICASControl.h" />
-    <ClInclude Include="EICASGauge.h" />
+    <ClInclude Include="EICASBaseControl.h" />
+    <ClInclude Include="EICASCircularControl.h" />
+    <ClInclude Include="EICASMasterControl.h" />
     <ClInclude Include="EicasMessages.h" />
     <ClInclude Include="EngineEGTGaugeControlLeft.h" />
     <ClInclude Include="EngineEGTGaugeControlRight.h" />
@@ -398,9 +406,14 @@
     <ClInclude Include="EngineN1GaugeControlRight.h" />
     <ClInclude Include="EngineN2GaugeControlLeft.h" />
     <ClInclude Include="EngineN2GaugeControlRight.h" />
-    <ClInclude Include="EngineVibrationControl.h" />
-    <ClInclude Include="FFControl.h" />
+    <ClInclude Include="EngineVibrationControlLeft.h" />
+    <ClInclude Include="EngineVibrationControlRight.h" />
+    <ClInclude Include="FFControlLeft.h" />
+    <ClInclude Include="FFControlRight.h" />
+    <ClInclude Include="FuelIndicationsControl.h" />
+    <ClInclude Include="GaugeType.h" />
     <ClInclude Include="LineSeparatorControl.h" />
+    <ClInclude Include="LowerEICASControl.h" />
     <ClInclude Include="MFDMouseCursorControl.h" />
     <ClInclude Include="CDUMouseMoveResolver.h" />
     <ClInclude Include="CDUMouseResolver.h" />
@@ -479,9 +492,12 @@
     <ClInclude Include="NavDataCache.h" />
     <ClInclude Include="NavRadioEnums.h" />
     <ClInclude Include="NullLogger.h" />
-    <ClInclude Include="OilPressControl.h" />
-    <ClInclude Include="OilQuantityControl.h" />
-    <ClInclude Include="OilTempControl.h" />
+    <ClInclude Include="OilPressControlLeft.h" />
+    <ClInclude Include="OilPressControlRight.h" />
+    <ClInclude Include="OilQuantityControlLeft.h" />
+    <ClInclude Include="OilQuantityControlRight.h" />
+    <ClInclude Include="OilTempControlLeft.h" />
+    <ClInclude Include="OilTempControlRight.h" />
     <ClInclude Include="OnOffState.h" />
     <ClInclude Include="Operable.h" />
     <ClInclude Include="PFDAirspeedIndicatorApplication.h" />
@@ -509,6 +525,7 @@
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
     <ClInclude Include="RouteReference.h" />
+    <ClInclude Include="Side.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectAirportPreloader.h" />
     <ClInclude Include="SimConnectClientEvents.h" />
@@ -597,7 +614,6 @@
     <ClInclude Include="VorType.h" />
     <ClInclude Include="VRefSpeedMarker.h" />
     <ClInclude Include="VRSpeedMarker.h" />
-    <ClInclude Include="WeightTempBoxControl.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty_licenses.md" />

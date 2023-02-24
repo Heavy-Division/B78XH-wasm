@@ -10,7 +10,6 @@ auto ThrustReferenceModeControl::setupControl() -> void {
 	getContentHolder().setDefaultFontColor(Tools::Colors::greenPure);
 	getContentHolder().addColor("cyan", Tools::Colors::cyan);
 
-	// TODO: Set position in EICASControl.cpp
 	getRelativePosition().setPosition(160, 25, 0, 0);
 	getContentHolder().addSize("small", 20.0f);
 	getContentHolder().addContentVerticalOffset("tempOffset", 2.0f);

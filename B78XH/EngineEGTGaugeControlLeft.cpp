@@ -4,30 +4,34 @@
 #include "fmt/core.h"
 #include "Simplane.h"
 #include "Tools/Tools.h"
-#include "EICASGauge.h"
+#include "EICASCircularControl.h"
 
 using Tools::Colors;
 
 
 void EngineEGTGaugeControlLeft::render() {
-	EICASGauge::render();
+	EICASCircularControl::render();
 
-	drawCircle(data);
-	drawArc(data, 1000);
-	drawDataBox(CircularDataBox::width, CircularDataBox::height, data, 0, LEFT);
+	drawCircle();
+	drawArc(1000, false);
+	drawDataBox(CircularDataBox::width, CircularDataBox::height, 0, CircularDataBox::fontSize);
 
 }
 
 void EngineEGTGaugeControlLeft::setupControl() {
-	EICASGauge::setupControl();
+	EICASCircularControl::setupControl();
 	addOnBeforeRender([this](BaseControl& base_control) -> bool {
 
 		this->data = Simplane::aircraft::systems::powerplant::engine_1::egt();
 
+		this->fuel_valve_connection = LEFT;
+		this->gauge_type = PRIMARY;
 		this->advisory_threshold = 450;
 		this->warning_threshold = 500;
+		//TODO: Verify accuracy
+		this->render_cutoff = 100;
 
 		return true;
 	});
 
-}
+} 

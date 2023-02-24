@@ -1,11 +1,11 @@
 #pragma once
 
-#include "EICASGauge.h"
+#include "EICASCircularControl.h"
 
-class EngineN2GaugeControlRight : public EICASGauge {
+class EngineN2GaugeControlRight : public EICASCircularControl {
 public:
 	explicit EngineN2GaugeControlRight(const string& name)
-		: EICASGauge(name) {}
+		: EICASCircularControl(name) {}
 
 	auto render() -> void override;
 

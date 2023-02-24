@@ -683,6 +683,7 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL TEMPERATURE:2",
 		"Celsius");
 
+	// TODO: These values don't seem right
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ENGINE, "ENG OIL QUANTITY:1",
 		"Percent scaler 16k");
 

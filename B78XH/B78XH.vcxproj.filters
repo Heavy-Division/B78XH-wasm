@@ -616,53 +616,74 @@
     <ClCompile Include="TATControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
-    <ClCompile Include="FFControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
-    <ClCompile Include="OilPressControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
-    <ClCompile Include="OilQuantityControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
-    <ClCompile Include="OilTempControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
     <ClCompile Include="LineSeparatorControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
-    <ClCompile Include="EICASControl.cpp">
+    <ClCompile Include="FuelIndicationsControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineVibrationControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
-    <ClCompile Include="WeightTempBoxControl.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClCompile>
-    <ClCompile Include="EICASGauge.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Templates</Filter>
     </ClCompile>
     <ClCompile Include="EngineEGTGaugeControlLeft.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\EGT</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\EGT</Filter>
     </ClCompile>
     <ClCompile Include="EngineEGTGaugeControlRight.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\EGT</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\EGT</Filter>
     </ClCompile>
     <ClCompile Include="EngineN1GaugeControlLeft.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N1</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N1</Filter>
     </ClCompile>
     <ClCompile Include="EngineN1GaugeControlRight.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N1</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N1</Filter>
     </ClCompile>
     <ClCompile Include="EngineN2GaugeControlLeft.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N2</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N2</Filter>
     </ClCompile>
     <ClCompile Include="EngineN2GaugeControlRight.cpp">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N2</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N2</Filter>
     </ClCompile>
     <ClCompile Include="ThrustReferenceModeControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="FFControlLeft.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\FuelFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="FFControlRight.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\FuelFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="OilPressControlLeft.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilPressure</Filter>
+    </ClCompile>
+    <ClCompile Include="OilPressControlRight.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilPressure</Filter>
+    </ClCompile>
+    <ClCompile Include="OilTempControlLeft.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilTemperature</Filter>
+    </ClCompile>
+    <ClCompile Include="OilTempControlRight.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilTemperature</Filter>
+    </ClCompile>
+    <ClCompile Include="OilQuantityControlLeft.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="EICASMasterControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="OilQuantityControlRight.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="EICASCircularControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2</Filter>
+    </ClCompile>
+    <ClCompile Include="EICASBaseControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="LowerEICASControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVibrationControlLeft.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVibrationControlRight.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1386,58 +1407,85 @@
     <ClInclude Include="TATControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="FFControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
-    <ClInclude Include="OilPressControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
-    <ClInclude Include="OilQuantityControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
-    <ClInclude Include="OilTempControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
     <ClInclude Include="LineSeparatorControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
     <ClInclude Include="EICASAdvisoryDispatch.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="EICASControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
     <ClInclude Include="EicasMessages.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="EngineVibrationControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
-    <ClInclude Include="WeightTempBoxControl.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
-    <ClInclude Include="EICASGauge.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Templates</Filter>
-    </ClInclude>
     <ClInclude Include="EngineEGTGaugeControlLeft.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\EGT</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\EGT</Filter>
     </ClInclude>
     <ClInclude Include="EngineEGTGaugeControlRight.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\EGT</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\EGT</Filter>
     </ClInclude>
     <ClInclude Include="EngineN1GaugeControlLeft.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N1</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N1</Filter>
     </ClInclude>
     <ClInclude Include="EngineN1GaugeControlRight.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N1</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N1</Filter>
     </ClInclude>
     <ClInclude Include="EngineN2GaugeControlLeft.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N2</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N2</Filter>
     </ClInclude>
     <ClInclude Include="EngineN2GaugeControlRight.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS\Circular\N2</Filter>
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N2</Filter>
     </ClInclude>
     <ClInclude Include="ThrestReferenceModeControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="FFControlLeft.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\FuelFlow</Filter>
+    </ClInclude>
+    <ClInclude Include="FFControlRight.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\FuelFlow</Filter>
+    </ClInclude>
+    <ClInclude Include="OilPressControlLeft.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilPressure</Filter>
+    </ClInclude>
+    <ClInclude Include="OilPressControlRight.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilPressure</Filter>
+    </ClInclude>
+    <ClInclude Include="Side.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugeType.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="OilTempControlLeft.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilTemperature</Filter>
+    </ClInclude>
+    <ClInclude Include="OilTempControlRight.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilTemperature</Filter>
+    </ClInclude>
+    <ClInclude Include="OilQuantityControlLeft.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilQuantity</Filter>
+    </ClInclude>
+    <ClInclude Include="EICASMasterControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="OilQuantityControlRight.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\OilQuantity</Filter>
+    </ClInclude>
+    <ClInclude Include="EICASCircularControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2</Filter>
+    </ClInclude>
+    <ClInclude Include="EICASBaseControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="LowerEICASControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVibrationControlLeft.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVibrationControlRight.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration</Filter>
+    </ClInclude>
+    <ClInclude Include="FuelIndicationsControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1763,26 +1811,38 @@
     <Filter Include="Source Files\Controls\Controls\MFD\EICAS">
       <UniqueIdentifier>{f586dbc2-91f7-4606-ba1a-12e2fff2bf3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Templates">
-      <UniqueIdentifier>{be676b50-d67b-4589-98f2-e08896f459a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Controls\Controls\MFD\CHKL">
       <UniqueIdentifier>{d6c442ac-06e7-4db5-8806-246772b0c7c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Circular">
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2">
       <UniqueIdentifier>{abb21916-de05-41b1-9679-9125cc877521}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Circular\N2">
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N2">
       <UniqueIdentifier>{3bc06e3f-4527-4ec5-a0e6-b71786b4749b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Circular\EGT">
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\EGT">
       <UniqueIdentifier>{2105b87e-fe07-4200-b4fb-ab1453c388b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Circular\N1">
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\N1">
       <UniqueIdentifier>{972a907a-27e6-4c1c-826f-6756c6dd6089}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Square">
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary">
       <UniqueIdentifier>{852a3795-7ccf-4f8a-a608-f10594108171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary\FuelFlow">
+      <UniqueIdentifier>{d322238e-2b9f-4953-b74d-6e6e0e806220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary\OilPressure">
+      <UniqueIdentifier>{fbb83a08-4fc2-4863-8a41-8570d96fc11f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary\OilTemperature">
+      <UniqueIdentifier>{cc004ed3-98c5-4f44-b55f-9ba9249eed20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary\OilQuantity">
+      <UniqueIdentifier>{111fe526-9ffa-4fbd-afe4-dcfe11573fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration">
+      <UniqueIdentifier>{ff92b066-8d19-494c-bef3-7a833cbf4577}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

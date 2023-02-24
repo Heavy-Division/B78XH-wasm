@@ -1,9 +1,11 @@
 #pragma once
+
 #include "EICASCircularControl.h"
 
-class EngineN1GaugeControlRight : public EICASCircularControl {
+
+class OilPressControlRight : public EICASCircularControl {
 public:
-	explicit EngineN1GaugeControlRight(const string& name)
+	explicit OilPressControlRight(const string& name)
 		: EICASCircularControl(name) {}
 
 	auto render() -> void override;
