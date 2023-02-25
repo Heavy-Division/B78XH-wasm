@@ -22,6 +22,8 @@ void MFDCHKLControl::setupControls() {
                                                CheckListDimensions::TOTAL_LINE_HEIGHT);
     normalButton_->position.setPosition(0, position.height - CheckListDimensions::TOTAL_LINE_HEIGHT, 150,
                                         position.height);
+    resetChecklistButton_->position.setPosition(300, 450, position.height - CheckListDimensions::TOTAL_LINE_HEIGHT,
+                                                position.height);
 
     preflight_->position.setPosition(0, CheckListDimensions::TOTAL_LINE_HEIGHT, CheckListDimensions::TOTAL_WIDTH,
                                      position.height - CheckListDimensions::TOTAL_LINE_HEIGHT);

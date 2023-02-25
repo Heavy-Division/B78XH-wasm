@@ -13,8 +13,11 @@ void CheckListLine::render() {
     if (isInFocus()) {
         drawBorder();
     }
-    if(isCurrent_) {
+    if (isCurrent_) {
         drawIsCurrentBorder();
+    }
+    if (shouldTriggerEvent()) {
+        setCurrentState(CHECKLIST_ITEM_STATE::COMPLETED);
     }
 }
 

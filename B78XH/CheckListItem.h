@@ -27,6 +27,10 @@ class CheckListItem : public Control {
         * \brief Gets the current state of the item.
         */
         auto getCurrentState() const -> CHECKLIST_ITEM_STATE;
+        /**
+        * \brief Gets the color corresponding to the current state.
+        */
+        auto getItemStateColor() const -> NVGcolor;
 
     protected:
         /**
@@ -39,10 +43,6 @@ class CheckListItem : public Control {
          * \return true if mouse is clicking, false otherwise
          */
         auto shouldTriggerEvent() -> bool;
-        /**
-         * \brief Gets the color corresponding to the current state.
-         */
-        auto getItemStateColor() const -> NVGcolor;
         /**
          * \brief Draws a magenta border around the item.
          */

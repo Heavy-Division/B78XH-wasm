@@ -640,6 +640,9 @@
     <ClCompile Include="PreFlightCheckList.cpp">
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckLists</Filter>
     </ClCompile>
+    <ClCompile Include="CheckListStatus.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1388,6 +1391,9 @@
     </ClInclude>
     <ClInclude Include="PreFlightCheckList.h">
       <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckLists</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckListStatus.h">
+      <Filter>Source Files\Controls\Controls\MFD\CheckList\CheckListBasics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
