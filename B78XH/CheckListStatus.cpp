@@ -3,8 +3,12 @@
 
 void CheckListStatus::render() {
     Control::render();
+    const auto currentState = parentChecklist_->getCurrentState();
+    if (currentState == CheckListItem::CHECKLIST_ITEM_STATE::OPEN) {
+        return;
+    }
     const auto color = parentChecklist_->getItemStateColor();
-    const auto displayText = parentChecklist_->getCurrentState() == CheckListItem::CHECKLIST_ITEM_STATE::OVERRIDDEN
+    const auto displayText = currentState == CheckListItem::CHECKLIST_ITEM_STATE::OVERRIDDEN
                                  ? "CHECKLIST OVERRIDDEN"
                                  : "CHECKLIST COMPLETE";
     nvgFillColor(getContext(), color);

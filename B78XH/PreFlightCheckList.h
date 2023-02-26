@@ -13,7 +13,7 @@ class PreFlightCheckList : public CheckList {
                 "Flight Instruments . . . Heading___,Altimeter___"));
             lines_.push_back(std::make_shared<CheckListLineSingle>(
                 "PAX_SIGN", CheckListLine::CHECKLIST_LINE_TYPE::OPEN_LOOP,
-                "Passenger Signs . . . . . . . . . . . . . . Set"));
+                "Passenger Signs . . . . . . . . . . . . . . . . . . . . . Set"));
             resetChecklist();
         }
 };

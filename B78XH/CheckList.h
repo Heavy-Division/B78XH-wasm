@@ -3,6 +3,7 @@
 #include "CheckListLine.h"
 #include "CheckListTitle.h"
 #include "CheckListStatus.h"
+#include "CheckListLineSingle.h"
 
 class CheckList : public CheckListItem {
     public:

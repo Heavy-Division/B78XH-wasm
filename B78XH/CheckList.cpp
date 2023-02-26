@@ -24,8 +24,8 @@ auto CheckList::setupChecklistLayout() -> void {
                                    CheckListDimensions::TOTAL_WIDTH,
                                    CheckListDimensions::TOTAL_LINE_HEIGHT * (i + 2));
     }
-    status_->position.setPosition(200, position.getHeight() - CheckListDimensions::TOTAL_LINE_HEIGHT, 500,
-                                  position.getHeight());
+    status_->position.setPosition(200, position.getHeight() - CheckListDimensions::TOTAL_LINE_HEIGHT / 2 - CheckListDimensions::MARGIN, 500,
+                                  position.getHeight() - CheckListDimensions::MARGIN);
 }
 
 auto CheckList::checkChecklistCompleted() -> void {
@@ -35,9 +35,10 @@ auto CheckList::checkChecklistCompleted() -> void {
     for (const std::shared_ptr<CheckListLine> l : lines_) {
         if (l->getCurrentState() == CHECKLIST_ITEM_STATE::OPEN) {
             setCurrentState(CHECKLIST_ITEM_STATE::OPEN);
-            break;
+            return;
         }
     }
+    setCurrentState(CHECKLIST_ITEM_STATE::COMPLETED);
 }
 
 auto CheckList::advanceCurrentLine() -> void {

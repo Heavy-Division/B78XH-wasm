@@ -11,6 +11,7 @@ void MFDCHKLControl::prepareControls() {
     add(resetsButton_);
     add(nonNormalMenuButton_);
     add(normalButton_);
+    add(resetChecklistButton_);
     add(preflight_);
 }
 
@@ -22,7 +23,7 @@ void MFDCHKLControl::setupControls() {
                                                CheckListDimensions::TOTAL_LINE_HEIGHT);
     normalButton_->position.setPosition(0, position.height - CheckListDimensions::TOTAL_LINE_HEIGHT, 150,
                                         position.height);
-    resetChecklistButton_->position.setPosition(300, 450, position.height - CheckListDimensions::TOTAL_LINE_HEIGHT,
+    resetChecklistButton_->position.setPosition(300, position.height - CheckListDimensions::TOTAL_LINE_HEIGHT, 450,
                                                 position.height);
 
     preflight_->position.setPosition(0, CheckListDimensions::TOTAL_LINE_HEIGHT, CheckListDimensions::TOTAL_WIDTH,
