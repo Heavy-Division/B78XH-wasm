@@ -44,6 +44,7 @@ class PFDAirspeedIndicatorApplication: public Application {
 		void drawGraduations();
 		void drawCursor();
 		void drawTargetPointer();
+		void drawMach();
 	public:
 		auto render(sGaugeDrawData* data) -> void override;
 };
