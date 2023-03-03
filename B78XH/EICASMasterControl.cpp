@@ -20,6 +20,8 @@
 #include "EngineVibrationControlLeft.h"
 #include "EngineVibrationControlRight.h"
 #include "FuelIndicationsControl.h"
+#include "GearPositionControl.h"
+#include "CrewAlertMessageControl.h"
 
 
 void EICASMasterControl::prepareControls() {
@@ -53,6 +55,10 @@ void EICASMasterControl::prepareControls() {
 	add(std::make_unique<EngineVibrationControlRight>("EngineVibrationControlRight"));
 
 	add(std::make_unique<FuelIndicationsControl>("FuelIndicationsControl"));
+
+	add(std::make_unique<GearPositionControl>("GearPositionControl"));
+
+	// add(std::make_unique<CrewAlertMessageControl>("CrewAlertMessageDispatchControl"));
 	add(std::make_unique<LineSeparatorControl>("LineSeparatorControl"));
 }
 
@@ -106,6 +112,9 @@ void EICASMasterControl::setupControls() {
 	engVib_l->getRelativePosition().setPosition(secondary_x + 30, 900, 0, 0);
 	auto& engVib_r = getControl("EngineVibrationControlRight");
 	engVib_r->getRelativePosition().setPosition(secondary_x + secondary_x_offset + 6, 900, 0, 0);
+	
+	auto& gearControl = getControl("GearPositionControl");
+	gearControl->getRelativePosition().setPosition(550, 475, 0, 0);
 
 }
 
@@ -117,6 +126,9 @@ void EICASMasterControl::setupControl() {
 
 void EICASMasterControl::render() {
 	MFDBaseControl::render();
+	drawLabel(215, 100, "N1", "");
+	drawLabel(215, 240, "EGT", "");
+	drawLabel(215, 350, "N2", "");
 	drawLabel(215, 465, "FF", "");
 	drawLabel(215, 535, "OIL", "PRESS");
 	drawLabel(215, 690, "OIL", "TEMP");

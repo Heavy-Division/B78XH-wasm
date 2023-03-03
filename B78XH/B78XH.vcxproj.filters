@@ -685,6 +685,12 @@
     <ClCompile Include="EngineVibrationControlRight.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration</Filter>
     </ClCompile>
+    <ClCompile Include="GearPositionControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
+    <ClCompile Include="CrewAlertMessagesControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1410,12 +1416,6 @@
     <ClInclude Include="LineSeparatorControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
-    <ClInclude Include="EICASAdvisoryDispatch.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
-    <ClInclude Include="EicasMessages.h">
-      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
-    </ClInclude>
     <ClInclude Include="EngineEGTGaugeControlLeft.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS\PrimaryandN2\EGT</Filter>
     </ClInclude>
@@ -1486,6 +1486,12 @@
       <Filter>Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration</Filter>
     </ClInclude>
     <ClInclude Include="FuelIndicationsControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="GearPositionControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessagesControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
   </ItemGroup>

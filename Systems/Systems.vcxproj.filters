@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Systems.cpp" />
+    <ClCompile Include="CrewAlertMessage.cpp">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="FlightWarningSystem.cpp">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="CrewAlertMessageDispatch.cpp">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Systems.h" />
+    <ClInclude Include="FlightWarningSystem.h">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\B78XH\CrewAlertMessageName.h">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\B78XH\CrewAlertMessageDispatch.h">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Severity.h">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessage.h">
+      <Filter>Shared\FlightWarningSystem</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{8826c6bd-2759-4089-b9fb-d46f42d540c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b78xh">
+      <UniqueIdentifier>{561f54fc-a35e-42bd-ae43-45a2b06fee55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="b789h">
+      <UniqueIdentifier>{a7981aab-6981-4d2a-96a6-07d794051216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared\FlightWarningSystem">
+      <UniqueIdentifier>{1e6836fa-6bf5-4e86-8d65-47e8f5226726}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -19,4 +19,5 @@ private:
 	auto drawFuelDataBox(double x, double y, double w, double h, bool tempData, std::string data, float fontSize) -> void;
 
 	auto getUnitsType() -> AircraftUnitsType;
+
 };

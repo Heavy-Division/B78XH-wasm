@@ -18,6 +18,7 @@
 #include <MSFS/MSFS.h>
 #include "Tools\Console.h"
 #include "SimConnectConnector.h"
+#include "emscripten.h"
 
 extern "C" MSFS_CALLBACK void module_init(void) {
 	connector.connect("Global SimConnect connection");
@@ -27,4 +28,9 @@ extern "C" MSFS_CALLBACK void module_init(void) {
 extern "C" MSFS_CALLBACK void module_deinit(void) {
 	connector.disconnect();
 	Console::info("B78XH WASM: Module deinit");
+}
+
+EMSCRIPTEN_KEEPALIVE
+int sum(int a) {
+	return a + 1;
 }

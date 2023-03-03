@@ -1,5 +1,6 @@
 #include "FuelIndicationsControl.h"
 
+
 void FuelIndicationsControl::render() {
 	EICASBaseControl::render();
 
@@ -13,6 +14,9 @@ void FuelIndicationsControl::render() {
 		nvgStroke(getContext());
 		nvgFill(getContext());
 	}
+
+
+
 
 	;
 	
@@ -34,7 +38,15 @@ void FuelIndicationsControl::render() {
 	// Fuel Temp
 	drawFuelDataBox(615, 1000, 75, 40, false, "1", 20.0f);
 
-	
+
+	nvgFontFace(getContext(), "heavy-fmc");
+	nvgFontSize(getContext(), 15.0f);
+	nvgFillColor(getContext(), Tools::Colors::white);
+	if (getUnitsType() == AircraftUnitsType::METRIC) {
+		nvgText(getContext(), 525, 965, "KGS", nullptr);
+	}
+	nvgText(getContext(), 555, 965, "X", nullptr);
+	nvgText(getContext(), 530, 980, "1000", nullptr);
 
 }
 
