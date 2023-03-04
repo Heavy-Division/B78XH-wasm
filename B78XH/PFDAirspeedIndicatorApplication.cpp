@@ -14,17 +14,19 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+ 
 #include "PFDAirspeedIndicatorApplication.h"
 
 #include <cmath>
-
+#include <chrono>
 #include "Tools/Tools.h"
 #include "Simplane.h"
-
+#include "Tools/Console.h"
+#include "Timer.h"
 using Colors = Tools::Colors;
 
 void PFDAirspeedIndicatorApplication::render(sGaugeDrawData* data) {
+	this->machSpeed = Simplane::aircraft::state::machSpeed();
 	nvgSave(this->nvgContext);
 	drawBackground();
 	drawGraduations();
@@ -32,7 +34,11 @@ void PFDAirspeedIndicatorApplication::render(sGaugeDrawData* data) {
 	drawCursor();
 	drawStallStrips();
 	drawOverSpeedStrips();
+
 	drawSpeedMarkers(data->dt);
+
+	drawMach(this->shouldDrawMach());
+
 	nvgRestore(this->nvgContext);
 }
 
@@ -567,3 +573,28 @@ void PFDAirspeedIndicatorApplication::drawTargetPointer() {
 	nvgResetTransform(this->nvgContext);
 	nvgRestore(this->nvgContext);
 }
+
+void PFDAirspeedIndicatorApplication::drawMach(bool render) {
+	nvgFontFace(this->nvgContext, "roboto");
+	nvgFontSize(this->nvgContext, 30.0f);
+	nvgFillColor(this->nvgContext, Colors::white);
+	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT);
+
+	if (render) {
+		nvgBeginPath(this->nvgContext);
+		{
+			nvgText(this->nvgContext, 10, 495, Tools::formatToFixed(machSpeed, 3).c_str(), nullptr);
+			nvgFill(this->nvgContext);
+		}
+	}
+
+}
+
+bool PFDAirspeedIndicatorApplication::shouldStartTimer() const {
+	return this->lastMachSpeed > 4 && this->machSpeed >= 0.4;
+}
+
+bool PFDAirspeedIndicatorApplication::shouldDrawMach() const {
+	return this->machSpeed >= 0.4;
+}
+

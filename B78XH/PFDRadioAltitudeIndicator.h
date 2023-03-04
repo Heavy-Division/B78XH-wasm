@@ -16,7 +16,7 @@
 
 
 #pragma once
-#include "Timer.h"
+#include "Counter.h"
 #include "MSFS/Render/nanovg.h"
 
 
@@ -32,5 +32,5 @@ class PFDRadioAltitudeIndicator {
 		double passDelta = -1;
 		double altitude = 0;
 		double lastAltitude = 0;
-		Timer deltaTimer = Timer(10);
+		Counter deltaTimer = Counter(10);
 };

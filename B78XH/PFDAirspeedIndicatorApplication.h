@@ -22,6 +22,8 @@
 #include "V2SpeedMarker.h"
 #include "VRefSpeedMarker.h"
 #include "VRSpeedMarker.h"
+#include "Counter.h"
+#include "Timer.h"
 
 class PFDAirspeedIndicatorApplication: public Application {
 
@@ -32,6 +34,11 @@ class PFDAirspeedIndicatorApplication: public Application {
 		inline static VRefSpeedMarker vRefSpeedMarker = VRefSpeedMarker("REF", false);
 		inline static FlapsSpeedMarker currentFlapsMarker = FlapsSpeedMarker("", true);
 		inline static FlapsSpeedMarker nextFlapsMarker = FlapsSpeedMarker("", true);
+
+		Timer timer = Timer(10);
+		double lastMachSpeed;
+		double machSpeed = Simplane::aircraft::state::machSpeed();
+
 		void drawVSpeedMarkers(double v1, double v2, double vR, double deltaTime);
 		void drawNOVSpeedMessage();
 		void drawSpeedMarkers(double deltaTime);
@@ -44,7 +51,10 @@ class PFDAirspeedIndicatorApplication: public Application {
 		void drawGraduations();
 		void drawCursor();
 		void drawTargetPointer();
-		void drawMach();
+		void drawMach(bool render);
+		bool shouldStartTimer() const;
+		bool shouldDrawMach() const;
+
 	public:
 		auto render(sGaugeDrawData* data) -> void override;
 };

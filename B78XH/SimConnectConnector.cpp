@@ -182,6 +182,9 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "MAX GROSS WEIGHT", "Pounds");
 
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+															"AIRSPEED MACH", "mach");
+
 	/*
 	 * Autopilot - State
 	 */
