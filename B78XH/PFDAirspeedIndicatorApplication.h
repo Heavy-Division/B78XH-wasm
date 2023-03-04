@@ -37,7 +37,7 @@ class PFDAirspeedIndicatorApplication: public Application {
 
 		Timer timer = Timer(10);
 		double lastMachSpeed;
-		double machSpeed = Simplane::aircraft::state::machSpeed();
+		double machSpeed;
 
 		void drawVSpeedMarkers(double v1, double v2, double vR, double deltaTime);
 		void drawNOVSpeedMessage();
@@ -51,7 +51,8 @@ class PFDAirspeedIndicatorApplication: public Application {
 		void drawGraduations();
 		void drawCursor();
 		void drawTargetPointer();
-		void drawMach(bool render);
+		void drawMach();
+		void drawHighlight();
 		bool shouldStartTimer() const;
 		bool shouldDrawMach() const;
 

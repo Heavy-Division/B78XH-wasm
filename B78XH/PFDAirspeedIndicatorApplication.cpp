@@ -37,7 +37,23 @@ void PFDAirspeedIndicatorApplication::render(sGaugeDrawData* data) {
 
 	drawSpeedMarkers(data->dt);
 
-	drawMach(this->shouldDrawMach());
+	this->machSpeed = Simplane::aircraft::state::machSpeed();
+	if (this->shouldDrawMach()) {
+		if (this->shouldStartTimer()) {
+			this->timer.start();
+		}
+		this->timer.update(data->dt);
+		if (!this->timer.finished() && this->timer.started()) {
+			Console::log("DRAWING HIGHLIGHT");
+			this->drawHighlight();
+		}
+		this->drawMach();
+	}
+	else {
+		this->timer.restart();
+		this->timer.stop();
+	}
+	this->lastMachSpeed = this->machSpeed;
 
 	nvgRestore(this->nvgContext);
 }
@@ -574,24 +590,32 @@ void PFDAirspeedIndicatorApplication::drawTargetPointer() {
 	nvgRestore(this->nvgContext);
 }
 
-void PFDAirspeedIndicatorApplication::drawMach(bool render) {
+void PFDAirspeedIndicatorApplication::drawMach() {
 	nvgFontFace(this->nvgContext, "roboto");
 	nvgFontSize(this->nvgContext, 30.0f);
 	nvgFillColor(this->nvgContext, Colors::white);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT);
 
-	if (render) {
-		nvgBeginPath(this->nvgContext);
-		{
-			nvgText(this->nvgContext, 10, 495, Tools::formatToFixed(machSpeed, 3).c_str(), nullptr);
-			nvgFill(this->nvgContext);
-		}
+	nvgBeginPath(this->nvgContext);
+	{
+		nvgText(this->nvgContext, 12, 495, Tools::formatToFixed(machSpeed, 3).c_str(), nullptr);
+		nvgFill(this->nvgContext);
 	}
+}
 
+
+void PFDAirspeedIndicatorApplication::drawHighlight() {
+	nvgStrokeColor(this->nvgContext, Colors::white);
+	nvgStrokeWidth(this->nvgContext, 2.0f);
+	nvgBeginPath(this->nvgContext);
+	{
+		nvgRect(this->nvgContext, 5, 475, 70, 25);
+		nvgStroke(this->nvgContext);
+	}
 }
 
 bool PFDAirspeedIndicatorApplication::shouldStartTimer() const {
-	return this->lastMachSpeed > 4 && this->machSpeed >= 0.4;
+	return this->lastMachSpeed < 0.4 && this->machSpeed >= 0.4;
 }
 
 bool PFDAirspeedIndicatorApplication::shouldDrawMach() const {
