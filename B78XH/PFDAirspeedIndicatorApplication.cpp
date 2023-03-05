@@ -592,7 +592,7 @@ void PFDAirspeedIndicatorApplication::drawTargetPointer() {
 
 void PFDAirspeedIndicatorApplication::drawMach() {
 	nvgFontFace(this->nvgContext, "roboto");
-	nvgFontSize(this->nvgContext, 30.0f);
+	nvgFontSize(this->nvgContext, 38.0f);
 	nvgFillColor(this->nvgContext, Colors::white);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT);
 
