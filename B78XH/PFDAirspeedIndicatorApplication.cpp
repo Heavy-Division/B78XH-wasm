@@ -16,17 +16,14 @@
 
  
 #include "PFDAirspeedIndicatorApplication.h"
-
-#include <cmath>
-#include <chrono>
 #include "Tools/Tools.h"
 #include "Simplane.h"
-#include "Tools/Console.h"
 #include "Timer.h"
+#include "string"
+
 using Colors = Tools::Colors;
 
 void PFDAirspeedIndicatorApplication::render(sGaugeDrawData* data) {
-	this->machSpeed = Simplane::aircraft::state::machSpeed();
 	nvgSave(this->nvgContext);
 	drawBackground();
 	drawGraduations();
@@ -34,25 +31,29 @@ void PFDAirspeedIndicatorApplication::render(sGaugeDrawData* data) {
 	drawCursor();
 	drawStallStrips();
 	drawOverSpeedStrips();
-
 	drawSpeedMarkers(data->dt);
 
 	this->machSpeed = Simplane::aircraft::state::machSpeed();
+
 	if (this->shouldDrawMach()) {
+		this->machLimit = 0.38;
 		if (this->shouldStartTimer()) {
 			this->timer.start();
 		}
+
 		this->timer.update(data->dt);
 		if (!this->timer.finished() && this->timer.started()) {
-			Console::log("DRAWING HIGHLIGHT");
 			this->drawHighlight();
 		}
+
 		this->drawMach();
 	}
 	else {
+		this->machLimit = 0.4;
 		this->timer.restart();
 		this->timer.stop();
 	}
+
 	this->lastMachSpeed = this->machSpeed;
 
 	nvgRestore(this->nvgContext);
@@ -592,14 +593,16 @@ void PFDAirspeedIndicatorApplication::drawTargetPointer() {
 
 void PFDAirspeedIndicatorApplication::drawMach() {
 	nvgFontFace(this->nvgContext, "roboto");
-	nvgFontSize(this->nvgContext, 38.0f);
+	nvgFontSize(this->nvgContext, 34.0f);
 	nvgFillColor(this->nvgContext, Colors::white);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT);
-
 	nvgBeginPath(this->nvgContext);
+	auto machSpeed_string = Tools::formatToFixed(machSpeed, 3);
+	machSpeed_string.erase(0, machSpeed_string.find_first_not_of('0'));
 	{
-		nvgText(this->nvgContext, 12, 495, Tools::formatToFixed(machSpeed, 3).c_str(), nullptr);
+		nvgText(this->nvgContext, 8, 512, machSpeed_string.c_str(), nullptr);
 		nvgFill(this->nvgContext);
+	
 	}
 }
 
@@ -609,16 +612,18 @@ void PFDAirspeedIndicatorApplication::drawHighlight() {
 	nvgStrokeWidth(this->nvgContext, 2.0f);
 	nvgBeginPath(this->nvgContext);
 	{
-		nvgRect(this->nvgContext, 5, 475, 70, 25);
+		nvgRect(this->nvgContext, 0, 490, 62, 25);
 		nvgStroke(this->nvgContext);
 	}
 }
 
 bool PFDAirspeedIndicatorApplication::shouldStartTimer() const {
+
 	return this->lastMachSpeed < 0.4 && this->machSpeed >= 0.4;
+
 }
 
 bool PFDAirspeedIndicatorApplication::shouldDrawMach() const {
-	return this->machSpeed >= 0.4;
-}
 
+	return this->machSpeed > this->machLimit;
+}

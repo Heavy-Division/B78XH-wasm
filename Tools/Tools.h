@@ -78,4 +78,6 @@ namespace Tools {
 	auto formatToFixed(int data, int decimals) -> std::string;
 	auto formatToFixed(double data, int decimals) -> std::string;
 	auto formatToFixed(float data, int decimals) -> std::string;
+	auto formatToFixed(std::string data, int decimals) -> std::string;
+	std::string double_to_string(double value);
 }
