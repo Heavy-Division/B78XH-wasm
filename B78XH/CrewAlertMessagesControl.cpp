@@ -10,8 +10,12 @@ auto CrewAlertMessageControl::printMessage(double x, double y, CrewAlertMessage&
 	nvgFillColor(getContext(), getMessageColor(message));
 	nvgBeginPath(getContext());
 	{
-		nvgText(getContext(), x + dispatch.getMesssageXOffset(message.getSeverity()), y, message.getId().c_str(), nullptr);
+		// nvgText(getContext(), x + dispatch.getMesssageXOffset(message.getSeverity()), y, message.getId().c_str(), nullptr);
+		nvgText(getContext(), 100, 100, "te", nullptr);
+		nvgText(getContext(), 100, 100, "te", nullptr);
+		nvgText(getContext(), 100, 100, "te", nullptr);
 		nvgFill(getContext());
+
 	}
 	
 	if (message.isChecklistItem()) {

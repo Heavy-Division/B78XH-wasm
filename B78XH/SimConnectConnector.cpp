@@ -631,6 +631,10 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TEMPERATURE, "TOTAL AIR TEMPERATURE",
 															"Celsius");
 
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_TEMPERATURE, "AMBIENT TEMPERATURE",
+		"Celsius");
+
+
 	/*
 	 *  Systems - Powerplant
 	 */
@@ -705,6 +709,10 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FUEL, "FUELSYSTEM VALVE SWITCH:2",
 		"Bool");
+
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FUEL, "FUEL TOTAL QUANTITY WEIGHT",
+		"Pounds");
 
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ALTITUDE, "INDICATED ALTITUDE:1",
@@ -991,7 +999,7 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 				}
 
 				case REQUEST_FUEL: {
-					SimConnectData::systems::fuel::switches = (*reinterpret_cast<SimConnectData::systems::fuel::Switches*>(&pObjData->dwData));
+					SimConnectData::systems::fuel::fuel = (*reinterpret_cast<SimConnectData::systems::fuel::Fuel*>(&pObjData->dwData));
 					break;
 				}
 

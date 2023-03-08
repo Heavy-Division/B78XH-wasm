@@ -377,6 +377,7 @@ namespace Simplane {
 	namespace environment {
 		namespace temperature {
 			auto trueAirTemp() -> double;
+			auto staticAirTemp() -> double;
 		}
 	}
 
@@ -410,10 +411,13 @@ namespace Simplane {
 		}
 
 		namespace fuel {
-			namespace switches {
+			namespace valves {
 				auto eng1_cutoff() -> bool;
 				auto eng2_cutoff() -> bool;
 			}
+
+			auto total_lbs() -> double;
+			
 		}
 	}
 }
@@ -1456,7 +1460,7 @@ inline auto Simplane::equipment::radioNav::unit4::ident() -> char* {
 }
 
 inline auto Simplane::environment::temperature::trueAirTemp() -> double {
-	return SimConnectData::environment::temperature.trueAirTemperature;
+	return SimConnectData::environment::temperature.totalAirTemperature;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::n1_rpm() -> double {
@@ -1507,12 +1511,12 @@ inline auto Simplane::aircraft::systems::powerplant::engine_2::hasCombustion() -
 	return static_cast<bool>(SimConnectData::systems::powerplant::engine.engine2_combustion);
 }
 
-inline auto Simplane::aircraft::systems::fuel::switches::eng1_cutoff() -> bool {
-	return static_cast<bool>(SimConnectData::systems::fuel::switches.cutoff_eng1);
+inline auto Simplane::aircraft::systems::fuel::valves::eng1_cutoff() -> bool {
+	return static_cast<bool>(SimConnectData::systems::fuel::fuel.cutoff_eng1);
 }
 
-inline auto Simplane::aircraft::systems::fuel::switches::eng2_cutoff() -> bool {
-	return static_cast<bool>(SimConnectData::systems::fuel::switches.cutoff_eng2);
+inline auto Simplane::aircraft::systems::fuel::valves::eng2_cutoff() -> bool {
+	return static_cast<bool>(SimConnectData::systems::fuel::fuel.cutoff_eng2);
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::oilPressure() -> double {
@@ -1548,4 +1552,10 @@ inline auto Simplane::aircraft::systems::powerplant::engine_2::vibration() -> do
 	return SimConnectData::systems::powerplant::engine.engine2_vibration;
 }
 
+inline auto Simplane::environment::temperature::staticAirTemp() -> double {
+	return  SimConnectData::environment::temperature.staticAirTemperature;
+}
 
+inline auto Simplane::aircraft::systems::fuel::total_lbs() -> double {
+	return SimConnectData::systems::fuel::fuel.total_lbs;
+}

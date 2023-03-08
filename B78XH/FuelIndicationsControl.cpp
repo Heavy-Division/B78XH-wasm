@@ -1,10 +1,52 @@
 #include "FuelIndicationsControl.h"
 
+#include "Tools/Console.h"
+
 
 void FuelIndicationsControl::render() {
 	EICASBaseControl::render();
 
-	nvgFillColor(getContext(), Tools::Colors::cduButtonGray);
+	if(this->expandedMode()) {
+		drawExpandedIndicator();
+		return;
+	}
+
+	drawStandardIndicator();
+
+	Console::log("{}", Simplane::environment::temperature::staticAirTemp());
+}
+
+void FuelIndicationsControl::setupControl() {
+	EICASBaseControl::setupControl();
+
+}
+
+auto FuelIndicationsControl::setDisplayMode() -> void {}
+
+
+auto FuelIndicationsControl::getUnitsType() -> AircraftUnitsType {
+	return AircraftUnitsType::METRIC;
+}
+
+
+auto FuelIndicationsControl::drawStandardIndicator() -> void {
+	nvgFillColor(getContext(), Tools::Colors::darkGray);
+	nvgStrokeColor(getContext(), Tools::Colors::white);
+	nvgStrokeWidth(getContext(), 2.5f);
+
+	nvgBeginPath(getContext());
+	{
+		nvgRect(getContext(), 400, 925, 300, 125);
+		nvgStroke(getContext());
+		nvgFill(getContext());
+	}
+
+	drawBaseIndicator();
+
+}
+auto FuelIndicationsControl::drawExpandedIndicator() -> void {
+
+	nvgFillColor(getContext(), Tools::Colors::darkGray);
 	nvgStrokeColor(getContext(), Tools::Colors::white);
 	nvgStrokeWidth(getContext(), 2.5f);
 
@@ -15,28 +57,10 @@ void FuelIndicationsControl::render() {
 		nvgFill(getContext());
 	}
 
-
-
-
-	;
-	
 	// Fuel qty
-	drawFuelDataBox(480, 860, 150, 40, true, "!", 20.0f);
+	drawFuelDataBox(480, 860, 150, 40, true);
 
-	// Fuel qty label
-	drawFuelDataBox(513, 850, 80, 30, false, "1", 13.0f);
-
-	// gross wt
-	drawFuelDataBox(417, 950, 75, 40, false, "1", 20.0f);
-
-	// total fuel
-	drawFuelDataBox(600, 940, 75, 50, false, "1", 20.0f);
-
-	// SAT
-	drawFuelDataBox(430, 1000, 65, 40, false, "1", 20.0f);
-
-	// Fuel Temp
-	drawFuelDataBox(615, 1000, 75, 40, false, "1", 20.0f);
+	drawBaseIndicator();
 
 
 	nvgFontFace(getContext(), "heavy-fmc");
@@ -50,30 +74,101 @@ void FuelIndicationsControl::render() {
 
 }
 
-void FuelIndicationsControl::setupControl() {
-	EICASBaseControl::setupControl();
+auto FuelIndicationsControl::drawBaseIndicator() -> void {
+	double grossWt = Simplane::aircraft::state::weight() / 1000;
+	double totalWt = Simplane::aircraft::systems::fuel::total_lbs() / 1000;
+	double sat = Simplane::environment::temperature::staticAirTemp();
+	double fuelTemp = 0; // TODO: Fuel temp data LVar
+
+	// gross wt
+	drawLabel(421, 935, 20.0f, "GROSS WT");
+	drawFuelDataBox(425, 960, 75, 30, false);
+	drawData(430, 965, 15.0f, grossWt, false);
+
+	// total fuel
+	drawLabel(585, 935, 18.0f, "TOTAL FUEL");
+	drawFuelDataBox(600, 955, 75, 32, false);
+	drawData(605, 960, 15.0f, totalWt, false);
+
+	// SAT
+	drawLabel(410, 1018, 20.0f, "SAT");
+	drawFuelDataBox(450, 1010, 55, 30, false);
+	drawData(455, 1020, 15.0f, sat, true);
+
+	// Fuel Temp
+	drawLabel(565, 1005, 15.0f, "FUEL");
+	drawLabel(565, 1025, 15.0f, "TEMP");
+	drawFuelDataBox(615, 1010, 55, 30, false);
+	drawData(620, 1015, 15.0f, fuelTemp, true);
+
+
+	// labels
+
 }
 
-auto FuelIndicationsControl::setDisplayMode() -> void {}
 
-auto FuelIndicationsControl::drawFuelDataBox(double x, double y, double w, double h, bool outline, std::string data, float fontSize) -> void {
-	
-	nvgStrokeColor(getContext(), Tools::Colors::cyan);
+auto FuelIndicationsControl::drawFuelDataBox(double x, double y, double w, double h, bool outline) -> void {
 
-
+	nvgStrokeColor(getContext(), Tools::Colors::lightBlue);
 	nvgFillColor(getContext(), Tools::Colors::black);
 	nvgBeginPath(getContext());
 	{
 		nvgRoundedRect(getContext(), x, y, w, h, 10.0f);
 		nvgFill(getContext());
+		
 		if (outline) {
 			nvgStroke(getContext());
 		}
 	}
-
-	
 }
 
-auto FuelIndicationsControl::getUnitsType() -> AircraftUnitsType {
-	return AircraftUnitsType::METRIC;
+auto FuelIndicationsControl::drawLabel(double x, double y, float fontSize, std::string title) -> void {
+	nvgFillColor(getContext(), Tools::Colors::lightBlue);
+	nvgFontFace(getContext(), "heavy-fmc");
+	nvgTextAlign(getContext(), NVG_ALIGN_LEFT | NVG_ALIGN_TOP);
+	nvgFontSize(getContext(), fontSize);
+
+	nvgBeginPath(getContext());
+	{
+		nvgText(getContext(), x, y, title.c_str(), nullptr);
+		nvgFill(getContext());
+	}
+}
+
+auto FuelIndicationsControl::expandedMode() -> bool {
+	return false;
+}
+
+auto FuelIndicationsControl::drawData(double x, double y, float fontSize, double data, bool temperatureData) -> void {
+	nvgFillColor(getContext(), Tools::Colors::white);
+	nvgFontFace(getContext(), "heavy-fmc");
+	nvgFontSize(getContext(), fontSize);
+	nvgTextAlign(getContext(), NVG_ALIGN_LEFT | NVG_ALIGN_TOP);
+
+	std::string data_string;
+
+	if(temperatureData) {
+		data_string = Tools::formatToFixed(data, 0);
+	} else {
+		data_string = Tools::formatToFixed(data, 1);
+	}
+
+	auto tempSign = [data]() -> std::string {
+		if (data >= 0) {
+			return "+";
+		};
+
+		return "";
+	};
+
+	if (temperatureData) {
+		data_string.insert(0, tempSign());
+		data_string.push_back('c');
+	}
+
+	nvgBeginPath(getContext());
+	{
+		nvgText(getContext(), x, y,  data_string.c_str(), nullptr);
+		nvgFill(getContext());
+	}
 }

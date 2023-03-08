@@ -687,7 +687,7 @@ class basic_format_parse_context : private ErrorHandler {
 
   /**
     Reports an error if using the manual argument indexing; otherwise returns
-    the next argument index and switches to the automatic indexing.
+    the next argument index and valves to the automatic indexing.
    */
   FMT_CONSTEXPR auto next_arg_id() -> int {
     if (next_arg_id_ < 0) {
@@ -701,7 +701,7 @@ class basic_format_parse_context : private ErrorHandler {
 
   /**
     Reports an error if using the automatic argument indexing; otherwise
-    switches to the manual indexing.
+    valves to the manual indexing.
    */
   FMT_CONSTEXPR void check_arg_id(int id) {
     if (next_arg_id_ > 0) {

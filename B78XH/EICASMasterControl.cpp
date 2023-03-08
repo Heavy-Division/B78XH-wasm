@@ -126,9 +126,9 @@ void EICASMasterControl::setupControl() {
 
 void EICASMasterControl::render() {
 	MFDBaseControl::render();
-	drawLabel(215, 100, "N1", "");
-	drawLabel(215, 240, "EGT", "");
-	drawLabel(215, 350, "N2", "");
+	drawLabel(215, 160, "N1", "");
+	drawLabel(215, 280, "EGT", "");
+	drawLabel(215, 410, "N2", "");
 	drawLabel(215, 465, "FF", "");
 	drawLabel(215, 535, "OIL", "PRESS");
 	drawLabel(215, 690, "OIL", "TEMP");
@@ -139,7 +139,7 @@ void EICASMasterControl::render() {
 
 auto EICASMasterControl::drawLabel(double x, double y, std::string label, std::string label2) -> void {
 	nvgFontFace(getContext(), "heavy-fmc");
-	nvgFillColor(getContext(), Tools::Colors::cyan);
+	nvgFillColor(getContext(), Tools::Colors::lightBlue);
 	nvgFontSize(getContext(), 16.0f);
 	nvgTextAlign(getContext(), NVG_ALIGN_CENTER);
 

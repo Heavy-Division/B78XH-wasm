@@ -9,7 +9,7 @@ void TATControl::setupControl() {
 	getContentHolder().setAlign(ContentHolder::ALIGN::LEFT);
 	getContentHolder().setDefaultFontSize(25.0f);
 	getContentHolder().setDefaultFontColor(Tools::Colors::white);
-	getContentHolder().addColor("cyan", Tools::Colors::cyan);
+	getContentHolder().addColor("blue", Tools::Colors::lightBlue);
 
 	getRelativePosition().setPosition(25, 25, 0, 0);
 	getContentHolder().addSize("small", 20.0f);
@@ -24,7 +24,7 @@ void TATControl::setupControl() {
 
 	addOnBeforeRender([tempSignHandler](BaseControl& control) -> bool {
 		control.getContentHolder().setContent({
-	{"TAT", "cyan"},
+	{"TAT", "blue"},
 	{tempSignHandler(), "large"},
 	{std::to_string(static_cast<int>(Simplane::environment::temperature::trueAirTemp()))},
     {"c", "small|tempOffset"}});

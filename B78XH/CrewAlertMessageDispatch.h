@@ -5,8 +5,8 @@
 
 class CrewAlertMessageDispatch {
 
-public:
-
+public:;
+	  auto getMesssageXOffset(Severity severity) -> double;
 private:
 
 	virtual ~CrewAlertMessageDispatch() = default;
@@ -36,7 +36,7 @@ private:
 	auto setUpdated() -> void;
 	auto queueMessage(CrewAlertMessage message) -> void;
 	auto removeMessage() -> void;
-	auto getMesssageXOffset(Severity severity) -> double;
+;
 	// auto getMessageColor(CrewAlertMessage message) -> NVGcolor;
 	auto sortMessages() -> void;
 	// auto getMessages() -> void;

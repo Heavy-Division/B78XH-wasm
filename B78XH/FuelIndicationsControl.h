@@ -13,11 +13,14 @@ protected:
 	auto setupControl() -> void override;
 
 private:
-	bool isDisplayModeAlternate = true;
-
+	
+	auto expandedMode() -> bool;
 	auto setDisplayMode() -> void;
-	auto drawFuelDataBox(double x, double y, double w, double h, bool tempData, std::string data, float fontSize) -> void;
-
+	auto drawFuelDataBox(double x, double y, double w, double h, bool outline) -> void;
 	auto getUnitsType() -> AircraftUnitsType;
-
+	auto drawBaseIndicator() -> void;
+	auto drawStandardIndicator() -> void;
+	auto drawExpandedIndicator() -> void;
+	auto drawLabel(double x, double y, float fontSize, std::string title) -> void;
+	auto drawData(double x, double y, float fontSize, double data, bool temperatureData) -> void;
 };

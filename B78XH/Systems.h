@@ -17,7 +17,6 @@
 
 #pragma once
 #include "RadioNav.h"
-#include "Systems/FlightWarningSystem.h"
 
 namespace Systems {
 	inline RadioNav radioNav;

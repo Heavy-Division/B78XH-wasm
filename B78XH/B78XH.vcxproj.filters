@@ -688,7 +688,7 @@
     <ClCompile Include="GearPositionControl.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
-    <ClCompile Include="CrewAlertMessagesControl.h">
+    <ClCompile Include="CrewAlertMessage.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1492,6 +1492,27 @@
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
     <ClInclude Include="CrewAlertMessagesControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessage.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessageControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessageDispatch.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessageName.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessages.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="Severity.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewAlertMessagesControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
   </ItemGroup>

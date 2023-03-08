@@ -375,7 +375,8 @@ namespace SimConnectData {
 
 	namespace environment {
 		struct Temperature {
-			double trueAirTemperature;
+			double totalAirTemperature;
+			double staticAirTemperature;
 		};
 
 		inline Temperature temperature;
@@ -410,13 +411,15 @@ namespace SimConnectData {
 		}
 
 		namespace fuel {
-			struct Switches {
+			struct Fuel {
 				double cutoff_eng1;
 				double cutoff_eng2;
+				double total_lbs;
 			};
 
-			inline Switches switches;
+			inline Fuel fuel;
 		}
+
 	}
 
 	namespace Aircraft::position {

@@ -59,6 +59,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
+    <OutDir>..\..\..\..\Desktop\msfs_addons\Aircraft\787-10_Heavy_Division\B78XH-experimental\SimObjects\Airplanes\Heavy-Division-B78XH-mod\panel</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'">
     <ClCompile>
@@ -156,7 +157,7 @@
     <ClCompile Include="CDURoutePageControl.cpp" />
     <ClCompile Include="CDUScratchpadControl.cpp" />
     <ClCompile Include="CDUSelectKeyButtonControl.cpp" />
-    <ClCompile Include="CrewAlertMessagesControl.h" />
+    <ClCompile Include="CrewAlertMessage.cpp" />
     <ClCompile Include="EICASBaseControl.cpp" />
     <ClCompile Include="EICASCircularControl.cpp" />
     <ClCompile Include="EICASMasterControl.cpp" />
@@ -400,7 +401,13 @@
     <ClInclude Include="CDURoutePageControl.h" />
     <ClInclude Include="CDUScratchpadControl.h" />
     <ClInclude Include="CDUSelectKeyButtonControl.h" />
+    <ClInclude Include="CrewAlertMessage.h" />
+    <ClInclude Include="CrewAlertMessageControl.h" />
+    <ClInclude Include="CrewAlertMessageDispatch.h" />
+    <ClInclude Include="CrewAlertMessageName.h" />
+    <ClInclude Include="CrewAlertMessages.h" />
     <ClInclude Include="CrewAlertMessagesControl.cpp" />
+    <ClInclude Include="CrewAlertMessagesControl.h" />
     <ClInclude Include="EICASBaseControl.h" />
     <ClInclude Include="EICASCircularControl.h" />
     <ClInclude Include="EICASMasterControl.h" />
@@ -530,6 +537,7 @@
     <ClInclude Include="RightInboardDisplay.h" />
     <ClInclude Include="RightOutboardDisplay.h" />
     <ClInclude Include="RouteReference.h" />
+    <ClInclude Include="Severity.h" />
     <ClInclude Include="Side.h" />
     <ClInclude Include="SimbriefImportStrategyType.h" />
     <ClInclude Include="SimConnectAirportPreloader.h" />

@@ -2,14 +2,14 @@
 
 void LowerEICASControl::drawDataBox(double width, double height, int decimals, float fontSize) {
 
-	bool eng_cutoff = Simplane::aircraft::systems::fuel::switches::eng1_cutoff();;
+	bool eng_cutoff = Simplane::aircraft::systems::fuel::valves::eng1_cutoff();;
 
 	// set box position relative to drawCircle() 
 	double box_x = x - 2;
 	double box_y = y - 35;
 
 	if (fuel_valve_connection == RIGHT) {
-		eng_cutoff = Simplane::aircraft::systems::fuel::switches::eng2_cutoff();
+		eng_cutoff = Simplane::aircraft::systems::fuel::valves::eng2_cutoff();
 	}
 
 	nvgFontFace(getContext(), "heavy-fmc");

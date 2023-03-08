@@ -1,7 +1,9 @@
 #pragma once
+#pragma once
 
-#include "Systems/CrewAlertMessageDispatch.h"
+#include "CrewAlertMessage.h"
 #include "EICASBaseControl.h"
+#include "CrewAlertMessageDispatch.h"
 
 class CrewAlertMessageControl : public EICASBaseControl {
 
@@ -24,17 +26,16 @@ class CrewAlertMessageControl : public EICASBaseControl {
 	// 	CrewAlertMessages::messages.at(ENG_SEC_AIR_VLV_R),
 	// };
 
-	
+
 
 public:
 	CrewAlertMessageControl(const string& name)
-		: EICASBaseControl(name),
-		  currentMessages(current_messages) {}
+		: EICASBaseControl(name) {}
 
 	auto render() -> void override;
 
 private:
-
+	CrewAlertMessageDispatch dispatch;
 	auto printMessage(double x, double y, CrewAlertMessage& message) -> void;
 	auto clearMessages() -> void;
 	auto getIsUpdated() -> bool;

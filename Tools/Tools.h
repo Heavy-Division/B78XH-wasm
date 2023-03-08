@@ -16,9 +16,11 @@ namespace Tools {
 		inline static const NVGcolor red = nvgRGB(255, 0, 0);
 		inline static const NVGcolor warningRed = nvgRGB(255, 63, 63);
 		inline static const NVGcolor cyan = nvgRGB(54, 201, 210);
+		inline static const NVGcolor cyanPure = nvgRGB(0, 255, 255);
 		inline static const NVGcolor amber = nvgRGB(255, 192, 0);
 		inline static const NVGcolor advisoryAmber = nvgRGB(190, 140, 0);
 		inline static const NVGcolor blue = nvgRGB(0, 0, 255);
+		inline static const NVGcolor lightBlue = nvgRGB(0, 210, 255);
 		inline static const NVGcolor greenBoeing = nvgRGB(131, 246, 4);
 		inline static const NVGcolor greenPure = nvgRGB(0, 255, 0);
 		inline static const NVGcolor green = greenBoeing;
@@ -26,6 +28,7 @@ namespace Tools {
 		inline static const NVGcolor magentaBoeing = nvgRGB(252, 174, 253);
 		inline static const NVGcolor magenta = magentaBoeing;
 		inline static const NVGcolor cduButtonGray = nvgRGB(106, 107, 120);
+		inline static const NVGcolor darkGray = nvgRGB(45, 45, 54);
 		inline static const NVGcolor cduButtonBorderTopGray = nvgRGB(185, 175, 196);
 		inline static const NVGcolor cduButtonBorderRightGray = nvgRGB(35, 34, 36);
 		inline static const NVGcolor cduButtonBorderBottomGray = nvgRGB(26, 25, 28);
