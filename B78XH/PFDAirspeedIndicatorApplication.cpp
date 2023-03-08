@@ -593,14 +593,14 @@ void PFDAirspeedIndicatorApplication::drawTargetPointer() {
 
 void PFDAirspeedIndicatorApplication::drawMach() {
 	nvgFontFace(this->nvgContext, "roboto");
-	nvgFontSize(this->nvgContext, 34.0f);
+	nvgFontSize(this->nvgContext, 38.0f);
 	nvgFillColor(this->nvgContext, Colors::white);
 	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT);
 	nvgBeginPath(this->nvgContext);
 	auto machSpeed_string = Tools::formatToFixed(machSpeed, 3);
 	machSpeed_string.erase(0, machSpeed_string.find_first_not_of('0'));
 	{
-		nvgText(this->nvgContext, 8, 512, machSpeed_string.c_str(), nullptr);
+		nvgText(this->nvgContext, 8, 513, machSpeed_string.c_str(), nullptr);
 		nvgFill(this->nvgContext);
 	
 	}
@@ -612,7 +612,7 @@ void PFDAirspeedIndicatorApplication::drawHighlight() {
 	nvgStrokeWidth(this->nvgContext, 2.0f);
 	nvgBeginPath(this->nvgContext);
 	{
-		nvgRect(this->nvgContext, 0, 490, 62, 25);
+		nvgRect(this->nvgContext, 0, 490, 70, 25);
 		nvgStroke(this->nvgContext);
 	}
 }
