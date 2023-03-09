@@ -142,4 +142,35 @@ namespace Tools {
 	auto clamp(double value, double lo, double hi) -> double {
 		return std::min<double>(hi, std::max<double>(value, lo));
 	};
+
+	auto formatToFixed(int data, int decimals) -> std::string {
+
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+
+	}
+
+	auto formatToFixed(double data, int decimals) -> std::string {
+
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+
+	}
+
+	auto formatToFixed(float data, int decimals) -> std::string {
+
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+
+	}
+
+	auto formatToFixed(std::string data, int decimals) -> std::string {
+
+		return fmt::format("{:." + std::to_string(decimals) + "f}", data);
+
+	}
+
+	std::string double_to_string(double value) {
+		double integral = 0;
+		double fractional = std::modf(value, &integral);
+		return fmt::format("{}.{}", static_cast<int>(integral),
+			static_cast<int>(fractional * 1000));
+	}
 }

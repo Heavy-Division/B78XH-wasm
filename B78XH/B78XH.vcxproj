@@ -51,8 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
-  </PropertyGroup>
+	  <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
@@ -303,7 +302,7 @@
     <ClCompile Include="TCPVHFPageControl.cpp" />
     <ClCompile Include="TCPWXRPageControl.cpp" />
     <ClCompile Include="TCPXPDRPageControl.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Counter.cpp" />
     <ClCompile Include="TuningControlPanelALTNNAVPage.cpp" />
     <ClCompile Include="TuningControlPanelGPWSPage.cpp" />
     <ClCompile Include="TuningControlPanelSATCOMPage.cpp" />
@@ -535,6 +534,7 @@
     <ClInclude Include="TCPVHFPageControl.h" />
     <ClInclude Include="TCPWXRPageControl.h" />
     <ClInclude Include="TCPXPDRPageControl.h" />
+    <ClInclude Include="Counter.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TokenVars.h" />
     <ClInclude Include="TuningControlPanelALTNNAVPage.h" />

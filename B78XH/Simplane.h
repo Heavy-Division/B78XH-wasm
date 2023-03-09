@@ -82,6 +82,7 @@ namespace Simplane {
 			auto weight() -> double;
 			auto maxWeight() -> double;
 			auto maxGrossWeight() -> double;
+			auto machSpeed() -> double;
 		}
 	}
 
@@ -1406,4 +1407,8 @@ inline auto Simplane::equipment::radioNav::unit4::name() -> char* {
 
 inline auto Simplane::equipment::radioNav::unit4::ident() -> char* {
 	return SimConnectData::Equipment::RadioNav::unit4.ident;
+}
+
+inline auto Simplane::aircraft::state::machSpeed() -> double {
+	return SimConnectData::Aircraft::state.machSpeed;
 }

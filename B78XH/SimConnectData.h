@@ -121,6 +121,7 @@ namespace SimConnectData {
 			double headingMagneticGround;
 			double weight;
 			double maxWeight;
+			double machSpeed;
 
 			/*
 			 * Calculated

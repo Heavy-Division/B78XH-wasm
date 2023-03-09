@@ -15,32 +15,32 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "Timer.h"
+#include "Counter.h"
 
-auto Timer::start() -> void {
+auto Counter::start() -> void {
 	this->isStarted = true;
 	this->isFinished = false;
 }
 
-auto Timer::restart() -> void {
+auto Counter::restart() -> void {
 	this->reset();
 	this->isFinished = false;
 }
 
-auto Timer::stop() -> void {
+auto Counter::stop() -> void {
 	this->isStarted = false;
 }
 
-auto Timer::stop(bool force) -> void {
+auto Counter::stop(bool force) -> void {
 	this->autoStart = false;
 	this->isStarted = false;
 }
 
-auto Timer::reset() -> void {
+auto Counter::reset() -> void {
 	this->internalValue = 0;
 }
 
-auto Timer::update(double value) -> void {
+auto Counter::update(double value) -> void {
 	if (this->isFinished) {
 		return;
 	}
@@ -53,14 +53,14 @@ auto Timer::update(double value) -> void {
 	}
 }
 
-auto Timer::value() const -> double {
+auto Counter::value() const -> double {
 	return this->internalValue;
 }
 
-auto Timer::finished() const -> bool {
+auto Counter::finished() const -> bool {
 	return this->isFinished;
 }
 
-auto Timer::started() const -> bool {
+auto Counter::started() const -> bool {
 	return this->isStarted;
 }

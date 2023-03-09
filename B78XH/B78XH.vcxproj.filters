@@ -184,7 +184,7 @@
     <ClCompile Include="PFDRadioAltitudeIndicator.cpp">
       <Filter>Source Files\Gauges\PFD</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="Counter.cpp">
       <Filter>Source Files\Tools\Timers</Filter>
     </ClCompile>
     <ClCompile Include="PFDBaroIndicator.cpp">
@@ -867,7 +867,7 @@
     <ClInclude Include="PFDRadioAltitudeIndicator.h">
       <Filter>Source Files\Gauges\PFD</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="Counter.h">
       <Filter>Source Files\Tools\Timers</Filter>
     </ClInclude>
     <ClInclude Include="PFDBaroIndicator.h">
@@ -1331,6 +1331,9 @@
     </ClInclude>
     <ClInclude Include="MFDNDControl.h">
       <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Source Files\Tools\Timers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

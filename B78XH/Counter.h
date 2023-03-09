@@ -16,22 +16,30 @@
 
 
 #pragma once
-#include "Application.h"
-#include "Counter.h"
 
-class PFDRadioAltitudeIndicatorApplication : public Application {
-	public:
-		auto render(sGaugeDrawData* data) -> void override;
+class Counter {
 
-	private:
-		void drawBackground(bool highlight);
-		void drawValue();
-		bool shouldShowRadioAltitude() const;
-		bool shouldHighlightRadioAltitude() const;
-		bool shouldStartStartTimer() const;
+public:
 
-		double passDelta = -1;
-		double altitude = 0;
-		double lastAltitude = 0;
-		Counter deltaTimer = Counter(10);
+	Counter(double target_value, bool auto_start = false)
+			: targetValue(target_value), autoStart(auto_start) {}
+
+	auto reset() -> void;
+	auto update(double value) -> void;
+
+	auto start() -> void;
+	auto restart() -> void;
+	auto stop() -> void;
+	auto stop(bool force) -> void;
+	auto value() const -> double;
+	auto finished() const -> bool;
+    auto started() const -> bool;
+
+protected:
+	double targetValue;
+	double internalValue = 0;
+	bool isStarted = false;
+	bool isFinished = false;
+	bool autoStart = false;
+
 };

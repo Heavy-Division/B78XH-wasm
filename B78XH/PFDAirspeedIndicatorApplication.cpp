@@ -14,13 +14,12 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+ 
 #include "PFDAirspeedIndicatorApplication.h"
-
-#include <cmath>
-
 #include "Tools/Tools.h"
 #include "Simplane.h"
+#include "Timer.h"
+#include "string"
 
 using Colors = Tools::Colors;
 
@@ -33,6 +32,30 @@ void PFDAirspeedIndicatorApplication::render(sGaugeDrawData* data) {
 	drawStallStrips();
 	drawOverSpeedStrips();
 	drawSpeedMarkers(data->dt);
+
+	this->machSpeed = Simplane::aircraft::state::machSpeed();
+
+	if (this->shouldDrawMach()) {
+		this->machLimit = 0.38;
+		if (this->shouldStartTimer()) {
+			this->timer.start();
+		}
+
+		this->timer.update(data->dt);
+		if (!this->timer.finished() && this->timer.started()) {
+			this->drawHighlight();
+		}
+
+		this->drawMach();
+	}
+	else {
+		this->machLimit = 0.4;
+		this->timer.restart();
+		this->timer.stop();
+	}
+
+	this->lastMachSpeed = this->machSpeed;
+
 	nvgRestore(this->nvgContext);
 }
 
@@ -566,4 +589,41 @@ void PFDAirspeedIndicatorApplication::drawTargetPointer() {
 	}
 	nvgResetTransform(this->nvgContext);
 	nvgRestore(this->nvgContext);
+}
+
+void PFDAirspeedIndicatorApplication::drawMach() {
+	nvgFontFace(this->nvgContext, "roboto");
+	nvgFontSize(this->nvgContext, 38.0f);
+	nvgFillColor(this->nvgContext, Colors::white);
+	nvgTextAlign(this->nvgContext, NVG_ALIGN_LEFT);
+	nvgBeginPath(this->nvgContext);
+	auto machSpeed_string = Tools::formatToFixed(machSpeed, 3);
+	machSpeed_string.erase(0, machSpeed_string.find_first_not_of('0'));
+	{
+		nvgText(this->nvgContext, 8, 513, machSpeed_string.c_str(), nullptr);
+		nvgFill(this->nvgContext);
+	
+	}
+}
+
+
+void PFDAirspeedIndicatorApplication::drawHighlight() {
+	nvgStrokeColor(this->nvgContext, Colors::white);
+	nvgStrokeWidth(this->nvgContext, 2.0f);
+	nvgBeginPath(this->nvgContext);
+	{
+		nvgRect(this->nvgContext, 0, 490, 70, 25);
+		nvgStroke(this->nvgContext);
+	}
+}
+
+bool PFDAirspeedIndicatorApplication::shouldStartTimer() const {
+
+	return this->lastMachSpeed < 0.4 && this->machSpeed >= 0.4;
+
+}
+
+bool PFDAirspeedIndicatorApplication::shouldDrawMach() const {
+
+	return this->machSpeed > this->machLimit;
 }
