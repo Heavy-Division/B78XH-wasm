@@ -140,6 +140,9 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	                                                        "GEAR POSITION", "Percent");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
+	                                                        "CIRCUIT GEAR MOTOR ON", "Bool");
+
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,
 	                                                        "ATTITUDE INDICATOR BANK DEGREES", "Degree");
 
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_AIRCRAFT_STATE,

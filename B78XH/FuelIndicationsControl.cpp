@@ -19,6 +19,14 @@ void FuelIndicationsControl::render() {
 void FuelIndicationsControl::setupControl() {
 	EICASBaseControl::setupControl();
 
+	addOnBeforeRender([this](BaseControl& base_control) -> bool {
+		this->grossWt = Simplane::aircraft::state::weight() / 1000;
+		this->totalFuelWt = Simplane::aircraft::systems::fuel::total_lbs() / 1000;
+		this->staticAirTemp = Simplane::environment::temperature::staticAirTemp();
+		return true;
+	});
+	
+
 }
 
 auto FuelIndicationsControl::setDisplayMode() -> void {}
@@ -75,34 +83,29 @@ auto FuelIndicationsControl::drawExpandedIndicator() -> void {
 }
 
 auto FuelIndicationsControl::drawBaseIndicator() -> void {
-	double grossWt = Simplane::aircraft::state::weight() / 1000;
-	double totalWt = Simplane::aircraft::systems::fuel::total_lbs() / 1000;
-	double sat = Simplane::environment::temperature::staticAirTemp();
-	double fuelTemp = 0; // TODO: Fuel temp data LVar
+
 
 	// gross wt
-	drawLabel(421, 935, 20.0f, "GROSS WT");
+	drawLabel(421, 935, 18.0f, "GROSS WT");
 	drawFuelDataBox(425, 960, 75, 30, false);
-	drawData(430, 965, 15.0f, grossWt, false);
+	drawData(436, 968, 20.0f, grossWt, false);
 
 	// total fuel
 	drawLabel(585, 935, 18.0f, "TOTAL FUEL");
-	drawFuelDataBox(600, 955, 75, 32, false);
-	drawData(605, 960, 15.0f, totalWt, false);
+	drawFuelDataBox(590, 955, 75, 32, false);
+	drawData(604, 963, 24.0f, totalFuelWt, false);
 
 	// SAT
 	drawLabel(410, 1018, 20.0f, "SAT");
 	drawFuelDataBox(450, 1010, 55, 30, false);
-	drawData(455, 1020, 15.0f, sat, true);
+	drawData(460, 1020, 20.0f, staticAirTemp, true);
 
 	// Fuel Temp
 	drawLabel(565, 1005, 15.0f, "FUEL");
 	drawLabel(565, 1025, 15.0f, "TEMP");
 	drawFuelDataBox(615, 1010, 55, 30, false);
-	drawData(620, 1015, 15.0f, fuelTemp, true);
+	drawData(625, 1020, 20.0f, fuelTemp, true);
 
-
-	// labels
 
 }
 

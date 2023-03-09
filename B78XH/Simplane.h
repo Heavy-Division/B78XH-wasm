@@ -62,6 +62,7 @@ namespace Simplane {
 		namespace state {
 			auto isGearOnGround() -> bool;
 			auto isGrounded() -> bool;
+			auto isGearMotorOn() -> bool;
 			auto gearPosition() -> double;
 			auto bank() -> double;
 			auto pitch() -> double;
@@ -1558,4 +1559,8 @@ inline auto Simplane::environment::temperature::staticAirTemp() -> double {
 
 inline auto Simplane::aircraft::systems::fuel::total_lbs() -> double {
 	return SimConnectData::systems::fuel::fuel.total_lbs;
+}
+
+inline auto Simplane::aircraft::state::isGearMotorOn() -> bool {
+	return static_cast<bool>(SimConnectData::Aircraft::state.isGearMotorOn);
 }

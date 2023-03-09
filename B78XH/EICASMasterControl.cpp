@@ -114,7 +114,7 @@ void EICASMasterControl::setupControls() {
 	engVib_r->getRelativePosition().setPosition(secondary_x + secondary_x_offset + 6, 900, 0, 0);
 	
 	auto& gearControl = getControl("GearPositionControl");
-	gearControl->getRelativePosition().setPosition(550, 475, 0, 0);
+	gearControl->getRelativePosition().setPosition(550, 390, 0, 0);
 
 }
 

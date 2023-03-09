@@ -13,7 +13,12 @@ protected:
 	auto setupControl() -> void override;
 
 private:
-	
+
+	double grossWt;
+	double totalFuelWt;
+	double staticAirTemp;
+	double fuelTemp = 0; // TODO: Fuel temp data model
+
 	auto expandedMode() -> bool;
 	auto setDisplayMode() -> void;
 	auto drawFuelDataBox(double x, double y, double w, double h, bool outline) -> void;

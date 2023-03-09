@@ -115,6 +115,7 @@ namespace SimConnectData {
 		struct State {
 			double isGearOnGround;
 			double gearPosition;
+			double isGearMotorOn;
 			double bank;
 			double pitch;
 			double groundSpeed;
