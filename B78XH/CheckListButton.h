@@ -19,4 +19,5 @@ class CheckListButton : public CheckListItem {
     private:
         const std::function<void()> invoke_;
         const string displayText_;
+        float textBounds_[4] = {0, 0, 0, 0};
 };
