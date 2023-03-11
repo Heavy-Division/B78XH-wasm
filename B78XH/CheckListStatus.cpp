@@ -10,7 +10,7 @@ void CheckListStatus::render() {
     const auto color = parentChecklist_->getItemStateColor();
     const auto displayText = currentState == CheckListItem::CHECKLIST_ITEM_STATE::OVERRIDDEN
                                  ? "CHECKLIST OVERRIDDEN"
-                                 : "CHECKLIST COMPLETE";
+                                 : "CHECKLIST COMPLETED";
     nvgFillColor(getContext(), color);
     nvgBeginPath(getContext());
     {
@@ -18,7 +18,7 @@ void CheckListStatus::render() {
         nvgFill(getContext());
     }
     nvgClosePath(getContext());
-    nvgFontFace(getContext(), "heavy-mfc");
+    nvgFontFace(getContext(), "heavy-fmc");
     nvgFontSize(getContext(), 24);
     nvgFillColor(getContext(), Tools::Colors::white);
     nvgTextAlign(getContext(), NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
