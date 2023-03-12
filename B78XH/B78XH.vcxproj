@@ -57,6 +57,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath)</IncludePath>
+    <OutDir>..\..\..\..\Desktop\msfs_addons\Aircraft\787-10_Heavy_Division\B78XH-experimental\SimObjects\Airplanes\Heavy-Division-B78XH-mod\panel</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|MSFS'">
     <ClCompile>
@@ -104,6 +105,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -371,6 +373,7 @@
     <ClInclude Include="CDURoutePageControl.h" />
     <ClInclude Include="CDUScratchpadControl.h" />
     <ClInclude Include="CDUSelectKeyButtonControl.h" />
+    <ClInclude Include="LVarsSetter.h" />
     <ClInclude Include="MFDMouseCursorControl.h" />
     <ClInclude Include="CDUMouseMoveResolver.h" />
     <ClInclude Include="CDUMouseResolver.h" />

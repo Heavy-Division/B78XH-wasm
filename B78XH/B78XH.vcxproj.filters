@@ -699,9 +699,6 @@
     <ClInclude Include="PFDFMA.h">
       <Filter>Source Files\Gauges\PFD</Filter>
     </ClInclude>
-    <ClInclude Include="LVarsGetter.h">
-      <Filter>Source Files\Tools</Filter>
-    </ClInclude>
     <ClInclude Include="SimEnums.h">
       <Filter>Source Files\Tools</Filter>
     </ClInclude>
@@ -1331,6 +1328,12 @@
     </ClInclude>
     <ClInclude Include="MFDNDControl.h">
       <Filter>Source Files\Controls\Controls\MFD\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="LVarsSetter.h">
+      <Filter>Source Files\Tools\LVars</Filter>
+    </ClInclude>
+    <ClInclude Include="LVarsGetter.h">
+      <Filter>Source Files\Tools\LVars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

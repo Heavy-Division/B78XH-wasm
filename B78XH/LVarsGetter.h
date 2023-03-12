@@ -100,14 +100,12 @@ namespace LVarsGetter {
 	};
 
 	inline auto stallProtectionMinSpeed = []() -> double {
-		return
-				get_named_variable_typed_value(register_named_variable("B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MIN_SPEED"),
+		return get_named_variable_typed_value(register_named_variable("B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MIN_SPEED"),
 				                               get_units_enum("Number"));
 	};
 
 	inline auto stallProtectionMaxSpeed = []() -> double {
-		return
-				get_named_variable_typed_value(register_named_variable("B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MAX_SPEED"),
+		return get_named_variable_typed_value(register_named_variable("B78XH_L_TRANSFER_PROTOCOL_STALL_PROTECTION_MAX_SPEED"),
 				                               get_units_enum("Number"));
 	};
 
@@ -156,21 +154,9 @@ namespace LVarsGetter {
 		return get_named_variable_typed_value(register_named_variable("RADIONAV_SOURCE"), get_units_enum("Number"));
 	};
 
-	inline auto setCDUControlId(CDUEvent eventId) -> void {
-		set_named_variable_value(register_named_variable("CDU_CONTROL_ID"), static_cast<double>(eventId));
-	}
-
-	inline auto setCDUControlId(CDUPageType pageId) -> void {
-		set_named_variable_value(register_named_variable("CDU_CONTROL_ID"), static_cast<double>(pageId));
-	}
-
 	inline auto isIRSInited = []() -> bool {
 		return static_cast<bool>(get_named_variable_typed_value(register_named_variable("B78XH_IS_IRS_INITED"),
 		                                                        get_units_enum("Number")));
-	};
-
-	inline auto setIsIRSInited = [](bool value) -> void {
-		set_named_variable_value(register_named_variable("B78XH_IS_IRS_INITED"), value);
 	};
 
 	inline auto irsRState = []() -> double {
@@ -191,20 +177,5 @@ namespace LVarsGetter {
 		                                      get_units_enum("Number"));
 	};
 
-	inline auto setIrsLSwitchState = [](IRSSwitchState state) -> void {
-		set_named_variable_value(register_named_variable("B78XH_IRS_L_SWITCH_STATE"), static_cast<double>(state));
-	};
-
-	inline auto setIrsRSwitchState = [](IRSSwitchState state) -> void {
-		set_named_variable_value(register_named_variable("B78XH_IRS_R_SWITCH_STATE"), static_cast<double>(state));
-	};
-
-	inline auto setIrsLState = [](IRSState state) -> void {
-		set_named_variable_value(register_named_variable("B78XH_IRS_L_STATE"), static_cast<double>(state));
-	};
-
-	inline auto setIrsRState = [](IRSState state) -> void {
-		set_named_variable_value(register_named_variable("B78XH_IRS_R_STATE"), static_cast<double>(state));
-	};
-
 }
+

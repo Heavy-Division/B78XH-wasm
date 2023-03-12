@@ -27,7 +27,8 @@
 #include "IRSSwitchState.h"
 #include "LVars.h"
 #include "NavRadioEnums.h"
-#include "fmt/core.h"
+#include "LVarsSetter.h"
+#include "fmt/core.h" // TODO: Move this out of simplane and to child classes.
 
 namespace Aircraft = SimConnectData::Aircraft;
 namespace Autopilot = SimConnectData::Autopilot;
@@ -246,7 +247,7 @@ namespace Simplane {
 		}
 
 		inline auto setIsInited(bool value) -> void {
-			LVarsGetter::setIsIRSInited(value);
+			LVarsSetter::setIsIRSInited(value);
 		}
 
 		inline auto isAligned() -> bool {
@@ -254,10 +255,10 @@ namespace Simplane {
 		}
 
 		inline auto forceAlign() {
-			LVarsGetter::setIrsLState(IRSState::ALIGNED);
-			LVarsGetter::setIrsRState(IRSState::ALIGNED);
-			LVarsGetter::setIrsLSwitchState(IRSSwitchState::ON);
-			LVarsGetter::setIrsRSwitchState(IRSSwitchState::ON);
+			LVarsSetter::setIrsLState(IRSState::ALIGNED);
+			LVarsSetter::setIrsRState(IRSState::ALIGNED);
+			LVarsSetter::setIrsLSwitchState(IRSSwitchState::ON);
+			LVarsSetter::setIrsRSwitchState(IRSSwitchState::ON);
 			setIsInited(true);
 
 		}

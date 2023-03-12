@@ -17,6 +17,7 @@
 
 #include "CCS.h"
 #include "LVars.h"
+#include "LVarsGetter.h"
 #include "Tools/Console.h"
 #include "KEvents.h"
 

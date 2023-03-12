@@ -17,17 +17,18 @@
 
 #include "CDUPage.h"
 #include "LVarsGetter.h"
+#include "LVarsSetter.h"
 
 CDUPage::CDUPage(NVGcontext*& context): context(context) {
 
 }
 
 auto CDUPage::switchPage(CDUPageType pageId) -> void {
-	LVarsGetter::setCDUControlId(pageId);
+	LVarsSetter::setCDUControlId(pageId);
 }
 
 auto CDUPage::triggerEvent(CDUEvent eventId) -> void {
-	LVarsGetter::setCDUControlId(eventId);
+	LVarsSetter::setCDUControlId(eventId);
 }
 
 auto CDUPage::LTP1(std::vector<std::string> value) -> void {
