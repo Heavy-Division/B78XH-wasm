@@ -18,11 +18,6 @@
 #pragma once
 #include <MSFS/Legacy/gauges.h>
 
-#include "CDUEvent.h"
-#include "CDUPageType.h"
-#include "IRSState.h"
-#include "IRSSwitchState.h"
-
 namespace LVarsGetter {
 	inline auto isMachModeActive = []()-> bool {
 		return static_cast<bool>(get_named_variable_typed_value(register_named_variable("XMLVAR_AirSpeedIsInMach"),
