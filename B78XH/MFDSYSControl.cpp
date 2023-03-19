@@ -24,17 +24,6 @@ auto MFDINFOControl::render() -> void {
 	nvgClosePath(getContext());
 }
 
-auto MFDCHKLControl::render() -> void {
-	MFDBaseControl::render();
-	nvgBeginPath(getContext());
-	{
-		nvgFillColor(getContext(), nvgRGB(0, 0, 255));
-		nvgRect(getContext(), 0, 0, 200, 200);
-		nvgFill(getContext());
-	}
-	nvgClosePath(getContext());
-}
-
 auto MFDCOMMControl::render() -> void {
 	MFDBaseControl::render();
 	nvgBeginPath(getContext());

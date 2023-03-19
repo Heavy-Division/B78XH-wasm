@@ -6,6 +6,7 @@
 #include "MFDEmptyControl.h"
 #include "MFDNDControl.h"
 #include "MFDSYSControl.h"
+#include "MFDCHKLControl.h"
 
 class MFDPanelResolver {
 	public:
@@ -70,7 +71,7 @@ class MFDPanelResolver {
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdOnePanels{
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
-			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
+			std::make_shared<MFDCHKLControl>("MFDCHKLControl"),
 			std::make_shared<MFDCOMMControl>("MFDEmptyControl"),
 			std::make_shared<MFDNDControl>("MFDEmptyControl"),
 			std::make_shared<MFDEmptyControl>("MFDEmptyControl")
@@ -79,7 +80,7 @@ class MFDPanelResolver {
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdTwoPanels{
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
-			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
+			std::make_shared<MFDCHKLControl>("MFDCHKLControl"),
 			std::make_shared<MFDCOMMControl>("MFDEmptyControl"),
 			std::make_shared<MFDNDControl>("MFDEmptyControl"),
 			std::make_shared<MFDEmptyControl>("MFDEmptyControl")
@@ -88,7 +89,7 @@ class MFDPanelResolver {
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdThreePanels{
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
-			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
+			std::make_shared<MFDCHKLControl>("MFDCHKLControl"),
 			std::make_shared<MFDCOMMControl>("MFDEmptyControl"),
 			std::make_shared<MFDNDControl>("MFDEmptyControl"),
 			std::make_shared<MFDEmptyControl>("MFDEmptyControl")

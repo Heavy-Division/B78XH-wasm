@@ -21,16 +21,6 @@ class MFDINFOControl : public MFDBaseControl {
 		auto render() -> void override;
 };
 
-class MFDCHKLControl : public MFDBaseControl {
-	public:
-		explicit MFDCHKLControl(const string& name)
-			: MFDBaseControl(name) {
-			ident_ = CONTROL_IDENT::TEST3;
-		}
-
-		auto render() -> void override;
-};
-
 class MFDCOMMControl : public MFDBaseControl {
 	public:
 		explicit MFDCOMMControl(const string& name)
