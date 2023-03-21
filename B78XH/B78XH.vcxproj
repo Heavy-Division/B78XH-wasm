@@ -81,6 +81,7 @@
       <AdditionalOptions>-Winline %(AdditionalOptions)</AdditionalOptions>
       <ShowIncludes>false</ShowIncludes>
       <AdditionalModuleDependencies>$(ProjectDir)..\Systems;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -171,6 +172,8 @@
     <ClCompile Include="EngineVibrationControlRight.cpp" />
     <ClCompile Include="FFControlLeft.cpp" />
     <ClCompile Include="FFControlRight.cpp" />
+    <ClCompile Include="FlapsIndicatorControl.cpp" />
+    <ClCompile Include="Fuel.cpp" />
     <ClCompile Include="GearPositionControl.cpp" />
     <ClCompile Include="LineSeparatorControl.cpp" />
     <ClCompile Include="LowerEICASControl.cpp" />
@@ -421,6 +424,8 @@
     <ClInclude Include="EngineVibrationControlRight.h" />
     <ClInclude Include="FFControlLeft.h" />
     <ClInclude Include="FFControlRight.h" />
+    <ClInclude Include="FlapsIndicatorControl.h" />
+    <ClInclude Include="Fuel.h" />
     <ClInclude Include="FuelIndicationsControl.h" />
     <ClInclude Include="GaugeType.h" />
     <ClInclude Include="GearPositionControl.h" />
@@ -641,9 +646,6 @@
     </ProjectReference>
     <ProjectReference Include="..\SimpleIni\SimpleIni.vcxproj">
       <Project>{b0048d6f-2b70-4409-8b9b-2c4099f37770}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Systems\Systems.vcxproj">
-      <Project>{302ef351-71d5-4582-b3b1-20489097b4b0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Tools\Tools.vcxproj">
       <Project>{7ec92233-171f-4cc6-8638-75a469c78d7c}</Project>

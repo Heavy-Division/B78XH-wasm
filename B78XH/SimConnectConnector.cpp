@@ -721,6 +721,9 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ALTITUDE, "INDICATED ALTITUDE:1",
 		"Feet");
 
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FLIGHT_SURFACES, "LEADING EDGE FLAPS LEFT PERCENT",
+		"Feet");
+
 	
 }
 
@@ -848,6 +851,11 @@ auto SimConnectConnector::prepareRequests() -> void {
 
 	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_ALTITUDE,
 	                                                           DEFINITION_ALTITUDE, SIMCONNECT_OBJECT_ID_USER,
+	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
+	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
+
+	this->connectionResult = SimConnect_RequestDataOnSimObject(simConnectHandle, REQUEST_FLIGHT_SURFACES,
+	                                                           DEFINITION_FLIGHT_SURFACES, SIMCONNECT_OBJECT_ID_USER,
 	                                                           SIMCONNECT_PERIOD_SIM_FRAME,
 	                                                           SIMCONNECT_DATA_REQUEST_FLAG_CHANGED);
 }
@@ -997,17 +1005,22 @@ auto SimConnectConnector::processDispatchMessage(SIMCONNECT_RECV* pData, DWORD* 
 				}
 
 				case REQUEST_ENGINE: {
-					SimConnectData::systems::powerplant::engine = (*reinterpret_cast<SimConnectData::systems::powerplant::Engine*>(&pObjData->dwData));
+					SimConnectData::Aircraft::systems::powerplant::engine = (*reinterpret_cast<SimConnectData::Aircraft::systems::powerplant::Engine*>(&pObjData->dwData));
 					break;
 				}
 
 				case REQUEST_FUEL: {
-					SimConnectData::systems::fuel::fuel = (*reinterpret_cast<SimConnectData::systems::fuel::Fuel*>(&pObjData->dwData));
+					SimConnectData::Aircraft::systems::fuel::fuel = (*reinterpret_cast<SimConnectData::Aircraft::systems::fuel::Fuel*>(&pObjData->dwData));
 					break;
 				}
 
 				case REQUEST_ALTITUDE: {
 					SimConnectData::Aircraft::position::altitude = (*reinterpret_cast<SimConnectData::Aircraft::position::Altitude*>(&pObjData->dwData));
+					break;
+				}
+
+				case REQUEST_FLIGHT_SURFACES: {
+					SimConnectData::Aircraft::flight_surfaces::flight_surfaces = (*reinterpret_cast<SimConnectData::Aircraft::flight_surfaces::FlightSurfaces*>(&pObjData->dwData));
 					break;
 				}
 

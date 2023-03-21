@@ -19,6 +19,7 @@
 #include "LVars.h"
 #include "Tools/Console.h"
 #include "KEvents.h"
+#include "Systems.h"
 
 
 auto CCS::init() -> void {
@@ -30,6 +31,13 @@ auto CCS::prepare() -> void {
 
 auto CCS::update(double deltaTime) -> void {
 	this->updateERS(deltaTime);
+
+	// Aviation jet fuel has a freezing point of around -40C. Heat generated from aircraft
+	// is transferred to fuel, so it should have a slightly higher temperature than the surrounding
+	// air. Because there is no SimVar for fuel temp, this is a temporary fix until a proper model for
+	// fuel temp can be made.
+	Systems::fuel.setTemperature(Simplane::environment::temperature::staticAirTemp() + 4.0);
+	LVars::get(LVars::WEIGHT_UNITS).set(2);
 }
 
 auto CCS::reset() -> void {

@@ -2,6 +2,7 @@
 #include "Control.h"
 #include "Simplane.h"
 #include "Tools/Tools.h"
+#include "Timer.h"
 
 class GearPositionControl : public Control {
 public:
@@ -17,8 +18,12 @@ protected:
 
 private:
 
+	sGaugeDrawData* data;
+	Timer timer = Timer(10);
 	bool isGearDown;
 	bool isGearInTransit;
+	bool lastGearPosition;
 
 	auto drawGearIndicator() -> void;
+	bool shouldStartTimer();
 };

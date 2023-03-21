@@ -47,11 +47,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Systems\Systems.vcxproj">
-      <Project>{302ef351-71d5-4582-b3b1-20489097b4b0}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

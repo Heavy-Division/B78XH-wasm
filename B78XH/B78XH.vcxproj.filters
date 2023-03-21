@@ -691,6 +691,12 @@
     <ClCompile Include="CrewAlertMessage.cpp">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClCompile>
+    <ClCompile Include="Fuel.cpp">
+      <Filter>Source Files\Systems\Fuel</Filter>
+    </ClCompile>
+    <ClCompile Include="FlapsIndicatorControl.cpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MCPAltitudeGauge.h">
@@ -1515,6 +1521,12 @@
     <ClInclude Include="CrewAlertMessagesControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
+    <ClInclude Include="Fuel.h">
+      <Filter>Source Files\Systems\Fuel</Filter>
+    </ClInclude>
+    <ClInclude Include="FlapsIndicatorControl.h">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -1870,6 +1882,9 @@
     </Filter>
     <Filter Include="Source Files\Controls\Controls\MFD\EICAS\Secondary\EngineVibration">
       <UniqueIdentifier>{ff92b066-8d19-494c-bef3-7a833cbf4577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems\Fuel">
+      <UniqueIdentifier>{9a145798-071a-427e-8181-67cdebb04f9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

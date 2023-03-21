@@ -44,7 +44,7 @@ enum DATA_DEFINE_ID {
 	DEFINITION_ENGINE,
 	DEFINITION_FUEL,
 	DEFINITION_ALTITUDE,
-
+	DEFINITION_FLIGHT_SURFACES
 };
 
 enum DATA_REQUEST_ID {
@@ -72,7 +72,8 @@ enum DATA_REQUEST_ID {
 	REQUEST_TEMPERATURE,
 	REQUEST_ENGINE,
 	REQUEST_FUEL,
-	REQUEST_ALTITUDE
+	REQUEST_ALTITUDE,
+	REQUEST_FLIGHT_SURFACES
 };
 
 namespace SimConnectData {
@@ -383,7 +384,7 @@ namespace SimConnectData {
 		inline Temperature temperature;
 	}
 
-	namespace systems {
+	namespace Aircraft::systems {
 		namespace powerplant {
 			struct Engine {
 				double engine1_n1;
@@ -429,6 +430,14 @@ namespace SimConnectData {
 		};
 
 		inline Altitude altitude;
+	}
+
+	namespace Aircraft::flight_surfaces {
+		struct FlightSurfaces {
+			double leading_edge_flaps_left_percent;
+		};
+
+		inline FlightSurfaces flight_surfaces;
 	}
 
 }

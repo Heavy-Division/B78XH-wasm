@@ -6,14 +6,12 @@
 void FuelIndicationsControl::render() {
 	EICASBaseControl::render();
 
-	if(this->expandedMode()) {
+	if (this->expandedMode()) {
 		drawExpandedIndicator();
 		return;
 	}
 
 	drawStandardIndicator();
-
-	Console::log("{}", Simplane::environment::temperature::staticAirTemp());
 }
 
 void FuelIndicationsControl::setupControl() {
@@ -23,9 +21,10 @@ void FuelIndicationsControl::setupControl() {
 		this->grossWt = Simplane::aircraft::state::weight() / 1000;
 		this->totalFuelWt = Simplane::aircraft::systems::fuel::total_lbs() / 1000;
 		this->staticAirTemp = Simplane::environment::temperature::staticAirTemp();
+		this->fuelTemp = Simplane::aircraft::systems::fuel::temperature();
 		return true;
-	});
-	
+		});
+
 
 }
 
@@ -83,6 +82,24 @@ auto FuelIndicationsControl::drawExpandedIndicator() -> void {
 }
 
 auto FuelIndicationsControl::drawBaseIndicator() -> void {
+	std::string units;
+
+	if (this->getUnitsType() == AircraftUnitsType::METRIC) {
+		units = "KGS X";
+	}
+	else {
+		units = "LBS X";
+	}
+
+	nvgFontFace(getContext(), "heavy-fmc");
+	nvgFontSize(getContext(), 18.0f);
+	nvgFillColor(getContext(), Tools::Colors::white);
+
+	nvgBeginPath(getContext());
+	{
+		nvgText(getContext(), 520, 960, units.c_str(), nullptr);
+		nvgText(getContext(), 525, 980, "1000", nullptr);
+	}
 
 
 	// gross wt
@@ -116,9 +133,9 @@ auto FuelIndicationsControl::drawFuelDataBox(double x, double y, double w, doubl
 	nvgFillColor(getContext(), Tools::Colors::black);
 	nvgBeginPath(getContext());
 	{
-		nvgRoundedRect(getContext(), x, y, w, h, 10.0f);
+		nvgRoundedRect(getContext(), x, y, w, h, 5.0f);
 		nvgFill(getContext());
-		
+
 		if (outline) {
 			nvgStroke(getContext());
 		}
@@ -150,9 +167,10 @@ auto FuelIndicationsControl::drawData(double x, double y, float fontSize, double
 
 	std::string data_string;
 
-	if(temperatureData) {
+	if (temperatureData) {
 		data_string = Tools::formatToFixed(data, 0);
-	} else {
+	}
+	else {
 		data_string = Tools::formatToFixed(data, 1);
 	}
 
@@ -171,7 +189,7 @@ auto FuelIndicationsControl::drawData(double x, double y, float fontSize, double
 
 	nvgBeginPath(getContext());
 	{
-		nvgText(getContext(), x, y,  data_string.c_str(), nullptr);
+		nvgText(getContext(), x, y, data_string.c_str(), nullptr);
 		nvgFill(getContext());
 	}
 }

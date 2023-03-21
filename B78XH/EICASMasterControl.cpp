@@ -22,6 +22,7 @@
 #include "FuelIndicationsControl.h"
 #include "GearPositionControl.h"
 #include "CrewAlertMessageControl.h"
+#include "FlapsIndicatorControl.h"
 
 
 void EICASMasterControl::prepareControls() {
@@ -55,6 +56,8 @@ void EICASMasterControl::prepareControls() {
 	add(std::make_unique<EngineVibrationControlRight>("EngineVibrationControlRight"));
 
 	add(std::make_unique<FuelIndicationsControl>("FuelIndicationsControl"));
+
+	add(std::make_unique<FlapsIndicatorControl>("FlapsIndicatorControl"));
 
 	add(std::make_unique<GearPositionControl>("GearPositionControl"));
 
@@ -115,6 +118,9 @@ void EICASMasterControl::setupControls() {
 	
 	auto& gearControl = getControl("GearPositionControl");
 	gearControl->getRelativePosition().setPosition(550, 390, 0, 0);
+
+	auto& flapsControl = getControl("FlapsIndicatorControl");
+	flapsControl->getRelativePosition().setPosition(544, 425, 0, 0);
 
 }
 

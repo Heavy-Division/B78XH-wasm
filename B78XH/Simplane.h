@@ -28,6 +28,7 @@
 #include "LVars.h"
 #include "NavRadioEnums.h"
 #include "fmt/core.h"
+#include "AircraftUnitsType.h"
 
 namespace Aircraft = SimConnectData::Aircraft;
 namespace Autopilot = SimConnectData::Autopilot;
@@ -62,6 +63,7 @@ namespace Simplane {
 		namespace state {
 			auto isGearOnGround() -> bool;
 			auto isGrounded() -> bool;
+			auto aircraftUnitsType() -> AircraftUnitsType;
 			auto isGearMotorOn() -> bool;
 			auto gearPosition() -> double;
 			auto bank() -> double;
@@ -83,6 +85,11 @@ namespace Simplane {
 			auto weight() -> double;
 			auto maxWeight() -> double;
 			auto maxGrossWeight() -> double;
+		}
+
+		namespace flight_surfaces {
+			auto horizontalStabTrim() -> double;
+			auto leadingEdgeFlapsLeftPercent() -> double;
 		}
 	}
 
@@ -417,6 +424,7 @@ namespace Simplane {
 				auto eng2_cutoff() -> bool;
 			}
 
+			auto temperature() -> double;
 			auto total_lbs() -> double;
 			
 		}
@@ -1465,92 +1473,92 @@ inline auto Simplane::environment::temperature::trueAirTemp() -> double {
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::n1_rpm() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_n1;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_n1;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::n2_rpm() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_n2;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_n2;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::n1_rpm() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_n1;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_n1;
 }
 inline auto Simplane::aircraft::systems::powerplant::engine_2::n2_rpm() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_n2;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_n2;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::n1_commanded() -> double {
 
-	return SimConnectData::systems::powerplant::engine.engine1_commandedn1;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_commandedn1;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::n1_commanded() -> double {
-	return 	SimConnectData::systems::powerplant::engine.engine2_commandedn1;
+	return 	SimConnectData::Aircraft::systems::powerplant::engine.engine2_commandedn1;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::egt() -> double {
-	return  SimConnectData::systems::powerplant::engine.engine1_egt;
+	return  SimConnectData::Aircraft::systems::powerplant::engine.engine1_egt;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::egt() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_egt;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_egt;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::fuelFlowPPH() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_fuel_flow_pph;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_fuel_flow_pph;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::fuelFlowPPH() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_fuel_flow_pph;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_fuel_flow_pph;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::hasCombustion() -> bool {
-	return static_cast<bool>(SimConnectData::systems::powerplant::engine.engine1_combustion);
+	return static_cast<bool>(SimConnectData::Aircraft::systems::powerplant::engine.engine1_combustion);
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::hasCombustion() -> bool {
-	return static_cast<bool>(SimConnectData::systems::powerplant::engine.engine2_combustion);
+	return static_cast<bool>(SimConnectData::Aircraft::systems::powerplant::engine.engine2_combustion);
 }
 
 inline auto Simplane::aircraft::systems::fuel::valves::eng1_cutoff() -> bool {
-	return static_cast<bool>(SimConnectData::systems::fuel::fuel.cutoff_eng1);
+	return static_cast<bool>(SimConnectData::Aircraft::systems::fuel::fuel.cutoff_eng1);
 }
 
 inline auto Simplane::aircraft::systems::fuel::valves::eng2_cutoff() -> bool {
-	return static_cast<bool>(SimConnectData::systems::fuel::fuel.cutoff_eng2);
+	return static_cast<bool>(SimConnectData::Aircraft::systems::fuel::fuel.cutoff_eng2);
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::oilPressure() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_oil_pressure;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_oil_pressure;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::oilPressure() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_oil_pressure;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_oil_pressure;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::oilTemperature() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_oil_temp;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_oil_temp;
 }
 
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::oilTemperature() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_oil_temp;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_oil_temp;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::oilQty() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_oil_qty * 0.001;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_oil_qty * 0.001;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::oilQty() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_oil_qty * 0.001;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_oil_qty * 0.001;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_1::vibration() -> double {
-	return SimConnectData::systems::powerplant::engine.engine1_vibration;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine1_vibration;
 }
 
 inline auto Simplane::aircraft::systems::powerplant::engine_2::vibration() -> double {
-	return SimConnectData::systems::powerplant::engine.engine2_vibration;
+	return SimConnectData::Aircraft::systems::powerplant::engine.engine2_vibration;
 }
 
 inline auto Simplane::environment::temperature::staticAirTemp() -> double {
@@ -1558,9 +1566,25 @@ inline auto Simplane::environment::temperature::staticAirTemp() -> double {
 }
 
 inline auto Simplane::aircraft::systems::fuel::total_lbs() -> double {
-	return SimConnectData::systems::fuel::fuel.total_lbs;
+	return SimConnectData::Aircraft::systems::fuel::fuel.total_lbs;
 }
 
 inline auto Simplane::aircraft::state::isGearMotorOn() -> bool {
 	return static_cast<bool>(SimConnectData::Aircraft::state.isGearMotorOn);
+}
+
+inline auto Simplane::aircraft::systems::fuel::temperature() -> double {
+	return LVars::get(LVars::FUEL_TEMP).getValue();
+}
+
+inline auto Simplane::aircraft::state::aircraftUnitsType() -> AircraftUnitsType {
+	if(LVars::get(LVars::WEIGHT_UNITS).getValue() == 1) {
+		return AircraftUnitsType::IMPERIAL;
+	}
+
+	return AircraftUnitsType::METRIC;
+}
+
+inline auto Simplane::aircraft::flight_surfaces::horizontalStabTrim() -> double {
+	return SimConnectData::Aircraft::flight_surfaces::flight_surfaces.leading_edge_flaps_left_percent;
 }
