@@ -721,8 +721,8 @@ auto SimConnectConnector::prepareDataDefinitions() -> void {
 	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_ALTITUDE, "INDICATED ALTITUDE:1",
 		"Feet");
 
-	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FLIGHT_SURFACES, "LEADING EDGE FLAPS LEFT PERCENT",
-		"Feet");
+	this->connectionResult = SimConnect_AddToDataDefinition(simConnectHandle, DEFINITION_FLIGHT_SURFACES, "TRAILING EDGE FLAPS LEFT PERCENT",
+		"Percent Over 100");
 
 	
 }

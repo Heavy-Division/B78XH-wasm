@@ -6,10 +6,15 @@ class FlapsIndicatorControl : public Control {
 public:
 	explicit FlapsIndicatorControl(const string& name)
 		: Control(name) {}
-
+	auto render() -> void override;
 protected:
 	auto setupControl() -> void override;
 
-public:
-	auto render() -> void override;
+private:
+
+	double flapsPercent = 0;
+	int flapsAngleIndex();
+
+	void drawFlapsAngleIndex();
+	double flapsIndexIndicatorHeight();
 };

@@ -1527,6 +1527,9 @@
     <ClInclude Include="FlapsIndicatorControl.h">
       <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
     </ClInclude>
+    <ClInclude Include="HorizontalStabilizerControl.hpp">
+      <Filter>Source Files\Controls\Controls\MFD\EICAS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

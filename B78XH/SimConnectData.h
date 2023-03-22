@@ -434,7 +434,7 @@ namespace SimConnectData {
 
 	namespace Aircraft::flight_surfaces {
 		struct FlightSurfaces {
-			double leading_edge_flaps_left_percent;
+			double trailing_edge_flaps_left_percent;
 		};
 
 		inline FlightSurfaces flight_surfaces;

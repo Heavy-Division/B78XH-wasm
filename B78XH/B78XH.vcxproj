@@ -429,6 +429,7 @@
     <ClInclude Include="FuelIndicationsControl.h" />
     <ClInclude Include="GaugeType.h" />
     <ClInclude Include="GearPositionControl.h" />
+    <ClInclude Include="HorizontalStabilizerControl.hpp" />
     <ClInclude Include="LineSeparatorControl.h" />
     <ClInclude Include="LowerEICASControl.h" />
     <ClInclude Include="MFDMouseCursorControl.h" />

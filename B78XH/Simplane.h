@@ -89,7 +89,7 @@ namespace Simplane {
 
 		namespace flight_surfaces {
 			auto horizontalStabTrim() -> double;
-			auto leadingEdgeFlapsLeftPercent() -> double;
+			auto trailingEdgeFlapsLeftPercent() -> double;
 		}
 	}
 
@@ -1585,6 +1585,6 @@ inline auto Simplane::aircraft::state::aircraftUnitsType() -> AircraftUnitsType 
 	return AircraftUnitsType::METRIC;
 }
 
-inline auto Simplane::aircraft::flight_surfaces::horizontalStabTrim() -> double {
-	return SimConnectData::Aircraft::flight_surfaces::flight_surfaces.leading_edge_flaps_left_percent;
+inline auto Simplane::aircraft::flight_surfaces::trailingEdgeFlapsLeftPercent() -> double {
+	return SimConnectData::Aircraft::flight_surfaces::flight_surfaces.trailing_edge_flaps_left_percent;
 }
