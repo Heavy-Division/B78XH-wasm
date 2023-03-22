@@ -21,4 +21,5 @@ auto LeftInboardDisplay::prepareApplications() -> void {
 }
 
 auto LeftInboardDisplay::setupApplications() -> void {
+	
 }

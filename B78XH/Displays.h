@@ -32,6 +32,7 @@
 #include "TcpRightDisplay.h"
 #include "TCPMasterControl.h"
 
+
 namespace Displays {
 	inline LeftOutboardDisplay leftOutboardDisplay;
 	//inline LeftInboardDisplay leftInboardDisplay;
@@ -55,7 +56,7 @@ namespace Displays {
 	inline std::unique_ptr<MasterControl> tcpLeftDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 0);
 	inline std::unique_ptr<MasterControl> tcpCenterDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 2);
 	inline std::unique_ptr<MasterControl> tcpRightDisplay = std::make_unique<TCPMasterControl>("TCPMasterControl", 1);
-
 	inline std::unique_ptr<MasterControl> leftInboardDisplay = std::make_unique<MFDMasterControl>("MFDMasterControl", MFDPanelResolver::MFD::ONE);
+
 
 }

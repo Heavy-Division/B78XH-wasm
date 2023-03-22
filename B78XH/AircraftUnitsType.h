@@ -18,6 +18,6 @@
 #pragma once
 
 enum class AircraftUnitsType {
-	IMPERIAL,
-	METRIC
+	IMPERIAL = 1,
+	METRIC = 2
 };

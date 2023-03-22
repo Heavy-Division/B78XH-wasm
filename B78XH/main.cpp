@@ -19,6 +19,7 @@
 #include "Tools\Console.h"
 #include "SimConnectConnector.h"
 
+
 extern "C" MSFS_CALLBACK void module_init(void) {
 	connector.connect("Global SimConnect connection");
 	Console::info("B78XH WASM: Module init");

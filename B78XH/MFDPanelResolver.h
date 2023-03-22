@@ -1,11 +1,12 @@
 ﻿#pragma once
-#include <memory>
 
+#include <memory>
 #include "MFDCDUControl.h"
 #include "MFDDisplayContainer.h"
 #include "MFDEmptyControl.h"
 #include "MFDNDControl.h"
 #include "MFDSYSControl.h"
+#include "EICASMasterControl.h"
 
 class MFDPanelResolver {
 	public:
@@ -68,28 +69,28 @@ class MFDPanelResolver {
 
 	private:
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdOnePanels{
+			std::make_shared<EICASMasterControl>("EICASMasterControl"),
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
 			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
-			std::make_shared<MFDCOMMControl>("MFDEmptyControl"),
 			std::make_shared<MFDNDControl>("MFDEmptyControl"),
 			std::make_shared<MFDEmptyControl>("MFDEmptyControl")
 		};
 
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdTwoPanels{
+			std::make_shared<EICASMasterControl>("EICASMasterControl"),
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
 			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
-			std::make_shared<MFDCOMMControl>("MFDEmptyControl"),
 			std::make_shared<MFDNDControl>("MFDEmptyControl"),
 			std::make_shared<MFDEmptyControl>("MFDEmptyControl")
 		};
 
 		std::array<std::shared_ptr<MFDBaseControl>, 6> mfdThreePanels{
+			std::make_shared<EICASMasterControl>("EICASMasterControl"),
 			std::make_shared<MFDSYSControl>("MFDEmptyControl"),
 			std::make_shared<MFDINFOControl>("MFDEmptyControl"),
 			std::make_shared<MFDCHKLControl>("MFDEmptyControl"),
-			std::make_shared<MFDCOMMControl>("MFDEmptyControl"),
 			std::make_shared<MFDNDControl>("MFDEmptyControl"),
 			std::make_shared<MFDEmptyControl>("MFDEmptyControl")
 		};
@@ -105,9 +106,9 @@ class MFDPanelResolver {
 		std::shared_ptr<MFDBaseControl> eicas2 = std::make_shared<MFDEmptyControl>("MFDEmptyControl");
 		std::shared_ptr<MFDBaseControl> eicas3 = std::make_shared<MFDEmptyControl>("MFDEmptyControl");
 
-		std::unique_ptr<MFDDisplayContainer> mfdDisplayOne = std::make_unique<MFDDisplayContainer>(eicas2, eicas3);
-		std::unique_ptr<MFDDisplayContainer> mfdDisplayTwo = std::make_unique<MFDDisplayContainer>(eicas2, eicas3);
-		std::unique_ptr<MFDDisplayContainer> mfdDisplayThree = std::make_unique<MFDDisplayContainer>(eicas2, eicas3);
+		std::unique_ptr<MFDDisplayContainer> mfdDisplayOne = std::make_unique<MFDDisplayContainer>(mfdOnePanels[0], eicas);
+		std::unique_ptr<MFDDisplayContainer> mfdDisplayTwo = std::make_unique<MFDDisplayContainer>(mfdTwoPanels[0], eicas2);
+		std::unique_ptr<MFDDisplayContainer> mfdDisplayThree = std::make_unique<MFDDisplayContainer>(mfdThreePanels[0], eicas3);
 };
 
 namespace MFD {

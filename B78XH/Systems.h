@@ -17,7 +17,9 @@
 
 #pragma once
 #include "RadioNav.h"
+#include "Fuel.h"
 
 namespace Systems {
 	inline RadioNav radioNav;
+	inline Fuel fuel;
 }

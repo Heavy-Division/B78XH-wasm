@@ -85,7 +85,15 @@ class LVars {
 			B78XH_IRS_L_SWITCH_STATE,
 
 			LEFT_MFD_SIDE,
-			RIGHT_MFD_SIDE
+			RIGHT_MFD_SIDE,
+
+			FUEL_TEMP,
+
+			/*
+			 * Enums
+			 */
+
+			WEIGHT_UNITS,
 		};
 
 		static auto update() -> void;
@@ -133,6 +141,8 @@ class LVars {
 			{B78XH_IRS_R_SWITCH_STATE, LVar("B78XH_IRS_R_SWITCH_STATE", "Number")},
 			{B78XH_IRS_L_SWITCH_STATE, LVar("B78XH_IRS_L_SWITCH_STATE", "Number")},
 			{LEFT_MFD_SIDE, LVar("XMLVAR_MFD_Side_1", "Number")},
-			{RIGHT_MFD_SIDE, LVar("XMLVAR_MFD_Side_2", "Number")}
+			{RIGHT_MFD_SIDE, LVar("XMLVAR_MFD_Side_2", "Number")},
+			{FUEL_TEMP, LVar("FUEL_TEMP", "Number")},
+			{WEIGHT_UNITS, LVar("WEIGHT_UNITS", "Number")},
 		};
 };
