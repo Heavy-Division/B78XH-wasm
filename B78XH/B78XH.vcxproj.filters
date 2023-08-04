@@ -262,7 +262,7 @@
     <ClCompile Include="Operable.cpp">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClCompile>
-    <ClCompile Include="CCS.cpp">
+    <ClCompile Include="CommonCoreSystem.cpp">
       <Filter>Source Files\Systems\CCS</Filter>
     </ClCompile>
     <ClCompile Include="CCSGaugeCallback.cpp">
@@ -996,7 +996,7 @@
     <ClInclude Include="Operable.h">
       <Filter>Source Files\Equipment\AircraftEquipment\Bases</Filter>
     </ClInclude>
-    <ClInclude Include="CCS.h">
+    <ClInclude Include="CommonCoreSystem.h">
       <Filter>Source Files\Systems\CCS</Filter>
     </ClInclude>
     <ClInclude Include="LVar.h">

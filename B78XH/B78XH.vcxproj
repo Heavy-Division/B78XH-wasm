@@ -51,7 +51,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.wasm</TargetExt>
     <IncludePath>$(MSFS_IncludePath);$(CPP_EXTERNALS)\include\NANOVG;</IncludePath>
-    <OutDir>..\..\..\..\WebstormProjects\B78XH-INTERIOR\SimObjects\Airplanes\Asobo_B787_10\panel</OutDir>
+    <OutDir>G:\MSFS\Community\B78XH-experimental\SimObjects\Airplanes\Heavy-Division-B78XH-mod\panel</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|MSFS'">
     <LinkIncremental>false</LinkIncremental>
@@ -122,7 +122,7 @@
     <ClCompile Include="B78XHConfiguration.cpp" />
     <ClCompile Include="BaseControl.cpp" />
     <ClCompile Include="BaseLogger.cpp" />
-    <ClCompile Include="CCS.cpp" />
+    <ClCompile Include="CommonCoreSystem.cpp" />
     <ClCompile Include="CCSGaugeCallback.cpp" />
     <ClCompile Include="CDUBackgroundControl.cpp" />
     <ClCompile Include="CDUButton.cpp" />
@@ -337,7 +337,7 @@
     <ClInclude Include="BaseGauge.h" />
     <ClInclude Include="BaseLogger.h" />
     <ClInclude Include="BaseScratchpad.h" />
-    <ClInclude Include="CCS.h" />
+    <ClInclude Include="CommonCoreSystem.h" />
     <ClInclude Include="CDUBackgroundControl.h" />
     <ClInclude Include="CDUButton.h" />
     <ClInclude Include="CDUButtonControl.h" />

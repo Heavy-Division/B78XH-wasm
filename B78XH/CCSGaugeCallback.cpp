@@ -17,11 +17,11 @@
 
 #include <MSFS/MSFS.h>
 
-#include "CCS.h"
+#include "CommonCoreSystem.h"
 #include <MSFS/MSFS_Render.h>
 #include <MSFS/Legacy/gauges.h>
 
-CCS ccs;
+CommonCoreSystem ccs;
 
 // ------------------------
 // Callbacks

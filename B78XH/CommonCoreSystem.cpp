@@ -15,31 +15,31 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include "CCS.h"
+#include "CommonCoreSystem.h"
 #include "LVars.h"
 #include "Tools/Console.h"
 #include "KEvents.h"
 
 
-auto CCS::init() -> void {
+auto CommonCoreSystem::init() -> void {
 }
 
-auto CCS::prepare() -> void {
+auto CommonCoreSystem::prepare() -> void {
 	this->updateLVars();
 }
 
-auto CCS::update(double deltaTime) -> void {
+auto CommonCoreSystem::update(double deltaTime) -> void {
 	this->updateERS(deltaTime);
 }
 
-auto CCS::reset() -> void {
+auto CommonCoreSystem::reset(CommmonComputingResource* ccr) -> void {
 }
 
-auto CCS::updateLVars() -> void {
+auto CommonCoreSystem::updateLVars() -> void {
 	LVars::update();
 }
 
-auto CCS::updateERS(double deltaTime) -> void {
+auto CommonCoreSystem::updateERS(double deltaTime) -> void {
 	this->ers.setLeftIRSSwitchPosition(LVars::get(LVars::B78XH_IRS_L_SWITCH_STATE).isValue());
 	this->ers.setRightIRSSwitchPosition(LVars::get(LVars::B78XH_IRS_R_SWITCH_STATE).isValue());
 	this->ers.update(deltaTime);
